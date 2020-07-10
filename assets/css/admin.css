@@ -1,0 +1,5 @@
+/*-------------- widget screen --------------*/
+[id*="_wp_dark_mode"] h3 {
+    background: #212c3b;
+    color: #fff;
+}

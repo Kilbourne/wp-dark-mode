@@ -1,0 +1,12 @@
+*.log
+/node_modules
+/build
+/vendor
+/composer.lock
+
+/.htaccess
+/license.txt
+/readme.html
+/sitemap.xml
+/sitemap.xml.gz
+
