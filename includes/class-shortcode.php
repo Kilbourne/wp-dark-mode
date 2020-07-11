@@ -25,7 +25,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Shortcode' ) ) {
 		public function render_dark_mode_btn( $atts ) {
 
 			$atts = shortcode_atts( [
-				'floating' => true,
+				'floating' => 'no',
 			], $atts );
 
 			ob_start();

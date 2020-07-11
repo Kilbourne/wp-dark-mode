@@ -253,12 +253,35 @@ if ( ! class_exists( 'WPPOOL_Settings_API' ) ) {
 		function callback_checkbox( $args ) {
 			$value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
 			$html  = '<fieldset>';
-			$html  .= sprintf( '<label for="wpuf-%1$s[%2$s]">', $args['section'], $args['id'] );
+			$html  .= sprintf( '<label for="wppool-%1$s[%2$s]">', $args['section'], $args['id'] );
 			$html  .= sprintf( '<input type="hidden" name="%1$s[%2$s]" value="off" />', $args['section'], $args['id'] );
-			$html  .= sprintf( '<input type="checkbox" class="checkbox" id="wpuf-%1$s[%2$s]" name="%1$s[%2$s]" value="on" %3$s />',
+			$html  .= sprintf( '<input type="checkbox" class="checkbox" id="wppool-%1$s[%2$s]" name="%1$s[%2$s]" value="on" %3$s />',
 				$args['section'], $args['id'], checked( $value, 'on', false ) );
 			$html  .= sprintf( '%1$s</label>', $args['desc'] );
 			$html  .= '</fieldset>';
+			echo $html;
+		}
+
+		/**
+		 * Displays a switcher for a settings field
+		 *
+		 * @param   array  $args  settings field args
+		 */
+		function callback_switcher( $args ) {
+			$value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
+			$html  = '<fieldset class="switcher">';
+			$html  .= sprintf( '<label for="wppool-%1$s[%2$s]">', $args['section'], $args['id'] );
+			$html  .= sprintf( '<div class="wppool-switcher">
+                <input type="hidden" name="%1$s[%2$s]" value="off" />
+                <input type="checkbox" name="%1$s[%2$s]" id="wppool-%1$s[%2$s]" value="on" %3$s/>
+                <div>
+                    <label for="wppool-%1$s[%2$s]"></label>
+                </div>
+            </div>',
+				$args['section'], $args['id'], checked( $value, 'on', false ) );
+			$html  .= sprintf( '%1$s</label>', $args['desc'] );
+			$html  .= '</fieldset>';
+
 			echo $html;
 		}
 
@@ -273,8 +296,8 @@ if ( ! class_exists( 'WPPOOL_Settings_API' ) ) {
 			$html  .= sprintf( '<input type="hidden" name="%1$s[%2$s]" value="" />', $args['section'], $args['id'] );
 			foreach ( $args['options'] as $key => $label ) {
 				$checked = isset( $value[ $key ] ) ? $value[ $key ] : '0';
-				$html    .= sprintf( '<label for="wpuf-%1$s[%2$s][%3$s]">', $args['section'], $args['id'], $key );
-				$html    .= sprintf( '<input type="checkbox" class="checkbox" id="wpuf-%1$s[%2$s][%3$s]" name="%1$s[%2$s][%3$s]" value="%3$s" %4$s />',
+				$html    .= sprintf( '<label for="wppool-%1$s[%2$s][%3$s]">', $args['section'], $args['id'], $key );
+				$html    .= sprintf( '<input type="checkbox" class="checkbox" id="wppool-%1$s[%2$s][%3$s]" name="%1$s[%2$s][%3$s]" value="%3$s" %4$s />',
 					$args['section'], $args['id'], $key, checked( $checked, $key, false ) );
 				$html    .= sprintf( '%1$s</label><br>', $label );
 			}
@@ -292,8 +315,8 @@ if ( ! class_exists( 'WPPOOL_Settings_API' ) ) {
 			$value = $this->get_option( $args['id'], $args['section'], $args['std'] );
 			$html  = '<fieldset>';
 			foreach ( $args['options'] as $key => $label ) {
-				$html .= sprintf( '<label for="wpuf-%1$s[%2$s][%3$s]">', $args['section'], $args['id'], $key );
-				$html .= sprintf( '<input type="radio" class="radio" id="wpuf-%1$s[%2$s][%3$s]" name="%1$s[%2$s]" value="%3$s" %4$s />',
+				$html .= sprintf( '<label for="wppool-%1$s[%2$s][%3$s]">', $args['section'], $args['id'], $key );
+				$html .= sprintf( '<input type="radio" class="radio" id="wppool-%1$s[%2$s][%3$s]" name="%1$s[%2$s]" value="%3$s" %4$s />',
 					$args['section'], $args['id'], $key, checked( $value, $key, false ) );
 				$html .= sprintf( '%1$s</label><br>', $label );
 			}
@@ -736,6 +759,101 @@ if ( ! class_exists( 'WPPOOL_Settings_API' ) ) {
                 .wppool-settings-heading {
                     position: relative;
                     left: -17%;
+                }
+
+                /*---- checkbox -----*/
+
+                .wppool-switcher input[type="checkbox"] {
+                    display: none;
+                }
+
+                .wppool-switcher input[type="checkbox"]:checked ~ div {
+                    background: rgba(73, 168, 68, 1);
+                    box-shadow: 0 0 2px rgba(73, 168, 68, 1);
+                }
+
+                .wppool-switcher input[type="checkbox"]:checked ~ div label {
+                    transform: rotate(360deg);
+                    margin-left: auto !important;
+                }
+
+                .wppool-switcher input[type="checkbox"]:checked ~ div label::before {
+                    top: 4px;
+                    left: 10px;
+                    height: 12px;
+                    background: rgba(73, 168, 68, 1);
+                }
+
+                .wppool-switcher input[type="checkbox"]:checked ~ div label::after {
+                    top: 10px;
+                    left: 3px;
+                    width: 6px;
+                    background: rgba(73, 168, 68, 1);
+                }
+
+                .wppool-switcher input[type="checkbox"]:disabled ~ div {
+                    background: #666;
+                }
+
+                .wppool-switcher input[type="checkbox"]:disabled ~ div label {
+                    background: #ddd;
+                }
+
+                .wppool-switcher input[type="checkbox"]:disabled ~ div label::before,
+                .wppool-switcher input[type="checkbox"]:disabled ~ div label::after {
+                    background: #666;
+                    border-radius: 5px;
+                }
+
+                .wppool-switcher div,
+                .wppool-switcher label {
+                    border-radius: 50px;
+                }
+
+                .wppool-switcher div {
+                    height: 25px;
+                    width: 50px;
+                    background: rgba(43, 43, 43, 1);
+                    position: relative;
+                    box-shadow: 0 0 2px rgba(43, 43, 43, 1);
+                    display: flex;
+                    align-items: center;
+                    padding: 0 5px;
+                    margin-top: 10px;
+                    transition: all .2s ease;
+                }
+
+                .switcher .wppool-switcher label {
+                    height: 20px;
+                    width: 20px;
+                    background: rgba(255, 255, 255, 1);
+                    cursor: pointer;
+                    display: flex !important;
+                    align-items: center;
+                    justify-content: center;
+                    margin: -3px !important;
+                }
+
+                .wppool-switcher label::before,
+                .wppool-switcher label::after {
+                    background: rgba(43, 43, 43, 1);
+                    border-radius: 5px;
+                }
+
+                .wppool-switcher label::before {
+                    content: '';
+                    height: 13px;
+                    width: 3px;
+                    position: absolute;
+                    transform: rotate(45deg);
+                }
+
+                .wppool-switcher label::after {
+                    content: '';
+                    height: 3px;
+                    width: 13px;
+                    position: absolute;
+                    transform: rotate(45deg);
                 }
 
             </style>

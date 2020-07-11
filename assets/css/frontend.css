@@ -7,7 +7,7 @@
 }
 
 .wp-dark-mode-switcher > i {
-    margin-right: 7px;
+    margin-right: 7px !important;
 }
 
 .wp-dark-mode-moon-o {
@@ -16,30 +16,29 @@
 
 .wp-dark-mode-switcher label,
 .wp-dark-mode-switcher .toggle {
-    height: 26px;
-    border-radius: 100px;
+    height: 26px !important;
+    border-radius: 100px !important;
     display: inline-block;
 }
 
 .wp-dark-mode-switcher label {
     background-color: #eee;
-    position: relative;
+    position: relative !important;
     cursor: pointer;
-    width: 100px;
+    width: 100px !important;
 }
 
 .wp-dark-mode-switcher .toggle {
-    position: absolute;
-    width: 50%;
+    position: absolute !important;
+    width: 50% !important;
     background-color: #fff;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, .15);
-    transition: transform .3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, .15) !important;
+    transition: transform .3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
 }
 
 .wp-dark-mode-switcher .modes {
-    font-weight: bolder;
-    width: 74%;
-    position: absolute;
+    width: 74% !important;
+    position: absolute !important;
     display: flex;
     justify-content: space-between;
     user-select: none;
@@ -48,8 +47,8 @@
 }
 
 .wp-dark-mode-switcher .modes p {
-    font-size: 12px;
-    font-weight: 500;
+    font-size: 12px !important;
+    font-weight: 500 !important;
 }
 
 .wp-dark-mode-switcher .dark {
@@ -57,7 +56,7 @@
 }
 
 .wp-dark-mode-switch {
-    display: none;
+    display: none !important;
 }
 
 /*-------------- floating switcher -----------------*/

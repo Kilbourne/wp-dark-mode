@@ -18,6 +18,11 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 		public function __construct() {
 			add_action( 'wp_enqueue_scripts', [ $this, 'frontend_scripts' ] );
 			add_action( 'admin_enqueue_scripts', [ $this, 'admin_scripts' ] );
+
+			/** load assets if dark mode enabled on backend */
+			if ( 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_backend' ) ) {
+				add_action( 'admin_enqueue_scripts', [ $this, 'frontend_scripts' ] );
+			}
 		}
 
 		/**
@@ -28,17 +33,17 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 		public function frontend_scripts( $hook ) {
 
 			/** wp-dark-mode frontend css */
-			wp_enqueue_style( 'wp-dark-mode-frontend', wp_dark_mode()->plugin_url( '/assets/css/frontend.css' ),
-				[ 'dashicons', 'wp-mediaelement' ], wp_dark_mode()->version );
+			wp_enqueue_style( 'wp-dark-mode-frontend', wp_dark_mode()->plugin_url( 'assets/css/frontend.css' ), false,
+				wp_dark_mode()->version );
 
 
 			/** dark-mode js library */
-			wp_enqueue_script( 'darkmode-js', wp_dark_mode()->plugin_url( '/assets/vendor/darkmode-js.min.js' ), [ 'jquery' ],
+			wp_enqueue_script( 'darkmode-js', wp_dark_mode()->plugin_url( 'assets/vendor/darkmode-js.min.js' ), [ 'jquery' ],
 				wp_dark_mode()->version, true );
 
 
 			/** wp-dark-mode frontend js */
-			wp_enqueue_script( 'wp-dark-mode-frontend', wp_dark_mode()->plugin_url( '/assets/js/frontend.js' ), [ 'jquery', 'wp-util' ],
+			wp_enqueue_script( 'wp-dark-mode-frontend', wp_dark_mode()->plugin_url( 'assets/js/frontend.js' ), [ 'jquery', 'wp-util' ],
 				wp_dark_mode()->version, true );
 
 		}

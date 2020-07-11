@@ -1,3 +1,16 @@
+/*-------------- admin bar switcher --------------*/
+#wp-admin-bar-wp-dark-mode .wp-dark-mode-switcher .modes {
+    margin-top: -2px;
+}
+
+#wp-admin-bar-wp-dark-mode .wp-dark-mode-switcher .modes .light {
+    color: #000;
+}
+
+.wp-dark-mode-switcher .modes .dark {
+    color: #555;
+}
+
 /*-------------- widget screen --------------*/
 [id*="_wp_dark_mode"] h3 {
     background: #212c3b;
