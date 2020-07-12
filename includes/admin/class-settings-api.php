@@ -431,7 +431,7 @@ if ( ! class_exists( 'WPPOOL_Settings_API' ) ) {
 			$value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
 			$size  = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular';
 			$html
-			       = sprintf( '<input type="text" class="%1$s-text wp-color-picker-field" id="%2$s[%3$s]" name="%2$s[%3$s]" value="%4$s" data-default-color="%5$s" />',
+			       = sprintf( '<input type="text" class="%1$s-text wp-color-picker-field wppool-color-field" id="%2$s[%3$s]" name="%2$s[%3$s]" value="%4$s" data-default-color="%5$s" />',
 				$size, $args['section'], $args['id'], $value, $args['std'] );
 			$html  .= $this->get_field_description( $args );
 			echo $html;
@@ -854,6 +854,15 @@ if ( ! class_exists( 'WPPOOL_Settings_API' ) ) {
                     width: 13px;
                     position: absolute;
                     transform: rotate(45deg);
+                }
+
+                /*------ color field fixing ------*/
+                .wppool-settings .iris-square {
+                    margin-right: 20px;
+                }
+
+                .wppool-settings .iris-slider.iris-strip {
+                    height: 184px !important;
                 }
 
             </style>

@@ -1,0 +1,15 @@
+html :not(mark):not(code):not(pre):not(ins):not(option):not(input):not(select):not(textarea):not(button):not(a):not(video):not(canvas):not(progress):not(iframe):not(svg):not(path) {
+    background-color: rgba(27, 40, 54, 0.2) !important;
+    color: rgb(255, 255, 255) !important;
+    border-color: rgb(69, 155, 230) !important;
+}
+
+html, html body {
+    background-image: none !important;
+    background-color: rgb(27, 40, 54) !important;
+}
+
+html a:active, html a:active *, html a:visited, html a:visited * {
+    color: rgb(69, 155, 230) !important;
+    border-color: rgb(69, 155, 230) !important;
+}

@@ -1,9 +1,17 @@
 /* -------- Switch Styles ------------*/
-.wp-dark-mode-switcher {
+html body .wp-dark-mode-switcher,
+html body.dm-dark .wp-dark-mode-switcher {
     display: flex;
     align-items: center;
     z-index: 999;
     position: relative;
+    background: transparent !important;
+
+}
+
+html body .wp-dark-mode-switcher *,
+html body.dm-dark .wp-dark-mode-switcher * {
+    background: transparent !important;
 }
 
 .wp-dark-mode-switcher > i {
@@ -21,17 +29,19 @@
     display: inline-block;
 }
 
-.wp-dark-mode-switcher label {
-    background-color: #eee;
+html body .wp-dark-mode-switcher label,
+html body.dm-dark .wp-dark-mode-switcher label {
+    background-color: #eee !important;
     position: relative !important;
     cursor: pointer;
     width: 100px !important;
 }
 
-.wp-dark-mode-switcher .toggle {
+html body .wp-dark-mode-switcher .toggle,
+html body.dm-dark .wp-dark-mode-switcher .toggle {
     position: absolute !important;
     width: 50% !important;
-    background-color: #fff;
+    background-color: #fff !important;
     box-shadow: 0 2px 15px rgba(0, 0, 0, .15) !important;
     transition: transform .3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
 }
@@ -46,9 +56,12 @@
     transform: translateX(-50%);
 }
 
-.wp-dark-mode-switcher .modes p {
+html body .wp-dark-mode-switcher .modes p,
+html body.dm-dark .wp-dark-mode-switcher .modes p {
     font-size: 12px !important;
     font-weight: 500 !important;
+    background: transparent !important;
+    color: #555 !important;
 }
 
 .wp-dark-mode-switcher .dark {
@@ -60,16 +73,18 @@
 }
 
 /*-------------- floating switcher -----------------*/
-.wp-dark-mode-switcher.floating {
+html body .wp-dark-mode-switcher.floating,
+html body.dm-dark .wp-dark-mode-switcher.floating {
     position: fixed;
     bottom: 26px;
     right: 26px;
 }
 
 /* Toggle */
-[id*="wp-dark-mode-switch"]:checked + .wp-dark-mode-switcher .toggle {
+html body [id*="wp-dark-mode-switch"]:checked + .wp-dark-mode-switcher .toggle,
+html body.dm-dark [id*="wp-dark-mode-switch"]:checked + .wp-dark-mode-switcher .toggle {
     transform: translateX(100%);
-    background-color: #34323D;
+    background-color: #34323D !important;
 }
 
 [id*="wp-dark-mode-switch"]:checked + .wp-dark-mode-switcher .wp-dark-mode-light-up {
@@ -80,9 +95,10 @@
     display: block;
 }
 
-[id*="wp-dark-mode-switch"]:checked + .wp-dark-mode-switcher .dark {
+html body [id*="wp-dark-mode-switch"]:checked + .wp-dark-mode-switcher .dark,
+html body.dm-dark [id*="wp-dark-mode-switch"]:checked + .wp-dark-mode-switcher .dark {
     opacity: 1;
-    color: #fff;
+    color: #fff !important;
 }
 
 /*--------------------- Icons ---------------------- */
