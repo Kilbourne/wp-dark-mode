@@ -768,8 +768,8 @@ if ( ! class_exists( 'WPPOOL_Settings_API' ) ) {
                 }
 
                 .wppool-switcher input[type="checkbox"]:checked ~ div {
-                    background: rgba(73, 168, 68, 1);
-                    box-shadow: 0 0 2px rgba(73, 168, 68, 1);
+                    background: rgba(73, 168, 68, 1) !important;
+                    box-shadow: 0 0 2px rgba(73, 168, 68, 1) !important;
                 }
 
                 .wppool-switcher input[type="checkbox"]:checked ~ div label {
@@ -781,22 +781,22 @@ if ( ! class_exists( 'WPPOOL_Settings_API' ) ) {
                     top: 4px;
                     left: 10px;
                     height: 12px;
-                    background: rgba(73, 168, 68, 1);
+                    background: rgba(73, 168, 68, 1) !important;
                 }
 
                 .wppool-switcher input[type="checkbox"]:checked ~ div label::after {
                     top: 10px;
                     left: 3px;
                     width: 6px;
-                    background: rgba(73, 168, 68, 1);
+                    background: rgba(73, 168, 68, 1) !important;
                 }
 
                 .wppool-switcher input[type="checkbox"]:disabled ~ div {
-                    background: #666;
+                    background: #666 !important;
                 }
 
                 .wppool-switcher input[type="checkbox"]:disabled ~ div label {
-                    background: #ddd;
+                    background: #ddd !important;
                 }
 
                 .wppool-switcher input[type="checkbox"]:disabled ~ div label::before,
@@ -813,9 +813,9 @@ if ( ! class_exists( 'WPPOOL_Settings_API' ) ) {
                 .wppool-switcher div {
                     height: 25px;
                     width: 50px;
-                    background: rgba(43, 43, 43, 1);
+                    background: rgba(43, 43, 43, 1) !important;
                     position: relative;
-                    box-shadow: 0 0 2px rgba(43, 43, 43, 1);
+                    box-shadow: 0 0 2px rgba(43, 43, 43, 1) !important;
                     display: flex;
                     align-items: center;
                     padding: 0 5px;
@@ -826,7 +826,7 @@ if ( ! class_exists( 'WPPOOL_Settings_API' ) ) {
                 .switcher .wppool-switcher label {
                     height: 20px;
                     width: 20px;
-                    background: rgba(255, 255, 255, 1);
+                    background: rgba(255, 255, 255, 1) !important;
                     cursor: pointer;
                     display: flex !important;
                     align-items: center;
@@ -836,7 +836,7 @@ if ( ! class_exists( 'WPPOOL_Settings_API' ) ) {
 
                 .wppool-switcher label::before,
                 .wppool-switcher label::after {
-                    background: rgba(43, 43, 43, 1);
+                    background: rgba(43, 43, 43, 1) !important;
                     border-radius: 5px;
                 }
 
