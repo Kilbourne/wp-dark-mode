@@ -1,12 +1,12 @@
 /* -------- Switch Styles ------------*/
 html body .wp-dark-mode-switcher,
 html body.dm-dark .wp-dark-mode-switcher {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    z-index: 999;
+    z-index: 99;
     position: relative;
     background: transparent !important;
-
+    text-align: left;
 }
 
 html body .wp-dark-mode-switcher *,

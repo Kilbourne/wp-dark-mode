@@ -94,7 +94,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 					),
 					array(
 						'name'    => 'start_at',
-						'default' => '21:00',
+						'default' => '',
 						'label'   => __( 'Dark Mode Start Time', 'wp-dark-mode' ),
 						'desc'    => __( 'Time to start Dark mode.', 'wp-dark-mode' ),
 						'type'    => 'select',
@@ -102,7 +102,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 					),
 					array(
 						'name'    => 'end_at',
-						'default' => '6:00',
+						'default' => '',
 						'label'   => __( 'Dark Mode End Time', 'wp-dark-mode' ),
 						'desc'    => __( 'Time to end Dark mode.', 'wp-dark-mode' ),
 						'type'    => 'select',
@@ -123,14 +123,14 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 					array(
 						'name'    => 'show_switcher',
 						'default' => 'off',
-						'label'   => __( 'Show Floating Switcher', 'wp-dark-mode' ),
+						'label'   => __( 'Show Floating Switch', 'wp-dark-mode' ),
 						'desc'    => __( 'Show the floating dark mode switcher button on the frontend for the users.', 'wp-dark-mode' ),
 						'type'    => 'switcher',
 					),
 					array(
 						'name'    => 'switcher_position',
 						'default' => 'right_bottom',
-						'label'   => __( 'Floating Switcher Position', 'wp-dark-mode' ),
+						'label'   => __( 'Floating Switch Position', 'wp-dark-mode' ),
 						'desc'    => __( 'Select the position of the floating dark mode switcher button on the frontend.', 'wp-dark-mode' ),
 						'type'    => 'select',
 						'options' => [
@@ -207,6 +207,8 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
                     <h2><?php _e( 'WP Dark Mode Settings', 'wp-dark-mode' ) ?></h2>
                     <p> - You can use Dark mode as <a href="<?php echo admin_url( 'widgets.php' ); ?>">Widget</a>. </p>
                     <p> - Or can check "Add Dark Mode before posts/ pages" in below to add Dark mode button automatically before posts/ pages. </p>
+                    <p> - Or you can use the `Dark Mode Switch` gutenberg block to display the dark mode switch button. </p>
+                    <p> - Or you can use the `Dark Mode Switch` elementor widget to display the dark mode switch button. </p>
                     <p> - Also you can copy this
                         <code>[wp_dark_mode]</code> shortcode and paste in any post/page to show the dark mode button. </p>
 

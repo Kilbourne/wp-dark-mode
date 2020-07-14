@@ -26,14 +26,22 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 
 		}
 
+		/**
+		 * display the footer widget
+		 */
 		public function display_widget() {
 			echo do_shortcode( '[wp_dark_mode floating="yes"]' );
 		}
 
+		/**
+		 * @param $content
+		 *
+		 * @return string
+		 */
 		public function render_post_page_switcher( $content ) {
 
-			$above_post = 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'show_above_post' );
-			$above_page = 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'show_above_page' );
+			$above_post = 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_display', 'show_above_post' );
+			$above_page = 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_display', 'show_above_page' );
 
 			if ($above_post && is_single() && in_the_loop() && is_main_query() ) {
 				$content = do_shortcode( '[wp_dark_mode]' ) . $content;

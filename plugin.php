@@ -147,6 +147,8 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 			register_activation_hook( __FILE__, function () {
 				require $this->plugin_path( 'includes/class-install.php' );
 			} );
+
+			add_action( 'elementor/widgets/widgets_registered', [ $this, 'register_widget' ] );
 		}
 
 
@@ -156,15 +158,17 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 		 * @return void
 		 * @since 1.0.0
 		 */
-		function load_files() {
+		public function load_files() {
 
 			//core includes
 			require $this->plugin_path( 'includes/functions.php' );
 			require $this->plugin_path( 'includes/class-hooks.php' );
-			require $this->plugin_path( 'includes/class-form-handler.php' );
 			require $this->plugin_path( 'includes/class-enqueue.php' );
 			require $this->plugin_path( 'includes/class-shortcode.php' );
 			require $this->plugin_path( 'includes/class-widget.php' );
+
+			/** load gutenberg block */
+			require $this->plugin_path( 'block/plugin.php' );
 
 			//admin includes
 			if ( is_admin() ) {
@@ -175,6 +179,11 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 
 		}
 
+		public function register_widget() {
+			require $this->plugin_path( 'includes/class-elementor-widget.php' );
+
+			\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new WP_Dark_Mode_Elementor_Widget() );
+		}
 
 		/**
 		 * Initialize plugin for localization
@@ -183,7 +192,7 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 		 * @since 1.0.0
 		 *
 		 */
-		function lang() {
+		public function lang() {
 			load_plugin_textdomain( 'wp-dark-mode', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 		}
 
@@ -269,6 +278,7 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 				return false;
 			}
 		}
+
 
 		/**
 		 * add admin notices

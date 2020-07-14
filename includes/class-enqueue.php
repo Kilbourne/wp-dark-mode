@@ -18,11 +18,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 		public function __construct() {
 			add_action( 'wp_enqueue_scripts', [ $this, 'frontend_scripts' ] );
 			add_action( 'admin_enqueue_scripts', [ $this, 'admin_scripts' ] );
-
-			/** load assets if dark mode enabled on backend */
-			if ( 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_backend' ) ) {
-				add_action( 'admin_enqueue_scripts', [ $this, 'frontend_scripts' ] );
-			}
+			add_action( 'admin_enqueue_scripts', [ $this, 'frontend_scripts' ] );
 		}
 
 		/**
@@ -57,17 +53,17 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 			$link_selector = 'html a:active, html a:active *, html a:visited, html a:visited *';
 
 			/** background color */
-			if ( ! empty( $bg_color ) ) {
+			if ( ! empty( $bg_color ) && '#1b2836' != $bg_color ) {
 				$custom_css .= sprintf( '%1$s {background-color:  %2$s !important;}', $global_selector, $bg_color );
 			}
 
 			/** text color */
-			if ( ! empty( $text_color ) ) {
+			if ( ! empty( $text_color && '#ffffff' != $text_color ) ) {
 				$custom_css .= sprintf( '%1$s {color:  %2$s !important;}', $global_selector, $text_color );
 			}
 
 			/** linkd color */
-			if ( ! empty( $links_color ) ) {
+			if ( ! empty( $links_color && '#459be6' != $links_color ) ) {
 				$custom_css .= sprintf( '%1$s {color:  %2$s !important;border-color:  %2$s !important;}', $link_selector, $links_color );
 			}
 
@@ -76,11 +72,12 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 
 			/** frontend localize array */
 			wp_localize_script( 'wp-dark-mode-frontend', 'wpDarkModeFrontend', [
-				'pluginUrl'   => wp_dark_mode()->plugin_url(),
-				'saveMode'    => 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'remember_darkmode', 'on' ),
-				'matchSystem' => 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'match_os_mode', 'on' ),
-				'startAt'     => wp_dark_mode_get_settings( 'wp_dark_mode_general', 'start_at' ),
-				'endAt'       => wp_dark_mode_get_settings( 'wp_dark_mode_general', 'end_at' ),
+				'pluginUrl'     => wp_dark_mode()->plugin_url(),
+				'saveMode'      => 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'remember_darkmode', 'on' ),
+				'matchSystem'   => 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'match_os_mode', 'on' ),
+				'timeBasedMode' => 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'time_based_mode', 'on' ),
+				'startAt'       => wp_dark_mode_get_settings( 'wp_dark_mode_general', 'start_at' ),
+				'endAt'         => wp_dark_mode_get_settings( 'wp_dark_mode_general', 'end_at' ),
 			] );
 
 		}
