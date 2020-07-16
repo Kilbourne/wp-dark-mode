@@ -29,6 +29,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Shortcode' ) ) {
 				'style'    => 1,
 			], $atts );
 
+			ob_start();
 			if ( file_exists( wp_dark_mode()->plugin_path( "templates/btn-{$atts['style']}.php" ) ) ) {
 				wp_dark_mode()->get_template( "btn-{$atts['style']}", $atts );
 			} else {
