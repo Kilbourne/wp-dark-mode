@@ -5,7 +5,7 @@ $position    = wp_dark_mode_get_settings( 'wp_dark_mode_display', 'switcher_posi
 
 ?>
 <input type="checkbox" id="wp-dark-mode-switch" class="wp-dark-mode-switch">
-<div class="wp-dark-mode-switcher style-4 <?php echo $is_floating ? "floating $position" : ''; ?>">
+<div class="wp-dark-mode-switcher wp-dark-mode-ignore  style-4 <?php echo $is_floating ? "floating $position" : ''; ?>">
 
     <p>Light</p>
     <label for="wp-dark-mode-switch">

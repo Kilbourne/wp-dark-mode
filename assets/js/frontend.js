@@ -6,6 +6,7 @@
             app.initDarkMode();
             app.checkDarkMode();
             $('.wp-dark-mode-switch').on('change', app.handleToggle);
+
         },
 
         /** initialize object holder */
@@ -13,7 +14,7 @@
 
         /** check if the darkmode is active or not on initialize */
         checkDarkMode: function () {
-            if ('dark' === app.darkMode.getMode()) {
+            if (app.darkMode.isActivated()) {
                 $('.wp-dark-mode-switch').prop('checked', true);
             } else {
                 $('.wp-dark-mode-switch').prop('checked', false);
@@ -22,25 +23,26 @@
 
         /** init dark mode */
         initDarkMode: function () {
-
             var options = {
-                dark: wpDarkModeFrontend.pluginUrl + 'assets/css/dark.css',
-                light: wpDarkModeFrontend.pluginUrl + 'assets/css/light.css',
-                checkSystemScheme: wpDarkModeFrontend.matchSystem,
-                saveOnToggle: wpDarkModeFrontend.saveMode
+                saveInCookies: false,
             };
 
-            app.darkMode = new DarkMode(options);
+            app.darkMode = new Darkmode(options);
 
-            if (wpDarkModeFrontend.timeBasedMode) {
-                app.setTimeBasedMode();
+            /*-------- check os mode --------*/
+            if (wpDarkModeFrontend.matchSystem) {
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    if (!app.darkMode.isActivated()) {
+                        app.darkMode.toggle();
+                    }
+                }
             }
 
         },
 
         /** handle dark mode toggle */
         handleToggle: function () {
-            app.darkMode.toggleMode();
+            app.darkMode.toggle();
             app.checkDarkMode();
         },
 
@@ -56,13 +58,10 @@
             startDate = new Date(currentDate.getTime());
             startDate.setHours(startTime.split(":")[0]);
             startDate.setMinutes(startTime.split(":")[1]);
-            //startDate.setSeconds(startTime.split(":")[2]);
 
             endDate = new Date(currentDate.getTime());
             endDate.setHours(endTime.split(":")[0]);
             endDate.setMinutes(endTime.split(":")[1]);
-            //endDate.setSeconds(endTime.split(":")[2]);
-
 
             return startDate < currentDate && endDate > currentDate;
         }

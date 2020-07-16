@@ -32,10 +32,8 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 			wp_enqueue_style( 'wp-dark-mode-frontend', wp_dark_mode()->plugin_url( 'assets/css/frontend.css' ), false,
 				wp_dark_mode()->version );
 
-
-			/** dark-mode js library */
-			wp_enqueue_script( 'wdm-darkmode', wp_dark_mode()->plugin_url( 'assets/vendor/darkmode.min.js' ), [ 'jquery' ],
-				wp_dark_mode()->version, true );
+			/** dark-mode-js library */
+			wp_enqueue_script( 'darkmode-js', wp_dark_mode()->plugin_url( 'assets/vendor/darkmode-js.js' ), false, wp_dark_mode()->version, true );
 
 
 			/** wp-dark-mode frontend js */

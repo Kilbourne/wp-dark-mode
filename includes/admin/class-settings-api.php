@@ -130,6 +130,7 @@ if ( ! class_exists( 'WPPOOL_Settings_API' ) ) {
 				}
 				add_settings_section( $section['id'], $section['title'], $callback, $section['id'] );
 			}
+
 			//register settings fields
 			foreach ( $this->settings_fields as $section => $field ) {
 				foreach ( $field as $option ) {
@@ -271,7 +272,7 @@ if ( ! class_exists( 'WPPOOL_Settings_API' ) ) {
 			$value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
 			$html  = '<fieldset class="switcher">';
 			$html  .= sprintf( '<label for="wppool-%1$s[%2$s]">', $args['section'], $args['id'] );
-			$html  .= sprintf( '<div class="wppool-switcher">
+			$html  .= sprintf( '<div class="wppool-switcher wp-dark-mode-ignore">
                 <input type="hidden" name="%1$s[%2$s]" value="off" />
                 <input type="checkbox" name="%1$s[%2$s]" id="wppool-%1$s[%2$s]" value="on" %3$s/>
                 <div>
@@ -587,6 +588,9 @@ if ( ! class_exists( 'WPPOOL_Settings_API' ) ) {
                 jQuery(document).ready(function ($) {
                     //Initiate Color Picker
                     $('.wp-color-picker-field').wpColorPicker();
+
+                    $('.wp-picker-container').addClass('wp-dark-mode-ignore');
+
                     // Switches option sections
                     $('.group').hide();
                     var activetab = '';
