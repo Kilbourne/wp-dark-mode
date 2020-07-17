@@ -94,7 +94,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 					),
 					array(
 						'name'    => 'start_at',
-						'default' => '',
+						'default' => '17:00',
 						'label'   => __( 'Dark Mode Start Time', 'wp-dark-mode' ),
 						'desc'    => __( 'Time to start Dark mode.', 'wp-dark-mode' ),
 						'type'    => 'select',
@@ -102,7 +102,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 					),
 					array(
 						'name'    => 'end_at',
-						'default' => '',
+						'default' => '06:00',
 						'label'   => __( 'Dark Mode End Time', 'wp-dark-mode' ),
 						'desc'    => __( 'Time to end Dark mode.', 'wp-dark-mode' ),
 						'type'    => 'select',
@@ -126,6 +126,20 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'label'   => __( 'Show Floating Switch', 'wp-dark-mode' ),
 						'desc'    => __( 'Show the floating dark mode switcher button on the frontend for the users.', 'wp-dark-mode' ),
 						'type'    => 'switcher',
+					),
+					array(
+						'name'    => 'switch_style',
+						'default' => '1',
+						'label'   => __( 'Floating Switch Style', 'wp-dark-mode' ),
+						'desc'    => __( 'Select the switcher button style for the frontend.', 'wp-dark-mode' ),
+						'type'    => 'switcher',
+						'options'    => [
+						        '1' => 'Style 1',
+						        '2' => 'Style 2',
+						        '3' => 'Style 3',
+						        '4' => 'Style 4',
+						        '5' => 'Style 5',
+                        ],
 					),
 					array(
 						'name'    => 'switcher_position',

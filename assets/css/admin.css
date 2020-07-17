@@ -7,6 +7,29 @@
     color: #000;
 }
 
+#wp-admin-bar-wp-dark-mode .wp-dark-mode-switcher label {
+    position: relative !important;
+    width: 100px !important;
+}
+
+#wp-admin-bar-wp-dark-mode .wp-dark-mode-switcher label,
+#wp-admin-bar-wp-dark-mode .wp-dark-mode-switcher .toggle {
+    height: 26px !important;
+    border-radius: 100px !important;
+}
+
+#wp-admin-bar-wp-dark-mode .wp-dark-mode-switcher .toggle {
+    position: absolute !important;
+    width: 50% !important;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, .15) !important;
+    transition: transform .3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+#wp-admin-bar-wp-dark-mode .wp-dark-mode-switcher .modes {
+    width: 74% !important;
+    position: absolute !important;
+}
+
 .wp-dark-mode-switcher .modes .dark {
     color: #555;
 }

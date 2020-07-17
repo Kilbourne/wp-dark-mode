@@ -40,6 +40,20 @@ if ( ! class_exists( 'WP_Dark_Mode_Elementor_Widget' ) ) {
 				'type'  => Controls_Manager::HEADING,
 			] );
 
+			$this->add_control( 'image_displacement', [
+				'label'       => __( 'Displacement Image', 'flexiaddons-pro' ),
+				'type'        => WP_Dark_Mode_Controls_Manager::IMAGE_CHOOSE,
+				'description' => 'Displacement image map, generates the movement of the pixels',
+				'options'     => [
+					'1' => [
+						'title'       => 'Displacement 1',
+						'image_small' => wp_dark_mode()->plugin_url( 'assets/images/btn-2-moon.png' ),
+						'image_large' => wp_dark_mode()->plugin_url( 'assets/images/btn-2-sun.png' ),
+					],
+				],
+				'default'     => '1',
+			] );
+
 			//switch style
 			$this->add_control( 'switch_style', [
 				'label'     => __( 'Switch Style', 'wp-dark-mode' ),

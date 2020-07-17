@@ -168,7 +168,10 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 			require $this->plugin_path( 'includes/class-widget.php' );
 
 			/** load gutenberg block */
-			require $this->plugin_path( 'block/plugin.php' );
+			include_once $this->plugin_path( 'block/plugin.php' );
+
+			include_once $this->plugin_path( 'elementor/modules/controls/init.php' );
+
 
 			//admin includes
 			if ( is_admin() ) {
@@ -180,7 +183,7 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 		}
 
 		public function register_widget() {
-			require $this->plugin_path( 'includes/class-elementor-widget.php' );
+			require $this->plugin_path( 'elementor/class-elementor-widget.php' );
 
 			\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new WP_Dark_Mode_Elementor_Widget() );
 		}

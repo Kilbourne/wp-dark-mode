@@ -5,8 +5,7 @@
         init: () => {
             app.initDarkMode();
             app.checkDarkMode();
-            $('.wp-dark-mode-switch').on('change', app.handleToggle);
-
+            $(document).on('change', '.wp-dark-mode-switch', app.handleToggle);
         },
 
         /** initialize object holder */

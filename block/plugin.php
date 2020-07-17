@@ -7,7 +7,7 @@ defined( 'ABSPATH' ) || exit;
  * Register all the block assets so that they can be enqueued through the block editor
  * in the corresponding context
  */
-add_action( 'init', 'wp_dark_mode_register_block' );
+
 function wp_dark_mode_register_block() {
 	// If block editor is not active, bail.
 	if ( ! function_exists( 'register_block_type' ) ) {
