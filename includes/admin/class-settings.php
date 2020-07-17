@@ -132,13 +132,14 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'default' => '1',
 						'label'   => __( 'Floating Switch Style', 'wp-dark-mode' ),
 						'desc'    => __( 'Select the switcher button style for the frontend.', 'wp-dark-mode' ),
-						'type'    => 'switcher',
-						'options'    => [
-						        '1' => 'Style 1',
-						        '2' => 'Style 2',
-						        '3' => 'Style 3',
-						        '4' => 'Style 4',
-						        '5' => 'Style 5',
+						'type'    => 'image_choose',
+						'options' => [
+							'1' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-1-light.png' ),
+							'2' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-2-light.png' ),
+							'3' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-3-light.png' ),
+							'4' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-4-light.png' ),
+							'5' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-5-light.png' ),
+							'6' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-6-light.png' ),
                         ],
 					),
 					array(
@@ -169,21 +170,21 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 				),
 
 				'wp_dark_mode_style' => array(
-					array(
-						'name'    => 'darkmode_bg_color',
-						'default' => '#1b2836',
-						'label'   => __( 'Darkmode Background Color', 'wp-dark-mode' ),
-						'desc'    => __( 'Select the background color when the dark mode is on.', 'wp-dark-mode' ),
-						'type'    => 'color',
-					),
-					array(
+//					array(
+//						'name'    => 'darkmode_bg_color',
+//						'default' => '#1b2836',
+//						'label'   => __( 'Darkmode Background Color', 'wp-dark-mode' ),
+//						'desc'    => __( 'Select the background color when the dark mode is on.', 'wp-dark-mode' ),
+//						'type'    => 'color',
+//					),
+array(
 						'name'    => 'darkmode_text_color',
 						'default' => '#fff',
 						'label'   => __( 'Darkmode Text Color', 'wp-dark-mode' ),
 						'desc'    => __( 'Select the text color when the dark mode is on.', 'wp-dark-mode' ),
 						'type'    => 'color',
 					),
-					array(
+array(
 						'name'    => 'darkmode_links_color',
 						'default' => '#459BE6',
 						'label'   => __( 'Darkmode Links Color', 'wp-dark-mode' ),

@@ -10,8 +10,8 @@ $position    = wp_dark_mode_get_settings( 'wp_dark_mode_display', 'switcher_posi
     <p>Light</p>
     <label for="wp-dark-mode-switch">
         <div class="modes">
-            <img class="light" src="<?php echo wp_dark_mode()->plugin_url( 'assets/images/sun-2.png' ); ?>">
-            <img class="dark" src="<?php echo wp_dark_mode()->plugin_url( 'assets/images/moon-2.png' ); ?>">
+            <img class="light" src="<?php echo wp_dark_mode()->plugin_url( 'assets/images/btn-4/sun.png' ); ?>">
+            <img class="dark" src="<?php echo wp_dark_mode()->plugin_url( 'assets/images/btn-4/moon.png' ); ?>">
         </div>
     </label>
     <p>Dark</p>

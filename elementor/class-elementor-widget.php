@@ -40,33 +40,44 @@ if ( ! class_exists( 'WP_Dark_Mode_Elementor_Widget' ) ) {
 				'type'  => Controls_Manager::HEADING,
 			] );
 
-			$this->add_control( 'image_displacement', [
-				'label'       => __( 'Displacement Image', 'flexiaddons-pro' ),
+			$this->add_control( 'switch_style', [
+				'label'       => __( 'Switch Style', 'flexiaddons-pro' ),
 				'type'        => WP_Dark_Mode_Controls_Manager::IMAGE_CHOOSE,
-				'description' => 'Displacement image map, generates the movement of the pixels',
+				'description' => 'Select the switch button style',
+				'separator'   => 'after',
 				'options'     => [
 					'1' => [
-						'title'       => 'Displacement 1',
-						'image_small' => wp_dark_mode()->plugin_url( 'assets/images/btn-2-moon.png' ),
-						'image_large' => wp_dark_mode()->plugin_url( 'assets/images/btn-2-sun.png' ),
+						'title'       => 'Style 1',
+						'image_small' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-1-light.png' ),
+						'image_large' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-1-dark.png' ),
+					],
+					'2' => [
+						'title'       => 'Style 2',
+						'image_small' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-2-light.png' ),
+						'image_large' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-2-dark.png' ),
+					],
+					'3' => [
+						'title'       => 'Style 3',
+						'image_small' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-3-light.png' ),
+						'image_large' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-3-dark.png' ),
+					],
+					'4' => [
+						'title'       => 'Style 4',
+						'image_small' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-4-light.png' ),
+						'image_large' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-4-dark.png' ),
+					],
+					'5' => [
+						'title'       => 'Style 5',
+						'image_small' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-5-light.png' ),
+						'image_large' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-5-dark.png' ),
+					],
+					'6' => [
+						'title'       => 'Style 6',
+						'image_small' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-6-light.png' ),
+						'image_large' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-6-dark.png' ),
 					],
 				],
 				'default'     => '1',
-			] );
-
-			//switch style
-			$this->add_control( 'switch_style', [
-				'label'     => __( 'Switch Style', 'wp-dark-mode' ),
-				'type'      => Controls_Manager::SELECT,
-				'default'   => '1',
-				'separator' => 'after',
-				'options'   => [
-					'1' => esc_html__( 'Style 1', 'wp-dark-mode' ),
-					'2' => esc_html__( 'Style 2', 'wp-dark-mode' ),
-					'3' => esc_html__( 'Style 3', 'wp-dark-mode' ),
-					'4' => esc_html__( 'Style 4', 'wp-dark-mode' ),
-					'5' => esc_html__( 'Style 5', 'wp-dark-mode' ),
-				],
 			] );
 
 			$this->add_responsive_control( 'align', [

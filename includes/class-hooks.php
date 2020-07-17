@@ -53,7 +53,8 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 		 * display the footer widget
 		 */
 		public function display_widget() {
-			echo do_shortcode( '[wp_dark_mode floating="yes"]' );
+			$style = wp_dark_mode_get_settings( 'wp_dark_mode_display', 'switch_style', 1 );
+			echo do_shortcode( '[wp_dark_mode floating="yes" style="' . $style . '"]' );
 		}
 
 		/**
