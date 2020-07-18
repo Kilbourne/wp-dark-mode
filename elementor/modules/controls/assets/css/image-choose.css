@@ -73,7 +73,13 @@ margin: 0 0 -2px 0;
     border: 1px solid rgba(0, 0, 0, 0.08);
     padding: 2px;
     height: 100%;
+    border-radius: 10px;
+    margin: 3px;
 }
 .elementor-image-choices input.checked+.elementor-image-choices-label{
     border: 1px solid #a4afb7;
+}
+
+.image-choose-label-block {
+    width: 50%;
 }

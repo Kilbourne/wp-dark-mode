@@ -7,7 +7,7 @@ defined( 'ABSPATH' ) || exit;
  * Register all the block assets so that they can be enqueued through the block editor
  * in the corresponding context
  */
-
+add_action( 'init', 'wp_dark_mode_register_block' );
 function wp_dark_mode_register_block() {
 	// If block editor is not active, bail.
 	if ( ! function_exists( 'register_block_type' ) ) {
@@ -22,7 +22,7 @@ function wp_dark_mode_register_block() {
 	);
 
 	// Register the block editor styles
-	wp_register_style( 'wp-dark-mode-editor-style', plugins_url( 'build/editor.css', __FILE__ ), [ 'wp-edit_blocks' ],
+	wp_register_style( 'wp-dark-mode-editor-style', plugins_url( 'build/editor.css', __FILE__ ), [],
 		filemtime( plugin_dir_path( __FILE__ ) . 'build/editor.css' ) );
 
 	// Register the front-end styles

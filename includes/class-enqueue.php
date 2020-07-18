@@ -97,7 +97,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 			], wp_dark_mode()->version, true );
 
 			wp_localize_script( 'wp-dark-mode-admin', 'wpDarkModeAdmin', [
-
+				'pluginUrl' => wp_dark_mode()->plugin_url(),
 			] );
 
 		}

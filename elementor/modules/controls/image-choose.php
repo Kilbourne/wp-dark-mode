@@ -56,7 +56,7 @@ class WP_Dark_Mode_Control_Image_Choose extends \Elementor\Base_Data_Control {
             <div class="elementor-control-input-wrapper">
                 <div class="elementor-image-choices">
                     <# _.each( data.options, function( options, value ) { #>
-                    <div class="image-choose-label-block" style="width:33.33%;">
+                    <div class="image-choose-label-block">
                         <input id="<?php echo esc_attr( $control_uid ); ?>" type="radio" name="elementor-choose-{{ data.name }}-{{ data._cid }}" value="{{ value }}">
                         <label class="elementor-image-choices-label" for="<?php echo esc_attr( $control_uid ); ?>" title="{{ options.title }}">
                             <img class="image_small" src="{{ options.image_small }}" alt="{{ options.title }}"/>

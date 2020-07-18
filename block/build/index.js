@@ -97,6 +97,7 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "@babel/runtime/regenerator");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Image_Choose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Image-Choose */ "./src/Image-Choose.js");
 
 
 function _typeof(obj) {
@@ -282,6 +283,7 @@ var _wp$editor = wp.editor,
     BlockControls = _wp$editor.BlockControls,
     AlignmentToolbar = _wp$editor.AlignmentToolbar;
 
+
 var Edit = /*#__PURE__*/function (_Component) {
   _inherits(Edit, _Component);
 
@@ -380,24 +382,7 @@ var Edit = /*#__PURE__*/function (_Component) {
           loadingSwitchView = _this$state.loadingSwitchView;
       return wp.element.createElement(Fragment, null, wp.element.createElement(InspectorControls, null, wp.element.createElement(PanelBody, {
         title: __('Switch Style', 'wp-dark-mode')
-      }, wp.element.createElement(SelectControl, {
-        label: __('Select Switch Button', 'wp-dark-mode'),
-        options: [{
-          label: 'Style 1',
-          value: '1'
-        }, {
-          label: 'Style 2',
-          value: '2'
-        }, {
-          label: 'Style 3',
-          value: '3'
-        }, {
-          label: 'Style 4',
-          value: '4'
-        }, {
-          label: 'Style 5',
-          value: '5'
-        }],
+      }, wp.element.createElement(_Image_Choose__WEBPACK_IMPORTED_MODULE_1__["default"], {
         value: attributes.style,
         onChange: function onChange(newValue) {
           _this2.setState({
@@ -439,6 +424,228 @@ var Edit = /*#__PURE__*/function (_Component) {
 }(Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (Edit);
+
+/***/ }),
+
+/***/ "./src/Image-Choose.js":
+/*!*****************************!*\
+  !*** ./src/Image-Choose.js ***!
+  \*****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    _typeof = function _typeof(obj) {
+      return typeof obj;
+    };
+  } else {
+    _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return _typeof(obj);
+}
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) _setPrototypeOf(subClass, superClass);
+}
+
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
+function _createSuper(Derived) {
+  var hasNativeReflectConstruct = _isNativeReflectConstruct();
+
+  return function _createSuperInternal() {
+    var Super = _getPrototypeOf(Derived),
+        result;
+
+    if (hasNativeReflectConstruct) {
+      var NewTarget = _getPrototypeOf(this).constructor;
+
+      result = Reflect.construct(Super, arguments, NewTarget);
+    } else {
+      result = Super.apply(this, arguments);
+    }
+
+    return _possibleConstructorReturn(this, result);
+  };
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return _assertThisInitialized(self);
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+function _isNativeReflectConstruct() {
+  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+  if (Reflect.construct.sham) return false;
+  if (typeof Proxy === "function") return true;
+
+  try {
+    Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+var __ = wp.i18n.__;
+var _wp$element = wp.element,
+    Component = _wp$element.Component,
+    Fragment = _wp$element.Fragment,
+    createRef = _wp$element.createRef;
+var _wp$components = wp.components,
+    Placeholder = _wp$components.Placeholder,
+    Spinner = _wp$components.Spinner,
+    PanelBody = _wp$components.PanelBody,
+    SelectControl = _wp$components.SelectControl;
+var _wp$editor = wp.editor,
+    InspectorControls = _wp$editor.InspectorControls,
+    BlockControls = _wp$editor.BlockControls,
+    AlignmentToolbar = _wp$editor.AlignmentToolbar;
+
+var Image_Choose = /*#__PURE__*/function (_Component) {
+  _inherits(Image_Choose, _Component);
+
+  var _super = _createSuper(Image_Choose);
+
+  function Image_Choose() {
+    var _this;
+
+    _classCallCheck(this, Image_Choose);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      value: _this.props.value
+    });
+
+    return _this;
+  }
+
+  _createClass(Image_Choose, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var images = ['btn-1-light.png', 'btn-2-light.png', 'btn-3-light.png', 'btn-4-light.png', 'btn-5-light.png', 'btn-6-light.png'];
+      return wp.element.createElement("div", {
+        className: "image-choose-wrap"
+      }, images.map(function (image, i) {
+        i = i + 1;
+        return wp.element.createElement("label", {
+          className: "image-choose-opt ".concat(_this2.state.value == i ? 'active' : ''),
+          htmlFor: "style_".concat(i)
+        }, wp.element.createElement("input", {
+          type: "radio",
+          className: "radio",
+          id: "style_".concat(i),
+          name: "switch_style",
+          value: i,
+          onChange: function onChange() {
+            var val = document.getElementById("style_".concat(i)).value;
+
+            _this2.setState({
+              style: val
+            });
+
+            _this2.props.onChange(val);
+          }
+        }), wp.element.createElement("img", {
+          src: wpDarkModeAdmin.pluginUrl + 'assets/images/button-presets/' + image,
+          className: "image-choose-img"
+        }));
+      }));
+    }
+  }]);
+
+  return Image_Choose;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (Image_Choose);
 
 /***/ }),
 

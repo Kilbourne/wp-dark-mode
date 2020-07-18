@@ -134,6 +134,9 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 		 * @since 1.0.0
 		 */
 		public function init() {
+
+		    error_log('a');
+
 			/** add admin notices */
 			add_action( 'admin_notices', [ $this, 'print_notices' ], 15 );
 
@@ -149,6 +152,10 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 			} );
 
 			add_action( 'elementor/widgets/widgets_registered', [ $this, 'register_widget' ] );
+
+			if(did_action('elementor/loaded')){
+				include_once $this->plugin_path( 'elementor/modules/controls/init.php' );
+            }
 		}
 
 
@@ -169,8 +176,6 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 
 			/** load gutenberg block */
 			include_once $this->plugin_path( 'block/plugin.php' );
-
-			include_once $this->plugin_path( 'elementor/modules/controls/init.php' );
 
 
 			//admin includes

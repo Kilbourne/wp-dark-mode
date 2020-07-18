@@ -3,6 +3,8 @@ const {Component, Fragment, createRef} = wp.element;
 const {Placeholder, Spinner, PanelBody, SelectControl} = wp.components;
 const {InspectorControls, BlockControls, AlignmentToolbar} = wp.editor;
 
+import Image_Choose from "./Image-Choose";
+
 class Edit extends Component {
 
     state = {
@@ -59,15 +61,7 @@ class Edit extends Component {
 
                     <PanelBody title={__('Switch Style', 'wp-dark-mode')}>
 
-                        <SelectControl
-                            label={__('Select Switch Button', 'wp-dark-mode')}
-                            options={[
-                                {label: 'Style 1', value: '1'},
-                                {label: 'Style 2', value: '2'},
-                                {label: 'Style 3', value: '3'},
-                                {label: 'Style 4', value: '4'},
-                                {label: 'Style 5', value: '5'},
-                            ]}
+                        <Image_Choose
                             value={attributes.style}
                             onChange={(newValue) => {
 
@@ -81,7 +75,8 @@ class Edit extends Component {
                                     style: parseInt(newValue),
                                 });
 
-                            }}/>
+                            }}
+                        />
 
                     </PanelBody>
                 </InspectorControls>
