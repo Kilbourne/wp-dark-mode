@@ -629,7 +629,7 @@ var Image_Choose = /*#__PURE__*/function (_Component) {
             var val = document.getElementById("style_".concat(i)).value;
 
             _this2.setState({
-              style: val
+              value: val
             });
 
             _this2.props.onChange(val);

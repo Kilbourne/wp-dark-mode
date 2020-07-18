@@ -30,7 +30,7 @@ class Image_Choose extends Component {
                                 onChange={() => {
                                     const val = document.getElementById(`style_${i}`).value;
                                     this.setState({
-                                        style: val,
+                                        value: val,
                                     });
 
                                     this.props.onChange(val);
