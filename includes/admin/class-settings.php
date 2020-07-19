@@ -50,11 +50,11 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 					'title' => sprintf( __( '%s <span>General Settings</span>', 'wp-dark-mode' ),
 						'<i class="dashicons dashicons-admin-generic" ></i>' ),
 				),
-				array(
-					'id'    => 'wp_dark_mode_display',
-					'title' => sprintf( __( '%s <span>Display Settings</span>', 'wp-dark-mode' ),
-						'<i class="dashicons dashicons-welcome-view-site" ></i>' ),
-				),
+//				array(
+//					'id'    => 'wp_dark_mode_display',
+//					'title' => sprintf( __( '%s <span>Display Settings</span>', 'wp-dark-mode' ),
+//						'<i class="dashicons dashicons-welcome-view-site" ></i>' ),
+//				),
 //				array(
 //					'id'    => 'wp_dark_mode_style',
 //					'title' => sprintf( __( '%s <span>Style Settings</span>', 'wp-dark-mode' ),
@@ -65,26 +65,34 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 			$fields = array(
 				'wp_dark_mode_general' => array(
 					array(
-						'name'    => 'enable_frontend',
-						'default' => 'on',
-						'label'   => __( 'Enable Frontend', 'wp-dark-mode' ),
-						'desc'    => __( 'Enable the dark mode for the users on the frontend.', 'wp-dark-mode' ),
+						'name'    => 'disable_darkmode',
+						'default' => 'off',
+						'label'   => __( 'Disable Darkmode', 'wp-dark-mode' ),
+						'desc'    => __( 'Dark Mode has been activated. Your users will be served a dark mode of your website when their device preference is set to Dark Mode.', 'wp-dark-mode' ),
 						'type'    => 'switcher',
 					),
-					array(
-						'name'    => 'enable_backend',
-						'default' => 'on',
-						'label'   => __( 'Enable Backend', 'wp-dark-mode' ),
-						'desc'    => __( 'Enable the dark mode for the admins on the backend.', 'wp-dark-mode' ),
-						'type'    => 'switcher',
-					),
-					array(
-						'name'    => 'match_os_mode',
-						'default' => 'on',
-						'label'   => __( 'Match OS Mode', 'wp-dark-mode' ),
-						'desc'    => __( 'Automatically shows Darkmode if the OS prefered theme is dark.', 'wp-dark-mode' ),
-						'type'    => 'switcher',
-					),
+
+//					array(
+//						'name'    => 'enable_frontend',
+//						'default' => 'on',
+//						'label'   => __( 'Enable Frontend', 'wp-dark-mode' ),
+//						'desc'    => __( 'Enable the dark mode for the users on the frontend.', 'wp-dark-mode' ),
+//						'type'    => 'switcher',
+//					),
+//					array(
+//						'name'    => 'enable_backend',
+//						'default' => 'on',
+//						'label'   => __( 'Enable Backend', 'wp-dark-mode' ),
+//						'desc'    => __( 'Enable the dark mode for the admins on the backend.', 'wp-dark-mode' ),
+//						'type'    => 'switcher',
+//					),
+//					array(
+//						'name'    => 'match_os_mode',
+//						'default' => 'on',
+//						'label'   => __( 'Match OS Mode', 'wp-dark-mode' ),
+//						'desc'    => __( 'Automatically shows Darkmode if the OS prefered theme is dark.', 'wp-dark-mode' ),
+//						'type'    => 'switcher',
+//					),
 //					array(
 //						'name'    => 'time_based_mode',
 //						'default' => 'off',
@@ -123,7 +131,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 				'wp_dark_mode_display' => array(
 					array(
 						'name'    => 'show_switcher',
-						'default' => 'off',
+						'default' => 'on',
 						'label'   => __( 'Show Floating Switch', 'wp-dark-mode' ),
 						'desc'    => __( 'Show the floating dark mode switcher button on the frontend for the users.', 'wp-dark-mode' ),
 						'type'    => 'switcher',

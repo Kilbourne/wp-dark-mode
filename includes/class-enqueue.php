@@ -16,11 +16,14 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 		 * WP_Dark_Mode_Enqueue constructor.
 		 */
 		public function __construct() {
-			add_action( 'wp_enqueue_scripts', [ $this, 'frontend_scripts' ] );
-			add_action( 'admin_enqueue_scripts', [ $this, 'admin_scripts' ] );
-			if('on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_backend', 'on' )) {
-				add_action( 'admin_enqueue_scripts', [ $this, 'frontend_scripts' ] );
+			if ( 'off' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'disable_darkmode', 'off' ) ) {
+				add_action( 'wp_enqueue_scripts', [ $this, 'frontend_scripts' ] );
 			}
+
+			add_action( 'admin_enqueue_scripts', [ $this, 'admin_scripts' ] );
+//			if('on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_backend', 'on' )) {
+//				add_action( 'admin_enqueue_scripts', [ $this, 'frontend_scripts' ] );
+//			}
 		}
 
 		/**

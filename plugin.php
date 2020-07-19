@@ -162,9 +162,7 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 
 			//core includes
 			require $this->plugin_path( 'includes/functions.php' );
-			require $this->plugin_path( 'includes/class-hooks.php' );
 			require $this->plugin_path( 'includes/class-enqueue.php' );
-			require $this->plugin_path( 'includes/class-shortcode.php' );
 
 
 			//admin includes

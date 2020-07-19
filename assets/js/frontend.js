@@ -27,7 +27,7 @@
         /** init dark mode */
         initDarkMode: function () {
             var options = {
-                saveInCookies: wpDarkModeFrontend.saveMode,
+                saveInCookies: false,
             };
 
             app.darkMode = new Darkmode(options);
@@ -39,6 +39,12 @@
                         app.darkMode.toggle();
                     }
                 }
+
+                //Todo watch dark mode
+                // window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                //     const newColorScheme = e.matches ? "dark" : "light";
+                // });
+
             }
 
         },
