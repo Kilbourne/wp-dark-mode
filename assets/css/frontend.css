@@ -386,3 +386,7 @@
     position: relative;
     z-index: 999;
 }
+
+html .darkmode--activated img {
+    mix-blend-mode: difference;
+}

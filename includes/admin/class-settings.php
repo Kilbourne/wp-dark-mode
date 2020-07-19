@@ -55,11 +55,11 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 					'title' => sprintf( __( '%s <span>Display Settings</span>', 'wp-dark-mode' ),
 						'<i class="dashicons dashicons-welcome-view-site" ></i>' ),
 				),
-				array(
-					'id'    => 'wp_dark_mode_style',
-					'title' => sprintf( __( '%s <span>Style Settings</span>', 'wp-dark-mode' ),
-						'<i class="dashicons dashicons-admin-customizer" ></i>' ),
-				),
+//				array(
+//					'id'    => 'wp_dark_mode_style',
+//					'title' => sprintf( __( '%s <span>Style Settings</span>', 'wp-dark-mode' ),
+//						'<i class="dashicons dashicons-admin-customizer" ></i>' ),
+//				),
 			);
 
 			$fields = array(
@@ -85,37 +85,38 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'desc'    => __( 'Automatically shows Darkmode if the OS prefered theme is dark.', 'wp-dark-mode' ),
 						'type'    => 'switcher',
 					),
-					array(
-						'name'    => 'time_based_mode',
-						'default' => 'off',
-						'label'   => __( 'Time Based Dark Mode', 'wp-dark-mode' ),
-						'desc'    => __( 'Automatically turn on the dark mode between a given time range.', 'wp-dark-mode' ),
-						'type'    => 'switcher',
-					),
-					array(
-						'name'    => 'start_at',
-						'default' => '17:00',
-						'label'   => __( 'Dark Mode Start Time', 'wp-dark-mode' ),
-						'desc'    => __( 'Time to start Dark mode.', 'wp-dark-mode' ),
-						'type'    => 'select',
-						'options' => $time_range,
-					),
-					array(
-						'name'    => 'end_at',
-						'default' => '06:00',
-						'label'   => __( 'Dark Mode End Time', 'wp-dark-mode' ),
-						'desc'    => __( 'Time to end Dark mode.', 'wp-dark-mode' ),
-						'type'    => 'select',
-						'options' => $time_range,
-					),
-					array(
-						'name'    => 'remember_darkmode',
-						'default' => 'on',
-						'label'   => __( 'Remember Dark Mode', 'wp-dark-mode' ),
-						'desc'    => __( 'Check ON to remember the darkmode status, if darkmode mode status "ON" will start automatically when visiting website again.',
-							'wp-dark-mode' ),
-						'type'    => 'switcher',
-					),
+//					array(
+//						'name'    => 'time_based_mode',
+//						'default' => 'off',
+//						'label'   => __( 'Time Based Dark Mode', 'wp-dark-mode' ),
+//						'desc'    => __( 'Automatically turn on the dark mode between a given time range.', 'wp-dark-mode' ),
+//						'type'    => 'switcher',
+//					),
+//					array(
+//						'name'    => 'start_at',
+//						'default' => '17:00',
+//						'label'   => __( 'Dark Mode Start Time', 'wp-dark-mode' ),
+//						'desc'    => __( 'Time to start Dark mode.', 'wp-dark-mode' ),
+//						'type'    => 'select',
+//						'options' => $time_range,
+//					),
+//					array(
+//						'name'    => 'end_at',
+//						'default' => '06:00',
+//						'label'   => __( 'Dark Mode End Time', 'wp-dark-mode' ),
+//						'desc'    => __( 'Time to end Dark mode.', 'wp-dark-mode' ),
+//						'type'    => 'select',
+//						'options' => $time_range,
+//					),
+//
+//					array(
+//						'name'    => 'remember_darkmode',
+//						'default' => 'on',
+//						'label'   => __( 'Remember Dark Mode', 'wp-dark-mode' ),
+//						'desc'    => __( 'Check ON to remember the darkmode status, if darkmode mode status "ON" will start automatically when visiting website again.',
+//							'wp-dark-mode' ),
+//						'type'    => 'switcher',
+//					),
 
 				),
 
@@ -127,21 +128,21 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'desc'    => __( 'Show the floating dark mode switcher button on the frontend for the users.', 'wp-dark-mode' ),
 						'type'    => 'switcher',
 					),
-					array(
-						'name'    => 'switch_style',
-						'default' => '1',
-						'label'   => __( 'Floating Switch Style', 'wp-dark-mode' ),
-						'desc'    => __( 'Select the switcher button style for the frontend.', 'wp-dark-mode' ),
-						'type'    => 'image_choose',
-						'options' => [
-							'1' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-1-light.png' ),
-							'2' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-2-light.png' ),
-							'3' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-3-light.png' ),
-							'4' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-4-light.png' ),
-							'5' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-5-light.png' ),
-							'6' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-6-light.png' ),
-                        ],
-					),
+//					array(
+//						'name'    => 'switch_style',
+//						'default' => '1',
+//						'label'   => __( 'Floating Switch Style', 'wp-dark-mode' ),
+//						'desc'    => __( 'Select the switcher button style for the frontend.', 'wp-dark-mode' ),
+//						'type'    => 'image_choose',
+//						'options' => [
+//							'1' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-1-light.png' ),
+//							'2' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-2-light.png' ),
+//							'3' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-3-light.png' ),
+//							'4' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-4-light.png' ),
+//							'5' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-5-light.png' ),
+//							'6' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-6-light.png' ),
+//                        ],
+//					),
 					array(
 						'name'    => 'switcher_position',
 						'default' => 'right_bottom',
@@ -153,23 +154,31 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 							'right_bottom' => __( 'Right Bottom', 'wp-dark-mode' ),
 						],
 					),
-					array(
-						'name'    => 'show_above_post',
-						'default' => 'off',
-						'label'   => __( 'Show Above Posts', 'wp-dark-mode' ),
-						'desc'    => __( 'Show the dark mode switcher button above of all the post.', 'wp-dark-mode' ),
-						'type'    => 'switcher',
-					),
-					array(
-						'name'    => 'show_above_page',
-						'default' => 'off',
-						'label'   => __( 'Show Above Pages', 'wp-dark-mode' ),
-						'desc'    => __( 'Show the dark mode switcher button above of all the pages.', 'wp-dark-mode' ),
-						'type'    => 'switcher',
-					),
+//					array(
+//						'name'    => 'show_above_post',
+//						'default' => 'off',
+//						'label'   => __( 'Show Above Posts', 'wp-dark-mode' ),
+//						'desc'    => __( 'Show the dark mode switcher button above of all the post.', 'wp-dark-mode' ),
+//						'type'    => 'switcher',
+//					),
+//					array(
+//						'name'    => 'show_above_page',
+//						'default' => 'off',
+//						'label'   => __( 'Show Above Pages', 'wp-dark-mode' ),
+//						'desc'    => __( 'Show the dark mode switcher button above of all the pages.', 'wp-dark-mode' ),
+//						'type'    => 'switcher',
+//					),
 				),
 
-				'wp_dark_mode_style' => array(
+//				'wp_dark_mode_style' => array(
+//					array(
+//						'name'    => 'customize_color',
+//						'default' => 'off',
+//						'label'   => __( 'Customize Darkmode Color', 'wp-dark-mode' ),
+//						'desc'    => __( 'By default colors are generated automatically. Switch ON to customize the colors.',
+//							'wp-dark-mode' ),
+//						'type'    => 'switcher',
+//					),
 //					array(
 //						'name'    => 'darkmode_bg_color',
 //						'default' => '#1b2836',
@@ -177,21 +186,21 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 //						'desc'    => __( 'Select the background color when the dark mode is on.', 'wp-dark-mode' ),
 //						'type'    => 'color',
 //					),
-array(
-						'name'    => 'darkmode_text_color',
-						'default' => '#fff',
-						'label'   => __( 'Darkmode Text Color', 'wp-dark-mode' ),
-						'desc'    => __( 'Select the text color when the dark mode is on.', 'wp-dark-mode' ),
-						'type'    => 'color',
-					),
-array(
-						'name'    => 'darkmode_links_color',
-						'default' => '#459BE6',
-						'label'   => __( 'Darkmode Links Color', 'wp-dark-mode' ),
-						'desc'    => __( 'Select the links color when the dark mode is on.', 'wp-dark-mode' ),
-						'type'    => 'color',
-					),
-				),
+//					array(
+//						'name'    => 'darkmode_text_color',
+//						'default' => '#fff',
+//						'label'   => __( 'Darkmode Text Color', 'wp-dark-mode' ),
+//						'desc'    => __( 'Select the text color when the dark mode is on.', 'wp-dark-mode' ),
+//						'type'    => 'color',
+//					),
+//					array(
+//						'name'    => 'darkmode_links_color',
+//						'default' => '#459BE6',
+//						'label'   => __( 'Darkmode Links Color', 'wp-dark-mode' ),
+//						'desc'    => __( 'Select the links color when the dark mode is on.', 'wp-dark-mode' ),
+//						'type'    => 'color',
+//					),
+//				),
 			);
 
 			self::$settings_api = new WPPOOL_Settings_API();
@@ -220,12 +229,12 @@ array(
 
                 <div class="wrap">
                     <h2><?php _e( 'WP Dark Mode Settings', 'wp-dark-mode' ) ?></h2>
-                    <p> - You can use Dark mode as <a href="<?php echo admin_url( 'widgets.php' ); ?>">Widget</a>. </p>
-                    <p> - Or can check "Add Dark Mode before posts/ pages" in below to add Dark mode button automatically before posts/ pages. </p>
-                    <p> - Or you can use the `Dark Mode Switch` gutenberg block to display the dark mode switch button. </p>
-                    <p> - Or you can use the `Dark Mode Switch` elementor widget to display the dark mode switch button. </p>
-                    <p> - Also you can copy this
-                        <code>[wp_dark_mode]</code> shortcode and paste in any post/page to show the dark mode button. </p>
+<!--                    <p> - You can use Dark mode as <a href="--><?php //echo admin_url( 'widgets.php' ); ?><!--">Widget</a>. </p>-->
+<!--                    <p> - Or can check "Add Dark Mode before posts/ pages" in below to add Dark mode button automatically before posts/ pages. </p>-->
+<!--                    <p> - Or you can use the `Dark Mode Switch` gutenberg block to display the dark mode switch button. </p>-->
+<!--                    <p> - Or you can use the `Dark Mode Switch` elementor widget to display the dark mode switch button. </p>-->
+<!--                    <p> - Also you can copy this-->
+<!--                        <code>[wp_dark_mode]</code> shortcode and paste in any post/page to show the dark mode button. </p>-->
 
 					<?php self::$settings_api->show_settings(); ?>
                 </div>

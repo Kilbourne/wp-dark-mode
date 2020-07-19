@@ -39,3 +39,7 @@
     background: #212c3b;
     color: #fff;
 }
+
+.darkmode--activated .wppool-settings .image-choose-opt.active img{
+    border: 2px solid orangered;
+}

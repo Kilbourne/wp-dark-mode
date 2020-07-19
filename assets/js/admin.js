@@ -5,9 +5,11 @@
         init: () => {
             app.checkTimeBasedDeps();
             app.checkSwitchdDeps();
+            app.checkStyleDeps();
 
             $('.time_based_mode input[type=checkbox]').on('change', app.checkTimeBasedDeps);
             $('.show_switcher input[type=checkbox]').on('change', app.checkSwitchdDeps);
+            $('.customize_color input[type=checkbox]').on('change', app.checkStyleDeps);
         },
 
         checkTimeBasedDeps: function () {
@@ -24,9 +26,19 @@
             var checked = $('.show_switcher input[type=checkbox]').is(':checked');
 
             if (checked) {
-                $('.switcher_position').show();
+                $('.switcher_position, .switch_style').show();
             } else {
-                $('.switcher_position').hide();
+                $('.switcher_position, .switch_style').hide();
+            }
+        },
+
+        checkStyleDeps: function () {
+            var checked = $('.customize_color input[type=checkbox]').is(':checked');
+
+            if (checked) {
+                $('.darkmode_bg_color, .darkmode_text_color, .darkmode_links_color').show();
+            } else {
+                $('.darkmode_bg_color, .darkmode_text_color, .darkmode_links_color').hide();
             }
         }
 

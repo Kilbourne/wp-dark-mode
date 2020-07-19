@@ -11,19 +11,23 @@
         /** initialize object holder */
         darkMode: null,
 
+
         /** check if the darkmode is active or not on initialize */
         checkDarkMode: function () {
             if (app.darkMode.isActivated()) {
                 $('.wp-dark-mode-switch').prop('checked', true);
+                //app.handleTextColor();
+
             } else {
                 $('.wp-dark-mode-switch').prop('checked', false);
+                //$('html *').removeClass('darkmode-text-color');
             }
         },
 
         /** init dark mode */
         initDarkMode: function () {
             var options = {
-                saveInCookies: false,
+                saveInCookies: wpDarkModeFrontend.saveMode,
             };
 
             app.darkMode = new Darkmode(options);
@@ -63,6 +67,18 @@
             endDate.setMinutes(endTime.split(":")[1]);
 
             return startDate < currentDate && endDate > currentDate;
+        },
+
+        handleTextColor: function () {
+            $(`html .darkmode--activated p,
+            html .darkmode--activated li,
+            html .darkmode--activated span,
+            html .darkmode--activated h1:not(:has(a)),
+            html .darkmode--activated h2:not(:has(a)),
+            html .darkmode--activated h3:not(:has(a)),
+            html .darkmode--activated h4:not(:has(a)),
+            html .darkmode--activated h5:not(:has(a)),
+            html .darkmode--activated h6:not(:has(a))`).addClass('darkmode-text-color');
         }
 
     };

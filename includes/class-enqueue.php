@@ -18,7 +18,9 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 		public function __construct() {
 			add_action( 'wp_enqueue_scripts', [ $this, 'frontend_scripts' ] );
 			add_action( 'admin_enqueue_scripts', [ $this, 'admin_scripts' ] );
-			add_action( 'admin_enqueue_scripts', [ $this, 'frontend_scripts' ] );
+			if('on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_backend', 'on' )) {
+				add_action( 'admin_enqueue_scripts', [ $this, 'frontend_scripts' ] );
+			}
 		}
 
 		/**
@@ -35,38 +37,10 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 			/** dark-mode-js library */
 			wp_enqueue_script( 'darkmode-js', wp_dark_mode()->plugin_url( 'assets/vendor/darkmode-js.js' ), false, wp_dark_mode()->version, true );
 
-
 			/** wp-dark-mode frontend js */
-			wp_enqueue_script( 'wp-dark-mode-frontend', wp_dark_mode()->plugin_url( 'assets/js/frontend.js' ), [ 'jquery', 'wp-util' ],
+			wp_enqueue_script( 'wp-dark-mode-frontend', wp_dark_mode()->plugin_url( 'assets/js/frontend.js' ),
+				[ 'jquery', 'wp-util', 'darkmode-js' ],
 				wp_dark_mode()->version, true );
-
-			$custom_css  = '';
-			$bg_color    = wp_dark_mode_get_settings( 'wp_dark_mode_style', 'darkmode_bg_color' );
-			$text_color  = wp_dark_mode_get_settings( 'wp_dark_mode_style', 'darkmode_text_color' );
-			$links_color = wp_dark_mode_get_settings( 'wp_dark_mode_style', 'darkmode_links_color' );
-
-			$global_selector
-				= 'html body.dm-dark :not(mark):not(code):not(pre):not(ins):not(option):not(input):not(select):not(textarea):not(button):not(a):not(video):not(canvas):not(progress):not(iframe):not(svg):not(path)';
-
-			$link_selector = 'html a:active, html a:active *, html a:visited, html a:visited *';
-
-			/** background color */
-			if ( ! empty( $bg_color ) && '#1b2836' != $bg_color ) {
-				$custom_css .= sprintf( '%1$s {background-color:  %2$s !important;}', $global_selector, $bg_color );
-			}
-
-			/** text color */
-			if ( ! empty( $text_color && '#ffffff' != $text_color ) ) {
-				$custom_css .= sprintf( '%1$s {color:  %2$s !important;}', $global_selector, $text_color );
-			}
-
-			/** linkd color */
-			if ( ! empty( $links_color && '#459be6' != $links_color ) ) {
-				$custom_css .= sprintf( '%1$s {color:  %2$s !important;border-color:  %2$s !important;}', $link_selector, $links_color );
-			}
-
-			/** add custom css to the frontend file */
-			wp_add_inline_style( 'wp-dark-mode-frontend', $custom_css );
 
 			/** frontend localize array */
 			wp_localize_script( 'wp-dark-mode-frontend', 'wpDarkModeFrontend', [

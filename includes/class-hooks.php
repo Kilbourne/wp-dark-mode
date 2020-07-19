@@ -22,10 +22,10 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 				add_action( 'wp_footer', [ $this, 'display_widget' ] );
 			}
 
-			add_filter( 'the_content', array( $this, 'render_post_page_switcher' ) );
-			add_action( 'rest_api_init', array( $this, 'rest_api' ) );
+			//add_filter( 'the_content', array( $this, 'render_post_page_switcher' ) );
+			//add_action( 'rest_api_init', array( $this, 'rest_api' ) );
 
-
+			//add_action( 'wp_footer', [ $this, 'custom_style' ] );
 		}
 
 		public function rest_api() {
@@ -76,6 +76,52 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 			}
 
 			return $content;
+		}
+
+		public function custom_style() {
+			$is_custom   = wp_dark_mode_get_settings( 'wp_dark_mode_style', 'customize_color' );
+			$bg_color    = wp_dark_mode_get_settings( 'wp_dark_mode_style', 'darkmode_bg_color' );
+			$text_color  = wp_dark_mode_get_settings( 'wp_dark_mode_style', 'darkmode_text_color' );
+			$links_color = wp_dark_mode_get_settings( 'wp_dark_mode_style', 'darkmode_links_color' );
+
+
+			if ( $is_custom ) { ?>
+				<style>
+
+					html body{
+						background: <?php echo $bg_color; ?> !important;
+
+					}
+
+					html body *:not('.wp-dark-mode-ignore') {
+						background: inherit !important;
+					}
+
+					.darkmode-layer {
+						background-color: <?php echo $bg_color; ?> !important;
+						mix-blend-mode: normal !important;
+					}
+
+					.darkmode-text-color {
+						color: <?php echo $text_color; ?> !important;
+					}
+
+					html .darkmode--activated a,
+					html .darkmode--activated a:active,
+					html .darkmode--activated a:active *,
+					html .darkmode--activated a:visited,
+					html .darkmode--activated a:visited * {
+						color: <?php echo $links_color; ?> !important;
+						border-color: <?php echo $links_color; ?> !important;
+						position: relative;
+						z-index: 999;
+					}
+
+
+				</style>
+				<?php
+			}
+
 		}
 
 		/**

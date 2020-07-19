@@ -333,7 +333,7 @@ if ( ! class_exists( 'WPPOOL_Settings_API' ) ) {
 		 */
 		function callback_image_choose( $args ) {
 			$value = $this->get_option( $args['id'], $args['section'], $args['std'] );
-			$html  = '<fieldset>';
+			$html  = '<fieldset class="wp-dark-mode-ignore" >';
 			foreach ( $args['options'] as $key => $label ) {
 				$html .= sprintf( '<label class="image-choose-opt %4$s" for="wppool-%1$s[%2$s][%3$s]">', $args['section'], $args['id'],
 					$key, $value == $key ? 'active' : '' );
