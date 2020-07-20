@@ -280,7 +280,7 @@ if ( ! class_exists( 'WPPOOL_Settings_API' ) ) {
                 </div>
             </div>',
 				$args['section'], $args['id'], checked( $value, 'on', false ) );
-			$html  .= sprintf( '%1$s</label>', $args['desc'] );
+			$html  .= sprintf( '<p class="description"> %1$s</p></label>', $args['desc'] );
 			$html  .= '</fieldset>';
 
 			echo $html;

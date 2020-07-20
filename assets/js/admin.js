@@ -6,10 +6,12 @@
             app.checkTimeBasedDeps();
             app.checkSwitchdDeps();
             app.checkStyleDeps();
+            app.checkDesc();
 
             $('.time_based_mode input[type=checkbox]').on('change', app.checkTimeBasedDeps);
             $('.show_switcher input[type=checkbox]').on('change', app.checkSwitchdDeps);
             $('.customize_color input[type=checkbox]').on('change', app.checkStyleDeps);
+            $('.disable_darkmode input[type=checkbox]').on('change', app.checkDesc);
         },
 
         checkTimeBasedDeps: function () {
@@ -39,6 +41,16 @@
                 $('.darkmode_bg_color, .darkmode_text_color, .darkmode_links_color').show();
             } else {
                 $('.darkmode_bg_color, .darkmode_text_color, .darkmode_links_color').hide();
+            }
+        },
+
+        checkDesc: function () {
+            var is_darkmode_disabled = $('.disable_darkmode input[type=checkbox]').is(':checked');
+
+            if (is_darkmode_disabled) {
+                $('.disable_darkmode .description').hide();
+            } else {
+                $('.disable_darkmode .description').show();
             }
         }
 

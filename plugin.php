@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: WP Dark Mode
- * Plugin URI:  https://wppool.com/wp-dark-mode
- * Description: Lets your users  to switch web page between Night Mode and Normal Mode smoothly.
+ * Plugin URI:  https://wpdark.wppool.dev/
+ * Description: Use WP Dark Mode to enable a stunning dark mode theme for your WordPress website.
  * Version:     1.0.0
  * Author:      WPPOOL
  * Author URI:  http://wppool.com
@@ -167,7 +167,6 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 
 			//admin includes
 			if ( is_admin() ) {
-				require $this->plugin_path( 'includes/admin/class-admin.php' );
 				require $this->plugin_path( 'includes/admin/class-settings-api.php' );
 				require $this->plugin_path( 'includes/admin/class-settings.php' );
 			}
