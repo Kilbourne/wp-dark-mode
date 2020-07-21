@@ -84,6 +84,9 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 
 				// Load files.
 				add_action( 'init', array( $this, 'init' ), - 999 );
+
+				//init appsero tracker
+				$this->appsero_init_tracker_wp_dark_mode();
 			}
 		}
 
@@ -102,7 +105,7 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 			if ( version_compare( PHP_VERSION, self::$min_php, '<=' ) ) {
 				$return = false;
 
-				$notice = sprintf( esc_html__( 'Unsupported PHP version Min required PHP Version: "%s"', 'wp-tv' ), self::$min_php );
+				$notice = sprintf( esc_html__( 'Unsupported PHP version Min required PHP Version: "%s"', 'wp-dark-mode' ), self::$min_php );
 			}
 
 			/** Add notice and deactivate the plugin if the environment is not compatible */
@@ -149,8 +152,15 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 				require $this->plugin_path( 'includes/class-install.php' );
 			} );
 
-		}
+			/** register elementor widget */
+			add_action( 'elementor/widgets/widgets_registered', [ $this, 'register_widget' ] );
 
+			/** include the controls manager if elmentor loaded */
+			if ( did_action( 'elementor/loaded' ) ) {
+				include_once $this->plugin_path( 'elementor/modules/controls/init.php' );
+			}
+
+		}
 
 		/**
 		 * Include required core files used in admin and on the frontend.
@@ -163,16 +173,19 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 			//core includes
 			require $this->plugin_path( 'includes/functions.php' );
 			require $this->plugin_path( 'includes/class-enqueue.php' );
+			require $this->plugin_path( 'includes/class-shortcode.php' );
+			require $this->plugin_path( 'includes/class-hooks.php' );
 
+			/** load gutenberg block */
+			include_once $this->plugin_path( 'block/plugin.php' );
 
 			//admin includes
 			if ( is_admin() ) {
-				require $this->plugin_path( 'includes/admin/class-settings-api.php' );
-				require $this->plugin_path( 'includes/admin/class-settings.php' );
+				require $this->plugin_path( 'includes/class-settings-api.php' );
+				require $this->plugin_path( 'includes/class-settings.php' );
 			}
 
 		}
-
 
 		/**
 		 * Initialize plugin for localization
@@ -268,6 +281,16 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 			}
 		}
 
+		/**
+		 * register darkmode switch elementor widget
+		 *
+		 * @throws Exception
+		 */
+		public function register_widget() {
+			require $this->plugin_path( 'elementor/class-elementor-widget.php' );
+
+			\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new WP_Dark_Mode_Elementor_Widget() );
+		}
 
 		/**
 		 * add admin notices
@@ -317,6 +340,29 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 				update_option( sanitize_key( 'wp_dark_mode_notices' ), [] );
 			}
 		}
+
+
+		/**
+		 * Initialize the plugin tracker
+		 *
+		 * @return void
+		 */
+		public function appsero_init_tracker_wp_dark_mode() {
+
+			if ( ! class_exists( 'Appsero\Client' ) ) {
+				require_once __DIR__ . '/appsero/src/Client.php';
+			}
+
+			$client = new Appsero\Client( '10d1a5ba-96f5-48e1-bc0e-38d39b9a2f85', 'WP Dark Mode', __FILE__ );
+
+			// Active insights
+			$client->insights()->init();
+
+			// Active automatic updater
+			$client->updater();
+
+		}
+
 
 		/**
 		 * Main WP_Dark_Mode Instance.

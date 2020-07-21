@@ -1,90 +1,70 @@
 ;(function ($) {
 
+    const darkClass = 'wp-dark-mode-active';
+
     const app = {
 
         init: () => {
             app.initDarkMode();
             app.checkDarkMode();
+            app.checkOsMode();
+
             $(document).on('change', '.wp-dark-mode-switch', app.handleToggle);
+
         },
 
         /** initialize object holder */
         darkMode: null,
 
-
-        /** check if the darkmode is active or not on initialize */
-        checkDarkMode: function () {
-            if (app.darkMode.isActivated()) {
-                $('.wp-dark-mode-switch').prop('checked', true);
-                //app.handleTextColor();
-
-            } else {
-                $('.wp-dark-mode-switch').prop('checked', false);
-                //$('html *').removeClass('darkmode-text-color');
-            }
-        },
-
         /** init dark mode */
         initDarkMode: function () {
-            var options = {
-                saveInCookies: false,
-            };
-
-            app.darkMode = new Darkmode(options);
-
-            /*-------- check os mode --------*/
-            if (wpDarkModeFrontend.matchSystem) {
-                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                    if (!app.darkMode.isActivated()) {
-                        app.darkMode.toggle();
-                    }
-                }
-
-                //Todo watch dark mode
-                // window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-                //     const newColorScheme = e.matches ? "dark" : "light";
-                // });
-
-            }
-
+            //$('body').addClass(darkClass);
         },
 
         /** handle dark mode toggle */
         handleToggle: function () {
-            app.darkMode.toggle();
+            $('body').toggleClass(darkClass);
             app.checkDarkMode();
         },
 
-        setTimeBasedMode: function () {
-            if (app.checkTime(wpDarkModeFrontend.startAt, wpDarkModeFrontend.endAt)) {
-                app.darkMode.setMode('dark');
+        /** check if the darkmode is active or not on initialize */
+        checkDarkMode: function () {
+            if ($('body').hasClass(darkClass)) {
+                $('.wp-dark-mode-switch').prop('checked', true);
+
+            } else {
+                $('.wp-dark-mode-switch').prop('checked', false);
             }
         },
 
-        checkTime: function (startTime, endTime) {
-            currentDate = new Date();
+        checkOsMode: function () {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                $('body').addClass(darkClass);
+            }
 
-            startDate = new Date(currentDate.getTime());
-            startDate.setHours(startTime.split(":")[0]);
-            startDate.setMinutes(startTime.split(":")[1]);
 
-            endDate = new Date(currentDate.getTime());
-            endDate.setHours(endTime.split(":")[0]);
-            endDate.setMinutes(endTime.split(":")[1]);
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+                const newColorScheme = e.matches ? "dark" : "light";
 
-            return startDate < currentDate && endDate > currentDate;
-        },
+                if ('dark' === newColorScheme) {
+                    $('body').addClass(darkClass);
+                } else {
+                    $('body').removeClass(darkClass);
+                }
 
-        handleTextColor: function () {
-            $(`html .darkmode--activated p,
-            html .darkmode--activated li,
-            html .darkmode--activated span,
-            html .darkmode--activated h1:not(:has(a)),
-            html .darkmode--activated h2:not(:has(a)),
-            html .darkmode--activated h3:not(:has(a)),
-            html .darkmode--activated h4:not(:has(a)),
-            html .darkmode--activated h5:not(:has(a)),
-            html .darkmode--activated h6:not(:has(a))`).addClass('darkmode-text-color');
+            });
+
+            /**IOS*/
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+                const newColorScheme = e.matches ? "dark" : "light";
+
+                if ('dark' === newColorScheme) {
+                    $('body').addClass(darkClass);
+                } else {
+                    $('body').removeClass(darkClass);
+                }
+            });
+
         }
 
     };

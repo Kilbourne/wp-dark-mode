@@ -8,7 +8,7 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Use WP Dark Mode to enable a stunning dark mode theme for your WordPress website.
+WP Dark Mode automatically enables a stunning dark mode of your website based on user's operating system. Supports macOS, Windows, Android & iOS.
 
 == Description ==
 
@@ -35,7 +35,11 @@ WP Dark Mode supports all major operating systems including iOS, Android, macOS 
 6. **Above Post/Page Content** - You can display the dark mode switch button before any page/post
 
 == Screenshots ==
-
+1. General Settings
+2. Display Settings
+3. Color Style Settings
+4. Dark Mode Switch Elementor Widget
+5. Gutenberg Block
 
 == Changelog ==
 

@@ -16,14 +16,13 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 		 * WP_Dark_Mode_Enqueue constructor.
 		 */
 		public function __construct() {
-			if ( 'off' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'disable_darkmode', 'off' ) ) {
+			if ( 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_darkmode', 'on' ) ) {
 				add_action( 'wp_enqueue_scripts', [ $this, 'frontend_scripts' ] );
 			}
 
 			add_action( 'admin_enqueue_scripts', [ $this, 'admin_scripts' ] );
-//			if('on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_backend', 'on' )) {
-//				add_action( 'admin_enqueue_scripts', [ $this, 'frontend_scripts' ] );
-//			}
+			add_action( 'admin_enqueue_scripts', [ $this, 'frontend_scripts' ] );
+
 		}
 
 		/**
@@ -37,23 +36,10 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 			wp_enqueue_style( 'wp-dark-mode-frontend', wp_dark_mode()->plugin_url( 'assets/css/frontend.css' ), false,
 				wp_dark_mode()->version );
 
-			/** dark-mode-js library */
-			wp_enqueue_script( 'darkmode-js', wp_dark_mode()->plugin_url( 'assets/vendor/darkmode-js.js' ), false, wp_dark_mode()->version, true );
-
 			/** wp-dark-mode frontend js */
 			wp_enqueue_script( 'wp-dark-mode-frontend', wp_dark_mode()->plugin_url( 'assets/js/frontend.js' ),
-				[ 'jquery', 'wp-util', 'darkmode-js' ],
+				[ 'jquery', 'wp-util' ],
 				wp_dark_mode()->version, true );
-
-			/** frontend localize array */
-			wp_localize_script( 'wp-dark-mode-frontend', 'wpDarkModeFrontend', [
-				'pluginUrl'     => wp_dark_mode()->plugin_url(),
-				'saveMode'      => 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'remember_darkmode', 'on' ),
-				'matchSystem'   => 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'match_os_mode', 'on' ),
-				'timeBasedMode' => 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'time_based_mode', 'on' ),
-				'startAt'       => wp_dark_mode_get_settings( 'wp_dark_mode_general', 'start_at' ),
-				'endAt'         => wp_dark_mode_get_settings( 'wp_dark_mode_general', 'end_at' ),
-			] );
 
 		}
 
