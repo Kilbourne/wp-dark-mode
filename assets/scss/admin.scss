@@ -1,0 +1,6 @@
+.container-disabled select,
+.container-disabled .wp-picker-container,
+.container-disabled label > *:not(.description) {
+  pointer-events: none;
+  opacity: .3;
+}

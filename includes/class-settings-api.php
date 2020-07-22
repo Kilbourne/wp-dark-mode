@@ -160,6 +160,7 @@ if ( ! class_exists( 'WPPOOL_Settings_API' ) ) {
 						'max'               => isset( $option['max'] ) ? $option['max'] : '',
 						'step'              => isset( $option['step'] ) ? $option['step'] : '',
 					);
+
 					add_settings_field( "{$section}[{$name}]", $label, $callback, $section, $section, $args );
 				}
 			}
@@ -682,6 +683,17 @@ if ( ! class_exists( 'WPPOOL_Settings_API' ) ) {
                         $('.image-choose-opt').removeClass('active');
                         $(this).addClass('active');
                     });
+
+                    $(document).on('click', '.container-disabled label', function (event) {
+                        event.preventDefault();
+                    });
+
+                    $(document).on('click', '.container-disabled a', function (event) {
+                        event.stopPropagation();
+                        event.stopImmediatePropagation();
+                        I
+                    });
+
                 });
             </script>
 			<?php
