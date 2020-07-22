@@ -13,8 +13,8 @@ $position    = wp_dark_mode_get_settings( 'wp_dark_mode_display', 'switcher_posi
     <label for="wp-dark-mode-switch">
         <div class="toggle"></div>
         <div class="modes">
-            <p class="light"><?php esc_html_e( 'Light', 'wp-dark-mode-pro' ); ?></p>
-            <p class="dark"><?php esc_html_e( 'Dark', 'wp-dark-mode-pro' ); ?></p>
+            <p class="light"><?php esc_html_e( 'Light', 'wp-dark-mode' ); ?></p>
+            <p class="dark"><?php esc_html_e( 'Dark', 'wp-dark-mode' ); ?></p>
         </div>
     </label>
 

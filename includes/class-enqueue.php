@@ -21,7 +21,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 			}
 
 			add_action( 'admin_enqueue_scripts', [ $this, 'admin_scripts' ] );
-			add_action( 'admin_enqueue_scripts', [ $this, 'frontend_scripts' ] );
+			//add_action( 'admin_enqueue_scripts', [ $this, 'frontend_scripts' ] );
 
 		}
 
@@ -62,6 +62,18 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 			wp_localize_script( 'wp-dark-mode-admin', 'wpDarkModeAdmin', [
 				'pluginUrl' => wp_dark_mode()->plugin_url(),
 			] );
+
+
+			/** frontend scripts for gutenberg */
+			if ( 'post.php' == $hook ) {
+				/** wp-dark-mode frontend css */
+				wp_enqueue_style( 'wp-dark-mode-frontend', wp_dark_mode()->plugin_url( 'assets/css/frontend.css' ), false,
+					wp_dark_mode()->version );
+
+				/** wp-dark-mode frontend js */
+				wp_enqueue_script( 'wp-dark-mode-frontend', wp_dark_mode()->plugin_url( 'assets/js/frontend.js' ), [ 'jquery', 'wp-util' ],
+					wp_dark_mode()->version, true );
+			}
 
 		}
 

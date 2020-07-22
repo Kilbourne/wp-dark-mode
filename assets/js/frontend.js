@@ -6,8 +6,11 @@
 
         init: () => {
             app.initDarkMode();
+            /** block from admin side */
+            if (typeof wpDarkModeAdmin === 'undefined') {
+                app.checkOsMode();
+            }
             app.checkDarkMode();
-            app.checkOsMode();
 
             $(document).on('change', '.wp-dark-mode-switch', app.handleToggle);
 
@@ -18,18 +21,18 @@
 
         /** init dark mode */
         initDarkMode: function () {
-            //$('body').addClass(darkClass);
+            //$('html').addClass(darkClass);
         },
 
         /** handle dark mode toggle */
         handleToggle: function () {
-            $('body').toggleClass(darkClass);
+            $('html').toggleClass(darkClass);
             app.checkDarkMode();
         },
 
         /** check if the darkmode is active or not on initialize */
         checkDarkMode: function () {
-            if ($('body').hasClass(darkClass)) {
+            if ($('html').hasClass(darkClass)) {
                 $('.wp-dark-mode-switch').prop('checked', true);
 
             } else {
@@ -39,7 +42,7 @@
 
         checkOsMode: function () {
             if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                $('body').addClass(darkClass);
+                    $('html').addClass(darkClass);
             }
 
 
@@ -47,9 +50,9 @@
                 const newColorScheme = e.matches ? "dark" : "light";
 
                 if ('dark' === newColorScheme) {
-                    $('body').addClass(darkClass);
+                    $('html').addClass(darkClass);
                 } else {
-                    $('body').removeClass(darkClass);
+                    $('html').removeClass(darkClass);
                 }
 
             });
@@ -59,9 +62,9 @@
                 const newColorScheme = e.matches ? "dark" : "light";
 
                 if ('dark' === newColorScheme) {
-                    $('body').addClass(darkClass);
+                    $('html').addClass(darkClass);
                 } else {
-                    $('body').removeClass(darkClass);
+                    $('html').removeClass(darkClass);
                 }
             });
 

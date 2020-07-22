@@ -12,7 +12,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Elementor_Widget' ) ) {
 		}
 
 		public function get_title() {
-			return __( 'Dark Mode Switch', 'wp-dark-mode-pro' );
+			return __( 'Dark Mode Switch', 'wp-dark-mode' );
 		}
 
 		public function get_icon() {
@@ -30,18 +30,18 @@ if ( ! class_exists( 'WP_Dark_Mode_Elementor_Widget' ) ) {
 		public function _register_controls() {
 
 			$this->start_controls_section( '_section_alignment', [
-				'label' => __( 'Alignment', 'wp-dark-mode-pro' ),
+				'label' => __( 'Alignment', 'wp-dark-mode' ),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			] );
 
 			//switch style
 			$this->add_control( '_switch_style_heading', [
-				'label' => __( 'Layout', 'wp-dark-mode-pro' ),
+				'label' => __( 'Layout', 'wp-dark-mode' ),
 				'type'  => Controls_Manager::HEADING,
 			] );
 
 			$this->add_control( 'switch_style', [
-				'label'       => __( 'Switch Style', 'wp-dark-mode-pro' ),
+				'label'       => __( 'Switch Style', 'wp-dark-mode' ),
 				'type'        => WP_Dark_Mode_Controls_Manager::IMAGE_CHOOSE,
 				'description' => 'Select the switch button style',
 				'separator'   => 'after',
@@ -81,19 +81,19 @@ if ( ! class_exists( 'WP_Dark_Mode_Elementor_Widget' ) ) {
 			] );
 
 			$this->add_responsive_control( 'align', [
-				'label'     => __( 'Alignment', 'wp-dark-mode-pro' ),
+				'label'     => __( 'Alignment', 'wp-dark-mode' ),
 				'type'      => Controls_Manager::CHOOSE,
 				'options'   => [
 					'left'   => [
-						'title' => __( 'Left', 'wp-dark-mode-pro' ),
+						'title' => __( 'Left', 'wp-dark-mode' ),
 						'icon'  => 'fa fa-align-left',
 					],
 					'center' => [
-						'title' => __( 'Center', 'wp-dark-mode-pro' ),
+						'title' => __( 'Center', 'wp-dark-mode' ),
 						'icon'  => 'fa fa-align-center',
 					],
 					'right'  => [
-						'title' => __( 'Right', 'wp-dark-mode-pro' ),
+						'title' => __( 'Right', 'wp-dark-mode' ),
 						'icon'  => 'fa fa-align-right',
 					],
 				],

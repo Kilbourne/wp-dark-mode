@@ -13,6 +13,34 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: elementor/class-elementor-widget.php:15
+msgid "Dark Mode Switch"
+msgstr ""
+
+#: elementor/class-elementor-widget.php:33, elementor/class-elementor-widget.php:84
+msgid "Alignment"
+msgstr ""
+
+#: elementor/class-elementor-widget.php:39
+msgid "Layout"
+msgstr ""
+
+#: elementor/class-elementor-widget.php:44
+msgid "Switch Style"
+msgstr ""
+
+#: elementor/class-elementor-widget.php:88
+msgid "Left"
+msgstr ""
+
+#: elementor/class-elementor-widget.php:92
+msgid "Center"
+msgstr ""
+
+#: elementor/class-elementor-widget.php:96
+msgid "Right"
+msgstr ""
+
 #: includes/class-settings-api.php:424
 msgid "Choose File"
 msgstr ""
@@ -22,7 +50,7 @@ msgid "%s <span>General Settings</span>"
 msgstr ""
 
 #: includes/class-settings.php:35
-msgid "Disable Darkmode"
+msgid "Enable Darkmode"
 msgstr ""
 
 #: includes/class-settings.php:36
@@ -37,6 +65,14 @@ msgstr ""
 msgid "WP Dark Mode"
 msgstr ""
 
+#: includes/class-settings.php:73
+msgid "You can use the `Dark Mode Switch` gutenberg block to display the dark mode switch button."
+msgstr ""
+
+#: includes/class-settings.php:75
+msgid "Also you can use the `Dark Mode Switch` elementor widget to display the dark mode switch button."
+msgstr ""
+
 #: plugin.php:17
 msgid "You can't access this page"
 msgstr ""
@@ -45,6 +81,14 @@ msgstr ""
 msgid "Unsupported PHP version Min required PHP Version: \"%s\""
 msgstr ""
 
-#: plugin.php:199
+#: plugin.php:210
 msgid "Settings"
+msgstr ""
+
+#: templates/btn-1.php:16
+msgid "Light"
+msgstr ""
+
+#: templates/btn-1.php:17
+msgid "Dark"
 msgstr ""

@@ -29,27 +29,54 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 		public function dark_styles() { ?>
 
             <style>
-                html body.wp-dark-mode-active :not(.wp-dark-mode-ignore):not(mark):not(code):not(pre):not(ins):not(option):not(input):not(select):not(textarea):not(button):not(a):not(video):not(canvas):not(progress):not(iframe):not(svg):not(path) {
+                html.wp-dark-mode-active :not(.wp-dark-mode-ignore):not(mark):not(code):not(pre):not(ins):not(option):not(input):not(select):not(textarea):not(button):not(a):not(video):not(canvas):not(progress):not(iframe):not(svg):not(path) {
                     background-color: #1B2836 !important;
                     color: rgb(255, 255, 255) !important;
                     border-color: rgb(69, 155, 230) !important;
                 }
 
-                html body.wp-dark-mode-active a:not(.wp-dark-mode-ignore),
-                html body.wp-dark-mode-active a *:not(.wp-dark-mode-ignore) {
+                html.wp-dark-mode-active a:not(.wp-dark-mode-ignore),
+                html.wp-dark-mode-active a *:not(.wp-dark-mode-ignore) {
                     background-color: transparent !important;
                     color: rgb(69, 155, 230) !important;
                 }
 
-                body.wp-dark-mode-active a:active,
-                html body.wp-dark-mode-active a:active *,
-                html body.wp-dark-mode-active a:visited,
-                html body.wp-dark-mode-active a:visited * {
+                html.wp-dark-mode-active a:active,
+                html.wp-dark-mode-active a:active *,
+                html.wp-dark-mode-active a:visited,
+                html.wp-dark-mode-active a:visited * {
                     color: rgb(69, 155, 230) !important;
                     border-color: rgb(69, 155, 230) !important;
                 }
 
-                html body.wp-dark-mode-active button, html body.wp-dark-mode-active iframe, html body.wp-dark-mode-active iframe *, html body.wp-dark-mode-active input, html body.wp-dark-mode-active input[type="button"], html body.wp-dark-mode-active input[type="checkebox"], html body.wp-dark-mode-active input[type="date"], html body.wp-dark-mode-active input[type="datetime-local"], html body.wp-dark-mode-active input[type="email"], html body.wp-dark-mode-active input[type="image"], html body.wp-dark-mode-active input[type="month"], html body.wp-dark-mode-active input[type="number"], html body.wp-dark-mode-active input[type="range"], html body.wp-dark-mode-active input[type="reset"], html body.wp-dark-mode-active input[type="search"], html body.wp-dark-mode-active input[type="submit"], html body.wp-dark-mode-active input[type="tel"], html body.wp-dark-mode-active input[type="text"], html body.wp-dark-mode-active input[type="time"], html body.wp-dark-mode-active input[type="url"], html body.wp-dark-mode-active input[type="week"], html body.wp-dark-mode-active select, html body.wp-dark-mode-active textarea, html body.wp-dark-mode-active [class*="button"], html body.wp-dark-mode-active [class*="btn"], html body.wp-dark-mode-active [role="button"], html body.wp-dark-mode-active [role="icon"], html body.wp-dark-mode-active i:not(.wp-dark-mode-ignore) {
+                html.wp-dark-mode-active button,
+                html.wp-dark-mode-active iframe,
+                html.wp-dark-mode-active iframe *,
+                html.wp-dark-mode-active input,
+                html.wp-dark-mode-active input[type="button"],
+                html.wp-dark-mode-active input[type="checkebox"],
+                html.wp-dark-mode-active input[type="date"],
+                html.wp-dark-mode-active input[type="datetime-local"],
+                html.wp-dark-mode-active input[type="email"],
+                html.wp-dark-mode-active input[type="image"],
+                html.wp-dark-mode-active input[type="month"],
+                html.wp-dark-mode-active input[type="number"],
+                html.wp-dark-mode-active input[type="range"],
+                html.wp-dark-mode-active input[type="reset"],
+                html.wp-dark-mode-active input[type="search"],
+                html.wp-dark-mode-active input[type="submit"],
+                html.wp-dark-mode-active input[type="tel"],
+                html.wp-dark-mode-active input[type="text"],
+                html.wp-dark-mode-active input[type="time"],
+                html.wp-dark-mode-active input[type="url"],
+                html.wp-dark-mode-active input[type="week"],
+                html.wp-dark-mode-active select,
+                html.wp-dark-mode-active textarea,
+                html.wp-dark-mode-active [class*="button"],
+                html.wp-dark-mode-active [class*="btn"],
+                html.wp-dark-mode-active [role="button"],
+                html.wp-dark-mode-active [role="icon"],
+                html.wp-dark-mode-active i:not(.wp-dark-mode-ignore) {
                     background-color: rgb(53, 66, 80) !important;
                     color: rgb(255, 255, 255) !important;
                     border-color: rgb(53, 66, 80) !important;
