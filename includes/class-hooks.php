@@ -24,6 +24,17 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 			add_action( 'admin_head', [ $this, 'dark_styles' ] );
 			add_action( 'admin_footer', [ $this, 'dark_scripts' ] );
 			add_action( 'elementor/editor/footer', [ $this, 'dark_scripts' ] );
+
+			add_action( 'wsa_form_bottom_wp_dark_mode_advanced', [ $this, 'pro_promo' ] );
+			add_action( 'wsa_form_bottom_wp_dark_mode_display', [ $this, 'pro_promo' ] );
+			add_action( 'wsa_form_bottom_wp_dark_mode_style', [ $this, 'pro_promo' ] );
+		}
+
+		public function pro_promo() {
+			if ( wp_dark_mode()->is_pro_active() ) {
+				return;
+			}
+			wp_dark_mode()->get_template( 'admin/promo' );
 		}
 
 		public function dark_styles() { ?>

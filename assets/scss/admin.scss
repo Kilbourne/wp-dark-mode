@@ -1,6 +1,65 @@
-.container-disabled select,
-.container-disabled .wp-picker-container,
-.container-disabled label > *:not(.description) {
-  pointer-events: none;
-  opacity: .3;
+.promo {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, .6);
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  backdrop-filter: blur(1px);
+
+  &-inner {
+    background: #32373C;
+    position: relative;
+    padding: 60px 30px 40px 30px;
+    text-align: center;
+    border-radius: 10px;
+
+    h3 {
+      color: #fff;
+    }
+
+    .promo-img {
+      height: 100px;
+      position: absolute;
+      top: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+      padding: 10px;
+      border-radius: 50%;
+      border: 1px solid #eee;
+    }
+
+    .limited-title {
+      font-size: 24px;
+    }
+
+    .discount {
+      font-size: 24px;
+
+      .percentage {
+        color: #F03B34;
+        font-size: 40px;
+        font-weight: bold;
+      }
+
+    }
+
+    a {
+      background: #FBBF00;
+      color: #000;
+      padding: 16px 25px;
+      text-decoration: none;
+      border-radius: 5px;
+      display: inline-block;
+      margin-top: 30px;
+      font-size: 17px;
+      font-weight: bold;
+    }
+
+  }
+
 }

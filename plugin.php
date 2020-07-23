@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: WP Dark Mode
- * Plugin URI:  https://wpdark.wppool.dev/
+ * Plugin URI:  https://wppool.dev/wp-dark-mode
  * Description: Use WP Dark Mode to enable a stunning dark mode theme for your WordPress website.
  * Version:     1.0.0
  * Author:      WPPOOL
- * Author URI:  http://wppool.com
+ * Author URI:  http://wppool.dev
  * Text Domain: wp-dark-mode
  * Domain Path: /languages/
  * License:     GPL-2.0+
