@@ -2,8 +2,8 @@
 /**
  * Plugin Name: WP Dark Mode
  * Plugin URI:  https://wppool.dev/wp-dark-mode
- * Description: Use WP Dark Mode to enable a stunning dark mode theme for your WordPress website.
- * Version:     1.0.0
+ * Description: WP Dark Mode automatically enables a stunning dark mode of your website based on user's operating system. Supports macOS, Windows, Android & iOS.
+ * Version:     1.0.1
  * Author:      WPPOOL
  * Author URI:  http://wppool.dev
  * Text Domain: wp-dark-mode
@@ -84,6 +84,8 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 
 				// Load files.
 				add_action( 'init', array( $this, 'init' ), - 999 );
+
+				do_action('wp_dark_mode/loaded');
 
 				//init appsero tracker
 				$this->appsero_init_tracker_wp_dark_mode();

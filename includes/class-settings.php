@@ -44,9 +44,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 				'23:00' => '11:00 PM',
 			];
 
-			$pro_message
-				= '<br> Unlock this feature by upgrading to PRO <a href="https://wpdark.wppool.dev/" target="_blank" class="button button-primary">Get PRO</a>';
-
 			$sections = array(
 				array(
 					'id'    => 'wp_dark_mode_general',
@@ -207,23 +204,32 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 							'6' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/preset-6.png' ),
 						],
 					),
+
+					'customize_colors' => array(
+						'name'    => 'customize_colors',
+						'default' => 'on',
+						'label'   => __( 'Want to customize colors?', 'wp-dark-mode' ),
+						'desc'    => __( 'Customize the darkmode background, text and link colors.', 'wp-dark-mode' ),
+						'type'    => 'switcher',
+					),
+
 					'darkmode_bg_color'    => array(
 						'name'    => 'darkmode_bg_color',
-						'default' => '#1b2836',
+						'default' => '',
 						'label'   => __( 'Darkmode Background Color', 'wp-dark-mode' ),
 						'desc'    => __( 'Select the background color when the dark mode is on.', 'wp-dark-mode' ),
 						'type'    => 'color',
 					),
 					'darkmode_text_color'  => array(
 						'name'    => 'darkmode_text_color',
-						'default' => '#fff',
+						'default' => '',
 						'label'   => __( 'Darkmode Text Color', 'wp-dark-mode' ),
 						'desc'    => __( 'Select the text color when the dark mode is on.', 'wp-dark-mode' ),
 						'type'    => 'color',
 					),
 					'darkmode_links_color' => array(
 						'name'    => 'darkmode_links_color',
-						'default' => '#459BE6',
+						'default' => '',
 						'label'   => __( 'Darkmode Links Color', 'wp-dark-mode' ),
 						'desc'    => __( 'Select the links color when the dark mode is on.', 'wp-dark-mode' ),
 						'type'    => 'color',

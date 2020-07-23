@@ -4,7 +4,7 @@ Tags: dark, dark mode, night mode, gutenberg blocks, dark theme
 Requires at least: 4.6
 Tested up to: 5.4.2
 Requires PHP: 5.6
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,6 +17,10 @@ Use WP Dark Mode to enable a stunning dark mode theme for your WordPress website
 WP Dark Mode works automatically without going into any complicated settings.
 
 Just activate the plugin and your users will experience a dark mode version of your website as per their preferred operating system preference.
+
+
+https://www.youtube.com/watch?v=JSNGJfM3cIo
+
 
 Works across all operating systems including Android, iOS, macOS. No settings needed. The plugin intelligently detects device preferenc and dynamically delivers a hand crafted, expert designed dark mode experience for your readers.
 
@@ -40,6 +44,11 @@ WP Dark Mode supports all major operating systems including iOS, Android, macOS 
 6. **Above Post/Page Content** - You can display the dark mode switch button before any page/post.
 6. **Darkmode Switch Widget** - You can place the darkmode switch button using the WP Dark Mode Widget.
 
+=== LEARN MORE ===
+* [How to display Dark Mode Switch Button using Gutenberg block](https://www.youtube.com/watch?v=TPKa-Xg9w5c)
+* [How to display Dark Mode Switch Button using Elementor Widget](https://www.youtube.com/watch?v=5Y8XawJg4pw)
+* [How to deactivate the Dark Mode](https://www.youtube.com/watch?v=y7-XPXuF0-g)
+
 == How to Use ==
 After activating the plugin by default your website will turn into darkmode for your users if the Operating System of the users sets into dark theme.
 
@@ -48,7 +57,6 @@ For displaying the Darkmode Switch button in Gutenberg use the **(Dark Mode Swit
 For displaying the Darkmode Switch button in Elementor use the **(Dark Mode Switch)** Widget.
 
 If you want to disable the darkmode functionality, Then go to your `Admin Dashboard > Settings > WP Dark Mode` turn off the enable darkmode switch button.
-
 
 == Screenshots ==
 1. General Settings

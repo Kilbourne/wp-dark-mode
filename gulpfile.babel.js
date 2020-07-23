@@ -118,15 +118,15 @@ export const watch = () => {
     gulp.watch('**/*.php', reload);
 };
 
-export const copy = () => {
-    return gulp.src(paths.build.src)
-        .pipe(gulp.dest(paths.pro.dest));
-};
+// export const copy = () => {
+//     return gulp.src(paths.build.src)
+//         .pipe(gulp.dest(paths.pro.dest));
+// };
 
 //compress to build files
 export const compress = () => {
     return gulp.src(paths.build.src)
-        .pipe(gulp.dest(paths.pro.dest))
+        //.pipe(gulp.dest(paths.pro.dest))
         .pipe(zip(`${pkg.name}.zip`))
         .pipe(gulp.dest(paths.build.dest));
 };
