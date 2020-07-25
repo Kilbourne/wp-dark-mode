@@ -70,7 +70,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 			);
 
 			$fields = array(
-				'wp_dark_mode_general' => apply_filters( 'wp_dark_mode/general_settings', array(
+				'wp_dark_mode_general' => apply_filters( 'wp_dark_mode/general', array(
 					'enable_darkmode'   => array(
 							'name'    => 'enable_darkmode',
 							'default' => 'off',
@@ -81,13 +81,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 				) ),
 
 				'wp_dark_mode_advanced' => apply_filters( 'wp_dark_mode/advanced_settings', array(
-					'enable_frontend'   => array(
-						'name'    => 'enable_frontend',
-						'default' => 'off',
-						'label'   => __( 'Enable Frontend', 'wp-dark-mode' ),
-						'type'    => 'switcher',
-						'desc'    => __( 'Enable the dark mode for the users on the frontend.', 'wp-dark-mode' ),
-					),
+
 					'enable_backend'    => array(
 						'name'    => 'enable_backend',
 						'default' => 'off',
@@ -104,7 +98,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 					),
 					'time_based_mode'   => array(
 						'name'    => 'time_based_mode',
-						'default' => 'on',
+						'default' => 'off',
 						'label'   => __( 'Time Based Dark Mode', 'wp-dark-mode' ),
 						'desc'    => __( 'Automatically turn on the dark mode between a given time range.', 'wp-dark-mode' ),
 						'type'    => 'switcher',
@@ -196,18 +190,18 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'desc'    => __( 'Select the predefined darkmode background, text and link preset color.', 'wp-dark-mode' ),
 						'type'    => 'image_choose',
 						'options' => [
-							'1' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/preset-1.png' ),
-							'2' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/preset-2.png' ),
-							'3' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/preset-3.png' ),
-							'4' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/preset-4.png' ),
-							'5' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/preset-5.png' ),
-							'6' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/preset-6.png' ),
+							'0' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/preset-1.png' ),
+							'1' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/preset-2.png' ),
+							'2' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/preset-3.png' ),
+							'3' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/preset-4.png' ),
+							'4' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/preset-5.png' ),
+							'5' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/preset-6.png' ),
 						],
 					),
 
 					'customize_colors' => array(
 						'name'    => 'customize_colors',
-						'default' => 'on',
+						'default' => 'off',
 						'label'   => __( 'Want to customize colors?', 'wp-dark-mode' ),
 						'desc'    => __( 'Customize the darkmode background, text and link colors.', 'wp-dark-mode' ),
 						'type'    => 'switcher',
@@ -228,7 +222,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'type'    => 'color',
 					),
 					'darkmode_links_color' => array(
-						'name'    => 'darkmode_links_color',
+						'name'    => 'darkmode_link_color',
 						'default' => '',
 						'label'   => __( 'Darkmode Links Color', 'wp-dark-mode' ),
 						'desc'    => __( 'Select the links color when the dark mode is on.', 'wp-dark-mode' ),

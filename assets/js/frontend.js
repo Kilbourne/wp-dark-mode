@@ -41,6 +41,13 @@
         },
 
         checkOsMode: function () {
+
+            if (typeof wpDarkModeProFrontend !== 'undefined') {
+                if (!wpDarkModeProFrontend.match_os_mode) {
+                    return;
+                }
+            }
+
             if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
                     $('html').addClass(darkClass);
             }

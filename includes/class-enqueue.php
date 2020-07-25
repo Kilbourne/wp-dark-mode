@@ -21,7 +21,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 			}
 
 			add_action( 'admin_enqueue_scripts', [ $this, 'admin_scripts' ] );
-			//add_action( 'admin_enqueue_scripts', [ $this, 'frontend_scripts' ] );
 
 		}
 

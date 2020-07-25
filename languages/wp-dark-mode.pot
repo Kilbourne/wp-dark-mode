@@ -69,163 +69,155 @@ msgstr ""
 msgid "Dark Mode has been activated. Your users will be served a dark mode of your website when their device preference is set to Dark Mode."
 msgstr ""
 
-#: includes/class-settings.php:87
-msgid "Enable Frontend"
-msgstr ""
-
-#: includes/class-settings.php:89
-msgid "Enable the dark mode for the users on the frontend."
-msgstr ""
-
-#: includes/class-settings.php:94
+#: includes/class-settings.php:88
 msgid "Enable Backend"
 msgstr ""
 
-#: includes/class-settings.php:95
+#: includes/class-settings.php:89
 msgid "Enable the dark mode for the admins on the backend."
 msgstr ""
 
-#: includes/class-settings.php:101
+#: includes/class-settings.php:95
 msgid "Match OS Mode"
 msgstr ""
 
-#: includes/class-settings.php:102
+#: includes/class-settings.php:96
 msgid "Automatically shows Darkmode if the OS prefered theme is dark."
 msgstr ""
 
-#: includes/class-settings.php:108
+#: includes/class-settings.php:102
 msgid "Time Based Dark Mode"
 msgstr ""
 
-#: includes/class-settings.php:109
+#: includes/class-settings.php:103
 msgid "Automatically turn on the dark mode between a given time range."
 msgstr ""
 
-#: includes/class-settings.php:115
+#: includes/class-settings.php:109
 msgid "Dark Mode Start Time"
 msgstr ""
 
-#: includes/class-settings.php:116
+#: includes/class-settings.php:110
 msgid "Time to start Dark mode."
 msgstr ""
 
-#: includes/class-settings.php:123
+#: includes/class-settings.php:117
 msgid "Dark Mode End Time"
 msgstr ""
 
-#: includes/class-settings.php:124
+#: includes/class-settings.php:118
 msgid "Time to end Dark mode."
 msgstr ""
 
-#: includes/class-settings.php:131
+#: includes/class-settings.php:125
 msgid "Remember Dark Mode"
 msgstr ""
 
-#: includes/class-settings.php:132
+#: includes/class-settings.php:126
 msgid "Check ON to remember the darkmode status, if darkmode mode status \"ON\" will start automatically when visiting website again. %s"
 msgstr ""
 
-#: includes/class-settings.php:143
+#: includes/class-settings.php:137
 msgid "Show Floating Switch"
 msgstr ""
 
-#: includes/class-settings.php:144
+#: includes/class-settings.php:138
 msgid "Show the floating dark mode switcher button on the frontend for the users. %s"
 msgstr ""
 
-#: includes/class-settings.php:150
+#: includes/class-settings.php:144
 msgid "Floating Switch Style"
 msgstr ""
 
-#: includes/class-settings.php:151
+#: includes/class-settings.php:145
 msgid "Select the switcher button style for the frontend. %s"
 msgstr ""
 
-#: includes/class-settings.php:165
+#: includes/class-settings.php:159
 msgid "Floating Switch Position"
 msgstr ""
 
-#: includes/class-settings.php:166
+#: includes/class-settings.php:160
 msgid "Select the position of the floating dark mode switcher button on the frontend."
 msgstr ""
 
-#: includes/class-settings.php:170
+#: includes/class-settings.php:164
 msgid "Left Bottom"
 msgstr ""
 
-#: includes/class-settings.php:171
+#: includes/class-settings.php:165
 msgid "Right Bottom"
 msgstr ""
 
-#: includes/class-settings.php:177
+#: includes/class-settings.php:171
 msgid "Show Above Posts"
 msgstr ""
 
-#: includes/class-settings.php:178
+#: includes/class-settings.php:172
 msgid "Show the dark mode switcher button above of all the post."
 msgstr ""
 
-#: includes/class-settings.php:184
+#: includes/class-settings.php:178
 msgid "Show Above Pages"
 msgstr ""
 
-#: includes/class-settings.php:185
+#: includes/class-settings.php:179
 msgid "Show the dark mode switcher button above of all the pages."
 msgstr ""
 
-#: includes/class-settings.php:195
+#: includes/class-settings.php:189
 msgid "Darkmode Color Preset:"
 msgstr ""
 
-#: includes/class-settings.php:196
+#: includes/class-settings.php:190
 msgid "Select the predefined darkmode background, text and link preset color."
 msgstr ""
 
-#: includes/class-settings.php:211
+#: includes/class-settings.php:205
 msgid "Want to customize colors?"
 msgstr ""
 
-#: includes/class-settings.php:212
+#: includes/class-settings.php:206
 msgid "Customize the darkmode background, text and link colors."
 msgstr ""
 
-#: includes/class-settings.php:219
+#: includes/class-settings.php:213
 msgid "Darkmode Background Color"
 msgstr ""
 
-#: includes/class-settings.php:220
+#: includes/class-settings.php:214
 msgid "Select the background color when the dark mode is on."
 msgstr ""
 
-#: includes/class-settings.php:226
+#: includes/class-settings.php:220
 msgid "Darkmode Text Color"
 msgstr ""
 
-#: includes/class-settings.php:227
+#: includes/class-settings.php:221
 msgid "Select the text color when the dark mode is on."
 msgstr ""
 
-#: includes/class-settings.php:233
+#: includes/class-settings.php:227
 msgid "Darkmode Links Color"
 msgstr ""
 
-#: includes/class-settings.php:234
+#: includes/class-settings.php:228
 msgid "Select the links color when the dark mode is on."
 msgstr ""
 
-#: includes/class-settings.php:254, includes/class-settings.php:265
+#: includes/class-settings.php:248, includes/class-settings.php:259
 msgid "WP Dark Mode Settings"
 msgstr ""
 
-#: includes/class-settings.php:254
+#: includes/class-settings.php:248
 msgid "WP Dark Mode"
 msgstr ""
 
-#: includes/class-settings.php:266
+#: includes/class-settings.php:260
 msgid "You can use the `Dark Mode Switch` gutenberg block to display the dark mode switch button."
 msgstr ""
 
-#: includes/class-settings.php:268
+#: includes/class-settings.php:262
 msgid "Also you can use the `Dark Mode Switch` elementor widget to display the dark mode switch button."
 msgstr ""
 

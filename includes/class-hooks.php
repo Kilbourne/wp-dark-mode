@@ -39,30 +39,35 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 
 		public function dark_styles() {
 
-		    $preset = wp_dark_mode_get_settings('wp_dark_mode_style', 'color_preset', '1');
+			$preset = wp_dark_mode_get_settings( 'wp_dark_mode_style', 'color_preset', '0' );
+
 		    $colors = wp_dark_mode_color_presets($preset);
-		    
+
+			$bg_color   = apply_filters( 'wp_dark_mode/bg_color', $colors['bg'] );
+			$text_color = apply_filters( 'wp_dark_mode/text_color', $colors['text'] );
+			$link_color = apply_filters( 'wp_dark_mode/link_color', $colors['link'] );
+
 		    ?>
 
             <style>
                 html.wp-dark-mode-active :not(.wp-dark-mode-ignore):not(mark):not(code):not(pre):not(ins):not(option):not(input):not(select):not(textarea):not(button):not(a):not(video):not(canvas):not(progress):not(iframe):not(svg):not(path) {
-                    background-color: <?php echo $colors['bg']; ?> !important;
-                    color: <?php echo $colors['text']; ?> !important;
-                    border-color: <?php echo $colors['link']; ?> !important;
+                    background-color: <?php echo $bg_color; ?> !important;
+                    color: <?php echo $text_color; ?> !important;
+                    border-color: <?php echo $link_color; ?> !important;
                 }
 
                 html.wp-dark-mode-active a:not(.wp-dark-mode-ignore),
                 html.wp-dark-mode-active a *:not(.wp-dark-mode-ignore) {
                     background-color: transparent !important;
-                    color: <?php echo $colors['link']; ?> !important;
+                    color: <?php echo $link_color; ?> !important;
                 }
 
                 html.wp-dark-mode-active a:active,
                 html.wp-dark-mode-active a:active *,
                 html.wp-dark-mode-active a:visited,
                 html.wp-dark-mode-active a:visited * {
-                    color: <?php echo $colors['link']; ?> !important;
-                    border-color: <?php echo $colors['link']; ?> !important;
+                    color: <?php echo $link_color; ?> !important;
+                    border-color: <?php echo $link_color; ?> !important;
                 }
 
                 html.wp-dark-mode-active button,
@@ -94,7 +99,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
                 html.wp-dark-mode-active [role="icon"],
                 html.wp-dark-mode-active i:not(.wp-dark-mode-ignore) {
                     background-color: rgb(53, 66, 80) !important;
-                    color: <?php echo $colors['text']; ?> !important;
+                    color: <?php echo $text_color; ?> !important;
                     border-color: rgb(53, 66, 80) !important;
                 }
 
