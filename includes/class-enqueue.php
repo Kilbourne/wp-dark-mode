@@ -40,6 +40,26 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 				[ 'jquery', 'wp-util' ],
 				wp_dark_mode()->version, true );
 
+			wp_localize_script( 'wp-dark-mode-frontend', 'wpDarkModeFrontend', [
+				'is_elementor_editor' => class_exists( '\Elementor\Plugin' ) && Elementor\Plugin::$instance->editor->is_edit_mode(),
+			] );
+
+			$this->frontend_localize();
+
+		}
+
+		public function frontend_localize() {
+			$selectors = '.wp-dark-mode-ignore *';
+			$excludes  = wp_dark_mode_get_settings( 'wp_dark_mode_display', 'excludes', '' );
+
+			if ( ! empty( $excludes ) ) {
+				$selectors .= ", $excludes";
+			}
+
+			wp_localize_script( 'wp-dark-mode-frontend', 'wpDarkModeFrontend', [
+				'excludes' => $selectors,
+				'is_elementor_editor' => class_exists( '\Elementor\Plugin' ) && Elementor\Plugin::$instance->editor->is_edit_mode(),
+			] );
 		}
 
 		/**
@@ -63,7 +83,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 			], wp_dark_mode()->version, true );
 
 			wp_localize_script( 'wp-dark-mode-admin', 'wpDarkModeAdmin', [
-				'pluginUrl' => wp_dark_mode()->plugin_url(),
+				'pluginUrl'           => wp_dark_mode()->plugin_url(),
 			] );
 
 
@@ -76,6 +96,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 				/** wp-dark-mode frontend js */
 				wp_enqueue_script( 'wp-dark-mode-frontend', wp_dark_mode()->plugin_url( 'assets/js/frontend.js' ), [ 'jquery', 'wp-util' ],
 					wp_dark_mode()->version, true );
+
 			}
 
 		}

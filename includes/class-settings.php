@@ -131,13 +131,14 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 
 				/** display settings */
 				'wp_dark_mode_display'  => apply_filters( 'wp_dark_mode/display_settings', array(
-					'show_switcher'     => array(
+					'show_switcher' => array(
 						'name'    => 'show_switcher',
 						'default' => 'on',
 						'label'   => __( 'Show Floating Switch', 'wp-dark-mode' ),
 						'desc'    => __( 'Show the floating dark mode switcher button on the frontend for the users. %s', 'wp-dark-mode' ),
 						'type'    => 'switcher',
 					),
+
 					'switch_style'      => array(
 						'name'    => 'switch_style',
 						'default' => '1',
@@ -153,6 +154,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 							'6' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-6-light.png' ),
 						],
 					),
+
 					'switcher_position' => array(
 						'name'    => 'switcher_position',
 						'default' => 'right_bottom',
@@ -165,6 +167,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 							'right_bottom' => __( 'Right Bottom', 'wp-dark-mode' ),
 						],
 					),
+
 					'show_above_post'   => array(
 						'name'    => 'show_above_post',
 						'default' => 'off',
@@ -172,12 +175,21 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'desc'    => __( 'Show the dark mode switcher button above of all the post.', 'wp-dark-mode' ),
 						'type'    => 'switcher',
 					),
+
 					'show_above_page'   => array(
 						'name'    => 'show_above_page',
 						'default' => 'off',
 						'label'   => __( 'Show Above Pages', 'wp-dark-mode' ),
 						'desc'    => __( 'Show the dark mode switcher button above of all the pages.', 'wp-dark-mode' ),
 						'type'    => 'switcher',
+					),
+
+					'excludes'   => array(
+						'name'    => 'excludes',
+						'default' => '',
+						'label'   => __( 'Excludes Elements', 'wp-dark-mode' ),
+						'desc'    => __( 'Add comma separated (classes, ids) to ignore the darkmode. ex: .class1, #hero-area', 'wp-dark-mode' ),
+						'type'    => 'textarea',
 					),
 				) ),
 
@@ -214,6 +226,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'desc'    => __( 'Select the background color when the dark mode is on.', 'wp-dark-mode' ),
 						'type'    => 'color',
 					),
+
 					'darkmode_text_color'  => array(
 						'name'    => 'darkmode_text_color',
 						'default' => '',
@@ -221,6 +234,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'desc'    => __( 'Select the text color when the dark mode is on.', 'wp-dark-mode' ),
 						'type'    => 'color',
 					),
+
 					'darkmode_links_color' => array(
 						'name'    => 'darkmode_link_color',
 						'default' => '',

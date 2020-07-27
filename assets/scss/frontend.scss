@@ -373,20 +373,6 @@
 }
 
 /*--------------------- darkMode ---------------------- */
-.darkmode-layer, .darkmode-toggle {
-    z-index: 500;
-}
-
-.darkmode--activated .wp-dark-mode-moon-o,
-.darkmode--activated .wp-dark-mode-light-up {
-    color: #fff;
-}
-
-.wp-dark-mode-ignore {
-    position: relative;
-    z-index: 9999;
-}
-
-html .darkmode--activated img {
-    mix-blend-mode: difference;
+.wp-dark-mode-active .elementor-editor-active .elementor-element > .elementor-element-overlay{
+    background: transparent !important;
 }

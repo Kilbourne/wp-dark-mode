@@ -43,6 +43,7 @@ WP Dark Mode supports all major operating systems including iOS, Android, macOS 
 5. **Shortcode Supported** - You can use `[wp_dark_mode]` shortcode to display the dark mode switch button in any page/post
 6. **Above Post/Page Content** - You can display the dark mode switch button before any page/post.
 6. **Darkmode Switch Widget** - You can place the darkmode switch button using the WP Dark Mode Widget.
+6. **Excludes Elements** - You can excludes specific elements being affected by the derkmode by using the CSS selectors.
 
 === LEARN MORE ===
 * [How to display Dark Mode Switch Button using Gutenberg block](https://www.youtube.com/watch?v=TPKa-Xg9w5c)
@@ -58,6 +59,11 @@ For displaying the Darkmode Switch button in Elementor use the **(Dark Mode Swit
 
 If you want to disable the darkmode functionality, Then go to your `Admin Dashboard > Settings > WP Dark Mode` turn off the enable darkmode switch button.
 
+== Frequently Asked Questions ==
+
+= How can I show darkmode ON/ OFF control switch button? =
+In the free version you can display the switch button in any page/post by using the  gutenberg (Dark Mode Switch) block and in elementor you can use the (Dark Mode Switch) widget.mAnd in the PRO version you can display a fixed switch button in the footer of all the pages of your website.You can also display the switch button on the top of every post/ page.You can choose style of the switch button from different switch styles.
+
 == Screenshots ==
 1. General Settings
 2. Display Settings
@@ -66,6 +72,10 @@ If you want to disable the darkmode functionality, Then go to your `Admin Dashbo
 5. Gutenberg Block
 
 == Changelog ==
+
+= 1.0.2 =
+* New: Exclude Elements those have Background Image
+* New: Exclude Elements by CSS selectors.
 
 = 1.0.1 =
 * New: Add Darkmode Switch ELementor Widget.

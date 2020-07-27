@@ -93,10 +93,10 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
                 html.wp-dark-mode-active input[type="week"],
                 html.wp-dark-mode-active select,
                 html.wp-dark-mode-active textarea,
-                html.wp-dark-mode-active [class*="button"],
-                html.wp-dark-mode-active [class*="btn"],
-                html.wp-dark-mode-active [role="button"],
-                html.wp-dark-mode-active [role="icon"],
+                /*html.wp-dark-mode-active [class*="button"],*/
+                /*html.wp-dark-mode-active [class*="btn"],*/
+                /*html.wp-dark-mode-active [role="button"],*/
+                /*html.wp-dark-mode-active [role="icon"],*/
                 html.wp-dark-mode-active i:not(.wp-dark-mode-ignore) {
                     background-color: rgb(53, 66, 80) !important;
                     color: <?php echo $text_color; ?> !important;
@@ -107,15 +107,27 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 
 		<?php }
 
-		function dark_scripts() { ?>
+		/**
+		 * darkmode scripts
+		 */
+		public function dark_scripts() {
+			$selectors = '.wp-dark-mode-ignore';
+			$excludes  = wp_dark_mode_get_settings( 'wp_dark_mode_display', 'excludes' );
+
+			if ( ! empty( $excludes ) ) {
+				$selectors .= ", $excludes";
+			}
+
+			?>
             <script>
                 (function ($) {
                     $(document).ready(function () {
-                        $('.wp-dark-mode-ignore *').addClass('wp-dark-mode-ignore');
+                        $(window).on('darkmodeInit', handleExcludes);
+                        $(document).on('change', '.wp-dark-mode-switch', handleExcludes);
 
-                        $(document).on('change', '.wp-dark-mode-switch', function () {
-                            $('.wp-dark-mode-ignore *').addClass('wp-dark-mode-ignore');
-                        });
+                        function handleExcludes(){
+                            $('<?php echo $selectors; ?>').find('*').addClass('wp-dark-mode-ignore');
+                        }
 
                     });
                 })(jQuery)

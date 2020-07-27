@@ -398,7 +398,7 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 
 }
 
-/** if function `wp_tv` doesn't exists yet. */
+/** if function `wp_dark_mode` doesn't exists yet. */
 if ( ! function_exists( 'wp_dark_mode' ) ) {
 	function wp_dark_mode() {
 		return WP_Dark_Mode::instance();

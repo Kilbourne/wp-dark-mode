@@ -6,13 +6,17 @@
 
         init: () => {
             app.initDarkMode();
+
             /** block from admin side */
             if (typeof wpDarkModeAdmin === 'undefined') {
                 app.checkOsMode();
             }
+
             app.checkDarkMode();
+            app.excludeBGELements();
 
             $(document).on('change', '.wp-dark-mode-switch', app.handleToggle);
+            $(window).on('darkmodeInit', app.checkDarkMode);
 
         },
 
@@ -22,6 +26,16 @@
         /** init dark mode */
         initDarkMode: function () {
             //$('html').addClass(darkClass);
+        },
+
+        excludeBGELements: function () {
+            $("div, section").each(function () {
+
+                if ($(this).css('background-image') != 'none') {
+                    $(this).add($(this).find('*')).addClass('wp-dark-mode-ignore');
+                }
+
+            });
         },
 
         /** handle dark mode toggle */
@@ -50,6 +64,7 @@
 
             if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
                     $('html').addClass(darkClass);
+                $(window).trigger('darkmodeInit');
             }
 
 
@@ -58,6 +73,7 @@
 
                 if ('dark' === newColorScheme) {
                     $('html').addClass(darkClass);
+                    $(window).trigger('darkmodeInit');
                 } else {
                     $('html').removeClass(darkClass);
                 }
