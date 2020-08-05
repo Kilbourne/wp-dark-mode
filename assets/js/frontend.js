@@ -5,6 +5,7 @@
     const app = {
 
         init: () => {
+
             app.initDarkMode();
 
             /** block from admin side */
@@ -96,4 +97,6 @@
     };
 
     $(document).ready(app.init);
+
+
 })(jQuery);

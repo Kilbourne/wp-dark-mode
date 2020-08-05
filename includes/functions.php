@@ -30,6 +30,6 @@ if ( ! function_exists( 'wp_dark_mode_color_presets' ) ) {
 			],
 		] );
 
-		return ! empty( $presets[ $preset ] ) ? $presets[ $preset ] : $presets['1'];
+		return ! empty( $presets[ $preset ] ) ? $presets[ $preset ] : $presets['0'];
 	}
 }

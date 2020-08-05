@@ -70,25 +70,19 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 			);
 
 			$fields = array(
+
 				'wp_dark_mode_general' => apply_filters( 'wp_dark_mode/general', array(
 					'enable_darkmode'   => array(
 							'name'    => 'enable_darkmode',
-							'default' => 'off',
-							'label'   => __( 'Enable Darkmode', 'wp-dark-mode' ),
-							'desc'    => __( 'Dark Mode has been activated. Your users will be served a dark mode of your website when their device preference is set to Dark Mode.', 'wp-dark-mode' ),
+							'default' => 'on',
+							'label'   => __( 'Enable Frontend Darkmode', 'wp-dark-mode' ),
+							'desc'    => __( 'Dark Mode has been activated in the frontend. Now, your users will be served a dark mode of your website when their device preference is set to Dark Mode or by switching the darkmode switch button.', 'wp-dark-mode' ),
 							'type'    => 'switcher',
 					),
 				) ),
 
 				'wp_dark_mode_advanced' => apply_filters( 'wp_dark_mode/advanced_settings', array(
 
-					'enable_backend'    => array(
-						'name'    => 'enable_backend',
-						'default' => 'off',
-						'label'   => __( 'Enable Backend', 'wp-dark-mode' ),
-						'desc'    => __( 'Enable the dark mode for the admins on the backend.', 'wp-dark-mode' ),
-						'type'    => 'switcher',
-					),
 					'match_os_mode'     => array(
 						'name'    => 'match_os_mode',
 						'default' => 'on',
@@ -96,6 +90,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'desc'    => __( 'Automatically shows Darkmode if the OS prefered theme is dark.', 'wp-dark-mode' ),
 						'type'    => 'switcher',
 					),
+
 					'time_based_mode'   => array(
 						'name'    => 'time_based_mode',
 						'default' => 'off',
@@ -103,6 +98,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'desc'    => __( 'Automatically turn on the dark mode between a given time range.', 'wp-dark-mode' ),
 						'type'    => 'switcher',
 					),
+
 					'start_at'          => array(
 						'name'    => 'start_at',
 						'default' => '17:00',
@@ -111,6 +107,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'type'    => 'select',
 						'options' => $time_range,
 					),
+
 					'end_at'            => array(
 						'name'    => 'end_at',
 						'default' => '06:00',
@@ -119,11 +116,12 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'type'    => 'select',
 						'options' => $time_range,
 					),
+
 					'remember_darkmode' => array(
 						'name'    => 'remember_darkmode',
 						'default' => 'on',
 						'label'   => __( 'Remember Dark Mode', 'wp-dark-mode' ),
-						'desc'    => __( 'Check ON to remember the darkmode status, if darkmode mode status "ON" will start automatically when visiting website again. %s',
+						'desc'    => __( 'Check ON to remember the darkmode status, if darkmode mode status "ON" will start automatically when visiting website again.',
 							'wp-dark-mode' ),
 						'type'    => 'switcher',
 					),
@@ -135,7 +133,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'name'    => 'show_switcher',
 						'default' => 'on',
 						'label'   => __( 'Show Floating Switch', 'wp-dark-mode' ),
-						'desc'    => __( 'Show the floating dark mode switcher button on the frontend for the users. %s', 'wp-dark-mode' ),
+						'desc'    => __( 'Show the floating dark mode switcher button on the frontend for the users.', 'wp-dark-mode' ),
 						'type'    => 'switcher',
 					),
 
@@ -143,7 +141,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'name'    => 'switch_style',
 						'default' => '1',
 						'label'   => __( 'Floating Switch Style', 'wp-dark-mode' ),
-						'desc'    => __( 'Select the switcher button style for the frontend. %s', 'wp-dark-mode' ),
+						'desc'    => __( 'Select the switcher button style for the frontend.', 'wp-dark-mode' ),
 						'type'    => 'image_choose',
 						'options' => [
 							'1' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-1-light.png' ),

@@ -18,12 +18,16 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 		public function __construct() {
 			add_action( 'rest_api_init', array( $this, 'rest_api' ) );
 
-			add_action( 'wp_head', [ $this, 'dark_styles' ] );
-			add_action( 'wp_footer', [ $this, 'dark_scripts' ] );
+			if ( 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_darkmode', 'on' ) ) {
+				add_action( 'wp_head', [ $this, 'dark_styles' ] );
+				add_action( 'wp_footer', [ $this, 'dark_scripts' ] );
+				add_action( 'elementor/editor/footer', [ $this, 'dark_scripts' ] );
+			}
 
-			add_action( 'admin_head', [ $this, 'dark_styles' ] );
-			add_action( 'admin_footer', [ $this, 'dark_scripts' ] );
-			add_action( 'elementor/editor/footer', [ $this, 'dark_scripts' ] );
+			if ( 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_backend', 'on' ) ) {
+				add_action( 'admin_head', [ $this, 'dark_styles' ] );
+				add_action( 'admin_footer', [ $this, 'dark_scripts' ] );
+			}
 
 			add_action( 'wsa_form_bottom_wp_dark_mode_advanced', [ $this, 'pro_promo' ] );
 			add_action( 'wsa_form_bottom_wp_dark_mode_display', [ $this, 'pro_promo' ] );
@@ -48,6 +52,25 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 			$link_color = apply_filters( 'wp_dark_mode/link_color', $colors['link'] );
 
 		    ?>
+
+            <script>
+				<?php if('off' != wp_dark_mode_get_settings( 'wp_dark_mode_advanced', 'match_os_mode', 'on' )){ ?>
+
+                <?php if(is_admin()){ ?>
+                var is_saved = sessionStorage.getItem('wp_dark_mode_admin');
+				<?php }else{ ?>
+                var is_saved = sessionStorage.getItem('wp_dark_mode_frontend');
+				<?php } ?>
+
+                if (is_saved != 0) {
+
+                    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                        document.getElementsByTagName('html')[0].classList.add('wp-dark-mode-active');
+                    }
+                }
+
+				<?php } ?>
+            </script>
 
             <style>
                 html.wp-dark-mode-active :not(.wp-dark-mode-ignore):not(mark):not(code):not(pre):not(ins):not(option):not(input):not(select):not(textarea):not(button):not(a):not(video):not(canvas):not(progress):not(iframe):not(svg):not(path) {

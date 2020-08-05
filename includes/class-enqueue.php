@@ -57,7 +57,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 			}
 
 			wp_localize_script( 'wp-dark-mode-frontend', 'wpDarkModeFrontend', [
-				'excludes' => $selectors,
+				'excludes'            => $selectors,
 				'is_elementor_editor' => class_exists( '\Elementor\Plugin' ) && Elementor\Plugin::$instance->editor->is_edit_mode(),
 			] );
 		}
