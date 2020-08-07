@@ -175,6 +175,7 @@ class Client {
             $this->type = 'theme';
 
         }
+
     }
 
     /**

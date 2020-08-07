@@ -265,6 +265,18 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 		 * Display the plugin settings options page
 		 */
 		public function settings_page() { ?>
+
+			<?php
+			include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
+			if ( is_plugin_active( 'wp-dark-mode-pro/plugin.php' ) || is_plugin_active( 'wp-dark-mode-ultimate/plugin.php' ) ) {
+
+				global $wp_dark_mode_license;
+				$wp_dark_mode_license->menu_output();
+			}
+
+			?>
+
             <div class="wrap">
 
                 <div class="wrap">

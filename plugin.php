@@ -89,6 +89,7 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 
 				//init appsero tracker
 				$this->appsero_init_tracker_wp_dark_mode();
+
 			}
 		}
 
@@ -170,9 +171,7 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 		 * @return bool
 		 */
 		public function is_pro_active() {
-			include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-
-			return is_plugin_active( 'wp-dark-mode-pro/plugin.php' );
+			return apply_filters('wp_dark_mode_pro_active', false);
 		}
 
 		/**
@@ -181,9 +180,7 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 		 * @return bool
 		 */
 		public function is_ultimate_active() {
-			include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-
-			return is_plugin_active( 'wp-dark-mode-ultimate/plugin.php' );
+			return apply_filters('wp_dark_mode_ultimate_active', false);
 		}
 
 		/**

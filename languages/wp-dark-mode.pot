@@ -205,7 +205,7 @@ msgstr ""
 msgid "Select the links color when the dark mode is on."
 msgstr ""
 
-#: includes/class-settings.php:260, includes/class-settings.php:271
+#: includes/class-settings.php:260, includes/class-settings.php:283
 msgid "WP Dark Mode Settings"
 msgstr ""
 
@@ -213,11 +213,11 @@ msgstr ""
 msgid "WP Dark Mode"
 msgstr ""
 
-#: includes/class-settings.php:272
+#: includes/class-settings.php:284
 msgid "You can use the `Dark Mode Switch` gutenberg block to display the dark mode switch button."
 msgstr ""
 
-#: includes/class-settings.php:274
+#: includes/class-settings.php:286
 msgid "Also you can use the `Dark Mode Switch` elementor widget to display the dark mode switch button."
 msgstr ""
 
@@ -225,11 +225,11 @@ msgstr ""
 msgid "You can't access this page"
 msgstr ""
 
-#: plugin.php:110
+#: plugin.php:111
 msgid "Unsupported PHP version Min required PHP Version: \"%s\""
 msgstr ""
 
-#: plugin.php:234
+#: plugin.php:231
 msgid "Settings"
 msgstr ""
 
