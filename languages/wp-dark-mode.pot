@@ -61,171 +61,163 @@ msgstr ""
 msgid "%s <span>Style Settings</span>"
 msgstr ""
 
-#: includes/class-settings.php:77
-msgid "Enable Darkmode"
-msgstr ""
-
 #: includes/class-settings.php:78
-msgid "Dark Mode has been activated. Your users will be served a dark mode of your website when their device preference is set to Dark Mode."
+msgid "Enable Frontend Darkmode"
 msgstr ""
 
-#: includes/class-settings.php:88
-msgid "Enable Backend"
+#: includes/class-settings.php:79
+msgid "Dark Mode has been activated in the frontend. Now, your users will be served a dark mode of your website when their device preference is set to Dark Mode or by switching the darkmode switch button."
 msgstr ""
 
 #: includes/class-settings.php:89
-msgid "Enable the dark mode for the admins on the backend."
-msgstr ""
-
-#: includes/class-settings.php:95
 msgid "Match OS Mode"
 msgstr ""
 
-#: includes/class-settings.php:96
+#: includes/class-settings.php:90
 msgid "Automatically shows Darkmode if the OS prefered theme is dark."
 msgstr ""
 
-#: includes/class-settings.php:102
+#: includes/class-settings.php:97
 msgid "Time Based Dark Mode"
 msgstr ""
 
-#: includes/class-settings.php:103
+#: includes/class-settings.php:98
 msgid "Automatically turn on the dark mode between a given time range."
 msgstr ""
 
-#: includes/class-settings.php:109
+#: includes/class-settings.php:105
 msgid "Dark Mode Start Time"
 msgstr ""
 
-#: includes/class-settings.php:110
+#: includes/class-settings.php:106
 msgid "Time to start Dark mode."
 msgstr ""
 
-#: includes/class-settings.php:117
+#: includes/class-settings.php:114
 msgid "Dark Mode End Time"
 msgstr ""
 
-#: includes/class-settings.php:118
+#: includes/class-settings.php:115
 msgid "Time to end Dark mode."
 msgstr ""
 
-#: includes/class-settings.php:125
+#: includes/class-settings.php:123
 msgid "Remember Dark Mode"
 msgstr ""
 
-#: includes/class-settings.php:126
-msgid "Check ON to remember the darkmode status, if darkmode mode status \"ON\" will start automatically when visiting website again. %s"
+#: includes/class-settings.php:124
+msgid "Check ON to remember the darkmode status, if darkmode mode status \"ON\" will start automatically when visiting website again."
 msgstr ""
 
-#: includes/class-settings.php:137
+#: includes/class-settings.php:135
 msgid "Show Floating Switch"
 msgstr ""
 
-#: includes/class-settings.php:138
-msgid "Show the floating dark mode switcher button on the frontend for the users. %s"
+#: includes/class-settings.php:136
+msgid "Show the floating dark mode switcher button on the frontend for the users."
 msgstr ""
 
-#: includes/class-settings.php:145
+#: includes/class-settings.php:143
 msgid "Floating Switch Style"
 msgstr ""
 
-#: includes/class-settings.php:146
-msgid "Select the switcher button style for the frontend. %s"
+#: includes/class-settings.php:144
+msgid "Select the switcher button style for the frontend."
 msgstr ""
 
-#: includes/class-settings.php:161
+#: includes/class-settings.php:159
 msgid "Floating Switch Position"
 msgstr ""
 
-#: includes/class-settings.php:162
+#: includes/class-settings.php:160
 msgid "Select the position of the floating dark mode switcher button on the frontend."
 msgstr ""
 
-#: includes/class-settings.php:166
+#: includes/class-settings.php:164
 msgid "Left Bottom"
 msgstr ""
 
-#: includes/class-settings.php:167
+#: includes/class-settings.php:165
 msgid "Right Bottom"
 msgstr ""
 
-#: includes/class-settings.php:174
+#: includes/class-settings.php:172
 msgid "Show Above Posts"
 msgstr ""
 
-#: includes/class-settings.php:175
+#: includes/class-settings.php:173
 msgid "Show the dark mode switcher button above of all the post."
 msgstr ""
 
-#: includes/class-settings.php:182
+#: includes/class-settings.php:180
 msgid "Show Above Pages"
 msgstr ""
 
-#: includes/class-settings.php:183
+#: includes/class-settings.php:181
 msgid "Show the dark mode switcher button above of all the pages."
 msgstr ""
 
-#: includes/class-settings.php:190
+#: includes/class-settings.php:188
 msgid "Excludes Elements"
 msgstr ""
 
-#: includes/class-settings.php:191
+#: includes/class-settings.php:189
 msgid "Add comma separated (classes, ids) to ignore the darkmode. ex: .class1, #hero-area"
 msgstr ""
 
-#: includes/class-settings.php:201
+#: includes/class-settings.php:199
 msgid "Darkmode Color Preset:"
 msgstr ""
 
-#: includes/class-settings.php:202
+#: includes/class-settings.php:200
 msgid "Select the predefined darkmode background, text and link preset color."
 msgstr ""
 
-#: includes/class-settings.php:217
+#: includes/class-settings.php:215
 msgid "Want to customize colors?"
 msgstr ""
 
-#: includes/class-settings.php:218
+#: includes/class-settings.php:216
 msgid "Customize the darkmode background, text and link colors."
 msgstr ""
 
-#: includes/class-settings.php:225
+#: includes/class-settings.php:223
 msgid "Darkmode Background Color"
 msgstr ""
 
-#: includes/class-settings.php:226
+#: includes/class-settings.php:224
 msgid "Select the background color when the dark mode is on."
 msgstr ""
 
-#: includes/class-settings.php:233
+#: includes/class-settings.php:231
 msgid "Darkmode Text Color"
 msgstr ""
 
-#: includes/class-settings.php:234
+#: includes/class-settings.php:232
 msgid "Select the text color when the dark mode is on."
 msgstr ""
 
-#: includes/class-settings.php:241
+#: includes/class-settings.php:239
 msgid "Darkmode Links Color"
 msgstr ""
 
-#: includes/class-settings.php:242
+#: includes/class-settings.php:240
 msgid "Select the links color when the dark mode is on."
 msgstr ""
 
-#: includes/class-settings.php:262, includes/class-settings.php:273
+#: includes/class-settings.php:260, includes/class-settings.php:271
 msgid "WP Dark Mode Settings"
 msgstr ""
 
-#: includes/class-settings.php:262
+#: includes/class-settings.php:260
 msgid "WP Dark Mode"
 msgstr ""
 
-#: includes/class-settings.php:274
+#: includes/class-settings.php:272
 msgid "You can use the `Dark Mode Switch` gutenberg block to display the dark mode switch button."
 msgstr ""
 
-#: includes/class-settings.php:276
+#: includes/class-settings.php:274
 msgid "Also you can use the `Dark Mode Switch` elementor widget to display the dark mode switch button."
 msgstr ""
 
@@ -237,7 +229,7 @@ msgstr ""
 msgid "Unsupported PHP version Min required PHP Version: \"%s\""
 msgstr ""
 
-#: plugin.php:223
+#: plugin.php:234
 msgid "Settings"
 msgstr ""
 

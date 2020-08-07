@@ -176,6 +176,17 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 		}
 
 		/**
+         * check if the pro plugin is active or not
+         *
+		 * @return bool
+		 */
+		public function is_ultimate_active() {
+			include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
+			return is_plugin_active( 'wp-dark-mode-ultimate/plugin.php' );
+		}
+
+		/**
 		 * Include required core files used in admin and on the frontend.
 		 *
 		 * @return void

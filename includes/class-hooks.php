@@ -31,14 +31,22 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 
 			add_action( 'wsa_form_bottom_wp_dark_mode_advanced', [ $this, 'pro_promo' ] );
 			add_action( 'wsa_form_bottom_wp_dark_mode_display', [ $this, 'pro_promo' ] );
-			add_action( 'wsa_form_bottom_wp_dark_mode_style', [ $this, 'pro_promo' ] );
+			add_action( 'wsa_form_bottom_wp_dark_mode_style', [ $this, 'ultimate_promo' ] );
 		}
 
 		public function pro_promo() {
-			if ( wp_dark_mode()->is_pro_active() ) {
+			if ( wp_dark_mode()->is_pro_active() || wp_dark_mode()->is_ultimate_active() ) {
 				return;
 			}
+
 			wp_dark_mode()->get_template( 'admin/promo' );
+		}
+
+		public function ultimate_promo() {
+			if ( wp_dark_mode()->is_ultimate_active() ) {
+				return;
+			}
+			wp_dark_mode()->get_template( 'admin/promo-ultimate' );
 		}
 
 		public function dark_styles() {
@@ -93,7 +101,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
                     border-color: <?php echo $link_color; ?> !important;
                 }
 
-                html.wp-dark-mode-active button,
+                html.wp-dark-mode-active button:not(#collapse-button),
                 html.wp-dark-mode-active iframe,
                 html.wp-dark-mode-active iframe *,
                 html.wp-dark-mode-active input,
