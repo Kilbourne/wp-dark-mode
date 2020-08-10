@@ -581,7 +581,13 @@ if ( ! class_exists( 'WPPOOL_Settings_API' ) ) {
 
 		            <?php
 		            if ( $form['id'] == 'wp_dark_mode_license' ) {
+			            do_action( 'wsa_form_top_' . $form['id'], $form );
+
+			            settings_fields( $form['id'] );
+
 			            do_settings_sections( $form['id'] );
+
+			            do_action( 'wsa_form_bottom_' . $form['id'], $form );
 		            } else {
 			            ?>
 
@@ -603,9 +609,10 @@ if ( ! class_exists( 'WPPOOL_Settings_API' ) ) {
 				            <?php } ?>
 
                         </form>
-                        </div>
-		            <?php }
-	            } ?>
+
+		            <?php } ?>
+                    </div>
+	            <?php } ?>
             </div>
 			<?php
 			$this->script();

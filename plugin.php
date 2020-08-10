@@ -220,7 +220,9 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 			require $this->plugin_path( 'includes/class-hooks.php' );
 
 			/** load gutenberg block */
-			include_once $this->plugin_path( 'block/plugin.php' );
+			if ( 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_gutenberg', 'enable_gutenberg', 'on' ) ) {
+				include_once $this->plugin_path( 'block/plugin.php' );
+			}
 
 			//admin includes
 			if ( is_admin() ) {
@@ -251,6 +253,10 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 		public function plugin_action_links( $links ) {
 			$links[] = sprintf( '<a href="%1$s">%2$s</a>', admin_url( 'options-general.php?page=wp-dark-mode-settings' ),
 				__( 'Settings', 'wp-dark-mode' ) );
+			if ( ! is_plugin_active( 'wp-dark-mode-pro/plugin.php' ) && ! is_plugin_active( 'wp-dark-mode-ultimate/plugin.php' ) ) {
+				$links[] = sprintf( '<a href="%1$s" target="_blank" style="color: orangered;font-weight: bold;">%2$s</a>',
+					'https://wppool.com/wp-dark-mode', __( 'GET PRO', 'wp-dark-mode' ) );
+			}
 
 			return $links;
 		}
@@ -307,6 +313,7 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 		 * @since 1.0.0
 		 */
 		public function get_template( $name = null, $args = false ) {
+
 			if ( ! empty( $args ) && is_array( $args ) ) {
 				extract( $args );
 			}
@@ -330,6 +337,10 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 		 * @throws Exception
 		 */
 		public function register_widget() {
+			if ( 'on' != wp_dark_mode_get_settings( 'wp_dark_mode_elementor', 'enable_elementor', 'on' ) ) {
+				return;
+			}
+
 			require $this->plugin_path( 'elementor/class-elementor-widget.php' );
 
 			\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new WP_Dark_Mode_Elementor_Widget() );

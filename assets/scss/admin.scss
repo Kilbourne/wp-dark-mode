@@ -113,7 +113,6 @@
 
 }
 
-
 #wp_dark_mode_license {
   .form-table {
     margin-top: -30px;
@@ -140,4 +139,22 @@
   .appsero-license-settings {
     border: 1px solid #ddd;
   }
+}
+
+.license-activation-notice {
+  display: flex;
+  align-items: center;
+
+  .wp-dark-mode-notice-icon {
+    margin-right: 10px;
+    img {
+      max-width: 45px;
+    }
+  }
+
+  .wp-dark-mode-notice-actions{
+    justify-self: flex-end;
+    margin-left: auto;
+  }
+
 }
