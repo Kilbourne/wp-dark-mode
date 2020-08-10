@@ -50,7 +50,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 					'title' => sprintf( __( '%s <span>General Settings</span>', 'wp-dark-mode' ),
 						'<i class="dashicons dashicons-admin-tools" ></i>' ),
 				),
-
 				array(
 					'id'    => 'wp_dark_mode_advanced',
 					'title' => sprintf( __( '%s <span>Advanced Settings</span>', 'wp-dark-mode' ),
@@ -61,7 +60,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 					'title' => sprintf( __( '%s <span>Display Settings</span>', 'wp-dark-mode' ),
 						'<i class="dashicons dashicons-welcome-view-site" ></i>' ),
 				),
-
 				array(
 					'id'    => 'wp_dark_mode_style',
 					'title' => sprintf( __( '%s <span>Style Settings</span>', 'wp-dark-mode' ),
@@ -69,15 +67,37 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 				),
 			);
 
+			if ( is_plugin_active( 'wp-dark-mode-pro/plugin.php' ) || is_plugin_active( 'wp-dark-mode-ultimate/plugin.php' ) ) {
+				$sections[] = array(
+					'id'    => 'wp_dark_mode_license',
+					'title' => sprintf( __( '%s <span>License Settings</span>', 'wp-dark-mode' ),
+						'<i class="dashicons dashicons-admin-network" ></i>' ),
+				);
+			}
+
+			$sections[] = array(
+				'id'    => 'wp_dark_mode_start',
+				'title' => sprintf( __( '%s <span>Get Started</span>', 'wp-dark-mode' ), '<i class="dashicons dashicons-location" ></i>' ),
+			);
+
 			$fields = array(
 
+				'wp_dark_mode_start' => apply_filters( 'wp_dark_mode/getting_started', array(
+					'getting_started' => array(
+						'name'    => 'getting_started',
+						'default' => [ 'WP_Dark_Mode_Settings', 'getting_started' ],
+						'type'    => 'cb_function',
+					),
+				) ),
+
 				'wp_dark_mode_general' => apply_filters( 'wp_dark_mode/general', array(
-					'enable_darkmode'   => array(
-							'name'    => 'enable_darkmode',
-							'default' => 'on',
-							'label'   => __( 'Enable Frontend Darkmode', 'wp-dark-mode' ),
-							'desc'    => __( 'Dark Mode has been activated in the frontend. Now, your users will be served a dark mode of your website when their device preference is set to Dark Mode or by switching the darkmode switch button.', 'wp-dark-mode' ),
-							'type'    => 'switcher',
+					'enable_darkmode' => array(
+						'name'    => 'enable_darkmode',
+						'default' => 'on',
+						'label'   => __( 'Enable Frontend Darkmode', 'wp-dark-mode' ),
+						'desc'    => __( 'Dark Mode has been activated in the frontend. Now, your users will be served a dark mode of your website when their device preference is set to Dark Mode or by switching the darkmode switch button.',
+							'wp-dark-mode' ),
+						'type'    => 'switcher',
 					),
 				) ),
 
@@ -243,6 +263,16 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 				) ),
 			);
 
+			if ( is_plugin_active( 'wp-dark-mode-pro/plugin.php' ) || is_plugin_active( 'wp-dark-mode-ultimate/plugin.php' ) ) {
+				$fields['wp_dark_mode_license'] = apply_filters( 'wp_dark_mode/license_settings', array(
+					'license_settings' => array(
+						'name'    => 'license',
+						'default' => [ 'WP_Dark_Mode_Settings', 'license_output' ],
+						'type'    => 'cb_function',
+					),
+				) );
+			}
+
 			self::$settings_api = new WPPOOL_Settings_API();
 
 			//set sections and fields
@@ -252,6 +282,39 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 			//initialize them
 			self::$settings_api->admin_init();
 		}
+
+		public static function license_output() {
+			global $wp_dark_mode_license;
+			$wp_dark_mode_license->menu_output();
+		}
+
+		public static function getting_started() { ?>
+            <div class="getting-started-wrap">
+                <div class="getting-started-section">
+                    <h2>How to display Dark Mode Switch Button using Gutenberg block</h2>
+                    <p>You can place the switch button into any page/post by using the (Dark Mode Switch) gutenberg block , for your users to switch between the dark and normal mode.
+                        <br> For displaying the Darkmode Switch button in Gutenberg use the (Dark Mode Switch) Block.</p>
+					<?php echo do_shortcode( '[video width="640" src="https://www.youtube.com/watch?v=TPKa-Xg9w5c"]' ); ?>
+                </div>
+
+                <div class="getting-started-section">
+                    <h2>How to display Dark Mode Switch Button using Elementor Widget</h2>
+                    <p>Also, You can place the Dark Mode switch button into any page/post by using the (Dark Mode Switch) elementor widget.
+                        <br> For displaying the Darkmode Switch button in Elementor use the (Dark Mode Switch) Widget.
+                    </p>
+					<?php echo do_shortcode( '[video src="https://www.youtube.com/watch?v=5Y8XawJg4pw"]' ); ?>
+                </div>
+
+                <div class="getting-started-section">
+                    <h2>How to deactivate the Dark Mode</h2>
+                    <p>If you want to disable the darkmode functionality, Then go to your
+                        <code>Admin Dashboard > Settings > WP Dark Mode</code> Then, turn off the enable frontend darkmode switch button.
+                    </p>
+					<?php echo do_shortcode( '[video src="https://www.youtube.com/watch?v=y7-XPXuF0-g"]' ); ?>
+                </div>
+
+            </div>
+		<?php }
 
 		/**
 		 * Register the plugin page
@@ -265,17 +328,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 		 * Display the plugin settings options page
 		 */
 		public function settings_page() { ?>
-
-			<?php
-			include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-
-			if ( is_plugin_active( 'wp-dark-mode-pro/plugin.php' ) || is_plugin_active( 'wp-dark-mode-ultimate/plugin.php' ) ) {
-
-				global $wp_dark_mode_license;
-				$wp_dark_mode_license->menu_output();
-			}
-
-			?>
 
             <div class="wrap">
 

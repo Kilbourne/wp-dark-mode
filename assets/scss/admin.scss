@@ -63,3 +63,81 @@
   }
 
 }
+
+/** settings page **/
+#wp_dark_mode_start-tab {
+  background: yellowgreen;
+  color: #fff;
+
+  i {
+    color: #fff;
+  }
+}
+
+#wp_dark_mode_start {
+  .submit {
+    display: none;
+  }
+
+  .form-table {
+    td {
+      padding: 0;
+    }
+  }
+}
+
+.wppool-settings tr.getting_started {
+  th {
+    display: none;
+  }
+
+  .getting-started-section {
+    margin-bottom: 50px;
+    padding: 10px;
+
+    h2 {
+      font-weight: bold;
+    }
+
+    .wp-video, iframe {
+      max-width: 640px !important;
+      max-height: 360px !important;
+      overflow: hidden;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+  }
+
+}
+
+
+#wp_dark_mode_license {
+  .form-table {
+    margin-top: -30px;
+
+    td {
+      padding: 0;
+    }
+  }
+}
+
+.wppool-settings tr.license {
+  p {
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    display: none;
+  }
+
+  th {
+    display: none;
+  }
+
+  .appsero-license-settings {
+    border: 1px solid #ddd;
+  }
+}

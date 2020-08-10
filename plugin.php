@@ -80,6 +80,7 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 		 */
 		public function __construct() {
 			if ( $this->check_environment() ) {
+
 				$this->load_files();
 
 				// Load files.
@@ -89,6 +90,11 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 
 				//init appsero tracker
 				$this->appsero_init_tracker_wp_dark_mode();
+
+
+				/** do the activation stuff */
+				register_activation_hook( __FILE__, [ $this, 'activation' ] );
+				add_action( 'admin_init', [ $this, 'activation_redirect' ] );
 
 			}
 		}
@@ -134,6 +140,27 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 		}
 
 		/**
+		 * do the activation stuffs
+		 */
+		public function activation() {
+			require $this->plugin_path( 'includes/class-install.php' );
+
+			add_option( 'wp_dark_mode_do_activation_redirect', true );
+
+		}
+
+		/**
+		 * redirect to settings page after activation the plugin
+		 */
+		public function activation_redirect() {
+			if ( get_option( 'wp_dark_mode_do_activation_redirect', false ) ) {
+				delete_option( 'wp_dark_mode_do_activation_redirect' );
+
+				wp_redirect( admin_url( 'options-general.php?page=wp-dark-mode-settings' ) );
+			}
+		}
+
+		/**
 		 * Hook into actions and filters.
 		 *
 		 * @return void
@@ -149,11 +176,6 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 
 			/** plugin action_links */
 			add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'plugin_action_links' ) );
-
-			/** do the activation stuff */
-			register_activation_hook( __FILE__, function () {
-				require $this->plugin_path( 'includes/class-install.php' );
-			} );
 
 			/** register elementor widget */
 			add_action( 'elementor/widgets/widgets_registered', [ $this, 'register_widget' ] );

@@ -379,6 +379,10 @@ if ( ! class_exists( 'WPPOOL_Settings_API' ) ) {
 			echo $html;
 		}
 
+		function callback_cb_function( $args ) {
+			call_user_func( $args['std'] );
+		}
+
 		/**
 		 * Displays the html for a settings field
 		 *
@@ -571,27 +575,37 @@ if ( ! class_exists( 'WPPOOL_Settings_API' ) ) {
             <div class="wppool-settings-content">
 	            <?php
 
+
 	            foreach ( $this->settings_sections as $form ) { ?>
                     <div id="<?php echo $form['id']; ?>" class="group" style="display: none;">
+
+		            <?php
+		            if ( $form['id'] == 'wp_dark_mode_license' ) {
+			            do_settings_sections( $form['id'] );
+		            } else {
+			            ?>
+
                         <form method="post" action="options.php">
-							<?php
-							do_action( 'wsa_form_top_' . $form['id'], $form );
+				            <?php
 
-							settings_fields( $form['id'] );
+				            do_action( 'wsa_form_top_' . $form['id'], $form );
 
-							do_settings_sections( $form['id'] );
+				            settings_fields( $form['id'] );
 
-							do_action( 'wsa_form_bottom_' . $form['id'], $form );
+				            do_settings_sections( $form['id'] );
 
-							if ( isset( $this->settings_fields[ $form['id'] ] ) ) { ?>
+				            do_action( 'wsa_form_bottom_' . $form['id'], $form );
+
+				            if ( isset( $this->settings_fields[ $form['id'] ] ) ) { ?>
                                 <div style="padding-left: 10px">
-									<?php submit_button(); ?>
+						            <?php submit_button( 'Save Settings', 'primary', 'save_settings' ); ?>
                                 </div>
-							<?php } ?>
+				            <?php } ?>
 
                         </form>
-                    </div>
-				<?php } ?>
+                        </div>
+		            <?php }
+	            } ?>
             </div>
 			<?php
 			$this->script();
