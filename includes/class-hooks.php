@@ -29,9 +29,29 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 				add_action( 'admin_footer', [ $this, 'dark_scripts' ] );
 			}
 
+			/** display the dark mode switcher if the dark mode enabled on frontend */
+			if ( 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_darkmode', 'on' )
+			     && 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'show_switcher', 'on' ) ) {
+				add_action( 'wp_footer', [ $this, 'display_widget' ] );
+			}
+
 			add_action( 'wsa_form_bottom_wp_dark_mode_advanced', [ $this, 'pro_promo' ] );
 			add_action( 'wsa_form_bottom_wp_dark_mode_display', [ $this, 'pro_promo' ] );
 			add_action( 'wsa_form_bottom_wp_dark_mode_style', [ $this, 'ultimate_promo' ] );
+		}
+
+		/**
+		 * display the footer widget
+		 */
+		public function display_widget() {
+			$style = wp_dark_mode_get_settings( 'wp_dark_mode_display', 'switch_style', 1 );
+
+			global $wp_dark_mode_license;
+			if (!$wp_dark_mode_license || ! $wp_dark_mode_license->is_valid() ) {
+				$style = 1;
+			}
+
+			echo do_shortcode( '[wp_dark_mode floating="yes" style="' . $style . '"]' );
 		}
 
 		public function pro_promo() {

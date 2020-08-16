@@ -6,7 +6,7 @@
     <div class="wp-dark-mode-notice-text">
         <p><strong><?php _e( 'Activate License', 'wp-dark-mode' ); ?> - <?php echo $plugin_name; ?> - <?php _e( 'Version',
 					'wp-dark-mode' ); ?> <?php echo $version; ?></strong></p>
-        <p><?php _e( 'Activate the license for', 'wp-dark-mode' ); ?><?php echo $plugin_name; ?><?php _e( 'to function properly.',
+        <p><?php _e( 'Activate the license for ', 'wp-dark-mode' ); ?><?php echo $plugin_name; ?><?php _e( ' to function properly.',
 				'wp-dark-mode' ); ?></p>
     </div>
 

@@ -17,7 +17,7 @@ if ( ! $countdown_time ) {
 		'minute' => $date_parts[4],
 	];
 
-	set_transient( $transient_key, $countdown_time, 6 * 24 * HOUR_IN_SECONDS );
+	set_transient( $transient_key, $countdown_time, ( ( 6 * 24 * HOUR_IN_SECONDS ) + 6 * HOUR_IN_SECONDS ) );
 
 }
 
@@ -28,7 +28,7 @@ if ( ! $countdown_time ) {
         <img src="<?php echo wp_dark_mode()->plugin_url( 'assets/images/crown.svg' ) ?>" class="promo-img">
 
         <h3>Upgrade to Ultimate to access these features</h3>
-        <h3 class="discount">GET <span class="percentage">60%</span> OFF</h3>
+        <h3 class="discount">GET <span class="percentage">50%</span> OFF</h3>
         <h3 class="limited-title">LIMITED TIME ONLY</h3>
         <div class="simple_timer"></div>
         <a href="https://wppool.dev/wp-dark-mode" target="_blank">GET ULTIMATE</a>

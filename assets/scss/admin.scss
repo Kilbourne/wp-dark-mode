@@ -1,3 +1,28 @@
+/** Settings */
+tr.gutenberg_doc, tr.elementor_doc {
+  h2 {
+    font-weight: bold;
+  }
+
+  th {
+    display: none;
+  }
+}
+
+.doc-section {
+  list-style: disc;
+
+  img {
+    max-width: 100%;
+    border: 1px solid #ddd;
+  }
+
+  h3{
+    font-weight: 300;
+  }
+
+}
+
 .promo {
   position: absolute;
   height: 100%;

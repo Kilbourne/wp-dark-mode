@@ -3,7 +3,7 @@
  * Plugin Name: WP Dark Mode
  * Plugin URI:  https://wppool.dev/wp-dark-mode
  * Description: WP Dark Mode automatically enables a stunning dark mode of your website based on user's operating system. Supports macOS, Windows, Android & iOS.
- * Version:     1.0.2
+ * Version:     1.0.3
  * Author:      WPPOOL
  * Author URI:  http://wppool.dev
  * Text Domain: wp-dark-mode
@@ -44,7 +44,7 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 		 * @access private
 		 * @var string
 		 */
-		public $version = '1.0.2';
+		public $version = '1.0.3';
 
 		/**
 		 * Holder for base plugin URL
@@ -220,9 +220,8 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 			require $this->plugin_path( 'includes/class-hooks.php' );
 
 			/** load gutenberg block */
-			if ( 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_gutenberg', 'enable_gutenberg', 'on' ) ) {
-				include_once $this->plugin_path( 'block/plugin.php' );
-			}
+			include_once $this->plugin_path( 'block/plugin.php' );
+
 
 			//admin includes
 			if ( is_admin() ) {
@@ -337,9 +336,6 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 		 * @throws Exception
 		 */
 		public function register_widget() {
-			if ( 'on' != wp_dark_mode_get_settings( 'wp_dark_mode_elementor', 'enable_elementor', 'on' ) ) {
-				return;
-			}
 
 			require $this->plugin_path( 'elementor/class-elementor-widget.php' );
 
