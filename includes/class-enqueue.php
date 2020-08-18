@@ -16,9 +16,9 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 		 * WP_Dark_Mode_Enqueue constructor.
 		 */
 		public function __construct() {
-			if ( 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_darkmode', 'on' ) ) {
+			//if ( 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_darkmode', 'on' ) ) {
 				add_action( 'wp_enqueue_scripts', [ $this, 'frontend_scripts' ] );
-			}
+			//}
 
 			add_action( 'admin_enqueue_scripts', [ $this, 'admin_scripts' ] );
 
@@ -58,6 +58,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 
 			wp_localize_script( 'wp-dark-mode-frontend', 'wpDarkModeFrontend', [
 				'excludes'            => $selectors,
+				'enable_darkmode'     => 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_darkmode', 'on' ),
 				'is_elementor_editor' => class_exists( '\Elementor\Plugin' ) && Elementor\Plugin::$instance->editor->is_edit_mode(),
 			] );
 		}
@@ -70,14 +71,14 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 		public function admin_scripts( $hook ) {
 
 			/** wp-dark-mode admin css */
-			wp_enqueue_style( 'wp-dark-mode-admin', wp_dark_mode()->plugin_url( '/assets/css/admin.css' ), false, wp_dark_mode()->version );
+			wp_enqueue_style( 'wp-dark-mode-admin', wp_dark_mode()->plugin_url( 'assets/css/admin.css' ), false, wp_dark_mode()->version );
 
 			/** countdown timer js */
-			wp_enqueue_script( 'jquery.syotimer', wp_dark_mode()->plugin_url( '/assets/js/jquery.syotimer.min.js' ), [ 'jquery' ], '2.1.2',
+			wp_enqueue_script( 'jquery.syotimer', wp_dark_mode()->plugin_url( 'assets/js/jquery.syotimer.min.js' ), [ 'jquery' ], '2.1.2',
 				true );
 
 			/** wp-dark-mode admin js */
-			wp_enqueue_script( 'wp-dark-mode-admin', wp_dark_mode()->plugin_url( '/assets/js/admin.js' ), [
+			wp_enqueue_script( 'wp-dark-mode-admin', wp_dark_mode()->plugin_url( 'assets/js/admin.js' ), [
 				'jquery',
 				'wp-util',
 			], wp_dark_mode()->version, true );

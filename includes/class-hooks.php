@@ -18,11 +18,9 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 		public function __construct() {
 			add_action( 'rest_api_init', array( $this, 'rest_api' ) );
 
-			if ( 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_darkmode', 'on' ) ) {
-				add_action( 'wp_head', [ $this, 'dark_styles' ] );
-				add_action( 'wp_footer', [ $this, 'dark_scripts' ] );
-				add_action( 'elementor/editor/footer', [ $this, 'dark_scripts' ] );
-			}
+			add_action( 'wp_head', [ $this, 'dark_styles' ] );
+			add_action( 'wp_footer', [ $this, 'dark_scripts' ] );
+			add_action( 'elementor/editor/footer', [ $this, 'dark_scripts' ] );
 
 			if ( 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_backend', 'on' ) ) {
 				add_action( 'admin_head', [ $this, 'dark_styles' ] );
@@ -30,8 +28,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 			}
 
 			/** display the dark mode switcher if the dark mode enabled on frontend */
-			if ( 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_darkmode', 'on' )
-			     && 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'show_switcher', 'on' ) ) {
+			if ( 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'show_switcher', 'on' ) ) {
 				add_action( 'wp_footer', [ $this, 'display_widget' ] );
 			}
 
@@ -71,6 +68,10 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 
 		public function dark_styles() {
 
+			if ( is_admin() && ! wp_dark_mode()->is_ultimate_active() ) {
+				return;
+			}
+
 			$preset = wp_dark_mode_get_settings( 'wp_dark_mode_style', 'color_preset', '0' );
 
 		    $colors = wp_dark_mode_color_presets($preset);
@@ -79,10 +80,17 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 			$text_color = apply_filters( 'wp_dark_mode/text_color', $colors['text'] );
 			$link_color = apply_filters( 'wp_dark_mode/link_color', $colors['link'] );
 
+			if ( is_admin() ) {
+				$bg_color      = '#10161E';
+				$base_selector = 'html.wp-dark-mode-active #wpbody';
+			} else {
+				$base_selector = 'html.wp-dark-mode-active';
+			}
+
 		    ?>
 
             <script>
-				<?php if('off' != wp_dark_mode_get_settings( 'wp_dark_mode_advanced', 'match_os_mode', 'on' )){ ?>
+	            <?php if('off' != wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_darkmode', 'on' )){ ?>
 
                 <?php if(is_admin()){ ?>
                 var is_saved = sessionStorage.getItem('wp_dark_mode_admin');
@@ -101,25 +109,31 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
             </script>
 
             <style>
-                html.wp-dark-mode-active :not(.wp-dark-mode-ignore):not(mark):not(code):not(pre):not(ins):not(option):not(input):not(select):not(textarea):not(button):not(a):not(video):not(canvas):not(progress):not(iframe):not(svg):not(path) {
+                <?php echo $base_selector; ?>
+                :not(.wp-dark-mode-ignore):not(mark):not(code):not(pre):not(ins):not(option):not(input):not(select):not(textarea):not(button):not(a):not(video):not(canvas):not(progress):not(iframe):not(svg):not(path):not(.mejs-iframe-overlay):not(.mejs-time-slider):not(.mejs-overlay-play) {
                     background-color: <?php echo $bg_color; ?> !important;
                     color: <?php echo $text_color; ?> !important;
                     border-color: <?php echo $link_color; ?> !important;
                 }
 
-                html.wp-dark-mode-active a:not(.wp-dark-mode-ignore),
-                html.wp-dark-mode-active a *:not(.wp-dark-mode-ignore) {
+                <?php echo $base_selector; ?>
+                a:not(.wp-dark-mode-ignore),
+                <?php echo $base_selector; ?> a *:not(.wp-dark-mode-ignore) {
                     background-color: transparent !important;
                     color: <?php echo $link_color; ?> !important;
                 }
 
-                html.wp-dark-mode-active a:active,
-                html.wp-dark-mode-active a:active *,
-                html.wp-dark-mode-active a:visited,
-                html.wp-dark-mode-active a:visited * {
+                <?php echo $base_selector; ?>
+                a:active,
+                <?php echo $base_selector; ?> a:active *,
+                <?php echo $base_selector; ?> a:visited,
+                <?php echo $base_selector; ?> a:visited * {
                     color: <?php echo $link_color; ?> !important;
                     border-color: <?php echo $link_color; ?> !important;
                 }
+
+
+                <?php if(!is_admin()){ ?>
 
                 html.wp-dark-mode-active button:not(#collapse-button),
                 html.wp-dark-mode-active iframe,
@@ -144,15 +158,13 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
                 html.wp-dark-mode-active input[type="week"],
                 html.wp-dark-mode-active select,
                 html.wp-dark-mode-active textarea,
-                /*html.wp-dark-mode-active [class*="button"],*/
-                /*html.wp-dark-mode-active [class*="btn"],*/
-                /*html.wp-dark-mode-active [role="button"],*/
-                /*html.wp-dark-mode-active [role="icon"],*/
                 html.wp-dark-mode-active i:not(.wp-dark-mode-ignore) {
                     background-color: rgb(53, 66, 80) !important;
                     color: <?php echo $text_color; ?> !important;
                     border-color: rgb(53, 66, 80) !important;
                 }
+
+                <?php } ?>
 
             </style>
 
@@ -162,6 +174,10 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 		 * darkmode scripts
 		 */
 		public function dark_scripts() {
+			if ( is_admin() && ! wp_dark_mode()->is_ultimate_active() ) {
+				return;
+			}
+
 			$selectors = '.wp-dark-mode-ignore';
 			$excludes  = wp_dark_mode_get_settings( 'wp_dark_mode_display', 'excludes' );
 
@@ -173,6 +189,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
             <script>
                 (function ($) {
                     $(document).ready(function () {
+
                         $(window).on('darkmodeInit', handleExcludes);
                         $(document).on('change', '.wp-dark-mode-switch', handleExcludes);
 
@@ -193,8 +210,9 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 
 			register_rest_route( $namespace, '/switch/(?P<switch>\d+)', array(
 				array(
-					'methods'  => 'GET',
-					'callback' => array( $this, 'rest_api_get_switch_preview' ),
+					'methods'             => 'GET',
+					'callback'            => array( $this, 'rest_api_get_switch_preview' ),
+					'permission_callback' => '__return_true',
 				),
 			) );
 		}

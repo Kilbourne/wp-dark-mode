@@ -1,19 +1,20 @@
 ;(function ($) {
 
-    const darkClass = 'wp-dark-mode-active';
+    var darkClass = 'wp-dark-mode-active';
 
-    const app = {
+    var app = {
 
-        init: () => {
-
-            app.initDarkMode();
+        init: function () {
 
             /** block from admin side */
             if (typeof wpDarkModeAdmin === 'undefined') {
                 app.checkOsMode();
             }
 
-            app.checkDarkMode();
+            if (typeof elementor === 'undefined') {
+                app.initDarkmode();
+            }
+
             app.excludeBGELements();
 
             $(document).on('change', '.wp-dark-mode-switch', app.handleToggle);
@@ -24,13 +25,18 @@
         /** initialize object holder */
         darkMode: null,
 
-        /** init dark mode */
-        initDarkMode: function () {
-            //$('html').addClass(darkClass);
+        initDarkmode: function () {
+            var is_saved = sessionStorage.getItem('wp_dark_mode_frontend');
+
+            if (1 == is_saved) {
+                $('html').addClass('wp-dark-mode-active');
+                app.checkDarkMode();
+                $(window).trigger('darkmodeInit');
+            }
         },
 
         excludeBGELements: function () {
-            $("div, section").each(function () {
+            $('div, section').each(function () {
 
                 if ($(this).css('background-image') != 'none') {
                     $(this).add($(this).find('*')).addClass('wp-dark-mode-ignore');
@@ -43,6 +49,14 @@
         handleToggle: function () {
             $('html').toggleClass(darkClass);
             app.checkDarkMode();
+
+            var is_saved = $(this).is(':checked') ? 1 : 0;
+
+            if (typeof wpDarkModeProFrontend !== 'undefined') {
+                is_saved = wpDarkModeProFrontend.remember_darkmode ? 1 : 0;
+            }
+
+            sessionStorage.setItem('wp_dark_mode_frontend', is_saved);
         },
 
         /** check if the darkmode is active or not on initialize */
@@ -56,11 +70,8 @@
         },
 
         checkOsMode: function () {
-
-            if (typeof wpDarkModeProFrontend !== 'undefined') {
-                if (!wpDarkModeProFrontend.match_os_mode) {
-                    return;
-                }
+            if (!wpDarkModeFrontend.enable_darkmode) {
+                return;
             }
 
             if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {

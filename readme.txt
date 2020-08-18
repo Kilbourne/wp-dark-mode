@@ -4,7 +4,7 @@ Tags: dark, dark mode, night mode, gutenberg blocks, dark theme
 Requires at least: 4.4
 Tested up to: 5.5
 Requires PHP: 5.6
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,8 +26,9 @@ WP Dark Mode supports all major operating systems including iOS, Android, macOS 
 
 === WP Dark Mode Features ===
 
-1. **Elementor Supported** - You can place the Dark Mode switch button into any page/post by using the (Dark Mode Switch) elementor widget.
-1. **Gutenberg Supported** - You can place the switch button into any page/post by using the (Dark Mode Switch) gutenberg block.
+1. **Floating Switch Button** - You can display a darkmode floating switch button in the footer of the website.
+1. **Darkmode Elementor Widget** - You can place the Dark Mode switch button into any page/post by using the (Dark Mode Switch) elementor widget.
+1. **Darkode Gutenberg Widget** - You can place the switch button into any page/post by using the (Dark Mode Switch) gutenberg block.
 1. **Auto Match OS Theme** - Automatically shows Darkmode if the OS prefered theme is dark
 
 === 💰 WP Dark Mode Pro Features ===
@@ -51,16 +52,21 @@ WP Dark Mode supports all major operating systems including iOS, Android, macOS 
 === How to Use ===
 After activating the plugin by default your website will turn into darkmode for your users if the Operating System of the users sets into dark theme.
 
+You can display a darkmode floating switch button in the footer of the website by turning on the "Show Floating Switch" settings from the WP Dark Mode general settings.
+
+
 Also you can display a Darkmode switch button in any page/post by using the Gutenberg Block & Elementor Widget, for your users to switch between the dark and normal mode.
 For displaying the Darkmode Switch button in Gutenberg use the **(Dark Mode Switch)** Block.
 For displaying the Darkmode Switch button in Elementor use the **(Dark Mode Switch)** Widget.
 
-If you want to disable the darkmode functionality, Then go to your `Admin Dashboard > Settings > WP Dark Mode` turn off the enable darkmode switch button.
+If you want to disable the OS aware darkmode functionality, Then navigate to your `Admin Dashboard > Settings > WP Dark Mode` turn off the "Enable OS aware Dark Mode" switch button.
 
 == Frequently Asked Questions ==
 
 = How can I show darkmode ON/ OFF control switch button? =
-In the free version you can display the switch button in any page/post by using the  gutenberg (Dark Mode Switch) block and in elementor you can use the (Dark Mode Switch) widget.mAnd in the PRO version you can display a fixed switch button in the footer of all the pages of your website.You can also display the switch button on the top of every post/ page.You can choose style of the switch button from different switch styles.
+You can display the switch button in any page/post by using the  gutenberg (Dark Mode Switch) block and in elementor you can use the (Dark Mode Switch) widget.
+And also you can display a darkmode floating switch button in the footer all over the website by turning on the "Show Floating Switch" settings from the WP Dark Mode general settings.
+And in the PRO version you can also display the switch button on the top of every post/ page. You can choose style of the switch button from different switch styles.
 
 == Screenshots ==
 1. General Settings
@@ -70,6 +76,12 @@ In the free version you can display the switch button in any page/post by using 
 5. Gutenberg Block
 
 == Changelog ==
+
+= 1.0.4 =
+* Fix: Fixed "Show Floating Switch" settings
+* Fix: Fixed "Enable OS aware Dark Mode" settings
+* Fix: Remember Darkmode
+* Fix: rest api "register_rest_route" function notice error
 
 = 1.0.3 =
 * New: Add dark mode floating switch

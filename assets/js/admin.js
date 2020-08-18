@@ -1,8 +1,8 @@
 ;(function ($) {
 
-    const app = {
+    var app = {
 
-        init: () => {
+        init: function(){
             app.checkDesc();
             app.checkSwitchdDeps();
 

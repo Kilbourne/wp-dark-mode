@@ -119,15 +119,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 				) ),
 
 				'wp_dark_mode_advanced' => apply_filters( 'wp_dark_mode/advanced_settings', array(
-
-					'match_os_mode'     => array(
-						'name'    => 'match_os_mode',
-						'default' => 'on',
-						'label'   => __( 'Match OS Mode', 'wp-dark-mode' ),
-						'desc'    => __( 'Automatically shows Darkmode if the OS prefered theme is dark.', 'wp-dark-mode' ),
-						'type'    => 'switcher',
-					),
-
+				        
 					'time_based_mode'   => array(
 						'name'    => 'time_based_mode',
 						'default' => 'off',
