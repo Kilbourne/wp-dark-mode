@@ -74,34 +74,43 @@
                 return;
             }
 
-            /**IOS*/
-            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
-                const newColorScheme = e.matches ? "dark" : "light";
 
-                if ('dark' === newColorScheme) {
-                    $('html').addClass(darkClass);
-                } else {
-                    $('html').removeClass(darkClass);
+            var darkMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+            try {
+                // Chrome & Firefox
+                darkMediaQuery.addEventListener('change', function (e) {
+                    var newColorScheme = e.matches ? 'dark' : 'light';
+
+                    if ('dark' === newColorScheme) {
+                        $('html').addClass(darkClass);
+                        $(window).trigger('darkmodeInit');
+                    } else {
+                        $('html').removeClass(darkClass);
+                    }
+                });
+            } catch (e1) {
+                try {
+                    // Safari
+                    darkMediaQuery.addListener(function (e) {
+                        var newColorScheme = e.matches ? 'dark' : 'light';
+
+                        if ('dark' === newColorScheme) {
+                            $('html').addClass(darkClass);
+                        } else {
+                            $('html').removeClass(darkClass);
+                        }
+                    });
+                } catch (e2) {
+                    console.error(e2);
                 }
-            });
+            }
 
+            /** check init dark theme */
             if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
                 $('html').addClass(darkClass);
                 $(window).trigger('darkmodeInit');
             }
-
-
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
-                const newColorScheme = e.matches ? "dark" : "light";
-
-                if ('dark' === newColorScheme) {
-                    $('html').addClass(darkClass);
-                    $(window).trigger('darkmodeInit');
-                } else {
-                    $('html').removeClass(darkClass);
-                }
-
-            });
 
         }
 
