@@ -35,6 +35,37 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 			add_action( 'wsa_form_bottom_wp_dark_mode_advanced', [ $this, 'pro_promo' ] );
 			add_action( 'wsa_form_bottom_wp_dark_mode_display', [ $this, 'pro_promo' ] );
 			add_action( 'wsa_form_bottom_wp_dark_mode_style', [ $this, 'ultimate_promo' ] );
+			add_action( 'wsa_form_bottom_wp_dark_mode_image_settings', [ $this, 'ultimate_promo' ] );
+
+			add_action( 'wp_footer', [ $this, 'replace_image' ] );
+		}
+
+		public function replace_image() {
+			$images       = get_option( 'wp_dark_mode_image_settings' );
+			$light_images = array_filter( (array) $images['light_images'] );
+			$dark_images  = array_filter( (array) $images['dark_images'] );
+
+			?>
+            <script>
+                (function ($) {
+                    $(document).ready(function () {
+						<?php
+
+						foreach ($light_images as $key => $light_image){ ?>
+                        var image = $("img[src$='<?php echo $light_image ?>']");
+
+                        image.clone().attr({
+                            src: '<?php echo $dark_images[ $key ]; ?>',
+                            srcset: '<?php echo $dark_images[ $key ]; ?>',
+                        }).addClass('wp-dark-mode-dark-image').insertAfter(image);
+
+                        image.addClass('wp-dark-mode-light-image');
+
+						<?php } ?>
+                    });
+                })(jQuery);
+            </script>
+			<?php
 		}
 
 		/**
@@ -109,6 +140,8 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
             </script>
 
             <style>
+
+                /**--- Main Styles ----*/
                 <?php echo $base_selector; ?>
                 :not(.wp-dark-mode-ignore):not(mark):not(code):not(pre):not(ins):not(option):not(input):not(select):not(textarea):not(button):not(a):not(video):not(canvas):not(progress):not(iframe):not(svg):not(path):not(.mejs-iframe-overlay):not(.mejs-time-slider):not(.mejs-overlay-play) {
                     background-color: <?php echo $bg_color; ?> !important;
@@ -116,6 +149,18 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
                     border-color: <?php echo $link_color; ?> !important;
                 }
 
+                /**--- Before/ After Styles ----*/
+                <?php echo $base_selector; ?>
+                *:before {
+                    background-color: <?php echo $bg_color; ?> !important;
+                }
+
+                <?php echo $base_selector; ?>
+                *:after {
+                    background-color: <?php echo $bg_color; ?> !important;
+                }
+
+                /**--- Link Styles ----*/
                 <?php echo $base_selector; ?>
                 a:not(.wp-dark-mode-ignore),
                 <?php echo $base_selector; ?> a *:not(.wp-dark-mode-ignore) {
@@ -123,6 +168,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
                     color: <?php echo $link_color; ?> !important;
                 }
 
+                /**--- Link Pseoudo Styles ----*/
                 <?php echo $base_selector; ?>
                 a:active,
                 <?php echo $base_selector; ?> a:active *,
@@ -132,7 +178,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
                     border-color: <?php echo $link_color; ?> !important;
                 }
 
-
+                /**--- Input Styles ----*/
                 <?php if(!is_admin()){ ?>
 
                 html.wp-dark-mode-active button:not(#collapse-button),

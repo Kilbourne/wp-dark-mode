@@ -8,6 +8,21 @@
 
             $('.enable_darkmode input[type=checkbox]').on('change', app.checkDesc);
             $('.show_switcher input[type=checkbox]').on('change', app.checkSwitchdDeps);
+
+            $(document).on('click', '.add_row', app.addRow);
+            $(document).on('click', '.remove_row', app.removeRow);
+
+        },
+
+        addRow: function (e) {
+            e.preventDefault();
+
+            $(this).closest('tr').clone().appendTo('.image-settings-table tbody').find('input').val('');
+        },
+
+        removeRow: function (e) {
+            e.preventDefault();
+            $(this).closest('tr').remove();
         },
 
         checkDesc: function () {

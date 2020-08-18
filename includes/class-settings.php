@@ -71,6 +71,11 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'<i class="dashicons dashicons-screenoptions" ></i>' ),
 				),
 				array(
+					'id'    => 'wp_dark_mode_image_settings',
+					'title' => sprintf( __( '%s <span>Image Settings</span>', 'wp-dark-mode' ),
+						'<i class="dashicons dashicons-format-gallery" ></i>' ),
+				),
+				array(
 					'id'    => 'wp_dark_mode_elementor',
 					'title' => sprintf( __( '%s <span>Elementor Widget</span>', 'wp-dark-mode' ),
 						'<i class="dashicons dashicons-align-none" ></i>' ),
@@ -293,6 +298,14 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'type'    => 'cb_function',
 					),
 				) ),
+
+				'wp_dark_mode_image_settings' => apply_filters( 'wp_dark_mode/image_settings', array(
+					array(
+						'name'    => 'image_settings',
+						'default' => [ $this, 'image_settings' ],
+						'type'    => 'cb_function',
+					),
+				) ),
 			);
 
 			if ( ! is_plugin_active( 'wp-dark-mode-pro/plugin.php' ) && ! is_plugin_active( 'wp-dark-mode-ultimate/plugin.php' ) ) {
@@ -310,6 +323,52 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 			//initialize them
 			self::$settings_api->admin_init();
 		}
+
+		public static function image_settings() {
+
+			$images       = get_option( 'wp_dark_mode_image_settings' );
+			$light_images = array_filter( (array) $images['light_images'] );
+			$dark_images  = array_filter( (array) $images['dark_images'] );
+
+			?>
+            <table class="image-settings-table">
+                <tbody>
+                <tr>
+                    <td>Normal Mode Image</td>
+                    <td>Dark Mode Image</td>
+                    <td></td>
+                </tr>
+
+				<?php
+
+				if ( ! empty( $light_images ) ) {
+					foreach ( $light_images as $key => $light_image ) { ?>
+                        <tr>
+                            <td><input type="url" value="<?php echo $light_image; ?>" name="wp_dark_mode_image_settings[light_images][]">
+                            </td>
+                            <td>
+                                <input type="url" value="<?php echo $dark_images[ $key ] ?>" name="wp_dark_mode_image_settings[dark_images][]">
+                            </td>
+                            <td>
+                                <a href="#" class="add_row button button-primary">Add</a>
+                                <a href="#" class="remove_row button button-link-delete">Remove</a>
+                            </td>
+                        </tr>
+					<?php }
+				} else { ?>
+                    <tr>
+                        <td><input type="url" value="" name="wp_dark_mode_image_settings[light_images][]"></td>
+                        <td><input type="url" value="" name="wp_dark_mode_image_settings[dark_images][]"></td>
+                        <td>
+                            <a href="#" class="add_row button button-primary">Add</a>
+                            <a href="#" class="remove_row button button-link-delete">Remove</a>
+                        </td>
+                    </tr>
+				<?php } ?>
+
+                </tbody>
+            </table>
+		<?php }
 
 		public static function license_output() {
 			global $wp_dark_mode_license;

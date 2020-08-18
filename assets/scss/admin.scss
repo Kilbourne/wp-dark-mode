@@ -1,5 +1,5 @@
 /** Settings */
-tr.gutenberg_doc, tr.elementor_doc {
+tr.gutenberg_doc, tr.elementor_doc, tr.image_settings {
   h2 {
     font-weight: bold;
   }
@@ -182,4 +182,36 @@ tr.gutenberg_doc, tr.elementor_doc {
     margin-left: auto;
   }
 
+}
+
+/* Image Settings Table */
+.image-settings-table {
+  width: 100%;
+
+  tr {
+    &:first-child {
+      td {
+        padding: 0 10px;
+        font-weight: bold;
+
+        &:last-child {
+          width: 140px;
+        }
+      }
+    }
+
+    &:nth-child(2) {
+      .remove_row {
+        display: none;
+      }
+    }
+
+  }
+
+  td {
+    input {
+      width: 100%;
+    }
+
+  }
 }

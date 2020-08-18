@@ -373,6 +373,21 @@
 }
 
 /*--------------------- darkMode ---------------------- */
+
+
 .wp-dark-mode-active .elementor-editor-active .elementor-element > .elementor-element-overlay{
     background: transparent !important;
+}
+
+
+.wp-dark-mode-dark-image {
+    display: none;
+}
+
+.wp-dark-mode-active .wp-dark-mode-dark-image {
+    display: block;
+}
+
+.wp-dark-mode-active .wp-dark-mode-light-image {
+    display: none;
 }
