@@ -332,13 +332,13 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 
 			?>
 
-            <p>🔹️ <strong>Normal Mode Image: </strong> In this field enter the url of the image that you want to change.</p>
-            <p style="margin-bottom: 20px">🔹️ <strong>Dark Mode Image: </strong> In this field enter the url of the image that you want to show in the dark mode instead of the normal mode image.</p>
+            <p>🔹️ <strong>Light Mode Image: </strong> The image link shown in the light mode.</p>
+            <p style="margin-bottom: 20px">🔹️ <strong>Dark Mode Image: </strong> The image link that will replace the light mode image while in dark mode.</p>
 
             <table class="image-settings-table">
                 <tbody>
                 <tr>
-                    <td>Normal Mode Image</td>
+                    <td>Light Mode Image</td>
                     <td>Dark Mode Image</td>
                     <td></td>
                 </tr>
