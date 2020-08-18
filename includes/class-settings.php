@@ -331,6 +331,10 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 			$dark_images  = array_filter( (array) $images['dark_images'] );
 
 			?>
+
+            <p>🔹️ <strong>Normal Mode Image: </strong> In this field enter the url of the image that you want to change.</p>
+            <p style="margin-bottom: 20px">🔹️ <strong>Dark Mode Image: </strong> In this field enter the url of the image that you want to show in the dark mode instead of the normal mode image.</p>
+
             <table class="image-settings-table">
                 <tbody>
                 <tr>
