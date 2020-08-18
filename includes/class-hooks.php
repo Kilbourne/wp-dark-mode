@@ -190,6 +190,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
                 (function ($) {
                     $(document).ready(function () {
 
+                        handleExcludes();
                         $(window).on('darkmodeInit', handleExcludes);
                         $(document).on('change', '.wp-dark-mode-switch', handleExcludes);
 
