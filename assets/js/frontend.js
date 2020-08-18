@@ -74,8 +74,19 @@
                 return;
             }
 
-            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            /**IOS*/
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+                const newColorScheme = e.matches ? "dark" : "light";
+
+                if ('dark' === newColorScheme) {
                     $('html').addClass(darkClass);
+                } else {
+                    $('html').removeClass(darkClass);
+                }
+            });
+
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                $('html').addClass(darkClass);
                 $(window).trigger('darkmodeInit');
             }
 
@@ -90,17 +101,6 @@
                     $('html').removeClass(darkClass);
                 }
 
-            });
-
-            /**IOS*/
-            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
-                const newColorScheme = e.matches ? "dark" : "light";
-
-                if ('dark' === newColorScheme) {
-                    $('html').addClass(darkClass);
-                } else {
-                    $('html').removeClass(darkClass);
-                }
             });
 
         }
