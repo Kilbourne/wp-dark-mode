@@ -41,6 +41,10 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 		}
 
 		public function replace_image() {
+			if ( ! wp_dark_mode()->is_ultimate_active() ) {
+				return;
+			}
+
 			$images       = get_option( 'wp_dark_mode_image_settings' );
 			$light_images = array_filter( (array) $images['light_images'] );
 			$dark_images  = array_filter( (array) $images['dark_images'] );
