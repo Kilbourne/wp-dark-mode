@@ -127,15 +127,13 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 		    ?>
 
             <script>
-
                 <?php if(is_admin()){ ?>
                 var is_saved = sessionStorage.getItem('wp_dark_mode_admin');
 				<?php }else{ ?>
                 var is_saved = sessionStorage.getItem('wp_dark_mode_frontend');
 				<?php } ?>
-
-                if (is_saved != 0) {
-                        document.getElementsByTagName('html')[0].classList.add('wp-dark-mode-active');
+                if (is_saved) {
+                    document.getElementsByTagName('html')[0].classList.add('wp-dark-mode-active');
                 }
             </script>
 
