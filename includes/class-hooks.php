@@ -46,8 +46,8 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 			}
 
 			$images       = get_option( 'wp_dark_mode_image_settings' );
-			$light_images = array_filter( (array) $images['light_images'] );
-			$dark_images  = array_filter( (array) $images['dark_images'] );
+			$light_images = ! empty( $images['light_images'] ) ? array_filter( (array) $images['light_images'] ) : [];
+			$dark_images  = ! empty( $images['dark_images'] ) ? array_filter( (array) $images['dark_images'] ) : [];
 
 			?>
             <script>
@@ -132,7 +132,8 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 				<?php }else{ ?>
                 var is_saved = sessionStorage.getItem('wp_dark_mode_frontend');
 				<?php } ?>
-                if (is_saved) {
+
+                if (is_saved && is_saved != 0) {
                     document.getElementsByTagName('html')[0].classList.add('wp-dark-mode-active');
                 }
             </script>

@@ -30,7 +30,7 @@ function wp_dark_mode_register_block() {
 	register_block_type( 'wp-dark-mode/switcher', [
 		'editor_script' => [ 'wp-dark-mode-editor-script' ],
 		'editor_style'  => [ 'wp-dark-mode-editor-style' ],
-		'style'         => [ 'wp-dark-mode-frontend-styles' ],
+		//'style'         => [ 'wp-dark-mode-frontend-styles' ],
 	] );
 
 	if ( function_exists( 'wp_set_script_translations' ) ) {

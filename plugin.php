@@ -44,7 +44,7 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 		 * @access private
 		 * @var string
 		 */
-		public $version = '1.0.5';
+		public $version = '1.0.6';
 
 		/**
 		 * Holder for base plugin URL

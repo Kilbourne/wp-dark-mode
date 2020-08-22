@@ -812,7 +812,7 @@ if ( ! class_exists( 'WPPOOL_Settings_API' ) ) {
                     padding: 10px 20px;
                     background-color: #fff;
                     border: 1px solid #cccccc;
-                    min-height: 500px;
+                    min-height: 600px;
                 }
 
                 .wppool-settings-content h2 {
