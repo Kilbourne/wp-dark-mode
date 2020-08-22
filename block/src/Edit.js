@@ -22,7 +22,6 @@ class Edit extends Component {
 
     }
 
-
     async getSwitchView() {
         const {attributes} = this.props;
 

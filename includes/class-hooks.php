@@ -111,13 +111,15 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 
 		    $colors = wp_dark_mode_color_presets($preset);
 
-			$bg_color   = apply_filters( 'wp_dark_mode/bg_color', $colors['bg'] );
-			$text_color = apply_filters( 'wp_dark_mode/text_color', $colors['text'] );
-			$link_color = apply_filters( 'wp_dark_mode/link_color', $colors['link'] );
+			$bg_color     = apply_filters( 'wp_dark_mode/bg_color', $colors['bg'] );
+			$text_color   = apply_filters( 'wp_dark_mode/text_color', $colors['text'] );
+			$link_color   = apply_filters( 'wp_dark_mode/link_color', $colors['link'] );
+			$border_color = apply_filters( 'wp_dark_mode/border_color', $colors['link'] );
 
 			if ( is_admin() ) {
-				$bg_color      = '#10161E';
 				$base_selector = 'html.wp-dark-mode-active #wpbody';
+				$bg_color      = '#10161E';
+				$border_color  = '#555';
 			} else {
 				$base_selector = 'html.wp-dark-mode-active';
 			}
@@ -125,7 +127,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 		    ?>
 
             <script>
-	            <?php if('off' != wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_darkmode', 'on' )){ ?>
 
                 <?php if(is_admin()){ ?>
                 var is_saved = sessionStorage.getItem('wp_dark_mode_admin');
@@ -134,34 +135,25 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 				<?php } ?>
 
                 if (is_saved != 0) {
-
-                    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
                         document.getElementsByTagName('html')[0].classList.add('wp-dark-mode-active');
-                    }
                 }
-
-				<?php } ?>
             </script>
 
             <style>
 
                 /**--- Main Styles ----*/
                 <?php echo $base_selector; ?>
-                :not(.wp-dark-mode-ignore):not(mark):not(code):not(pre):not(ins):not(option):not(input):not(select):not(textarea):not(button):not(a):not(video):not(canvas):not(progress):not(iframe):not(svg):not(path):not(.mejs-iframe-overlay):not(.mejs-time-slider):not(.mejs-overlay-play) {
+                :not(.wp-dark-mode-ignore):not(mark):not(code):not(pre):not(ins):not(option):not(input):not(select):not(textarea):not(button):not(a):not(video):not(canvas):not(progress):not(iframe):not(svg):not(path):not(.mejs-iframe-overlay):not(.elementor-element-overlay):not(.elementor-background-overlay) {
                     background-color: <?php echo $bg_color; ?> !important;
                     color: <?php echo $text_color; ?> !important;
-                    border-color: <?php echo $link_color; ?> !important;
+                    border-color: <?php echo $border_color; ?> !important;
                 }
 
                 /**--- Before/ After Styles ----*/
                 <?php echo $base_selector; ?>
-                *:before {
+                *:before, <?php echo $base_selector; ?> *:before {
                     background-color: <?php echo $bg_color; ?> !important;
-                }
-
-                <?php echo $base_selector; ?>
-                *:after {
-                    background-color: <?php echo $bg_color; ?> !important;
+                    color: <?php echo $text_color; ?> !important;
                 }
 
                 /**--- Link Styles ----*/
@@ -179,7 +171,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
                 <?php echo $base_selector; ?> a:visited,
                 <?php echo $base_selector; ?> a:visited * {
                     color: <?php echo $link_color; ?> !important;
-                    border-color: <?php echo $link_color; ?> !important;
+                    border-color: <?php echo $border_color; ?> !important;
                 }
 
                 /**--- Input Styles ----*/
@@ -211,7 +203,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
                 html.wp-dark-mode-active i:not(.wp-dark-mode-ignore) {
                     background-color: rgb(53, 66, 80) !important;
                     color: <?php echo $text_color; ?> !important;
-                    border-color: rgb(53, 66, 80) !important;
+                    border-color: <?php echo $border_color; ?> !important;
                 }
 
                 <?php } ?>

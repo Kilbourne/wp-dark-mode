@@ -52,10 +52,6 @@
 
             var is_saved = $(this).is(':checked') ? 1 : 0;
 
-            if (typeof wpDarkModeProFrontend !== 'undefined') {
-                is_saved = wpDarkModeProFrontend.remember_darkmode ? 1 : 0;
-            }
-
             sessionStorage.setItem('wp_dark_mode_frontend', is_saved);
         },
 

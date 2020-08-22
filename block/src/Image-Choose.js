@@ -18,6 +18,7 @@ class Image_Choose extends Component {
             'btn-4-light.png',
             'btn-5-light.png',
             'btn-6-light.png',
+            'btn-7.png',
         ];
 
         return (

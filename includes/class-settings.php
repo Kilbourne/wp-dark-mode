@@ -66,14 +66,14 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'<i class="dashicons dashicons-admin-customizer" ></i>' ),
 				),
 				array(
-					'id'    => 'wp_dark_mode_gutenberg',
-					'title' => sprintf( __( '%s <span>Gutenberg Block</span>', 'wp-dark-mode' ),
-						'<i class="dashicons dashicons-screenoptions" ></i>' ),
-				),
-				array(
 					'id'    => 'wp_dark_mode_image_settings',
 					'title' => sprintf( __( '%s <span>Image Settings</span>', 'wp-dark-mode' ),
 						'<i class="dashicons dashicons-format-gallery" ></i>' ),
+				),
+				array(
+					'id'    => 'wp_dark_mode_gutenberg',
+					'title' => sprintf( __( '%s <span>Gutenberg Block</span>', 'wp-dark-mode' ),
+						'<i class="dashicons dashicons-screenoptions" ></i>' ),
 				),
 				array(
 					'id'    => 'wp_dark_mode_elementor',
@@ -150,15 +150,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'type'    => 'select',
 						'options' => $time_range,
 					),
-
-					'remember_darkmode' => array(
-						'name'    => 'remember_darkmode',
-						'default' => 'on',
-						'label'   => __( 'Remember Dark Mode', 'wp-dark-mode' ),
-						'desc'    => __( 'Check ON to remember the darkmode status, if darkmode mode status "ON" will start automatically when visiting website again.',
-							'wp-dark-mode' ),
-						'type'    => 'switcher',
-					),
 				) ),
 
 				'wp_dark_mode_display'  => apply_filters( 'wp_dark_mode/display_settings', array(
@@ -176,6 +167,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 							'4' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-4-light.png' ),
 							'5' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-5-light.png' ),
 							'6' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-6-light.png' ),
+							'7' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-7.png' ),
 						],
 					),
 
@@ -327,8 +319,8 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 		public static function image_settings() {
 
 			$images       = get_option( 'wp_dark_mode_image_settings' );
-			$light_images = array_filter( (array) $images['light_images'] );
-			$dark_images  = array_filter( (array) $images['dark_images'] );
+			$light_images = ! empty( $images['light_images'] ) ? array_filter( (array) $images['light_images'] ) : [];
+			$dark_images  = ! empty( $images['dark_images'] ) ? array_filter( (array) $images['dark_images'] ) : [];
 
 			?>
 
@@ -440,14 +432,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
                         <br> For displaying the Darkmode Switch button in Elementor use the (Dark Mode Switch) Widget.
                     </p>
 					<?php echo do_shortcode( '[video src="https://www.youtube.com/watch?v=5Y8XawJg4pw"]' ); ?>
-                </div>
-
-                <div class="getting-started-section">
-                    <h2>How to deactivate the Dark Mode</h2>
-                    <p>If you want to disable the darkmode functionality, Then go to your
-                        <code>Admin Dashboard > Settings > WP Dark Mode</code> Then, turn off the enable frontend darkmode switch button.
-                    </p>
-					<?php echo do_shortcode( '[video src="https://www.youtube.com/watch?v=y7-XPXuF0-g"]' ); ?>
                 </div>
 
             </div>

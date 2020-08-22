@@ -76,6 +76,11 @@ if ( ! class_exists( 'WP_Dark_Mode_Elementor_Widget' ) ) {
 						'image_small' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-6-light.png' ),
 						'image_large' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-6-dark.png' ),
 					],
+					'7' => [
+						'title'       => 'Style 7',
+						'image_small' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-7.png' ),
+						'image_large' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-7.png' ),
+					],
 				],
 				'default'     => '1',
 			] );

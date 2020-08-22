@@ -1,0 +1,67 @@
+/**--- Main Styles ----*/
+html.wp-dark-mode-theme-darkmode :not(.wp-dark-mode-ignore):not(mark):not(code):not(pre):not(ins):not(option):not(input):not(select):not(textarea):not(button):not(a):not(video):not(canvas):not(progress):not(iframe):not(svg):not(path):not(.mejs-iframe-overlay):not(.mejs-time-slider):not(.mejs-overlay-play) {
+  background-color: #1B2836 !important;
+  color: #fff !important;
+  border-color: #459BE6 !important;
+}
+
+/**--- Before/ After Styles ----*/
+html.wp-dark-mode-theme-darkmode {
+  *:before, *:after {
+    background-color: #1B2836 !important;
+    color: #fff !important;
+  }
+}
+
+/**--- Link Styles ----*/
+html.wp-dark-mode-theme-darkmode {
+  a:not(.wp-dark-mode-ignore),
+  a *:not(.wp-dark-mode-ignore) {
+    background-color: transparent !important;
+    color: #459BE6 !important;
+  }
+}
+
+
+/**--- Link Pseoudo Styles ----*/
+html.wp-dark-mode-theme-darkmode {
+  a:active,
+  a:active *,
+  a:visited,
+  a:visited * {
+    color: #459BE6 !important;
+    border-color: #459BE6 !important;
+  }
+}
+
+/**--- Input Styles ----*/
+html.wp-dark-mode-theme-darkmode {
+  button:not(#collapse-button),
+  iframe,
+  iframe *,
+  input,
+  input[type="button"],
+  input[type="checkebox"],
+  input[type="date"],
+  input[type="datetime-local"],
+  input[type="email"],
+  input[type="image"],
+  input[type="month"],
+  input[type="number"],
+  input[type="range"],
+  input[type="reset"],
+  input[type="search"],
+  input[type="submit"],
+  input[type="tel"],
+  input[type="text"],
+  input[type="time"],
+  input[type="url"],
+  input[type="week"],
+  select,
+  textarea,
+  i:not(.wp-dark-mode-ignore) {
+    background-color: rgb(53, 66, 80) !important;
+    color: #fff !important;
+    border-color: rgb(53, 66, 80) !important;
+  }
+}
