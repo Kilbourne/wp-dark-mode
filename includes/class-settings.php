@@ -92,8 +92,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 				),
 			);
 
-
-			if ( ! is_plugin_active( 'wp-dark-mode-pro/plugin.php' ) && ! is_plugin_active( 'wp-dark-mode-ultimate/plugin.php' ) ) {
+			if ( ! class_exists('WP_Dark_Mode_Ultimate') && ! class_exists('WP_Dark_Mode_Pro') ) {
 				$key = array_search( 'wp_dark_mode_license', array_column( $sections, 'id' ) );
 
 				unset( $sections[ $key ] );
