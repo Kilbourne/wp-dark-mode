@@ -46,7 +46,7 @@ WP Dark Mode supports all major operating systems including iOS, Android, macOS 
 1. **Custom Colors** - You can customized the darkmode background. text and links color as you want/
 1. **Presets Color Schema** - Presets color schema available to quickly change the dark mode color from the predefined presets.
 4. **Available in Backend** - You can enable the dark mode in the back end admin page.
-4. **Image Settings** - You can replace light mode images with different image you want in the dark mode.
+4. **Dark Mode Based Image Supports** - You can replace light mode images with different image you want in the dark mode.
 
 > 🚀  [Get The Ultimate Version](https://wppool.dev/wp-dark-mode/) | 👩🏼‍💻 [Get Support](https://wppool.dev/wp-dark-mode/)
 
