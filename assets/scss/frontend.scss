@@ -423,13 +423,13 @@
 
 
 .wp-dark-mode-dark-image {
-    display: none;
+    display: none !important;
 }
 
 .wp-dark-mode-active .wp-dark-mode-dark-image {
-    display: block;
+    display: block !important;
 }
 
 .wp-dark-mode-active .wp-dark-mode-light-image {
-    display: none;
+    display: none !important;
 }

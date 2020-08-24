@@ -1,5 +1,7 @@
 <?php
 
+$is_hidden = isset( $is_hidden ) && $is_hidden;
+
 $transient_key  = 'wp_dark_mode_promo_time';
 $countdown_time = get_transient( $transient_key );
 
@@ -23,8 +25,13 @@ if ( ! $countdown_time ) {
 
 ?>
 
-<div class="promo">
+<div class="promo <?php echo $is_hidden ? 'hidden' : ''; ?>">
     <div class="promo-inner">
+
+	    <?php if ( $is_hidden ) { ?>
+            <span class="close-promo">&times;</span>
+	    <?php } ?>
+
         <img src="<?php echo wp_dark_mode()->plugin_url( 'assets/images/crown.svg' ) ?>" class="promo-img">
 
         <h3>Upgrade to Ultimate to access these features</h3>

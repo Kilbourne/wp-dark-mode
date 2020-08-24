@@ -60,6 +60,8 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 				'excludes'            => $selectors,
 				'enable_darkmode'     => 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_darkmode', 'on' ),
 				'is_elementor_editor' => class_exists( '\Elementor\Plugin' ) && Elementor\Plugin::$instance->editor->is_edit_mode(),
+				'is_pro_active'       => wp_dark_mode()->is_pro_active(),
+				'is_ultimate_active'  => wp_dark_mode()->is_ultimate_active(),
 			] );
 		}
 
@@ -85,6 +87,8 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 
 			wp_localize_script( 'wp-dark-mode-admin', 'wpDarkModeAdmin', [
 				'pluginUrl'           => wp_dark_mode()->plugin_url(),
+				'is_pro_active'       => wp_dark_mode()->is_pro_active(),
+				'is_ultimate_active'  => wp_dark_mode()->is_ultimate_active(),
 			] );
 
 

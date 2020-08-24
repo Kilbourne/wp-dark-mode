@@ -6,9 +6,12 @@
 
         init: function () {
 
+
             /** block from admin side */
             if (typeof wpDarkModeAdmin === 'undefined') {
-                app.checkOsMode();
+                if (sessionStorage.getItem('wp_dark_mode_frontend') != 0) {
+                    app.checkOsMode();
+                }
             }
 
             if (typeof elementor === 'undefined') {
@@ -19,6 +22,9 @@
 
             $(document).on('change', '.wp-dark-mode-switch', app.handleToggle);
             $(window).on('darkmodeInit', app.checkDarkMode);
+
+            app.checkDarkMode();
+
 
         },
 
@@ -57,6 +63,7 @@
 
         /** check if the darkmode is active or not on initialize */
         checkDarkMode: function () {
+
             if ($('html').hasClass(darkClass)) {
                 $('.wp-dark-mode-switch').prop('checked', true);
 
@@ -84,6 +91,9 @@
                     } else {
                         $('html').removeClass(darkClass);
                     }
+
+                    $(window).trigger('darkmodeInit');
+
                 });
             } catch (e1) {
                 try {
@@ -96,6 +106,9 @@
                         } else {
                             $('html').removeClass(darkClass);
                         }
+
+                        $(window).trigger('darkmodeInit');
+
                     });
                 } catch (e2) {
                     console.error(e2);

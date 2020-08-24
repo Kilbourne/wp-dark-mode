@@ -706,7 +706,7 @@ if ( ! class_exists( 'WPPOOL_Settings_API' ) ) {
                         file_frame.open();
                     });
 
-                    $(document).on('click', '.image-choose-opt', function () {
+                    $(document).on('click', '.image-choose-opt:not(.disabled)', function () {
                         $('.image-choose-opt').removeClass('active');
                         $(this).addClass('active');
                     });

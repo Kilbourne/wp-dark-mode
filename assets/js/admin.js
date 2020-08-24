@@ -11,7 +11,12 @@
 
             $(document).on('click', '.add_row', app.addRow);
             $(document).on('click', '.remove_row', app.removeRow);
+            $(document).on('click', '.close-promo', app.closePromo);
 
+        },
+
+        closePromo: function () {
+            $(this).closest('.promo').addClass('hidden');
         },
 
         addRow: function (e) {

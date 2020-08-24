@@ -35,7 +35,7 @@ WP Dark Mode supports all major operating systems including iOS, Android, macOS 
 === 💰 WP Dark Mode Pro Features ===
 1. **Time Based Dark Mode** - Your website will turn into dark mode based on the local time of the user
 2. **Multiple Dark Mode Switch Style** - You can display multiple dark mode switch button style for the users to turn on-off the dark mode.
-5. **Shortcode Supported** - You can use `[wp_dark_mode]` shortcode to display the dark mode switch button in any page/post
+5. **Shortcode Supported** - You can use `[wp_dark_mode_switch]` shortcode to display the dark mode switch button in any page/post
 6. **Above Post/Page Content** - You can display the dark mode switch button before any page/post.
 6. **Darkmode Switch Widget** - You can place the darkmode switch button using the WP Dark Mode Widget.
 6. **Excludes Elements** - You can excludes specific elements being affected by the derkmode by using the CSS selectors.
@@ -68,8 +68,10 @@ If you want to disable the OS aware darkmode functionality, Then navigate to you
 You can display a darkmode floating switch button in the footer all over the website by turning on the "Show Floating Switch" settings from the WP Dark Mode general settings.
 And in the PRO version you can also display the switch button on the top of every post/ page. You can choose style of the switch button from different switch styles.
 
-= How can I show darkmode ON/ OFF control switch button using shortcode? =
-Shortcode `[wp-dark-mode style="3"]` is a Pro feature. Using shortcode, you can place the dark mode switch button anywhere in your website.
+= How can I show the Dark Mode ON/ OFF control switch button using shortcode? =
+This plugin provide  `[wp_dark_mode_switch]` shortcode to display the dark mode switch . Using the `[wp_dark_mode_switch]` shortcode, you can place the dark mode switch button anywhere in your website. This shortcode supports an optional **style** attribute for the switch style.
+
+**Example** - `[wp_dark_mode_switch style="3"]`
 
 = Does this plugin support dark mode image? =
 Yes ,it supports the dark mode images.

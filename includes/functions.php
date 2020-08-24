@@ -23,7 +23,7 @@ if ( ! function_exists( 'wp_dark_mode_get_settings' ) ) {
 if ( ! function_exists( 'wp_dark_mode_color_presets' ) ) {
 	function wp_dark_mode_color_presets( $preset = '0' ) {
 		$presets = apply_filters( 'wp_dark_mode/color_presets', [
-			'0' => [
+			'1' => [
 				'bg'   => '#1B2836',
 				'text' => '#fff',
 				'link' => '#459BE6',

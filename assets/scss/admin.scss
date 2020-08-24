@@ -1,5 +1,5 @@
 /** Settings */
-tr.gutenberg_doc, tr.elementor_doc, tr.image_settings {
+tr.gutenberg_doc, tr.elementor_doc, tr.image_settings, tr.shortcodes_doc {
   h2 {
     font-weight: bold;
   }
@@ -7,7 +7,15 @@ tr.gutenberg_doc, tr.elementor_doc, tr.image_settings {
   th {
     display: none;
   }
+
 }
+
+#wp_dark_mode_shortcodes {
+  .submit {
+    display: none;
+  }
+}
+
 
 .doc-section {
   list-style: disc;
@@ -35,12 +43,30 @@ tr.gutenberg_doc, tr.elementor_doc, tr.image_settings {
   left: 0;
   backdrop-filter: blur(1px);
 
+  &.hidden {
+    display: none;
+  }
+
   &-inner {
     background: #32373C;
     position: relative;
     padding: 60px 30px 40px 30px;
     text-align: center;
     border-radius: 10px;
+
+    .close-promo {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 10px 12px;
+      font-size: 30px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      border-radius: 50%;
+      justify-content: center;
+      cursor: pointer;
+    }
 
     h3 {
       color: #fff;
@@ -213,5 +239,23 @@ tr.gutenberg_doc, tr.elementor_doc, tr.image_settings {
       width: 100%;
     }
 
+  }
+}
+
+.wppool-settings .color_preset {
+
+  fieldset {
+    & > label {
+      margin: 0 10px !important;
+    }
+  }
+
+  .image-choose-opt {
+    display: inline-flex;
+
+    img {
+      border-radius: 50%;
+      margin: 5px;
+    }
   }
 }

@@ -81,6 +81,11 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'<i class="dashicons dashicons-align-none" ></i>' ),
 				),
 				array(
+					'id'    => 'wp_dark_mode_shortcodes',
+					'title' => sprintf( __( '%s <span>Shortcodes</span>', 'wp-dark-mode' ),
+						'<i class="dashicons dashicons-shortcode" ></i>' ),
+				),
+				array(
 					'id'    => 'wp_dark_mode_license',
 					'title' => sprintf( __( '%s <span>Activate License</span>', 'wp-dark-mode' ),
 						'<i class="dashicons dashicons-admin-network" ></i>' ),
@@ -211,17 +216,21 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 				'wp_dark_mode_style'    => apply_filters( 'wp_dark_mode/style_settings', array(
 					'color_preset'         => array(
 						'name'    => 'color_preset',
-						'default' => '1',
+						'default' => '0',
 						'label'   => __( 'Darkmode Color Preset:', 'wp-dark-mode' ),
 						'desc'    => __( 'Select the predefined darkmode background, text and link preset color.', 'wp-dark-mode' ),
 						'type'    => 'image_choose',
 						'options' => [
-							'0' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/preset-1.png' ),
-							'1' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/preset-2.png' ),
-							'2' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/preset-3.png' ),
-							'3' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/preset-4.png' ),
-							'4' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/preset-5.png' ),
-							'5' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/preset-6.png' ),
+							'0' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/1.png' ),
+							'1' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/2.png' ),
+							'2' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/3.png' ),
+							'3' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/4.png' ),
+							'4' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/5.png' ),
+							'5' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/6.png' ),
+							'6' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/7.png' ),
+							'7' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/8.png' ),
+							'8' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/9.png' ),
+							'9' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/10.png' ),
 						],
 					),
 
@@ -290,6 +299,14 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 					),
 				) ),
 
+				'wp_dark_mode_shortcodes' => apply_filters( 'wp_dark_mode/settings_elementor', array(
+					array(
+						'name'    => 'shortcodes_doc',
+						'default' => [ $this, 'shortcodes_doc' ],
+						'type'    => 'cb_function',
+					),
+				) ),
+
 				'wp_dark_mode_image_settings' => apply_filters( 'wp_dark_mode/image_settings', array(
 					array(
 						'name'    => 'image_settings',
@@ -315,11 +332,36 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 			self::$settings_api->admin_init();
 		}
 
+		public static function shortcodes_doc() { ?>
+            <div class="shortcode">
+                <p><b>✅</b>
+                    <b><code>[wp_dark_mode_switch]</code></b> - Using the
+                    <b>[wp_dark_mode_switch]</b> shortcode, you can place the dark mode switch button anywhere in your website.
+                    This shortcode supports an optional <code>style</code> attribute for the switch style from the 7 switch style.
+                    <br>This shortcode is available in the PRO version.
+                </p>
+
+                <p><b>Examples:</b></p>
+
+                <p style="margin: 10px 0 0 40px"> → <code>[wp_dark_mode_switch]</code> - Display the default dark mode switch.</p>
+                <p style="margin: 10px 0 0 40px"> →
+                    <code>[wp_dark_mode_switch style="3"]</code> - Display specific switch style from 7 switch styles.
+                </p>
+            </div>
+
+		<?php }
+
 		public static function image_settings() {
 
-			$images       = get_option( 'wp_dark_mode_image_settings' );
-			$light_images = ! empty( $images['light_images'] ) ? array_filter( (array) $images['light_images'] ) : [];
-			$dark_images  = ! empty( $images['dark_images'] ) ? array_filter( (array) $images['dark_images'] ) : [];
+			$light_images = [];
+			$dark_images  = [];
+
+			if ( wp_dark_mode()->is_ultimate_active() ) {
+
+				$images       = get_option( 'wp_dark_mode_image_settings' );
+				$light_images = ! empty( $images['light_images'] ) ? array_filter( (array) $images['light_images'] ) : [];
+				$dark_images  = ! empty( $images['dark_images'] ) ? array_filter( (array) $images['dark_images'] ) : [];
+			}
 
 			?>
 
