@@ -4,7 +4,7 @@ const {registerBlockType} = wp.blocks;
 import Edit from "./Edit";
 import {ReactComponent as Logo} from "./logo.svg";
 /**---- Editor Theme Switch ----*/
-//import './theme-switch';
+import './theme-switch';
 
 registerBlockType('wp-dark-mode/switcher', {
     title: __('Dark Mode Switch', 'wp-dark-mode'),

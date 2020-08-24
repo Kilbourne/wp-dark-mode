@@ -1,18 +1,18 @@
-$bg_color: #1B2836;
-$text_color: #fff;
-$link_color: #459BE6;
-$border_color: lighten($bg_color, 20%);
-$btn_color: lighten($bg_color, 10%);
+$bg_color: #EDEBE8;
+$text_color: #1e1e1e;
+$link_color: #105d72;
+$border_color: darken($bg_color, 20%);
+$btn_color: darken($bg_color, 10%);
 
 /**--- Main Styles ----*/
-html.wp-dark-mode-theme-darkmode :not(.wp-dark-mode-ignore):not(mark):not(code):not(pre):not(ins):not(option):not(input):not(select):not(textarea):not(button):not(a):not(video):not(canvas):not(progress):not(iframe):not(svg):not(path):not(.mejs-iframe-overlay):not(.mejs-time-slider):not(.mejs-overlay-play):not(.block-editor-default-block-appender__content) {
+html.wp-dark-mode-theme-chathams :not(.wp-dark-mode-ignore):not(mark):not(code):not(pre):not(ins):not(option):not(input):not(select):not(textarea):not(button):not(a):not(video):not(canvas):not(progress):not(iframe):not(svg):not(path):not(.mejs-iframe-overlay):not(.mejs-time-slider):not(.mejs-overlay-play):not(.block-editor-default-block-appender__content) {
   background-color: $bg_color !important;
   color: $text_color !important;
   border-color: $border_color !important;
 }
 
 /**--- Link Styles ----*/
-html.wp-dark-mode-theme-darkmode {
+html.wp-dark-mode-theme-chathams {
   a:not(.wp-dark-mode-ignore),
   a *:not(.wp-dark-mode-ignore) {
     background-color: transparent !important;
@@ -22,7 +22,7 @@ html.wp-dark-mode-theme-darkmode {
 
 
 /**--- Link Pseoudo Styles ----*/
-html.wp-dark-mode-theme-darkmode {
+html.wp-dark-mode-theme-chathams {
   a:active,
   a:active *,
   a:visited,
@@ -33,7 +33,7 @@ html.wp-dark-mode-theme-darkmode {
 }
 
 /**--- Input Styles ----*/
-html.wp-dark-mode-theme-darkmode {
+html.wp-dark-mode-theme-chathams {
   button:not(#collapse-button),
   iframe,
   iframe *,
