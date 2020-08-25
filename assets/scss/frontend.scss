@@ -110,19 +110,20 @@
     margin: 0 7px;
 }
 
-[class="wp-dark-mode-switch"]:checked + .wp-dark-mode-switcher.style-3 .toggle {
+
+.wp-dark-mode-switcher.active.style-3 .toggle {
     right: 2px;
     background: #fff;
     left: auto;
 }
 
-[class="wp-dark-mode-switch"]:checked + .wp-dark-mode-switcher.style-3 .moon-light,
-[class="wp-dark-mode-switch"]:checked + .wp-dark-mode-switcher.style-3 .sun-light {
+.wp-dark-mode-switcher.active.style-3 .moon-light,
+.wp-dark-mode-switcher.active.style-3 .sun-light {
     display: block;
 }
 
-[class="wp-dark-mode-switch"]:checked + .wp-dark-mode-switcher.style-3 .moon-dark,
-[class="wp-dark-mode-switch"]:checked + .wp-dark-mode-switcher.style-3 .sun-dark {
+.wp-dark-mode-switcher.active.style-3 .moon-dark,
+.wp-dark-mode-switcher.active.style-3 .sun-dark {
     display: none;
 }
 
@@ -160,20 +161,21 @@
     display: none;
 }
 
-[class="wp-dark-mode-switch"]:checked + .wp-dark-mode-switcher.style-4 label .modes .light {
+
+.wp-dark-mode-switcher.active.style-4 label .modes .light {
     display: none;
 }
 
-[class="wp-dark-mode-switch"]:checked + .wp-dark-mode-switcher.style-4 label .modes .dark {
+.wp-dark-mode-switcher.active.style-4 label .modes .dark {
     display: block;
     right: 5px;
 }
 
-[class="wp-dark-mode-switch"]:checked + .wp-dark-mode-switcher.style-4 label {
+.wp-dark-mode-switcher.active.style-4 label {
     background: #0050BB;
 }
 
-[class="wp-dark-mode-switch"]:checked + .wp-dark-mode-switcher.style-4 p {
+.wp-dark-mode-switcher.active.style-4 p {
     color: #fff;
 }
 
@@ -210,16 +212,17 @@
     display: none;
 }
 
-[class="wp-dark-mode-switch"]:checked + .wp-dark-mode-switcher.style-5 label .modes .light {
+
+.wp-dark-mode-switcher.active.style-5 label .modes .light {
     display: none;
 }
 
-[class="wp-dark-mode-switch"]:checked + .wp-dark-mode-switcher.style-5 label .modes .dark {
+.wp-dark-mode-switcher.active.style-5 label .modes .dark {
     display: block;
     right: 5px;
 }
 
-[class="wp-dark-mode-switch"]:checked + .wp-dark-mode-switcher.style-5 label {
+.wp-dark-mode-switcher.active.style-5 label {
     background: #0050BB;
 }
 
@@ -260,20 +263,21 @@
     display: none;
 }
 
-[class="wp-dark-mode-switch"]:checked + .wp-dark-mode-switcher.style-6 label .modes .light {
+
+.wp-dark-mode-switcher.active.style-6 label .modes .light {
     display: none;
 }
 
-[class="wp-dark-mode-switch"]:checked + .wp-dark-mode-switcher.style-6 label .modes .dark {
+.wp-dark-mode-switcher.active.style-6 label .modes .dark {
     display: block;
     right: 10px;
 }
 
-[class="wp-dark-mode-switch"]:checked + .wp-dark-mode-switcher.style-6 label {
+.wp-dark-mode-switcher.active.style-6 label {
     background: #0050BB;
 }
 
-/*----------- btn style-6 -------------*/
+/*----------- btn style-7 -------------*/
 .wp-dark-mode-switcher.style-7 {
     label {
         width: 50px;
@@ -299,7 +303,7 @@
     }
 }
 
-[class="wp-dark-mode-switch"]:checked + .wp-dark-mode-switcher.style-7{
+.wp-dark-mode-switcher.active.style-7 {
     label{
         background: #fff;
     }
@@ -319,99 +323,30 @@
 .wp-dark-mode-switcher.floating {
     position: fixed;
     bottom: 26px;
+
+    &.right_bottom {
+        right: 26px;
+    }
+
+    .left_bottom {
+        left: 26px;
+    }
 }
 
-.wp-dark-mode-switcher.floating.right_bottom {
-    right: 26px;
-}
-
-.wp-dark-mode-switcher.floating.left_bottom {
-    left: 26px;
-}
 
 /*---------------- Toggle -----------------------*/
-[class="wp-dark-mode-switch"]:checked + .wp-dark-mode-switcher .toggle {
-    transform: translateX(100%);
-    background-color: #34323D;
-}
+.wp-dark-mode-switcher {
+    &.active {
+        .toggle {
+            transform: translateX(100%);
+            background-color: #34323D;
+        }
 
-[class="wp-dark-mode-switch"]:checked + .wp-dark-mode-switcher .wp-dark-mode-light-up {
-    display: none;
-}
-
-[class="wp-dark-mode-switch"]:checked + .wp-dark-mode-switcher .wp-dark-mode-moon-o {
-    display: block;
-}
-
-[class="wp-dark-mode-switch"]:checked + .wp-dark-mode-switcher .dark {
-    opacity: 1;
-    color: #fff !important;
-}
-
-/*--------------------- Icons ---------------------- */
-@font-face {
-    font-family: "wp-dark-mode";
-    src: url("../fonts/wp-dark-mode.eot");
-    src: url("../fonts/wp-dark-mode.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/wp-dark-mode.woff") format("woff"),
-    url("../fonts/wp-dark-mode.ttf") format("truetype"),
-    url("../fonts/wp-dark-mode.svg#wp-dark-mode") format("svg");
-    font-weight: normal;
-    font-style: normal;
-}
-
-[data-icon]:before {
-    font-family: "wp-dark-mode" !important;
-    content: attr(data-icon);
-    font-style: normal !important;
-    font-weight: normal !important;
-    font-variant: normal !important;
-    text-transform: none !important;
-    speak: none;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-[class^="wp-dark-mode-"]:before,
-[class*=" wp-dark-mode-"]:before {
-    font-family: "wp-dark-mode" !important;
-    font-style: normal !important;
-    font-weight: normal !important;
-    font-variant: normal !important;
-    text-transform: none !important;
-    speak: none;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-.wp-dark-mode-moon-o:before {
-    content: "\61";
-}
-
-.wp-dark-mode-light-up:before {
-    content: "\62";
-}
-
-.wp-dark-mode-moon-o {
-    margin-right: 1px;
-}
-
-.wp-dark-mode-moon-icon-size-small {
-    font-size: 12px;
-}
-
-.wp-dark-mode-moon-icon-size-default {
-    font-size: 16px;
-}
-
-.wp-dark-mode-moon-icon-size-large {
-    font-size: 20px;
-}
-
-.wp-dark-mode-light-up {
-    margin-right: 1px;
+        .dark {
+            opacity: 1;
+            color: #fff !important;
+        }
+    }
 }
 
 /*--------------------- darkMode ---------------------- */

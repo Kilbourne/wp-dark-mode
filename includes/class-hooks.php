@@ -37,6 +37,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 			add_action( 'wsa_form_bottom_wp_dark_mode_style', [ $this, 'ultimate_promo' ] );
 			add_action( 'wsa_form_bottom_wp_dark_mode_style', [ $this, 'pro_promo' ] );
 			add_action( 'wsa_form_bottom_wp_dark_mode_image_settings', [ $this, 'ultimate_promo' ] );
+			add_action( 'wsa_form_bottom_wp_dark_mode_custom_css', [ $this, 'ultimate_promo' ] );
 
 			add_action( 'wp_footer', [ $this, 'replace_image' ] );
 		}
@@ -133,6 +134,73 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 				$base_selector = 'html.wp-dark-mode-active';
 			}
 
+			$scss_compiler = new scssc();
+
+			ob_start();
+
+			printf( '%1$s :not(.wp-dark-mode-ignore):not(mark):not(code):not(pre):not(ins):not(option):not(input):not(select):not(textarea):not(button):not(a):not(video):not(canvas):not(progress):not(iframe):not(svg):not(path):not(.mejs-iframe-overlay):not(.elementor-element-overlay):not(.elementor-background-overlay){
+			     background-color: %2$s !important;
+			     color: %3$s !important;
+                 border-color: %4$s !important;
+			}', $base_selector, $bg_color, $text_color, $border_color );
+
+			printf( '%1$s {
+                a,
+                a *,
+                a:active,
+                a:active *,
+                a:visited,
+                a:visited * {
+                    &:not(.wp-dark-mode-ignore){
+                        background-color: transparent !important;
+                        color: %2$s !important;
+                        border-color: %3$s !important;
+                    }
+                }
+			}', $base_selector, $link_color, $border_color );
+
+			if ( ! is_admin() ) {
+				printf( 'html.wp-dark-mode-active{
+				    button:not(#collapse-button):not(.search-toggle),
+                    iframe,
+                    iframe *,
+                    input,
+                    input[type="button"],
+                    input[type="checkebox"],
+                    input[type="date"],
+                    input[type="datetime-local"],
+                    input[type="email"],
+                    input[type="image"],
+                    input[type="month"],
+                    input[type="number"],
+                    input[type="range"],
+                    input[type="reset"],
+                    input[type="search"],
+                    input[type="submit"],
+                    input[type="tel"],
+                    input[type="text"],
+                    input[type="time"],
+                    input[type="url"],
+                    input[type="week"],
+                    select,
+                    textarea,
+                    i {
+                        &:not(.wp-dark-mode-ignore){
+                            background-color: rgb(53, 66, 80) !important;
+                            color: %1$s !important;
+                            border-color: %2$s !important;
+                        }
+                        
+                       * {
+                          background: transparent !important;
+                        }
+                        
+                    }
+				}', $text_color, $border_color );
+			}
+
+			$scss = ob_get_clean();
+
 		    ?>
 
             <script>
@@ -147,78 +215,12 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
                 }
             </script>
 
-            <style>
+            <style><?php echo $scss_compiler->compile( $scss ); ?></style>
 
-                /**--- Main Styles ----*/
-                <?php echo $base_selector; ?>
-                :not(.wp-dark-mode-ignore):not(mark):not(code):not(pre):not(ins):not(option):not(input):not(select):not(textarea):not(button):not(a):not(video):not(canvas):not(progress):not(iframe):not(svg):not(path):not(.mejs-iframe-overlay):not(.elementor-element-overlay):not(.elementor-background-overlay) {
-                    background-color: <?php echo $bg_color; ?> !important;
-                    color: <?php echo $text_color; ?> !important;
-                    border-color: <?php echo $border_color; ?> !important;
-                }
 
-                /**--- Before/ After Styles ----*/
-                <?php echo $base_selector; ?>
-                *:before, <?php echo $base_selector; ?> *:before {
-                    background-color: <?php echo $bg_color; ?> !important;
-                    color: <?php echo $text_color; ?> !important;
-                }
 
-                /**--- Link Styles ----*/
-                <?php echo $base_selector; ?>
-                a:not(.wp-dark-mode-ignore),
-                <?php echo $base_selector; ?> a *:not(.wp-dark-mode-ignore) {
-                    background-color: transparent !important;
-                    color: <?php echo $link_color; ?> !important;
-                }
-
-                /**--- Link Pseoudo Styles ----*/
-                <?php echo $base_selector; ?>
-                a:active,
-                <?php echo $base_selector; ?> a:active *,
-                <?php echo $base_selector; ?> a:visited,
-                <?php echo $base_selector; ?> a:visited * {
-                    color: <?php echo $link_color; ?> !important;
-                    border-color: <?php echo $border_color; ?> !important;
-                }
-
-                /**--- Input Styles ----*/
-                <?php if(!is_admin()){ ?>
-
-                html.wp-dark-mode-active button:not(#collapse-button),
-                html.wp-dark-mode-active iframe,
-                html.wp-dark-mode-active iframe *,
-                html.wp-dark-mode-active input,
-                html.wp-dark-mode-active input[type="button"],
-                html.wp-dark-mode-active input[type="checkebox"],
-                html.wp-dark-mode-active input[type="date"],
-                html.wp-dark-mode-active input[type="datetime-local"],
-                html.wp-dark-mode-active input[type="email"],
-                html.wp-dark-mode-active input[type="image"],
-                html.wp-dark-mode-active input[type="month"],
-                html.wp-dark-mode-active input[type="number"],
-                html.wp-dark-mode-active input[type="range"],
-                html.wp-dark-mode-active input[type="reset"],
-                html.wp-dark-mode-active input[type="search"],
-                html.wp-dark-mode-active input[type="submit"],
-                html.wp-dark-mode-active input[type="tel"],
-                html.wp-dark-mode-active input[type="text"],
-                html.wp-dark-mode-active input[type="time"],
-                html.wp-dark-mode-active input[type="url"],
-                html.wp-dark-mode-active input[type="week"],
-                html.wp-dark-mode-active select,
-                html.wp-dark-mode-active textarea,
-                html.wp-dark-mode-active i:not(.wp-dark-mode-ignore) {
-                    background-color: rgb(53, 66, 80) !important;
-                    color: <?php echo $text_color; ?> !important;
-                    border-color: <?php echo $border_color; ?> !important;
-                }
-
-                <?php } ?>
-
-            </style>
-
-		<?php }
+		<?php
+		}
 
 		/**
 		 * darkmode scripts
@@ -245,7 +247,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
                         $(document).on('change', '.wp-dark-mode-switch', handleExcludes);
 
                         function handleExcludes(){
-                            $('<?php echo $selectors; ?>').find('*').addClass('wp-dark-mode-ignore');
+                            $('<?php echo $selectors; ?>').addClass('wp-dark-mode-ignore').find('*').addClass('wp-dark-mode-ignore');
                         }
 
                     });

@@ -219,6 +219,7 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 			require $this->plugin_path( 'includes/class-enqueue.php' );
 			require $this->plugin_path( 'includes/class-shortcode.php' );
 			require $this->plugin_path( 'includes/class-hooks.php' );
+			require $this->plugin_path( 'includes/scss.inc.php' );
 
 			/** load gutenberg block */
 			include_once $this->plugin_path( 'block/plugin.php' );

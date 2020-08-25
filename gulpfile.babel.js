@@ -29,6 +29,7 @@ const paths = {
             '!node_modules/**',
             '!tests/**',
             '!vendor/**',
+            '!includes/scss.inc.php',
             '!tmp/**'
         ],
         dest: './'

@@ -71,6 +71,11 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'<i class="dashicons dashicons-format-gallery" ></i>' ),
 				),
 				array(
+					'id'    => 'wp_dark_mode_custom_css',
+					'title' => sprintf( __( '%s <span>Custom CSS</span>', 'wp-dark-mode' ),
+						'<i class="dashicons dashicons-editor-code" ></i>' ),
+				),
+				array(
 					'id'    => 'wp_dark_mode_gutenberg',
 					'title' => sprintf( __( '%s <span>Gutenberg Block</span>', 'wp-dark-mode' ),
 						'<i class="dashicons dashicons-screenoptions" ></i>' ),
@@ -280,6 +285,15 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'name'    => 'getting_started',
 						'default' => [ 'WP_Dark_Mode_Settings', 'getting_started' ],
 						'type'    => 'cb_function',
+					),
+				) ),
+
+				'wp_dark_mode_custom_css' => apply_filters( 'wp_dark_mode/custom_css', array(
+					array(
+						'name'  => 'custom_css',
+						'label' => 'Dark Mode Custom CSS',
+						'type'  => 'textarea',
+						'desc'  => 'Add custom css for dark mode only.',
 					),
 				) ),
 

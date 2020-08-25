@@ -6,7 +6,6 @@
 
         init: function () {
 
-
             /** block from admin side */
             if (typeof wpDarkModeAdmin === 'undefined') {
                 if (sessionStorage.getItem('wp_dark_mode_frontend') != 0) {
@@ -21,10 +20,10 @@
             app.excludeBGELements();
 
             $(document).on('change', '.wp-dark-mode-switch', app.handleToggle);
-            $(window).on('darkmodeInit', app.checkDarkMode);
 
             app.checkDarkMode();
 
+            $(window).on('darkmodeInit', app.checkDarkMode);
 
         },
 
@@ -37,8 +36,9 @@
             if (1 == is_saved) {
                 $('html').addClass('wp-dark-mode-active');
                 app.checkDarkMode();
-                $(window).trigger('darkmodeInit');
             }
+
+            $(window).trigger('darkmodeInit');
         },
 
         excludeBGELements: function () {
@@ -54,21 +54,24 @@
         /** handle dark mode toggle */
         handleToggle: function () {
             $('html').toggleClass(darkClass);
+
+            $('.wp-dark-mode-switcher').toggleClass('active');
+
             app.checkDarkMode();
 
-            var is_saved = $(this).is(':checked') ? 1 : 0;
+            var is_saved = $('html').hasClass(darkClass) ? 1 : 0;
 
             sessionStorage.setItem('wp_dark_mode_frontend', is_saved);
+            $(window).trigger('darkmodeInit');
+
         },
 
         /** check if the darkmode is active or not on initialize */
         checkDarkMode: function () {
-
             if ($('html').hasClass(darkClass)) {
-                $('.wp-dark-mode-switch').prop('checked', true);
-
+                $('.wp-dark-mode-switcher').addClass('active');
             } else {
-                $('.wp-dark-mode-switch').prop('checked', false);
+                $('.wp-dark-mode-switcher').removeClass('active');
             }
         },
 
@@ -87,7 +90,6 @@
 
                     if ('dark' === newColorScheme) {
                         $('html').addClass(darkClass);
-                        $(window).trigger('darkmodeInit');
                     } else {
                         $('html').removeClass(darkClass);
                     }

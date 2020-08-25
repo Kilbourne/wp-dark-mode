@@ -13,6 +13,10 @@
             $(document).on('click', '.remove_row', app.removeRow);
             $(document).on('click', '.close-promo', app.closePromo);
 
+            jQuery(document).ready(function($) {
+                wp.codeEditor.initialize($('.custom_css textarea'), wpDarkModeAdmin.cm_settings);
+            })
+
         },
 
         closePromo: function () {
