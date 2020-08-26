@@ -38,40 +38,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 			add_action( 'wsa_form_bottom_wp_dark_mode_style', [ $this, 'pro_promo' ] );
 			add_action( 'wsa_form_bottom_wp_dark_mode_image_settings', [ $this, 'ultimate_promo' ] );
 			add_action( 'wsa_form_bottom_wp_dark_mode_custom_css', [ $this, 'ultimate_promo' ] );
-
-			add_action( 'wp_footer', [ $this, 'replace_image' ] );
-		}
-
-		public function replace_image() {
-			if ( ! wp_dark_mode()->is_ultimate_active() ) {
-				return;
-			}
-
-			$images       = get_option( 'wp_dark_mode_image_settings' );
-			$light_images = ! empty( $images['light_images'] ) ? array_filter( (array) $images['light_images'] ) : [];
-			$dark_images  = ! empty( $images['dark_images'] ) ? array_filter( (array) $images['dark_images'] ) : [];
-
-			?>
-            <script>
-                (function ($) {
-                    $(document).ready(function () {
-						<?php
-
-						foreach ($light_images as $key => $light_image){ ?>
-                        var image = $("img[src$='<?php echo $light_image ?>']");
-
-                        image.clone().attr({
-                            src: '<?php echo $dark_images[ $key ]; ?>',
-                            srcset: '<?php echo $dark_images[ $key ]; ?>',
-                        }).addClass('wp-dark-mode-dark-image').insertAfter(image);
-
-                        image.addClass('wp-dark-mode-light-image');
-
-						<?php } ?>
-                    });
-                })(jQuery);
-            </script>
-			<?php
 		}
 
 		/**

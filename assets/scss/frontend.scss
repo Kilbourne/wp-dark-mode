@@ -361,8 +361,54 @@
     display: none !important;
 }
 
-.wp-dark-mode-active .wp-dark-mode-dark-image {
-    display: block !important;
+.wp-dark-mode-active {
+    .wp-dark-mode-dark-image {
+        display: block !important;
+
+        &-inline-block {
+            display: inline-block !important;
+        }
+
+        &-inline {
+            display: inline !important;
+        }
+
+        &-contents {
+            display: contents !important;
+        }
+
+        &-flex {
+            display: flex !important;
+        }
+
+        &-grid {
+            display: grid !important;
+        }
+
+        &-inline-flex {
+            display: inline-flex !important;
+        }
+
+        &-inline-grid {
+            display: inline-grid !important;
+        }
+
+        &-inline-table {
+            display: inline-table !important;
+        }
+
+        &-list-item {
+            display: list-item !important;
+        }
+
+        &-table {
+            display: table !important;
+        }
+
+        &-table-cell {
+            display: table-cell !important;
+        }
+    }
 }
 
 .wp-dark-mode-active .wp-dark-mode-light-image {

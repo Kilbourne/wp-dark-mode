@@ -1,5 +1,5 @@
 /** Settings */
-tr.gutenberg_doc, tr.elementor_doc, tr.image_settings, tr.shortcodes_doc {
+tr.gutenberg_doc, tr.elementor_doc, tr.image_settings, tr.shortcodes_doc, tr.widget_doc {
   h2 {
     font-weight: bold;
   }
@@ -274,4 +274,21 @@ tr.gutenberg_doc, tr.elementor_doc, tr.image_settings, tr.shortcodes_doc {
 
 #wp_dark_mode_custom_css .promo{
   z-index: 9;
+}
+
+.wppool-settings .widget_doc {
+  p {
+    font-size: 16px;
+  }
+
+  img {
+    border-radius: 10px;
+    border: 1px solid #ddd;
+  }
+}
+
+#wp_dark_mode_widget_doc {
+  .submit {
+    display: none;
+  }
 }

@@ -12,13 +12,13 @@ class Image_Choose extends Component {
     render() {
 
         const images = [
-            'btn-1-light.png',
-            'btn-2-light.png',
-            'btn-3-light.png',
-            'btn-4-light.png',
-            'btn-5-light.png',
-            'btn-6-light.png',
-            'btn-7.png',
+            '1.png',
+            '2.png',
+            '3.png',
+            '4.png',
+            '5.png',
+            '6.png',
+            '7.png',
         ];
 
         return (

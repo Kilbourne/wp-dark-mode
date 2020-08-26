@@ -91,6 +91,11 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'<i class="dashicons dashicons-shortcode" ></i>' ),
 				),
 				array(
+					'id'    => 'wp_dark_mode_widget_doc',
+					'title' => sprintf( __( '%s <span>Switch Widget</span>', 'wp-dark-mode' ),
+						'<i class="dashicons dashicons-align-full-width" ></i>' ),
+				),
+				array(
 					'id'    => 'wp_dark_mode_license',
 					'title' => sprintf( __( '%s <span>Activate License</span>', 'wp-dark-mode' ),
 						'<i class="dashicons dashicons-admin-network" ></i>' ),
@@ -170,13 +175,13 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'desc'    => __( 'Select the switcher button style for the frontend.', 'wp-dark-mode' ),
 						'type'    => 'image_choose',
 						'options' => [
-							'1' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-1-light.png' ),
-							'2' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-2-light.png' ),
-							'3' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-3-light.png' ),
-							'4' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-4-light.png' ),
-							'5' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-5-light.png' ),
-							'6' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-6-light.png' ),
-							'7' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/btn-7.png' ),
+							'1' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/1.png' ),
+							'2' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/2.png' ),
+							'3' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/3.png' ),
+							'4' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/4.png' ),
+							'5' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/5.png' ),
+							'6' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/6.png' ),
+							'7' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/7.png' ),
 						],
 					),
 
@@ -321,6 +326,14 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 					),
 				) ),
 
+				'wp_dark_mode_widget_doc' => apply_filters( 'wp_dark_mode/widget_doc', array(
+					array(
+						'name'    => 'widget_doc',
+						'default' => [ $this, 'widget_doc' ],
+						'type'    => 'cb_function',
+					),
+				) ),
+
 				'wp_dark_mode_image_settings' => apply_filters( 'wp_dark_mode/image_settings', array(
 					array(
 						'name'    => 'image_settings',
@@ -345,6 +358,28 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 			//initialize them
 			self::$settings_api->admin_init();
 		}
+
+		public static function widget_doc(){ ?>
+		    <div class="getting-started-wrap">
+                <div class="getting-started-section">
+                    <h2>Display Switch Button Using The WP Dark Mode widget.</h2>
+                    <p>You can display the switch button by using the (WP Dark Mode ) wordpress widget, for your users to switch between the dark and normal mode.
+                        <br> For displaying the Darkmode Switch button using the WP Dark Mode widget follow the below steps:</p>
+					<p>
+                        <br>
+                        ➡️ Add the WP Dark Mode Widget to a sidebar where you want to display the switch button. <br>
+                        ➡️ Enter the widget title, if you want to display the widget title <br>
+                        ➡️ Select The Switch Style <br>
+                        ➡️ Select the position alignment <br>
+                        ➡️ Save & you are done. <br>
+                        <br>
+                    </p>
+
+                    <p><img src="<?php echo wp_dark_mode()->plugin_url('assets/images/switch-widget.png') ?>" alt=""></p>
+
+                </div>
+            </div>
+        <?php }
 
 		public static function shortcodes_doc() { ?>
             <div class="shortcode">

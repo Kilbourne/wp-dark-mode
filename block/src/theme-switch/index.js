@@ -16,7 +16,7 @@ function appendThemeSwitch() {
     let newElem = document.createElement('div');
     newElem.classList.add('wpdm-theme-switch-wrapper');
 
-    let html = `<div id="wpDarkModeThemeSwitch"><button id="wpDarkModeThemeSwitchBtn" class="wpdm-theme-switch wpdm-theme-switch__default"></button> <i class="wpdm-arrow down"></i> </div>`;
+    let html = `<div id="wpDarkModeThemeSwitch"><img id="wpDarkModeThemeSwitchImg" src="${wpDarkModeAdmin.pluginUrl}/block/build/images/default.png" /> <i class="wpdm-arrow down"></i> </div>`;
     html += `<div id="wpdmColorPalettesContainer"></div> `;
 
     newElem.innerHTML = html;

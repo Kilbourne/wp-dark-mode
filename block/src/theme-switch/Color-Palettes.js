@@ -9,13 +9,12 @@ class Palette extends Component {
 
     handleColorPalegtte(type) {
         const elm = document.getElementsByTagName('html')[0];
-        const btn = document.getElementById('wpDarkModeThemeSwitchBtn');
+        const img = document.getElementById('wpDarkModeThemeSwitchImg');
 
         elm.classList.remove('wp-dark-mode-theme-defaul', 'wp-dark-mode-theme-darkmode', 'wp-dark-mode-theme-chathams', 'wp-dark-mode-theme-pumpkin', 'wp-dark-mode-theme-mustard', 'wp-dark-mode-theme-concord');
         elm.classList.add(`wp-dark-mode-theme-${type}`);
 
-        btn.classList.remove('wpdm-theme-switch__default', 'wpdm-theme-switch__darkmode', 'wpdm-theme-switch__chathams', 'wpdm-theme-switch__pumpkin', 'wpdm-theme-switch__mustard', 'wpdm-theme-switch__concord',)
-        btn.classList.add(`wpdm-theme-switch__${type}`);
+        img.setAttribute('src', `${wpDarkModeAdmin.pluginUrl}/block/build/images/${type}.png`);
 
         this.setState({type: type});
     }
@@ -35,8 +34,9 @@ class Palette extends Component {
         return (
             <div>
                 {Object.entries(labels).map(([key, label], i) =>
-                    <a href="#" className={type == key ? 'active' : ''} onClick={() => this.handleColorPalegtte(key)}><span className={`wpdm-theme-switch wpdm-theme-switch__${key}`}></span> {label}
-                        {type == key ? <span className='tick'>✓</span> : ''} </a>)}
+                    <a href="#" className={type == key ? 'active' : ''} onClick={() => this.handleColorPalegtte(key)}>
+                        <img src={`${wpDarkModeAdmin.pluginUrl}/block/build/images/${key}.png`} alt={label} /> {label} {type == key ? <span className='tick'>✓</span> : ''}
+                    </a>)}
             </div>
         )
     }

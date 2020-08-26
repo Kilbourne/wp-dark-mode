@@ -224,7 +224,6 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 			/** load gutenberg block */
 			include_once $this->plugin_path( 'block/plugin.php' );
 
-
 			//admin includes
 			if ( is_admin() ) {
 				require $this->plugin_path( 'includes/class-settings-api.php' );
