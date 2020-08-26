@@ -134,6 +134,15 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'type'    => 'switcher',
 					),
 
+					'enable_backend' => array(
+						'name'    => 'enable_backend',
+						'default' => 'off',
+						'label'   => __( 'Enable Backend Darkmode', 'wp-dark-mode-ultimate' ),
+						'desc'    => __( 'Enable the backend darkmode to display a darkmode switch button in the admin bar for the admins on the backend.',
+							'wp-dark-mode-ultimate' ),
+						'type'    => 'switcher',
+					),
+
 
 				) ),
 

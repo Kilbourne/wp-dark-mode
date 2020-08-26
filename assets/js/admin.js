@@ -3,6 +3,8 @@
     var app = {
 
         init: function(){
+            app.initDarkmode();
+
             app.checkDesc();
             app.checkSwitchdDeps();
 
@@ -13,10 +15,18 @@
             $(document).on('click', '.remove_row', app.removeRow);
             $(document).on('click', '.close-promo', app.closePromo);
 
-            jQuery(document).ready(function($) {
+            if (wpDarkModeAdmin.is_settings_page) {
                 wp.codeEditor.initialize($('.custom_css textarea'), wpDarkModeAdmin.cm_settings);
-            })
+            }
+        },
 
+        initDarkmode: function () {
+            var is_saved = sessionStorage.getItem('wp_dark_mode_admin');
+
+            if (wpDarkModeAdmin.enable_backend && 1 == is_saved && !wpDarkModeAdmin.is_block_editor) {
+                $('html').addClass('wp-dark-mode-active');
+                $(window).trigger('darkmodeInit');
+            }
         },
 
         closePromo: function () {

@@ -61,7 +61,12 @@
 
             var is_saved = $('html').hasClass(darkClass) ? 1 : 0;
 
-            sessionStorage.setItem('wp_dark_mode_frontend', is_saved);
+            if (typeof wpDarkModeAdmin === 'undefined') {
+                sessionStorage.setItem('wp_dark_mode_frontend', is_saved);
+            } else {
+                sessionStorage.setItem('wp_dark_mode_admin', is_saved);
+            }
+
             $(window).trigger('darkmodeInit');
 
         },

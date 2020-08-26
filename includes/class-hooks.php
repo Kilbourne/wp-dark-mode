@@ -22,11 +22,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 			add_action( 'wp_footer', [ $this, 'dark_scripts' ] );
 			add_action( 'elementor/editor/footer', [ $this, 'dark_scripts' ] );
 
-			if ( 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_backend', 'on' ) ) {
-				add_action( 'admin_head', [ $this, 'dark_styles' ] );
-				add_action( 'admin_footer', [ $this, 'dark_scripts' ] );
-			}
-
 			/** display the dark mode switcher if the dark mode enabled on frontend */
 			if ( 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'show_switcher', 'on' ) ) {
 				add_action( 'wp_footer', [ $this, 'display_widget' ] );
@@ -38,6 +33,37 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 			add_action( 'wsa_form_bottom_wp_dark_mode_style', [ $this, 'pro_promo' ] );
 			add_action( 'wsa_form_bottom_wp_dark_mode_image_settings', [ $this, 'ultimate_promo' ] );
 			add_action( 'wsa_form_bottom_wp_dark_mode_custom_css', [ $this, 'ultimate_promo' ] );
+
+			if ( is_admin() && 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_backend', 'on' ) ) {
+				add_action( 'admin_bar_menu', [ $this, 'render_admin_switcher_menu' ], 2000 );
+				add_action( 'admin_head', [ $this, 'dark_styles' ] );
+				add_action( 'admin_footer', [ $this, 'dark_scripts' ] );
+			}
+
+		}
+
+		/**
+		 * display dark mode switcher button on the admin bar menu
+		 */
+		public function render_admin_switcher_menu() {
+
+			global $wp_admin_bar;
+			$wp_admin_bar->add_menu( array(
+				'id'    => 'wp-dark-mode',
+				'title' => '<input type="checkbox" id="wp-dark-mode-switch" class="wp-dark-mode-switch">
+<div class="wp-dark-mode-switcher wp-dark-mode-ignore">
+
+    <label for="wp-dark-mode-switch">
+        <div class="toggle"></div>
+        <div class="modes">
+            <p class="light">Light</p>
+            <p class="dark">Dark</p>
+        </div>
+    </label>
+
+</div>',
+				'href'  => '#',
+			) );
 		}
 
 		/**
@@ -78,10 +104,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 		}
 
 		public function dark_styles() {
-
-			if ( is_admin() && ! wp_dark_mode()->is_ultimate_active() ) {
-				return;
-			}
 
 			$preset = wp_dark_mode_get_settings( 'wp_dark_mode_style', 'color_preset', '0' );
 
@@ -192,9 +214,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 		 * darkmode scripts
 		 */
 		public function dark_scripts() {
-			if ( is_admin() && ! wp_dark_mode()->is_ultimate_active() ) {
-				return;
-			}
 
 			$selectors = '.wp-dark-mode-ignore';
 			$excludes  = wp_dark_mode_get_settings( 'wp_dark_mode_display', 'excludes' );
