@@ -294,3 +294,18 @@ tr.gutenberg_doc, tr.elementor_doc, tr.image_settings, tr.shortcodes_doc, tr.wid
     display: none;
   }
 }
+
+/** exclude pages */
+.exclude_pages .select2-container {
+  width: 350px !important;
+}
+
+.wppool-settings {
+  .CodeMirror-sizer{
+    margin-left: 22px !important;
+  }
+
+  .CodeMirror-linenumbers {
+    width: 21px !important;
+  }
+}

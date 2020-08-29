@@ -33,3 +33,12 @@ if ( ! function_exists( 'wp_dark_mode_color_presets' ) ) {
 		return ! empty( $presets[ $preset ] ) ? $presets[ $preset ] : $presets['1'];
 	}
 }
+
+if ( ! function_exists( 'wp_dark_mode_exclude_pages' ) ) {
+	/**
+	 * @return string|array
+	 */
+	function wp_dark_mode_exclude_pages() {
+		return  wp_dark_mode_get_settings( 'wp_dark_mode_display', 'exclude_pages', [] );
+	}
+}

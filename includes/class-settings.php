@@ -137,9 +137,9 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 					'enable_backend' => array(
 						'name'    => 'enable_backend',
 						'default' => 'off',
-						'label'   => __( 'Enable Backend Darkmode', 'wp-dark-mode-ultimate' ),
+						'label'   => __( 'Enable Backend Darkmode', 'wp-dark-mode' ),
 						'desc'    => __( 'Enable the backend darkmode to display a darkmode switch button in the admin bar for the admins on the backend.',
-							'wp-dark-mode-ultimate' ),
+							'wp-dark-mode' ),
 						'type'    => 'switcher',
 					),
 
@@ -230,6 +230,16 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'desc'    => __( 'Add comma separated (classes, ids) to ignore the darkmode. ex: .class1, #hero-area', 'wp-dark-mode' ),
 						'type'    => 'textarea',
 					),
+
+					'exclude_pages' => array(
+						'name'    => 'exclude_pages',
+						'default' => [ $this, 'exclude_pages' ],
+						'label'   => __( 'Exclude Pages', 'wp-dark-mode' ),
+						'desc'    => __( 'Select the pages to disable darkmode on the selected pages.', 'wp-dark-mode' ),
+						'type'    => 'cb_function',
+					),
+
+
 				) ),
 
 				'wp_dark_mode_style'    => apply_filters( 'wp_dark_mode/style_settings', array(
@@ -366,6 +376,32 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 
 			//initialize them
 			self::$settings_api->admin_init();
+		}
+
+		public function exclude_pages() {
+
+			$exclude_pages = wp_dark_mode_exclude_pages();
+
+			?>
+            <select name="wp_dark_mode_display[exclude_pages][]" multiple id="wp_dark_mode_display[exclude_pages]">
+				<?php
+
+				$pages = get_posts( [
+					'numberposts' => - 1,
+					'post_type'   => 'page',
+				] );
+
+				if ( ! empty( $pages ) ) {
+					$page_ids = wp_list_pluck( $pages,  'post_title', 'ID'  );
+
+					foreach ( $page_ids as $id => $title ) {
+						printf( '<option value="%1$s" %2$s>%3$s</option>', $id, in_array( $id, $exclude_pages ) ? 'selected' : '', $title );
+					}
+				}
+
+				?>
+            </select>
+			<?php
 		}
 
 		public static function widget_doc(){ ?>

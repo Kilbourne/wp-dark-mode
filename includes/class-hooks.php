@@ -70,6 +70,12 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 		 * display the footer widget
 		 */
 		public function display_widget() {
+			global $post;
+
+			if ( isset( $post->ID ) && in_array( $post->ID, wp_dark_mode_exclude_pages() ) ) {
+				return;
+			}
+
 			$style = wp_dark_mode_get_settings( 'wp_dark_mode_display', 'switch_style', 1 );
 
 			global $wp_dark_mode_license;
@@ -105,14 +111,30 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 
 		public function dark_styles() {
 
+			global $post;
+			if ( isset( $post->ID ) && in_array( $post->ID, wp_dark_mode_exclude_pages() ) ) {
+				return;
+			}
+
 			$preset = wp_dark_mode_get_settings( 'wp_dark_mode_style', 'color_preset', '0' );
+
+			if ( is_admin() ) {
+				$preset = 0;
+			}
 
 		    $colors = wp_dark_mode_color_presets($preset);
 
-			$bg_color     = apply_filters( 'wp_dark_mode/bg_color', $colors['bg'] );
-			$text_color   = apply_filters( 'wp_dark_mode/text_color', $colors['text'] );
-			$link_color   = apply_filters( 'wp_dark_mode/link_color', $colors['link'] );
-			$border_color = apply_filters( 'wp_dark_mode/border_color', $colors['link'] );
+			$bg_color     = $colors['bg'];
+			$text_color   = $colors['text'];
+			$link_color   = $colors['link'];
+			$border_color = $colors['link'];
+
+			if ( ! is_admin() ) {
+				$bg_color     = apply_filters( 'wp_dark_mode/bg_color', $bg_color );
+				$text_color   = apply_filters( 'wp_dark_mode/text_color', $text_color );
+				$link_color   = apply_filters( 'wp_dark_mode/link_color', $link_color );
+				$border_color = apply_filters( 'wp_dark_mode/border_color', $border_color );
+			}
 
 			if ( is_admin() ) {
 				$base_selector = 'html.wp-dark-mode-active #wpbody';
@@ -214,6 +236,12 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 		 * darkmode scripts
 		 */
 		public function dark_scripts() {
+
+			global $post;
+
+			if ( isset( $post->ID ) && in_array( $post->ID, wp_dark_mode_exclude_pages() ) ) {
+				return;
+			}
 
 			$selectors = '.wp-dark-mode-ignore';
 			$excludes  = wp_dark_mode_get_settings( 'wp_dark_mode_display', 'excludes' );

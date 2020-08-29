@@ -73,10 +73,16 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 		public function admin_scripts( $hook ) {
 
 			/** wp-dark-mode admin css */
+			wp_enqueue_style( 'select2', wp_dark_mode()->plugin_url( 'assets/vendor/select2.css' ) );
+
 			wp_enqueue_style( 'wp-dark-mode-admin', wp_dark_mode()->plugin_url( 'assets/css/admin.css' ), false, wp_dark_mode()->version );
 
 			/** countdown timer js */
-			wp_enqueue_script( 'jquery.syotimer', wp_dark_mode()->plugin_url( 'assets/js/jquery.syotimer.min.js' ), [ 'jquery' ], '2.1.2',
+			wp_enqueue_script( 'jquery.syotimer', wp_dark_mode()->plugin_url( 'assets/vendor/jquery.syotimer.min.js' ), [ 'jquery' ], '2.1.2',
+				true );
+
+			/** select2 js */
+			wp_enqueue_script( 'select2', wp_dark_mode()->plugin_url( 'assets/vendor/select2.min.js' ), [ 'jquery' ], false,
 				true );
 
 			/** wp-dark-mode admin js */

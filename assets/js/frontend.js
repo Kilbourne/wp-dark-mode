@@ -31,6 +31,11 @@
         darkMode: null,
 
         initDarkmode: function () {
+
+            if (typeof wpDarkModeAdmin !== 'undefined') {
+                return;
+            }
+
             var is_saved = sessionStorage.getItem('wp_dark_mode_frontend');
 
             if (1 == is_saved) {

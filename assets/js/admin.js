@@ -18,6 +18,12 @@
             if (wpDarkModeAdmin.is_settings_page) {
                 wp.codeEditor.initialize($('.custom_css textarea'), wpDarkModeAdmin.cm_settings);
             }
+
+            $('.exclude_pages select').select2({
+                placeholder: 'Select Pages',
+                multiple: true,
+            });
+
         },
 
         initDarkmode: function () {

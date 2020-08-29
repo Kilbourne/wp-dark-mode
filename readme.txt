@@ -4,7 +4,7 @@ Tags: dark, dark mode, night mode, gutenberg blocks, dark theme
 Requires at least: 4.4
 Tested up to: 5.5
 Requires PHP: 5.6
-Stable tag: 1.0.6
+Stable tag: 1.0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -101,13 +101,28 @@ Yes, We have tested this plugin in all modern browsers (Safari, Chrome, Firefox,
 No. WP Dark Mode is a very user-friendly and simple plugin. Just download and use it accordingly.
 
 == Screenshots ==
-1. General Settings
-2. Display Settings
-3. Color Style Settings
-4. Dark Mode Switch Elementor Widget
-5. Gutenberg Block
+1. Default Dark Mode Color Scheme
+2. General Settings
+3. Advanced Settings
+4. Display Settings
+5. Image Settings
+6. Ready made color presets & customizing options
+7. Custom CSS only for darkmode
+8. Dark mode switch widget
+9. Dark mode switch gutenberg block
+10. Dark mode switch elementor widget
 
 == Changelog ==
+
+= 1.0.7 =
+
+* New: Added excluded pages settings (PRO)
+* New: Added 5 exclusive color scheme (PRO)
+* New: Added 10 exclusive color scheme (Ultimate)
+* New: Added gutenberg editor color scheme
+* New: Added custom css only for dark mode (Ultimate)
+* Fix: Fixed default mode as dark mode
+* Fix: Fix multiple images in darkmode image settings (Ultimate)
 
 = 1.0.6 =
 
