@@ -249,7 +249,7 @@ tr.gutenberg_doc, tr.elementor_doc, tr.image_settings, tr.shortcodes_doc, tr.wid
 .wppool-settings .color_preset {
 
   fieldset {
-    max-width: 600px;
+    max-width: 550px;
     & > label {
       margin: 5px !important;
     }
@@ -260,7 +260,7 @@ tr.gutenberg_doc, tr.elementor_doc, tr.image_settings, tr.shortcodes_doc, tr.wid
 
     img {
       border-radius: 50%;
-      margin: 5px;
+      margin: 0;
       max-width: 85px;
     }
   }

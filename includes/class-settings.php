@@ -409,6 +409,10 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
                 <div class="getting-started-section">
                     <h2>Display Switch Button Using The WP Dark Mode widget.</h2>
                     <p>You can display the switch button by using the (WP Dark Mode ) wordpress widget, for your users to switch between the dark and normal mode.
+                        <br>
+                        <br>
+                        Dark Mode Switch Widget is available in the PRO version.
+                        <br>
                         <br> For displaying the Darkmode Switch button using the WP Dark Mode widget follow the below steps:</p>
 					<p>
                         <br>

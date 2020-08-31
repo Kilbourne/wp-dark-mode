@@ -116,10 +116,12 @@ No. WP Dark Mode is a very user-friendly and simple plugin. Just download and us
 
 = 1.0.7 =
 
+* New: Added gutenberg editor color scheme
+* New: Added new darkmode color schme
+* New: Added new switch style
 * New: Added excluded pages settings (PRO)
 * New: Added 5 exclusive color scheme (PRO)
 * New: Added 10 exclusive color scheme (Ultimate)
-* New: Added gutenberg editor color scheme
 * New: Added custom css only for dark mode (Ultimate)
 * Fix: Fixed default mode as dark mode
 * Fix: Fix multiple images in darkmode image settings (Ultimate)

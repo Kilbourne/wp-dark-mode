@@ -237,11 +237,11 @@ msgstr ""
 msgid "Select the links color when the dark mode is on."
 msgstr ""
 
-#: includes/class-settings.php:579, includes/class-settings.php:591
+#: includes/class-settings.php:583, includes/class-settings.php:595
 msgid "WP Dark Mode Settings"
 msgstr ""
 
-#: includes/class-settings.php:579
+#: includes/class-settings.php:583
 msgid "WP Dark Mode"
 msgstr ""
 
