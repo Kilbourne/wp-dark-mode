@@ -80,18 +80,24 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 
 			global $wp_dark_mode_license;
 			if (!$wp_dark_mode_license || ! $wp_dark_mode_license->is_valid() ) {
-				$style = 1;
+				$style = $style > 2 ? 1 : $style;
 			}
 
 			echo do_shortcode( '[wp_dark_mode floating="yes" style="' . $style . '"]' );
 		}
 
-		public function pro_promo() {
+		public function pro_promo( $section ) {
 			if ( wp_dark_mode()->is_pro_active() || wp_dark_mode()->is_ultimate_active() ) {
 				return;
 			}
 
-			wp_dark_mode()->get_template( 'admin/promo' );
+			$args = [];
+
+			if ( ! empty( $section ) && in_array( $section['id'], [ 'wp_dark_mode_display', 'wp_dark_mode_style' ] ) ) {
+				$args['is_hidden'] = true;
+			}
+
+			wp_dark_mode()->get_template( 'admin/promo', $args );
 		}
 
 		public function ultimate_promo( $section ) {

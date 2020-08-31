@@ -23,14 +23,19 @@ if ( ! function_exists( 'wp_dark_mode_get_settings' ) ) {
 if ( ! function_exists( 'wp_dark_mode_color_presets' ) ) {
 	function wp_dark_mode_color_presets( $preset = '0' ) {
 		$presets = apply_filters( 'wp_dark_mode/color_presets', [
-			'1' => [
+			'0' => [
 				'bg'   => '#1B2836',
 				'text' => '#fff',
 				'link' => '#459BE6',
 			],
+			'1' => [
+				'bg'   => '#1E0024',
+				'text' => '#fff',
+				'link' => '#E251FF',
+			],
 		] );
 
-		return ! empty( $presets[ $preset ] ) ? $presets[ $preset ] : $presets['1'];
+		return ! empty( $presets[ $preset ] ) ? $presets[ $preset ] : $presets['0'];
 	}
 }
 

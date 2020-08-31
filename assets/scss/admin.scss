@@ -55,6 +55,7 @@ tr.gutenberg_doc, tr.elementor_doc, tr.image_settings, tr.shortcodes_doc, tr.wid
     padding: 60px 30px 40px 30px;
     text-align: center;
     border-radius: 10px;
+    border: 1px solid;
 
     .close-promo {
       position: absolute;
@@ -111,6 +112,7 @@ tr.gutenberg_doc, tr.elementor_doc, tr.image_settings, tr.shortcodes_doc, tr.wid
       margin-top: 30px;
       font-size: 17px;
       font-weight: bold;
+      border: 1px solid;
     }
 
   }
@@ -247,8 +249,9 @@ tr.gutenberg_doc, tr.elementor_doc, tr.image_settings, tr.shortcodes_doc, tr.wid
 .wppool-settings .color_preset {
 
   fieldset {
+    max-width: 600px;
     & > label {
-      margin: 0 5px !important;
+      margin: 5px !important;
     }
   }
 
@@ -258,7 +261,7 @@ tr.gutenberg_doc, tr.elementor_doc, tr.image_settings, tr.shortcodes_doc, tr.wid
     img {
       border-radius: 50%;
       margin: 5px;
-      max-width: 40px;
+      max-width: 85px;
     }
   }
 }
@@ -308,4 +311,53 @@ tr.gutenberg_doc, tr.elementor_doc, tr.image_settings, tr.shortcodes_doc, tr.wid
   .CodeMirror-linenumbers {
     width: 21px !important;
   }
+}
+
+/**--- Disabled --**/
+.wppool-settings {
+  .image-choose-opt {
+    position: relative;
+
+    &.disabled {
+      .disabled-text {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(#555, .7);
+        color: #fff;
+      }
+    }
+  }
+
+  .form-table tr.disabled {
+    opacity: .6;
+
+    input, select, textarea {
+      pointer-events: none;
+    }
+  }
+
+  .switch_style {
+    .image-choose-opt {
+      .disabled-text {
+        width: 90%;
+        height: 95%;
+        left: 5px;
+        border-radius: 10px;
+      }
+    }
+  }
+
+  .color_preset {
+    .image-choose-opt {
+      .disabled-text {
+        border-radius: 100px;
+      }
+    }
+  }
+
 }

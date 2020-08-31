@@ -1,4 +1,47 @@
 /* -------- Switch Styles ------------*/
+
+/*----------- btn style-1 -------------*/
+.wp-dark-mode-switcher.style-1 {
+    label {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #555;
+        border-radius: 15px;
+    }
+
+    .modes{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    img {
+        width: 24px;
+        &.dark {
+            display: none;
+        }
+    }
+}
+
+.wp-dark-mode-switcher.active.style-1 {
+    label{
+        background: #fff;
+    }
+    img {
+        &.light {
+            display: none;
+        }
+        &.dark {
+            display: block;
+        }
+    }
+
+}
+
+/*----------- btn style-2 -------------*/
 .wp-dark-mode-switcher,
 .wp-dark-mode-switcher {
     display: inline-flex;
@@ -7,14 +50,6 @@
     position: relative;
     background: transparent !important;
     text-align: left;
-}
-
-.wp-dark-mode-switcher > i {
-    margin-right: 7px !important;
-}
-
-.wp-dark-mode-moon-o {
-    display: none;
 }
 
 .wp-dark-mode-switcher label,
@@ -65,21 +100,6 @@
     display: none !important;
 }
 
-/*----------- btn style2 -------------*/
-.wp-dark-mode-switcher.style-2 label,
-.wp-dark-mode-switcher.style-2 .toggle {
-    height: 34px;
-}
-
-.wp-dark-mode-switcher.style-2 label {
-    width: 70px;
-}
-
-.wp-dark-mode-switcher.style-2 .modes img {
-    max-width: 18px;
-    max-height: 18px;
-}
-
 /*----------- btn style-3 -------------*/
 .wp-dark-mode-switcher.style-3 img {
     max-height: 18px;
@@ -109,7 +129,6 @@
     background: #EE5913;
     margin: 0 7px;
 }
-
 
 .wp-dark-mode-switcher.active.style-3 .toggle {
     right: 2px;
@@ -161,7 +180,6 @@
     display: none;
 }
 
-
 .wp-dark-mode-switcher.active.style-4 label .modes .light {
     display: none;
 }
@@ -211,7 +229,6 @@
 .wp-dark-mode-switcher.style-5 label .modes .dark {
     display: none;
 }
-
 
 .wp-dark-mode-switcher.active.style-5 label .modes .light {
     display: none;
@@ -263,7 +280,6 @@
     display: none;
 }
 
-
 .wp-dark-mode-switcher.active.style-6 label .modes .light {
     display: none;
 }
@@ -277,45 +293,19 @@
     background: #0050BB;
 }
 
-/*----------- btn style-7 -------------*/
-.wp-dark-mode-switcher.style-7 {
-    label {
-        width: 50px;
-        height: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: #555;
-        border-radius: 15px;
-    }
-
-    .modes{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    img {
-        width: 24px;
-        &.dark {
-            display: none;
-        }
-    }
+/*----------- btn style7 -------------*/
+.wp-dark-mode-switcher.style-7 label,
+.wp-dark-mode-switcher.style-7 .toggle {
+    height: 34px;
 }
 
-.wp-dark-mode-switcher.active.style-7 {
-    label{
-        background: #fff;
-    }
-    img {
-        &.light {
-            display: none;
-        }
-        &.dark {
-            display: block;
-        }
-    }
+.wp-dark-mode-switcher.style-7 label {
+    width: 70px;
+}
 
+.wp-dark-mode-switcher.style-7 .modes img {
+    max-width: 18px;
+    max-height: 18px;
 }
 
 
@@ -355,7 +345,6 @@
 .wp-dark-mode-active .elementor-editor-active .elementor-element > .elementor-element-overlay{
     background: transparent !important;
 }
-
 
 .wp-dark-mode-dark-image {
     display: none !important;

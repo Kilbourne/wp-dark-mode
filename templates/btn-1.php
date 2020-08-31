@@ -5,17 +5,11 @@ $position    = wp_dark_mode_get_settings( 'wp_dark_mode_display', 'switcher_posi
 
 ?>
 <input type="checkbox" id="wp-dark-mode-switch" class="wp-dark-mode-switch">
-<div class="wp-dark-mode-switcher wp-dark-mode-ignore  <?php echo $is_floating ? "floating $position" : ''; ?>">
-
-    <i class="wp-dark-mode-moon-o wp-dark-mode-moon-icon-size-small"></i>
-    <i class="wp-dark-mode-light-up wp-dark-mode-moon-icon-size-small"></i>
-
+<div class="wp-dark-mode-switcher wp-dark-mode-ignore  style-1 <?php echo $is_floating ? "floating $position" : ''; ?>">
     <label for="wp-dark-mode-switch">
-        <div class="toggle"></div>
         <div class="modes">
-            <p class="light"><?php esc_html_e( 'Light', 'wp-dark-mode' ); ?></p>
-            <p class="dark"><?php esc_html_e( 'Dark', 'wp-dark-mode' ); ?></p>
+            <img class="light" src="<?php echo wp_dark_mode()->plugin_url( 'assets/images/btn-1/light.png' ); ?>">
+            <img class="dark" src="<?php echo wp_dark_mode()->plugin_url( 'assets/images/btn-1/dark.png' ); ?>">
         </div>
     </label>
-
 </div>

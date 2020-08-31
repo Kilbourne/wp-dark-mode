@@ -277,10 +277,10 @@ msgstr ""
 msgid " to function properly."
 msgstr ""
 
-#: templates/btn-1.php:16
+#: templates/btn-2.php:13
 msgid "Light"
 msgstr ""
 
-#: templates/btn-1.php:17
+#: templates/btn-2.php:14
 msgid "Dark"
 msgstr ""
