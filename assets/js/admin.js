@@ -92,7 +92,7 @@
 
         blockSwitches: function () {
 
-            if (wpDarkModeAdmin.is_pro_active) {
+            if (wpDarkModeAdmin.is_pro_active || wpDarkModeAdmin.is_ultimate_active ) {
                 return;
             }
 
@@ -103,7 +103,7 @@
 
         blockPresets: function () {
 
-            if (wpDarkModeAdmin.is_pro_active) {
+            if (wpDarkModeAdmin.is_pro_active || wpDarkModeAdmin.is_ultimate_active) {
                 return;
             }
 
