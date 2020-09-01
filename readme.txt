@@ -31,22 +31,31 @@ WP Dark Mode supports all major operating systems including iOS, Android, macOS 
 1. **Darkmode Elementor Widget** - You can place the Dark Mode switch button into any page/post by using the (Dark Mode Switch) elementor widget.
 1. **Darkode Gutenberg Widget** - You can place the switch button into any page/post by using the (Dark Mode Switch) gutenberg block.
 1. **Auto Match OS Theme** - Automatically shows Darkmode if the OS prefered theme is dark
+4. **Available in Backend** - You can enable the dark mode in the back end admin page.
+1. **Presets Color Schema** - 2 exclusive presets color schema available to quickly change the dark mode color from the predefined presets.
+1. **Dark Mode Switch** - Dark mode switch button to toggle the darkmode.
+
 
 === 💰 WP Dark Mode Pro Features ===
+1. **All Free Features**
 1. **Time Based Dark Mode** - Your website will turn into dark mode based on the local time of the user
 2. **Multiple Dark Mode Switch Style** - You can display multiple dark mode switch button style for the users to turn on-off the dark mode.
 5. **Shortcode Supported** - You can use `[wp_dark_mode_switch]` shortcode to display the dark mode switch button in any page/post
 6. **Above Post/Page Content** - You can display the dark mode switch button before any page/post.
 6. **Darkmode Switch Widget** - You can place the darkmode switch button using the WP Dark Mode Widget.
-6. **Excludes Elements** - You can excludes specific elements being affected by the derkmode by using the CSS selectors.
+1. **Presets Color Schema** - 5 exclusive presets color schema available to quickly change the dark mode color from the predefined presets.
+6. **Excludes Elements** - You can excludes specific elements being affected by the darkmode by using the CSS selectors.
+1. **Excluded Pages** - You can excludes specific pages from darkmode.
+
 
 > 🚀  [Get The PRO Version](https://wppool.dev/wp-dark-mode/) | 👩🏼‍💻 [Get Support](https://wppool.dev/wp-dark-mode/)
 
 === 💰 WP Dark Mode Ultimate Features ===
+1. **All Pro Features**
 1. **Custom Colors** - You can customized the darkmode background. text and links color as you want/
-1. **Presets Color Schema** - Presets color schema available to quickly change the dark mode color from the predefined presets.
-4. **Available in Backend** - You can enable the dark mode in the back end admin page.
+1. **Presets Color Schema** - 10 exclusive presets color schema available to quickly change the dark mode color from the predefined presets.
 4. **Dark Mode Based Image Supports** - You can replace light mode images with different image you want in the dark mode.
+1. **Custom CSS** - You can use custom CSS only for darkmode.
 
 > 🚀  [Get The Ultimate Version](https://wppool.dev/wp-dark-mode/) | 👩🏼‍💻 [Get Support](https://wppool.dev/wp-dark-mode/)
 
