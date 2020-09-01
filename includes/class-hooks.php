@@ -150,8 +150,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 				$base_selector = 'html.wp-dark-mode-active';
 			}
 
-			$scss_compiler = new scssc();
-
 			ob_start();
 
 			printf( '%1$s :not(.wp-dark-mode-ignore):not(mark):not(code):not(pre):not(ins):not(option):not(input):not(select):not(textarea):not(button):not(a):not(video):not(canvas):not(progress):not(iframe):not(svg):not(path):not(.mejs-iframe-overlay):not(.elementor-element-overlay):not(.elementor-background-overlay){
@@ -231,7 +229,14 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
                 }
             </script>
 
-            <style><?php echo $scss_compiler->compile( $scss ); ?></style>
+            <style>
+                <?php
+				if ( ! empty( $scss ) ) {
+				    $scss_compiler = new scssc();
+					echo $scss_compiler->compile( $scss );
+				}
+				?>
+            </style>
 
 
 
