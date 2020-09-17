@@ -57,3 +57,18 @@ html.wp-dark-mode-active #wpcontent #wpbody .notice, html.wp-dark-mode-active #w
 html.wp-dark-mode-active #wpcontent #wpbody #screen-meta * {
   background: #32373c !important;
 }
+
+/**-- RankMath --*/
+html.wp-dark-mode-active {
+  .rank-math-page {
+    .rank-math-ui {
+      &:before {
+        background: #10161E;
+
+      }
+    }
+    #wpfooter{
+      background: #10161E;
+    }
+  }
+}

@@ -11,14 +11,22 @@ import browserSync from 'browser-sync';
 import zip from 'gulp-zip';
 import checktextdomain from 'gulp-checktextdomain';
 import wpPot from 'gulp-wp-pot';
+import named from 'vinyl-named';
+import webpack from 'webpack-stream';
+import rename from 'gulp-rename';
 
 const PRODUCTION = yargs.argv.prod;
 const server = browserSync.create();
 
 const paths = {
     css: {
-        src: ['assets/scss/frontend.scss', 'assets/scss/admin.scss'],
+        src: ['assets/scss/**.scss'],
         dest: 'assets/css/'
+    },
+
+    js: {
+        src: ['assets/js/admin.js', 'assets/js/frontend.js'],
+        dest: 'assets/js/'
     },
 
     php: {
@@ -74,10 +82,6 @@ const paths = {
         dest: 'build'
     },
 
-    pro: {
-        src: [],
-        dest: '../wp-dark-mode-pro/wp-dark-mode/'
-    },
 };
 
 //clean before run any task
@@ -96,6 +100,32 @@ export const css = () => {
         .pipe(server.stream());
 };
 
+export const js = () => {
+    return gulp.src(paths.js.src)
+        .pipe(named())
+        .pipe(webpack({
+            mode: PRODUCTION ? 'production' : 'development',
+            module: {
+                rules: [
+                    {
+                        test: /\.js$/,
+                        use: [
+                            {
+                                loader: 'babel-loader',
+                                options: {
+                                    presets: ['@babel/preset-env']
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+
+            devtool: !PRODUCTION ? 'inline-source-map' : false
+        }))
+        .pipe(rename({suffix: '.min'}))
+        .pipe(gulp.dest(paths.js.dest));
+};
 
 //live server
 export const serve = done => {
@@ -115,7 +145,7 @@ export const reload = done => {
 //watch changes
 export const watch = () => {
     gulp.watch('assets/scss/**/*.scss', css);
-    gulp.watch('assets/js/**/*.js', reload);
+    gulp.watch('assets/js/**/*.js', js);
     gulp.watch('**/*.php', reload);
 };
 
@@ -168,7 +198,7 @@ export const makepot = () => {
         .pipe(gulp.dest(`languages/${pkg.name}.pot`))
 };
 
-export const dev = gulp.series(clean, gulp.parallel(css), serve, watch);
-export const build = gulp.series(clean, gulp.parallel(css), checkdomain, makepot, compress);
+export const dev = gulp.series(clean, gulp.parallel(css, js), serve, watch);
+export const build = gulp.series(clean, gulp.parallel(css, js), checkdomain, makepot, compress);
 
 export default dev;

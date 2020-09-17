@@ -19,8 +19,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 			add_action( 'rest_api_init', array( $this, 'rest_api' ) );
 
 			add_action( 'wp_head', [ $this, 'dark_styles' ] );
-			add_action( 'wp_footer', [ $this, 'dark_scripts' ] );
-			add_action( 'elementor/editor/footer', [ $this, 'dark_scripts' ] );
 
 			/** display the dark mode switcher if the dark mode enabled on frontend */
 			if ( 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'show_switcher', 'on' ) ) {
@@ -37,7 +35,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 			if ( is_admin() && 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_backend', 'on' ) ) {
 				add_action( 'admin_bar_menu', [ $this, 'render_admin_switcher_menu' ], 2000 );
 				add_action( 'admin_head', [ $this, 'dark_styles' ] );
-				add_action( 'admin_footer', [ $this, 'dark_scripts' ] );
 			}
 
 		}
@@ -133,7 +130,8 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 			$bg_color     = $colors['bg'];
 			$text_color   = $colors['text'];
 			$link_color   = $colors['link'];
-			$border_color = $colors['link'];
+			$border_color = wp_dark_mode_lighten( $bg_color, 30 );
+			$btn_bg_color = wp_dark_mode_lighten( $bg_color, 20 );
 
 			if ( ! is_admin() ) {
 				$bg_color     = apply_filters( 'wp_dark_mode/bg_color', $bg_color );
@@ -152,11 +150,23 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 
 			ob_start();
 
+			/** declare css variables */
+			printf( '
+			    :root{
+			        --wp-dark-mode-bg: %1$s;
+			        --wp-dark-mode-text: %2$s;
+			        --wp-dark-mode-link: %3$s;
+			        --wp-dark-mode-btn: %4$s;
+			        --wp-dark-mode-border: %5$s;
+			    }
+			', $bg_color, $text_color, $link_color, $btn_bg_color, $border_color );
+
 			printf( '%1$s :not(.wp-dark-mode-ignore):not(mark):not(code):not(pre):not(ins):not(option):not(input):not(select):not(textarea):not(button):not(a):not(video):not(canvas):not(progress):not(iframe):not(svg):not(path):not(.mejs-iframe-overlay):not(.elementor-element-overlay):not(.elementor-background-overlay){
-			     background-color: %2$s !important;
-			     color: %3$s !important;
-                 border-color: %4$s !important;
-			}', $base_selector, $bg_color, $text_color, $border_color );
+			     background-color: var(--wp-dark-mode-bg) !important;
+			     color: var(--wp-dark-mode-text) !important;
+                 border-color: var(--wp-dark-mode-border) !important;
+			}', $base_selector );
+
 
 			printf( '%1$s {
                 a,
@@ -167,11 +177,11 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
                 a:visited * {
                     &:not(.wp-dark-mode-ignore){
                         background-color: transparent !important;
-                        color: %2$s !important;
-                        border-color: %3$s !important;
+                        color: var(--wp-dark-mode-link) !important;
+                        border-color: var(--wp-dark-mode-border) !important;
                     }
                 }
-			}', $base_selector, $link_color, $border_color );
+			}', $base_selector );
 
 			if ( ! is_admin() ) {
 				printf( 'html.wp-dark-mode-active{
@@ -200,9 +210,9 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
                     textarea,
                     i {
                         &:not(.wp-dark-mode-ignore){
-                            background-color: rgb(53, 66, 80) !important;
-                            color: %1$s !important;
-                            border-color: %2$s !important;
+                            background-color: var(--wp-dark-mode-btn) !important;
+                            color: var(--wp-dark-mode-text) !important;
+                            border-color: var(--wp-dark-mode-border) !important;
                         }
                         
                        * {
@@ -210,7 +220,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
                         }
                         
                     }
-				}', $text_color, $border_color );
+				}' );
 			}
 
 			$scss = ob_get_clean();
@@ -218,14 +228,17 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 		    ?>
 
             <script>
-                <?php if(is_admin()){ ?>
+                <?php
+
+                if(is_admin()){ ?>
                 var is_saved = sessionStorage.getItem('wp_dark_mode_admin');
 				<?php }else{ ?>
                 var is_saved = sessionStorage.getItem('wp_dark_mode_frontend');
-				<?php } ?>
+				<?php }
 
+                ?>
                 if (is_saved && is_saved != 0) {
-                    document.getElementsByTagName('html')[0].classList.add('wp-dark-mode-active');
+                    document.querySelector('html').classList.add('wp-dark-mode-active');
                 }
             </script>
 
@@ -242,42 +255,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 
 		<?php
 		}
-
-		/**
-		 * darkmode scripts
-		 */
-		public function dark_scripts() {
-
-			global $post;
-
-			if ( isset( $post->ID ) && in_array( $post->ID, wp_dark_mode_exclude_pages() ) ) {
-				return;
-			}
-
-			$selectors = '.wp-dark-mode-ignore';
-			$excludes  = wp_dark_mode_get_settings( 'wp_dark_mode_display', 'excludes' );
-
-			if ( ! empty( $excludes ) ) {
-				$selectors .= ", $excludes";
-			}
-
-			?>
-            <script>
-                (function ($) {
-                    $(document).ready(function () {
-
-                        handleExcludes();
-                        $(window).on('darkmodeInit', handleExcludes);
-                        $(document).on('change', '.wp-dark-mode-switch', handleExcludes);
-
-                        function handleExcludes(){
-                            $('<?php echo $selectors; ?>').addClass('wp-dark-mode-ignore').find('*').addClass('wp-dark-mode-ignore');
-                        }
-
-                    });
-                })(jQuery)
-            </script>
-		<?php }
 
 		/**
 		 * register rest api route
@@ -306,7 +283,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 				$style = 1;
 			}
 
-			return wp_send_json_success( do_shortcode( '[wp_dark_mode style="' . $style . '"]' ) );
+			wp_send_json_success( do_shortcode( '[wp_dark_mode style="' . $style . '"]' ) );
 		}
 
 		/**

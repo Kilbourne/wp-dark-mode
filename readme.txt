@@ -4,7 +4,7 @@ Tags: dark, dark mode, night mode, gutenberg blocks, dark theme
 Requires at least: 5.0
 Tested up to: 5.5
 Requires PHP: 5.6
-Stable tag: 1.0.7
+Stable tag: 1.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,7 +29,7 @@ WP Dark Mode supports all major operating systems including iOS, Android, macOS 
 
 1. **Floating Switch Button** - You can display a darkmode floating switch button in the footer of the website.
 1. **Darkmode Elementor Widget** - You can place the Dark Mode switch button into any page/post by using the (Dark Mode Switch) elementor widget.
-1. **Darkode Gutenberg Widget** - You can place the switch button into any page/post by using the (Dark Mode Switch) gutenberg block.
+1. **Darkmode Gutenberg Widget** - You can place the switch button into any page/post by using the (Dark Mode Switch) gutenberg block.
 1. **Auto Match OS Theme** - Automatically shows Darkmode if the OS prefered theme is dark
 4. **Available in Backend** - You can enable the dark mode in the back end admin page.
 1. **Presets Color Schema** - 2 exclusive presets color schema available to quickly change the dark mode color from the predefined presets.
@@ -122,6 +122,10 @@ No. WP Dark Mode is a very user-friendly and simple plugin. Just download and us
 10. Dark mode switch elementor widget
 
 == Changelog ==
+
+= 1.0.8 =
+* New: Add WooCommerce Plugin Support
+* New: Add RankMath Plugin Support
 
 = 1.0.7 =
 

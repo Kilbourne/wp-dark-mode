@@ -1,8 +1,8 @@
-;(function ($) {
+/**--- Vanila JS ---*/
+;(function () {
 
-    var app = {
-
-        init: function(){
+    const app = {
+        init: () => {
             app.initDarkmode();
             app.blockSwitches();
             app.blockPresets();
@@ -11,11 +11,137 @@
             app.checkSwitchdDeps();
             app.checkCustomize();
 
+            const enable_darkmode_checkbox = document.querySelector('.enable_darkmode input[type=checkbox]');
+            if (enable_darkmode_checkbox) {
+                enable_darkmode_checkbox.addEventListener('change', app.checkDesc);
+            }
 
-            $('.enable_darkmode input[type=checkbox]').on('change', app.checkDesc);
-            $('.show_switcher input[type=checkbox]').on('change', app.checkSwitchdDeps);
-            $('.customize_colors input[type=checkbox]').on('change', app.checkCustomize);
+            const show_switcher_checkbox = document.querySelector('.show_switcher input[type=checkbox]');
+            if (show_switcher_checkbox) {
+                show_switcher_checkbox.addEventListener('change', app.checkSwitchdDeps);
+            }
 
+            const customize_colors_checkbox = document.querySelector('.customize_colors input[type=checkbox]');
+            if (customize_colors_checkbox) {
+                customize_colors_checkbox.addEventListener('change', app.checkCustomize);
+            }
+
+        },
+
+        initDarkmode: function () {
+            const is_saved = sessionStorage.getItem('wp_dark_mode_admin');
+
+            if (wpDarkModeAdmin.enable_backend && 1 == is_saved && !wpDarkModeAdmin.is_block_editor) {
+                document.querySelector('html').classList.add('wp-dark-mode-active');
+                window.dispatchEvent(new Event('darkmodeInit'));
+            }
+        },
+
+        blockSwitches: function () {
+
+            if (wpDarkModeAdmin.is_pro_active || wpDarkModeAdmin.is_ultimate_active) {
+                return;
+            }
+
+            const image_opts = document.querySelectorAll('.switch_style .image-choose-opt');
+            image_opts.forEach((image_opt, i) => {
+                if (i < 2) {
+                    return;
+                }
+                image_opt.classList.add('disabled');
+                const div = document.createElement('DIV');
+                div.classList.add('disabled-text');
+
+                image_opt.appendChild(div);
+            });
+
+            document.querySelectorAll('.switcher_position, .show_above_post, .show_above_page, .excludes, .exclude_pages').forEach((element) => {
+                element.classList.add('disabled');
+            });
+        },
+
+        blockPresets: function () {
+
+            if (wpDarkModeAdmin.is_pro_active || wpDarkModeAdmin.is_ultimate_active) {
+                return;
+            }
+
+            const image_opts = document.querySelectorAll('.color_preset .image-choose-opt');
+            image_opts.forEach((image_opt, i) => {
+                if (i < 2) {
+                    return;
+                }
+                image_opt.classList.add('disabled');
+                const div = document.createElement('DIV');
+                div.classList.add('disabled-text');
+
+                image_opt.appendChild(div);
+            });
+
+            const customize_colors_checkbox = document.querySelector('.customize_colors');
+            if(customize_colors_checkbox){
+                customize_colors_checkbox.classList.add('disabled');
+            }
+        },
+
+        checkDesc: function () {
+            const checkBox = document.querySelector('.enable_darkmode input[type=checkbox]');
+            if (!checkBox) {
+                return;
+            }
+            const is_darkmode_enabled = checkBox.checked;
+
+            if (is_darkmode_enabled) {
+                document.querySelector('.enable_darkmode .description').style.display = 'block';
+            } else {
+                document.querySelector('.enable_darkmode .description').style.display = 'none';
+            }
+        },
+
+        checkSwitchdDeps: function () {
+            const checkBox = document.querySelector('.show_switcher input[type=checkbox]');
+            if (!checkBox) {
+                return;
+            }
+            const checked = checkBox.checked;
+
+            if (checked) {
+                document.querySelector('.switcher_position, .switch_style').style.display = 'contents';
+            } else {
+                document.querySelector('.switcher_position, .switch_style').style.display = 'none';
+            }
+        },
+
+        checkCustomize: function () {
+            const checkBox = document.querySelector('.customize_colors input[type=checkbox]');
+            if (!checkBox) {
+                return;
+            }
+            const is_customized = checkBox.checked;
+
+            if (is_customized) {
+                document.querySelectorAll('.darkmode_bg_color, .darkmode_text_color, .darkmode_link_color').forEach((element) => {
+                    element.style.display = 'table-row';
+                });
+            } else {
+                document.querySelectorAll('.darkmode_bg_color, .darkmode_text_color, .darkmode_link_color').forEach((element) => {
+                    element.style.display = 'none';
+                });
+            }
+        },
+
+    };
+
+    document.addEventListener('DOMContentLoaded', app.init);
+
+})();
+
+/**--- jQuery ---*/
+;(function ($) {
+
+    var app = {
+
+        init: function () {
 
             $(document).on('click', '.add_row', app.addRow);
             $(document).on('click', '.remove_row', app.removeRow);
@@ -25,24 +151,18 @@
                 wp.codeEditor.initialize($('.custom_css textarea'), wpDarkModeAdmin.cm_settings);
             }
 
-            $('.exclude_pages select').select2({
-                placeholder: 'Select Pages',
-                multiple: true,
-            });
+            if($('.exclude_pages select').length) {
+                $('.exclude_pages select').select2({
+                    placeholder: 'Select Pages',
+                    multiple: true,
+                });
+            }
 
             $(document).on('click', '.image-choose-opt.disabled', app.showPopup);
             $(document).on('click', '.form-table tr.disabled', app.showPopup);
 
         },
 
-        initDarkmode: function () {
-            var is_saved = sessionStorage.getItem('wp_dark_mode_admin');
-
-            if (wpDarkModeAdmin.enable_backend && 1 == is_saved && !wpDarkModeAdmin.is_block_editor) {
-                $('html').addClass('wp-dark-mode-active');
-                $(window).trigger('darkmodeInit');
-            }
-        },
 
         closePromo: function () {
             $(this).closest('.promo').addClass('hidden');
@@ -57,59 +177,6 @@
         removeRow: function (e) {
             e.preventDefault();
             $(this).closest('tr').remove();
-        },
-
-        checkDesc: function () {
-            var is_darkmode_enabled = $('.enable_darkmode input[type=checkbox]').is(':checked');
-
-            if (is_darkmode_enabled) {
-                $('.enable_darkmode .description').show();
-            } else {
-                $('.enable_darkmode .description').hide();
-            }
-        },
-
-        checkSwitchdDeps: function () {
-            var checked = $('.show_switcher input[type=checkbox]').is(':checked');
-
-            if (checked) {
-                $('.switcher_position, .switch_style').show();
-            } else {
-                $('.switcher_position, .switch_style').hide();
-            }
-        },
-
-        checkCustomize: function () {
-            var is_customized = $('.customize_colors input[type=checkbox]').is(':checked');
-
-            if (is_customized) {
-
-                $('.darkmode_bg_color, .darkmode_text_color, .darkmode_link_color').show();
-            } else {
-                $('.darkmode_bg_color, .darkmode_text_color, .darkmode_link_color').hide();
-            }
-        },
-
-        blockSwitches: function () {
-
-            if (wpDarkModeAdmin.is_pro_active || wpDarkModeAdmin.is_ultimate_active ) {
-                return;
-            }
-
-            $('.switch_style .image-choose-opt').slice(2).addClass('disabled').append('<div class="disabled-text"></div>');
-
-            $('.switcher_position, .show_above_post, .show_above_page, .excludes, .exclude_pages').addClass('disabled');
-        },
-
-        blockPresets: function () {
-
-            if (wpDarkModeAdmin.is_pro_active || wpDarkModeAdmin.is_ultimate_active) {
-                return;
-            }
-
-            $('.color_preset .image-choose-opt').slice(2).addClass('disabled').append('<div class="disabled-text"></div>');
-
-            $('.customize_colors').addClass('disabled');
         },
 
         showPopup: function (e) {

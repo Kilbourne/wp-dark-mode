@@ -253,11 +253,11 @@ msgstr ""
 msgid "Unsupported PHP version Min required PHP Version: \"%s\""
 msgstr ""
 
-#: plugin.php:255
+#: plugin.php:259
 msgid "Settings"
 msgstr ""
 
-#: plugin.php:258
+#: plugin.php:262
 msgid "GET PRO"
 msgstr ""
 
