@@ -1,7 +1,7 @@
 /**
  * Functions
  *
- * 1. Exclude BG Elements (Not Done)
+ * 1. Exclude BG Elements
  * 2. Handle Switch Toggle
  * 3. Check Darkmode
  * 4. Check OSMode
@@ -12,6 +12,10 @@
     const app = {
 
         init: () => {
+
+            if (typeof wpDarkModeFrontend !== 'undefined' && wpDarkModeFrontend.is_excluded) {
+                return;
+            }
 
             if (typeof elementor === 'undefined') {
                 app.initDarkmode();
@@ -24,7 +28,7 @@
                 }
             }
 
-            //app.excludeBGELements();
+            app.excludeBGELements();
 
             document.querySelector('.wp-dark-mode-switch').addEventListener('click', app.handleToggle);
 
@@ -53,19 +57,18 @@
             window.dispatchEvent(new Event('darkmodeInit'));
         },
 
-        // excludeBGELements: function () {
-        //     const elements = document.querySelectorAll('div, section');
-        //
-        //     console.log(elements)
-        //
-        //     elements.forEach((element) => {
-        //         if (element.style.backgroundImage !== '') {
-        //             element.classList.add('wp-dark-mode-ignore');
-        //             element.children.forEach((child) => child.classList.add('wp-dark-mode-ignore'));
-        //         }
-        //     });
-        //
-        // },
+        excludeBGELements: function () {
+            const elements = document.querySelectorAll('div, section');
+
+            elements.forEach((element) => {
+                const bi = window.getComputedStyle(element, false).backgroundImage;
+                if (bi !== 'none') {
+                    element.classList.add('wp-dark-mode-ignore');
+                    element.querySelectorAll('*').forEach((child) => child.classList.add('wp-dark-mode-ignore'));
+                }
+            });
+
+        },
 
         handleToggle: function () {
             const html = document.querySelector('html');
@@ -166,34 +169,5 @@
     };
 
     document.addEventListener('DOMContentLoaded', app.init);
-    app.initDarkmode();
 
 })();
-
-
-;(function ($) {
-
-    var app = {
-
-        init: function () {
-
-            app.excludeBGELements();
-
-        },
-
-        excludeBGELements: function () {
-            $('div, section').each(function () {
-
-                if ($(this).css('background-image') != 'none') {
-                    $(this).add($(this).find('*')).addClass('wp-dark-mode-ignore');
-                }
-
-            });
-        },
-
-    };
-
-    $(document).ready(app.init);
-
-
-})(jQuery);

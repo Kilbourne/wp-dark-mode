@@ -126,6 +126,7 @@ No. WP Dark Mode is a very user-friendly and simple plugin. Just download and us
 = 1.0.8 =
 * New: Add WooCommerce Plugin Support
 * New: Add RankMath Plugin Support
+* Update: Removed jQuery scripts from frontend
 
 = 1.0.7 =
 

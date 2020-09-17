@@ -50,7 +50,7 @@
                 }
                 image_opt.classList.add('disabled');
                 const div = document.createElement('DIV');
-                div.classList.add('disabled-text');
+                div.classList.add('disabled-text','wp-dark-mode-ignore');
 
                 image_opt.appendChild(div);
             });
@@ -73,7 +73,7 @@
                 }
                 image_opt.classList.add('disabled');
                 const div = document.createElement('DIV');
-                div.classList.add('disabled-text');
+                div.classList.add('disabled-text', 'wp-dark-mode-ignore');
 
                 image_opt.appendChild(div);
             });

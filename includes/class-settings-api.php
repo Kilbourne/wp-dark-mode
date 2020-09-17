@@ -276,8 +276,8 @@ if ( ! class_exists( 'WPPOOL_Settings_API' ) ) {
 			$html  .= sprintf( '<div class="wppool-switcher wp-dark-mode-ignore">
                 <input type="hidden" name="%1$s[%2$s]" value="off" />
                 <input type="checkbox" name="%1$s[%2$s]" id="wppool-%1$s[%2$s]" value="on" %3$s/>
-                <div>
-                    <label for="wppool-%1$s[%2$s]"></label>
+                <div class="wp-dark-mode-ignore">
+                    <label class="wp-dark-mode-ignore" for="wppool-%1$s[%2$s]"></label>
                 </div>
             </div>',
 				$args['section'], $args['id'], checked( $value, 'on', false ) );
