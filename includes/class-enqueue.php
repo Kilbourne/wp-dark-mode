@@ -27,6 +27,8 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 		 */
 		public function frontend_scripts( $hook ) {
 
+			$suffix = defined( 'WP_DEBUG' ) && WP_DEBUG === true ? '.min' : '';
+
 			/** wp-dark-mode frontend css */
 			wp_enqueue_style( 'wp-dark-mode-frontend', wp_dark_mode()->plugin_url( 'assets/css/frontend.css' ), false,
 				wp_dark_mode()->version );

@@ -1,4 +1,3 @@
-/**--- Vanila JS ---*/
 ;(function () {
 
     const app = {
@@ -135,58 +134,4 @@
     document.addEventListener('DOMContentLoaded', app.init);
 
 })();
-
-/**--- jQuery ---*/
-;(function ($) {
-
-    var app = {
-
-        init: function () {
-
-            $(document).on('click', '.add_row', app.addRow);
-            $(document).on('click', '.remove_row', app.removeRow);
-            $(document).on('click', '.close-promo', app.closePromo);
-
-            if (wpDarkModeAdmin.is_settings_page) {
-                wp.codeEditor.initialize($('.custom_css textarea'), wpDarkModeAdmin.cm_settings);
-            }
-
-            if($('.exclude_pages select').length) {
-                $('.exclude_pages select').select2({
-                    placeholder: 'Select Pages',
-                    multiple: true,
-                });
-            }
-
-            $(document).on('click', '.image-choose-opt.disabled', app.showPopup);
-            $(document).on('click', '.form-table tr.disabled', app.showPopup);
-
-        },
-
-
-        closePromo: function () {
-            $(this).closest('.promo').addClass('hidden');
-        },
-
-        addRow: function (e) {
-            e.preventDefault();
-
-            $(this).closest('tr').clone().appendTo('.image-settings-table tbody').find('input').val('');
-        },
-
-        removeRow: function (e) {
-            e.preventDefault();
-            $(this).closest('tr').remove();
-        },
-
-        showPopup: function (e) {
-            e.preventDefault();
-
-            $(this).closest('table').next('.promo.hidden').removeClass('hidden');
-        }
-
-    };
-
-    $(document).ready(app.init);
-})(jQuery);
 

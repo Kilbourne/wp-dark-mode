@@ -78,6 +78,20 @@ if ( ! $countdown_time ) {
     <script>
         (function ($) {
             $(document).ready(function () {
+
+                //show popup
+                $(document).on('click', '.image-choose-opt.disabled, .form-table tr.disabled', function (e) {
+                    e.preventDefault();
+
+                    $(this).closest('table').next('.promo.hidden').removeClass('hidden');
+                });
+                
+                //close promo
+                $(document).on('click', '.close-promo', function () {
+                    $(this).closest('.promo').addClass('hidden');
+                });
+                
+                
                 if (typeof window.timer_set === 'undefined') {
                     window.timer_set = $('.simple_timer').syotimer({
                         year: <?php echo $countdown_time['year']; ?>,
@@ -87,7 +101,8 @@ if ( ! $countdown_time ) {
                         minute: <?php echo $countdown_time['minute']; ?>
                     });
                 }
-            })
+                
+            });
         })(jQuery);
     </script>
 
