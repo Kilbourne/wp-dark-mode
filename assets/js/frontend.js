@@ -100,7 +100,7 @@
 
         checkOsMode: function () {
 
-            if (!wpDarkModeFrontend.enable_darkmode) {
+            if (!wpDarkModeFrontend.enable_os_mode) {
                 return;
             }
 

@@ -10,7 +10,7 @@
             app.checkSwitchdDeps();
             app.checkCustomize();
 
-            const enable_darkmode_checkbox = document.querySelector('.enable_darkmode input[type=checkbox]');
+            const enable_darkmode_checkbox = document.querySelector('.enable_os_mode input[type=checkbox]');
             if (enable_darkmode_checkbox) {
                 enable_darkmode_checkbox.addEventListener('change', app.checkDesc);
             }
@@ -84,16 +84,16 @@
         },
 
         checkDesc: function () {
-            const checkBox = document.querySelector('.enable_darkmode input[type=checkbox]');
+            const checkBox = document.querySelector('.enable_os_mode input[type=checkbox]');
             if (!checkBox) {
                 return;
             }
             const is_darkmode_enabled = checkBox.checked;
 
             if (is_darkmode_enabled) {
-                document.querySelector('.enable_darkmode .description').style.display = 'block';
+                document.querySelector('.enable_os_mode .description').style.display = 'block';
             } else {
-                document.querySelector('.enable_darkmode .description').style.display = 'none';
+                document.querySelector('.enable_os_mode .description').style.display = 'none';
             }
         },
 

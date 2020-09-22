@@ -116,13 +116,21 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 			$fields = array(
 
 				'wp_dark_mode_general' => apply_filters( 'wp_dark_mode/general', array(
-					'enable_darkmode' => array(
-						'name'    => 'enable_darkmode',
+
+					'enable_frontend' => array(
+						'name'    => 'enable_frontend',
 						'default' => 'on',
-						'label'   => __( 'Enable OS aware Dark Mode', 'wp-dark-mode' ),
-						'desc'    => __( 'Dark Mode has been activated in the frontend. Now, your users will be served a dark mode of your website when their device preference is set to Dark Mode or by switching the darkmode switch button.',
-								'wp-dark-mode' ) . '<br><br><br> <img src="' . wp_dark_mode()->plugin_url( 'assets/images/os-theme.gif' )
-						             . '" alt="">',
+						'label'   => __( 'Enable Frontend Darkmode', 'wp-dark-mode' ),
+						'desc'    => __( 'Turn ON to enable the darkmode in the frontend.', 'wp-dark-mode' ),
+						'type'    => 'switcher',
+					),
+
+                    'enable_backend' => array(
+						'name'    => 'enable_backend',
+						'default' => 'off',
+						'label'   => __( 'Enable Backend Darkmode', 'wp-dark-mode' ),
+						'desc'    => __( 'Enable the backend darkmode to display a darkmode switch button in the admin bar for the admins on the backend.',
+							'wp-dark-mode' ),
 						'type'    => 'switcher',
 					),
 
@@ -134,15 +142,15 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'type'    => 'switcher',
 					),
 
-					'enable_backend' => array(
-						'name'    => 'enable_backend',
-						'default' => 'off',
-						'label'   => __( 'Enable Backend Darkmode', 'wp-dark-mode' ),
-						'desc'    => __( 'Enable the backend darkmode to display a darkmode switch button in the admin bar for the admins on the backend.',
-							'wp-dark-mode' ),
+					'enable_os_mode' => array(
+						'name'    => 'enable_os_mode',
+						'default' => 'on',
+						'label'   => __( 'Enable OS aware Dark Mode', 'wp-dark-mode' ),
+						'desc'    => __( 'Dark Mode has been activated in the frontend. Now, your users will be served a dark mode of your website when their device preference is set to Dark Mode or by switching the darkmode switch button.',
+								'wp-dark-mode' ) . '<br><br><br> <img src="' . wp_dark_mode()->plugin_url( 'assets/images/os-theme.gif' )
+						             . '" alt="">',
 						'type'    => 'switcher',
 					),
-
 
 				) ),
 

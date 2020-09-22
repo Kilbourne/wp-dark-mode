@@ -27,6 +27,10 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 		 */
 		public function frontend_scripts( $hook ) {
 
+			if ( ! wp_dark_mode_enabled() ) {
+				return;
+			}
+
 			$suffix = defined( 'WP_DEBUG' ) && WP_DEBUG === true ? '.min' : '';
 
 			/** wp-dark-mode frontend css */
@@ -70,7 +74,8 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 			wp_localize_script( 'wp-dark-mode-frontend', 'wpDarkModeFrontend', [
 				'excludes'            => $selectors,
 				'is_excluded'         => $is_excluded,
-				'enable_darkmode'     => 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_darkmode', 'on' ),
+				'enable_frontend'     => wp_dark_mode_enabled(),
+				'enable_os_mode'      => 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_os_mode', 'on' ),
 				'is_elementor_editor' => class_exists( '\Elementor\Plugin' ) && Elementor\Plugin::$instance->editor->is_edit_mode(),
 				'is_pro_active'       => wp_dark_mode()->is_pro_active(),
 				'is_ultimate_active'  => wp_dark_mode()->is_ultimate_active(),
