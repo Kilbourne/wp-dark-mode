@@ -232,6 +232,7 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 			if ( is_admin() ) {
 				require $this->plugin_path( 'includes/class-settings-api.php' );
 				require $this->plugin_path( 'includes/class-settings.php' );
+				require $this->plugin_path( 'includes/class-update.php' );
 			}
 
 		}

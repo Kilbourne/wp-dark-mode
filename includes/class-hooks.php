@@ -37,6 +37,34 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 				add_action( 'admin_head', [ $this, 'dark_styles' ] );
 			}
 
+			add_filter( 'wp_dark_mode/not', [ $this, 'not_selectors' ] );
+
+			add_action( 'admin_init', [ $this, 'init_update' ] );
+
+		}
+
+		public function init_update() {
+
+			if ( class_exists( 'WP_Dark_Mode_update' ) && current_user_can( 'manage_options' ) ) {
+				$updater = new WP_Dark_Mode_update();
+				//if ( $updater->needs_update() ) {
+					$updater->perform_updates();
+				//}
+			}
+		}
+
+		public function not_selectors() {
+			//elementor
+			if ( defined( 'ELEMENTOR_VERSION' ) ) {
+				$selectors = ':not(.elementor-element-overlay):not(.elementor-background-overlay)';
+			}
+
+			//buddypress
+			if ( class_exists( 'BuddyPress' ) ) {
+				$selectors .= ':not(#item-header-cover-image):not(#item-header-avatar):not(.activity-content):not(.activity-header)';
+			}
+
+			return $selectors;
 		}
 
 		/**
@@ -169,11 +197,11 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 			    }
 			', $bg_color, $text_color, $link_color, $btn_bg_color, $border_color );
 
-			printf( '%1$s :not(.wp-dark-mode-ignore):not(mark):not(code):not(pre):not(ins):not(option):not(input):not(select):not(textarea):not(button):not(a):not(video):not(canvas):not(progress):not(iframe):not(svg):not(path):not(.mejs-iframe-overlay):not(.elementor-element-overlay):not(.elementor-background-overlay){
+			printf( '%1$s :not(.wp-dark-mode-ignore):not(mark):not(code):not(pre):not(ins):not(option):not(input):not(select):not(textarea):not(button):not(a):not(video):not(canvas):not(progress):not(iframe):not(svg):not(path):not(.mejs-iframe-overlay)%2$s{
 			     background-color: var(--wp-dark-mode-bg) !important;
 			     color: var(--wp-dark-mode-text) !important;
                  border-color: var(--wp-dark-mode-border) !important;
-			}', $base_selector );
+			}', $base_selector, apply_filters( 'wp_dark_mode/not', '' ) );
 
 
 			printf( '%1$s {

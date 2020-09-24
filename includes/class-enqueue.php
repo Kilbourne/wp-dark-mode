@@ -53,6 +53,11 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 				}
 			}
 
+			/** buddypress style*/
+			if ( class_exists( 'BuddyPress' ) ) {
+					wp_enqueue_style( 'wp-dark-mode-buddypress', wp_dark_mode()->plugin_url( 'assets/css/buddypress.css' ) );
+			}
+
 			$this->frontend_localize();
 
 		}

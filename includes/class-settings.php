@@ -268,6 +268,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 							'7' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/8.svg' ),
 							'8' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/9.svg' ),
 							'9' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/10.svg' ),
+							'10' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/11.svg' ),
 						],
 					),
 
