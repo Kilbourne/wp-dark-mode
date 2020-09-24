@@ -4,7 +4,7 @@ Tags: dark, dark mode, night mode, gutenberg blocks, dark theme
 Requires at least: 5.0
 Tested up to: 5.5
 Requires PHP: 5.6
-Stable tag: 1.0.8
+Stable tag: 1.0.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,7 +53,7 @@ WP Dark Mode supports all major operating systems including iOS, Android, macOS 
 === 💰 WP Dark Mode Ultimate Features ===
 1. **All Pro Features**
 1. **Custom Colors** - You can customized the darkmode background. text and links color as you want/
-1. **Presets Color Schema** - 10 exclusive presets color schema available to quickly change the dark mode color from the predefined presets.
+1. **Presets Color Schema** - 11 exclusive presets color schema available to quickly change the dark mode color from the predefined presets.
 4. **Dark Mode Based Image Supports** - You can replace light mode images with different image you want in the dark mode.
 1. **Custom CSS** - You can use custom CSS only for darkmode.
 
@@ -122,6 +122,14 @@ No. WP Dark Mode is a very user-friendly and simple plugin. Just download and us
 10. Dark mode switch elementor widget
 
 == Changelog ==
+
+= 1.0.9 =
+* Added: Buddypress Plugin Supports
+* Fix: Left Switch Position Style Fixed
+* Added:  New Black Color Scheme
+* Added: Option Added to Disable Dark Mode In The Frontend
+* Fix: Admin Darkmode Switch Style Fixed
+* Improvement: Removed jQuery scripts from backend
 
 = 1.0.8 =
 * New: Add WooCommerce Plugin Support

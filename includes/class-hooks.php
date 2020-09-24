@@ -47,13 +47,13 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 
 			if ( class_exists( 'WP_Dark_Mode_update' ) && current_user_can( 'manage_options' ) ) {
 				$updater = new WP_Dark_Mode_update();
-				//if ( $updater->needs_update() ) {
+				if ( $updater->needs_update() ) {
 					$updater->perform_updates();
-				//}
+				}
 			}
 		}
 
-		public function not_selectors() {
+		public function not_selectors( $selectors ) {
 			//elementor
 			if ( defined( 'ELEMENTOR_VERSION' ) ) {
 				$selectors = ':not(.elementor-element-overlay):not(.elementor-background-overlay)';
@@ -146,7 +146,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 
 		public function dark_styles() {
 
-			if ( ! wp_dark_mode_enabled() ) {
+			if ( ! is_admin() && ! wp_dark_mode_enabled() ) {
 				return;
 			}
 

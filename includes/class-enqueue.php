@@ -86,6 +86,9 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 				'is_ultimate_active'  => wp_dark_mode()->is_ultimate_active(),
 				'enable_backend'      => 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_backend', 'off' ),
 				'is_block_editor'     => method_exists( $current_screen, 'is_block_editor' ) && $current_screen->is_block_editor(),
+
+				'pro_version' => defined( 'WP_DARK_MODE_ULTIMATE_VERSION' ) ? WP_DARK_MODE_ULTIMATE_VERSION
+					: defined( 'WP_DARK_MODE_PRO_VERSION' ) ? WP_DARK_MODE_PRO_VERSION : 0,
 			] );
 		}
 
@@ -110,10 +113,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 
 
 			/** wp-dark-mode admin js */
-			wp_enqueue_script( 'wp-dark-mode-admin', wp_dark_mode()->plugin_url( 'assets/js/admin.min.js' ), [
-				'jquery',
-				'wp-util',
-			], wp_dark_mode()->version, true );
+			wp_enqueue_script( 'wp-dark-mode-admin', wp_dark_mode()->plugin_url( 'assets/js/admin.min.js' ), false, wp_dark_mode()->version, true );
 
 
 			/** frontend scripts for gutenberg */
@@ -145,6 +145,8 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 				'cm_settings'        => $cm_settings,
 				'is_settings_page'   => 'settings_page_wp-dark-mode-settings' == $hook,
 				'enable_backend'     => 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_backend', 'off' ),
+
+				'pro_version' => defined( 'WP_DARK_MODE_PRO_VERSION' ) ? WP_DARK_MODE_PRO_VERSION : 0,
 			] );
 
 
