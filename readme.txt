@@ -124,11 +124,11 @@ No. WP Dark Mode is a very user-friendly and simple plugin. Just download and us
 == Changelog ==
 
 = 1.0.9 =
-* Added: Buddypress Plugin Supports
-* Fix: Left Switch Position Style Fixed
-* Added:  New Black Color Scheme
+* Added: New Black Color Scheme
 * Added: Option Added to Disable Dark Mode In The Frontend
+* Added: Buddypress Plugin Supports
 * Fix: Admin Darkmode Switch Style Fixed
+* Fix: Left Switch Position Style Fixed
 * Improvement: Removed jQuery scripts from backend
 
 = 1.0.8 =
