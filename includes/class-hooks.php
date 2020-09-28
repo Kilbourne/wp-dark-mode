@@ -40,6 +40,8 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 			add_filter( 'wp_dark_mode/not', [ $this, 'not_selectors' ] );
 
 			add_action( 'admin_init', [ $this, 'init_update' ] );
+			add_action( 'wp_footer', [ $this, 'replace_image' ] );
+
 
 		}
 
@@ -137,12 +139,61 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 
 			$args = [];
 
-			if ( ! empty( $section ) && 'wp_dark_mode_style' == $section['id'] ) {
+			if ( ! empty( $section ) && in_array($section['id'], ['wp_dark_mode_style', 'wp_dark_mode_image_settings']) ) {
 				$args['is_hidden'] = true;
 			}
 
 			wp_dark_mode()->get_template( 'admin/promo-ultimate', $args );
+
+			add_action( 'wp_footer', [ $this, 'replace_image' ] );
+
 		}
+
+		public function replace_image() {
+
+			if ( ! wp_dark_mode_enabled() ) {
+				return;
+			}
+
+
+			global $post;
+			if ( isset( $post->ID ) && in_array( $post->ID, wp_dark_mode_exclude_pages() ) ) {
+				return;
+			}
+
+			$images       = get_option( 'wp_dark_mode_image_settings' );
+			$light_images = ! empty( $images['light_images'] ) ? array_filter( (array) $images['light_images'] ) : [];
+			$dark_images  = ! empty( $images['dark_images'] ) ? array_filter( (array) $images['dark_images'] ) : [];
+
+			?>
+            <script>
+                (function ($) {
+                    $(document).ready(function () {
+                        console.log('a')
+						<?php
+
+						foreach ($light_images as $key => $light_image){ ?>
+                        var image = $("img[src$='<?php echo $light_image ?>']");
+
+                        image.each(function () {
+                            var display = $(this).css('display');
+
+                            $(this).clone().attr({
+                                src: '<?php echo $dark_images[ $key ]; ?>',
+                                srcset: '<?php echo $dark_images[ $key ]; ?>',
+                            }).addClass(`wp-dark-mode-dark-image wp-dark-mode-dark-image-${display}`).insertAfter($(this));
+
+                            $(this).addClass('wp-dark-mode-light-image');
+                        });
+
+
+						<?php } ?>
+                    });
+                })(jQuery);
+            </script>
+			<?php
+		}
+
 
 		public function dark_styles() {
 

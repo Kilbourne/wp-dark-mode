@@ -80,7 +80,7 @@ if ( ! $countdown_time ) {
             $(document).ready(function () {
 
                 //show popup
-                $(document).on('click', '.image-choose-opt.disabled, .form-table tr.disabled', function (e) {
+                $(document).on('click', '.image-choose-opt.disabled, .form-table tr.disabled, .wp-dark-mode-upgrade-btn', function (e) {
                     e.preventDefault();
 
                     $(this).closest('table').next('.promo.hidden').removeClass('hidden');

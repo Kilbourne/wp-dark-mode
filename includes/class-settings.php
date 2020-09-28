@@ -67,7 +67,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 				),
 				array(
 					'id'    => 'wp_dark_mode_image_settings',
-					'title' => sprintf( __( '%s <span>Image Settings</span>', 'wp-dark-mode' ),
+					'title' => sprintf( __( '%s <span>Logo Replacement</span>', 'wp-dark-mode' ),
 						'<i class="dashicons dashicons-format-gallery" ></i>' ),
 				),
 				array(
@@ -460,33 +460,34 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 
 		public static function image_settings() {
 
-			$light_images = [];
-			$dark_images  = [];
-
-			if ( wp_dark_mode()->is_ultimate_active() ) {
-
-				$images       = get_option( 'wp_dark_mode_image_settings' );
+			$images           = get_option( 'wp_dark_mode_image_settings' );
 				$light_images = ! empty( $images['light_images'] ) ? array_filter( (array) $images['light_images'] ) : [];
 				$dark_images  = ! empty( $images['dark_images'] ) ? array_filter( (array) $images['dark_images'] ) : [];
-			}
+
 
 			?>
 
-            <p>🔹️ <strong>Light Mode Image: </strong> The image link shown in the light mode.</p>
-            <p style="margin-bottom: 20px">🔹️ <strong>Dark Mode Image: </strong> The image link that will replace the light mode image while in dark mode.</p>
+            <p>🔹️ <strong>Logo Light Mode: </strong> The logo URL shown in the light mode.</p>
+            <p style="margin-bottom: 20px">🔹️
+                <strong>Logo Dark Mode: </strong> The logo URL that will replace the light mode logo while in dark mode.</p>
 
             <table class="image-settings-table">
                 <tbody>
                 <tr>
-                    <td>Light Mode Image</td>
-                    <td>Dark Mode Image</td>
+                    <td>Logo Light Mode</td>
+                    <td>Logo Dark Mode</td>
                     <td></td>
                 </tr>
 
 				<?php
 
 				if ( ! empty( $light_images ) ) {
-					foreach ( $light_images as $key => $light_image ) { ?>
+
+					foreach ( $light_images as $key => $light_image ) {
+						if ( ! wp_dark_mode()->is_ultimate_active() && $key > 0 ) {
+							break;
+						}
+						?>
                         <tr>
                             <td><input type="url" value="<?php echo $light_image; ?>" name="wp_dark_mode_image_settings[light_images][]">
                             </td>
@@ -494,7 +495,8 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
                                 <input type="url" value="<?php echo $dark_images[ $key ] ?>" name="wp_dark_mode_image_settings[dark_images][]">
                             </td>
                             <td>
-                                <a href="#" class="add_row button button-primary">Add</a>
+                                <a href="#" class="add_row button button-primary <?php echo wp_dark_mode()->is_ultimate_active() ? ''
+		                            : 'disabled'; ?>">Add</a>
                                 <a href="#" class="remove_row button button-link-delete">Remove</a>
                             </td>
                         </tr>
@@ -504,7 +506,8 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
                         <td><input type="url" value="" name="wp_dark_mode_image_settings[light_images][]"></td>
                         <td><input type="url" value="" name="wp_dark_mode_image_settings[dark_images][]"></td>
                         <td>
-                            <a href="#" class="add_row button button-primary">Add</a>
+                            <a href="#" class="add_row button button-primary <?php echo wp_dark_mode()->is_ultimate_active() ? ''
+		                        : 'disabled'; ?>">Add</a>
                             <a href="#" class="remove_row button button-link-delete">Remove</a>
                         </td>
                     </tr>
@@ -512,7 +515,12 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 
                 </tbody>
             </table>
-		<?php }
+			<?php
+			if ( ! wp_dark_mode()->is_ultimate_active() ) {
+				printf( __( '<p class="description">You can only change one logo/ image in the free version. To change multiple logo/ images upgrade to <span class="button-primary wp-dark-mode-upgrade-btn">ULTIMATE</span> version.</p>',
+					'wp-dark-mode' ) );
+			}
+		}
 
 		public static function license_output() {
 			global $wp_dark_mode_license;
