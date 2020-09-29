@@ -23,6 +23,9 @@ if ( ! $countdown_time ) {
 
 }
 
+$url        = 'https://wppool.dev/wp-dark-mode-promo.json';
+$promo_json = json_decode( file_get_contents( $url ) );
+
 ?>
 
 <div class="promo <?php echo $is_hidden ? 'hidden' : ''; ?>">
@@ -35,7 +38,7 @@ if ( ! $countdown_time ) {
         <img src="<?php echo wp_dark_mode()->plugin_url( 'assets/images/crown.svg' ) ?>" class="promo-img">
 
         <h3>Upgrade to Ultimate to access these features</h3>
-        <h3 class="discount">GET <span class="percentage">63%</span> OFF</h3>
+        <h3 class="discount">GET <span class="percentage"><?php echo ! empty( $promo_json->discount ) ? $promo_json->discount : '63%'; ?></span> OFF</h3>
         <h3 class="limited-title">LIMITED TIME ONLY</h3>
         <div class="simple_timer"></div>
         <a href="https://wppool.dev/wp-dark-mode" target="_blank">GET ULTIMATE</a>
