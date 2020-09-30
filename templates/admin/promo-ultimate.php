@@ -83,7 +83,7 @@ $promo_json = json_decode( file_get_contents( $url ) );
             $(document).ready(function () {
 
                 //show popup
-                $(document).on('click', '.image-choose-opt.disabled, .form-table tr.disabled, .wp-dark-mode-upgrade-btn', function (e) {
+                $(document).on('click', '.image-choose-opt.disabled, .form-table tr.disabled', function (e) {
                     e.preventDefault();
 
                     $(this).closest('table').next('.promo.hidden').removeClass('hidden');
