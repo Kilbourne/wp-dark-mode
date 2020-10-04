@@ -27,8 +27,10 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 
 			add_action( 'wsa_form_bottom_wp_dark_mode_advanced', [ $this, 'pro_promo' ] );
 			add_action( 'wsa_form_bottom_wp_dark_mode_display', [ $this, 'pro_promo' ] );
+
 			add_action( 'wsa_form_bottom_wp_dark_mode_style', [ $this, 'ultimate_promo' ] );
 			add_action( 'wsa_form_bottom_wp_dark_mode_style', [ $this, 'pro_promo' ] );
+
 			add_action( 'wsa_form_bottom_wp_dark_mode_image_settings', [ $this, 'ultimate_promo' ] );
 			add_action( 'wsa_form_bottom_wp_dark_mode_custom_css', [ $this, 'ultimate_promo' ] );
 
@@ -41,6 +43,25 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 
 			add_action( 'admin_init', [ $this, 'init_update' ] );
 
+			add_filter( 'wp_dark_mode/excludes', [ $this, 'excludes' ] );
+
+		}
+
+		/**
+         * Exclude elements
+         *
+		 * @param $excludes
+		 *
+		 * @return string
+		 */
+		public function excludes( $excludes ) {
+			$selectors = wp_dark_mode_get_settings( 'wp_dark_mode_display', 'excludes', '' );
+
+			if ( ! empty( $selectors ) ) {
+				$excludes .= ", $selectors";
+			}
+
+			return $excludes;
 		}
 
 		public function init_update() {
@@ -71,22 +92,24 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 		 * display dark mode switcher button on the admin bar menu
 		 */
 		public function render_admin_switcher_menu() {
+			$light_text  = wp_dark_mode_get_settings( 'wp_dark_mode_display', 'switch_text_light', 'Light' );
+			$dark_text   = wp_dark_mode_get_settings( 'wp_dark_mode_display', 'switch_text_dark', 'Dark' );
 
 			global $wp_admin_bar;
 			$wp_admin_bar->add_menu( array(
 				'id'    => 'wp-dark-mode',
-				'title' => '<input type="checkbox" id="wp-dark-mode-switch" class="wp-dark-mode-switch">
-<div class="wp-dark-mode-switcher wp-dark-mode-ignore">
-
-    <label for="wp-dark-mode-switch">
-        <div class="toggle"></div>
-        <div class="modes">
-            <p class="light">Light</p>
-            <p class="dark">Dark</p>
-        </div>
-    </label>
-
-</div>',
+				'title' => sprintf('<input type="checkbox" id="wp-dark-mode-switch" class="wp-dark-mode-switch">
+                            <div class="wp-dark-mode-switcher wp-dark-mode-ignore">
+                            
+                                <label for="wp-dark-mode-switch">
+                                    <div class="toggle"></div>
+                                    <div class="modes">
+                                        <p class="light">%s</p>
+                                        <p class="dark">%s</p>
+                                    </div>
+                                </label>
+                            
+                            </div>', $light_text, $dark_text),
 				'href'  => '#',
 			) );
 		}
@@ -115,6 +138,11 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 			echo do_shortcode( '[wp_dark_mode floating="yes" style="' . $style . '"]' );
 		}
 
+		/**
+         * Display promo popup to upgrade to PRO
+         *
+		 * @param $section - setting section
+		 */
 		public function pro_promo( $section ) {
 			if ( wp_dark_mode()->is_pro_active() || wp_dark_mode()->is_ultimate_active() ) {
 				return;
@@ -129,6 +157,11 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 			wp_dark_mode()->get_template( 'admin/promo', $args );
 		}
 
+		/**
+         * Display promo popup to upgrade to Ultimate
+         *
+		 * @param $section - setting section
+		 */
 		public function ultimate_promo( $section ) {
 
 			if ( wp_dark_mode()->is_ultimate_active() ) {
@@ -144,6 +177,9 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 			wp_dark_mode()->get_template( 'admin/promo-ultimate', $args );
 		}
 
+		/**
+		 * Dark style scripts
+		 */
 		public function dark_styles() {
 
 			if ( ! is_admin() && ! wp_dark_mode_enabled() ) {
@@ -293,7 +329,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 		}
 
 		/**
-		 * register rest api route
+		 * register rest api route for gutenberg editor switch style choose
 		 */
 		public function rest_api() {
 			$namespace = 'wp-dark-mode/v1';

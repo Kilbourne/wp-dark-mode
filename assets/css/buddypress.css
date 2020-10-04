@@ -1,1 +1,10 @@
-html.wp-dark-mode-active .activity-avatar{position:relative;z-index:9}
+.entry-title .wp-dark-mode-switcher {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px; }
+
+html.wp-dark-mode-active .activity-avatar {
+  position: relative;
+  z-index: 9; }
+
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImJ1ZGR5cHJlc3Muc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUVJLGFBQWE7RUFDYix1QkFBdUI7RUFDdkIsZ0JBQWdCLEVBQUE7O0FBSXBCO0VBRUksa0JBQWtCO0VBQ2xCLFVBQVUsRUFBQSIsImZpbGUiOiJidWRkeXByZXNzLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5lbnRyeS10aXRsZXtcclxuICAud3AtZGFyay1tb2RlLXN3aXRjaGVye1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gICAgbWFyZ2luLXRvcDogMjVweDtcclxuICB9XHJcbn1cclxuXHJcbmh0bWwud3AtZGFyay1tb2RlLWFjdGl2ZSB7XHJcbiAgLmFjdGl2aXR5LWF2YXRhciB7XHJcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICB6LWluZGV4OiA5O1xyXG4gIH1cclxufSJdfQ== */

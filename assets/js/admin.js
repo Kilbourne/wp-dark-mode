@@ -54,7 +54,7 @@
                 image_opt.appendChild(div);
             });
 
-            document.querySelectorAll('.show_above_post, .show_above_page, .excludes, .exclude_pages').forEach((element) => {
+            document.querySelectorAll('.switch_text_light,.switch_text_dark,.show_above_post, .show_above_page, .excludes, .exclude_pages').forEach((element) => {
                 element.classList.add('disabled');
             });
         },

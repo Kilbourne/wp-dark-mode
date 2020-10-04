@@ -215,6 +215,22 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						],
 					),
 
+					'switch_text_light'   => array(
+						'name'    => 'switch_text_light',
+						'default' => 'Light',
+						'label'   => __( 'Switch Text (Light)', 'wp-dark-mode' ),
+						'desc'    => __( 'Floating switch light text.', 'wp-dark-mode' ),
+						'type'    => 'text',
+					),
+
+					'switch_text_dark'   => array(
+						'name'    => 'switch_text_dark',
+						'default' => 'Dark',
+						'label'   => __( 'Switch Text (Dark)', 'wp-dark-mode' ),
+						'desc'    => __( 'Floating switch dark text.', 'wp-dark-mode' ),
+						'type'    => 'text',
+					),
+
 					'show_above_post'   => array(
 						'name'    => 'show_above_post',
 						'default' => 'off',

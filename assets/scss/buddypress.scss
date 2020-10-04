@@ -1,3 +1,11 @@
+.entry-title{
+  .wp-dark-mode-switcher{
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+  }
+}
+
 html.wp-dark-mode-active {
   .activity-avatar {
     position: relative;

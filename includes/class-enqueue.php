@@ -48,9 +48,9 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 
 			/** woocommerce style*/
 			if ( class_exists( 'WooCommerce' ) ) {
-				if ( wp_dark_mode()->is_pro_active() || wp_dark_mode()->is_ultimate_active() ) {
+				//if ( wp_dark_mode()->is_pro_active() || wp_dark_mode()->is_ultimate_active() ) {
 					wp_enqueue_style( 'wp-dark-mode-woocommerce', wp_dark_mode()->plugin_url( 'assets/css/woocommerce.css' ) );
-				}
+				//}
 			}
 
 			/** buddypress style*/
@@ -63,21 +63,14 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 		}
 
 		public function frontend_localize() {
-			global $post;
+			global $post, $current_screen;
 
 			$is_excluded = isset( $post->ID ) && in_array( $post->ID, wp_dark_mode_exclude_pages() );
 
-			$selectors = '.wp-dark-mode-ignore *';
-			$excludes  = wp_dark_mode_get_settings( 'wp_dark_mode_display', 'excludes', '' );
-
-			if ( ! empty( $excludes ) ) {
-				$selectors .= ", $excludes";
-			}
-
-			global $current_screen;
+			$excludes = '.wp-dark-mode-ignore *';
 
 			wp_localize_script( 'wp-dark-mode-frontend', 'wpDarkModeFrontend', [
-				'excludes'            => $selectors,
+				'excludes'            => apply_filters('wp_dark_mode/excludes', trim( $excludes, ',' )),
 				'is_excluded'         => $is_excluded,
 				'enable_frontend'     => wp_dark_mode_enabled(),
 				'enable_os_mode'      => 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_os_mode', 'on' ),

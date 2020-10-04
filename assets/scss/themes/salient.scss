@@ -1,0 +1,44 @@
+html.wp-dark-mode-active {
+  .woocommerce-result-count{
+    position: relative;
+    z-index: 9;
+  }
+
+
+  #header-outer #top nav > ul > li > a,
+  #header-outer .slide-out-widget-area-toggle a i.label,
+  #header-outer:not(.transparent) #top #logo,
+  #header-outer #top .span_9 > .slide-out-widget-area-toggle i,
+  #header-outer #top .sf-sub-indicator i,
+  body[data-header-color="custom"].ascend #boxed #header-outer .cart-menu .cart-icon-wrap i,
+  #header-outer #top nav ul #nectar-user-account a span,
+  #header-outer #top #toggle-nav i,
+  .material #header-outer:not([data-permanent-transparent="1"]) .mobile-search .icon-salient-search,
+  #header-outer:not([data-permanent-transparent="1"]) .mobile-user-account .icon-salient-m-user,
+  #header-outer:not([data-permanent-transparent="1"]) .mobile-search .icon-salient-search,
+  #header-outer #top #mobile-cart-link i,
+  #header-outer .cart-menu .cart-icon-wrap .icon-salient-cart,
+  body[data-header-format="left-header"] #header-outer #social-in-menu a,
+  #header-outer #top nav ul #search-btn a span,
+  #search-outer #search input[type="text"],
+  #search-outer #search #close a span,
+  body.ascend #search-outer #search #close a span,
+  body.ascend #search-outer #search input[type="text"],
+  .material #search-outer #search .span_12 span,
+  #header-outer #mobile-menu ul li a,
+  #header-outer #mobile-menu .below-menu-items-wrap p,
+  #footer-outer,
+  #footer-outer a:not(.nectar-button) {
+    color: var(--wp-dark-mode-text) !important;
+  }
+
+  #header-outer #top .slide-out-widget-area-toggle a .lines:after, #header-outer #top .slide-out-widget-area-toggle a .lines:before, #header-outer #top .slide-out-widget-area-toggle a .lines-button:after, body.material.mobile #header-outer.transparent:not([data-permanent-transparent="1"]) header .slide-out-widget-area-toggle a .close-line, body.material.mobile #header-outer:not([data-permanent-transparent="1"]) header .slide-out-widget-area-toggle a .close-line, #search-outer .close-wrap .close-line, #header-outer:not(.transparent) #top .slide-out-widget-area-toggle .close-line{
+    background-color: var(--wp-dark-mode-text) !important;
+  }
+}
+
+#slide-out-widget-area.slide-out-from-right,
+#slide-out-widget-area.slide-out-from-right:not(.fullscreen-alt):not(.fullscreen)
+#slide-out-widget-area-bg.slide-out-from-right{
+  background-color: var(--wp-dark-mode-bg) !important;
+}
