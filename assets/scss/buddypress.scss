@@ -1,8 +1,10 @@
-.entry-title{
-  .wp-dark-mode-switcher{
-    display: flex;
-    justify-content: center;
-    margin-top: 25px;
+.buddypress {
+  article {
+    .wp-dark-mode-switcher {
+      display: flex;
+      justify-content: center;
+      margin-top: 25px;
+    }
   }
 }
 

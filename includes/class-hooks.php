@@ -239,7 +239,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
                  border-color: var(--wp-dark-mode-border) !important;
 			}', $base_selector, apply_filters( 'wp_dark_mode/not', '' ) );
 
-
 			printf( '%1$s {
                 a,
                 a *,
@@ -312,12 +311,64 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
                 if (is_saved && is_saved != 0) {
                     document.querySelector('html').classList.add('wp-dark-mode-active');
                 }
+
+                <?php
+
+                //check os aware mode
+                if ( 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_os_mode', 'on' ) ) {
+                ?>
+                var darkMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+                try {
+                    // Chrome & Firefox
+                    darkMediaQuery.addEventListener('change', function (e) {
+                        var newColorScheme = e.matches ? 'dark' : 'light';
+
+                        if ('dark' === newColorScheme) {
+                            document.querySelector('html').classList.add('wp-dark-mode-active');
+                        } else {
+                            document.querySelector('html').classList.remove('wp-dark-mode-active');
+                        }
+
+                        window.dispatchEvent(new Event('darkmodeInit'));
+
+                    });
+                } catch (e1) {
+                    try {
+                        // Safari
+                        darkMediaQuery.addListener(function (e) {
+                            var newColorScheme = e.matches ? 'dark' : 'light';
+
+                            if ('dark' === newColorScheme) {
+                                document.querySelector('html').classList.add('wp-dark-mode-active');
+                            } else {
+                                document.querySelector('html').classList.remove('wp-dark-mode-active');
+                            }
+
+                            window.dispatchEvent(new Event('darkmodeInit'));
+
+                        });
+                    } catch (e2) {
+                        console.error(e2);
+                    }
+                }
+
+                /** check init dark theme */
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.querySelector('html').classList.add('wp-dark-mode-active');
+                    window.dispatchEvent(new Event('darkmodeInit'));
+                }
+                <?php
+                }
+                ?>
+
             </script>
 
             <style>
                 <?php
 				if ( ! empty( $scss ) ) {
 				    $scss_compiler = new scssc();
+
 					echo $scss_compiler->compile( $scss );
 				}
 				?>

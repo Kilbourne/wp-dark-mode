@@ -887,7 +887,7 @@ if ( ! class_exists( 'WPPOOL_Settings_API' ) ) {
                     display: flex;
                     align-items: center;
                     padding: 0 5px;
-                    margin-top: 10px;
+                    margin-top: 0;
                     transition: all .2s ease;
                 }
 

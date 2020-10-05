@@ -4,7 +4,7 @@ Tags: dark, dark mode, night mode, gutenberg blocks, dark theme
 Requires at least: 5.0
 Tested up to: 5.5
 Requires PHP: 5.6
-Stable tag: 1.0.9
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -61,8 +61,10 @@ WP Dark Mode supports all major operating systems including iOS, Android, macOS 
 
 
 === LEARN MORE ===
+* [How To Enable Dark Mode In WordPress Fast?](https://youtu.be/T-MgMYkC-sg)
 * [How to display Dark Mode Switch Button using Gutenberg block](https://www.youtube.com/watch?v=TPKa-Xg9w5c)
 * [How to display Dark Mode Switch Button using Elementor Widget](https://www.youtube.com/watch?v=5Y8XawJg4pw)
+* [Dark mode | Night Mode WordPress Plugin](https://youtu.be/Pmso8MJRpBM)
 
 === How to Use ===
 After activating the plugin by default your website will turn into darkmode for your users if the Operating System of the users sets into dark theme.
@@ -122,6 +124,10 @@ No. WP Dark Mode is a very user-friendly and simple plugin. Just download and us
 10. Dark mode switch elementor widget
 
 == Changelog ==
+
+= 1.2.0 =
+* Added: BuddyPress supports added
+* Fix: scss preprocessor class exits checking
 
 = 1.0.9 =
 * Added: New Black Color Scheme
