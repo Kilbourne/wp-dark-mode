@@ -128,6 +128,7 @@ No. WP Dark Mode is a very user-friendly and simple plugin. Just download and us
 = 1.2.0 =
 * Added: BuddyPress supports added
 * Fix: scss preprocessor class exits checking
+* Fix: OS aware mode delay
 
 = 1.0.9 =
 * Added: New Black Color Scheme

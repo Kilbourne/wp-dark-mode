@@ -11,13 +11,17 @@ class WP_Dark_Mode_Theme_Supports {
 		add_filter('wp_dark_mode/not', [$this, 'not_selectors']);
 
 		add_action('wp_enqueue_scripts', [$this, 'enqueue_scripts']);
-		//add_filter( 'wp_dark_mode/excludes', [ $this, 'excludes' ] );
+		add_filter( 'wp_dark_mode/excludes', [ $this, 'excludes' ] );
 	}
 
 	public function excludes( $excludes ) {
 
 		if ($this->is_theme('Jannah')) {
 			$excludes .= ", .post-thumb-overlay-wrap, .post-thumb-overlay";
+		}
+
+		if ($this->is_theme('OceanWP')) {
+			$excludes .= ", .wcmenucart-details";
 		}
 
 		return $excludes;
