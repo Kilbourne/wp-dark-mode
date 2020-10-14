@@ -67,7 +67,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 
 			$is_excluded = isset( $post->ID ) && in_array( $post->ID, wp_dark_mode_exclude_pages() );
 
-			$excludes = '.wp-dark-mode-ignore *';
+			$excludes = '.wp-dark-mode-ignore, .wp-dark-mode-ignore *, .video-js, .select2';
 
 			wp_localize_script( 'wp-dark-mode-frontend', 'wpDarkModeFrontend', [
 				'excludes'            => apply_filters('wp_dark_mode/excludes', trim( $excludes, ',' )),
