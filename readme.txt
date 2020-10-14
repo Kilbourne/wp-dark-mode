@@ -126,11 +126,11 @@ No. WP Dark Mode is a very user-friendly and simple plugin. Just download and us
 == Changelog ==
 
 = 1.2.1 =
-* Added: Astra Theme Supports Added
 * Added: Salient Theme Supports Added
-* Added: OceanWP Theme Supports Added
+* Added: Astra Theme Supports Added
+* Added: Twenty Twenty Theme Supports Added
 * Added: Jannah Theme Supports Added
-* Added: TwentyTwenty Theme Supports Added
+* Added: OceanWP Theme Supports Added
 
 = 1.2.0 =
 * Added: BuddyPress supports added

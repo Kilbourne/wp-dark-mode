@@ -1,3 +1,13 @@
-.singular .featured-media::before {
-  background: var(--wp-dark-mode-bg) !important;
+html.wp-dark-mode-active {
+  body:not(.overlay-header) #site-header .toggle {
+    color: var(--wp-dark-mode-text);
+  }
+
+  .woocommerce-product-gallery .woocommerce-product-gallery__trigger .emoji {
+    background: transparent !important;
+  }
+
+  .singular .featured-media::before {
+    background: var(--wp-dark-mode-bg) !important;
+  }
 }

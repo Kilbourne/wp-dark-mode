@@ -256,7 +256,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 
 			if ( ! is_admin() ) {
 				printf( 'html.wp-dark-mode-active{
-				    button:not(#collapse-button):not(.search-toggle),
+				    button,
                     iframe,
                     iframe *,
                     input,
