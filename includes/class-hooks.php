@@ -66,8 +66,8 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 
 		public function init_update() {
 
-			if ( class_exists( 'WP_Dark_Mode_update' ) && current_user_can( 'manage_options' ) ) {
-				$updater = new WP_Dark_Mode_update();
+			if ( class_exists( 'WP_Dark_Mode_Update' ) && current_user_can( 'manage_options' ) ) {
+				$updater = new WP_Dark_Mode_Update();
 				if ( $updater->needs_update() ) {
 					$updater->perform_updates();
 				}

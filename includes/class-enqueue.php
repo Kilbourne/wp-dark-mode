@@ -49,13 +49,13 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 			/** woocommerce style*/
 			if ( class_exists( 'WooCommerce' ) ) {
 				//if ( wp_dark_mode()->is_pro_active() || wp_dark_mode()->is_ultimate_active() ) {
-					wp_enqueue_style( 'wp-dark-mode-woocommerce', wp_dark_mode()->plugin_url( 'assets/css/woocommerce.css' ) );
+				wp_enqueue_style( 'wp-dark-mode-woocommerce', wp_dark_mode()->plugin_url( 'assets/css/woocommerce.css' ) );
 				//}
 			}
 
 			/** buddypress style*/
 			if ( class_exists( 'BuddyPress' ) ) {
-					wp_enqueue_style( 'wp-dark-mode-buddypress', wp_dark_mode()->plugin_url( 'assets/css/buddypress.css' ) );
+				wp_enqueue_style( 'wp-dark-mode-buddypress', wp_dark_mode()->plugin_url( 'assets/css/buddypress.css' ) );
 			}
 
 			$this->frontend_localize();
@@ -70,7 +70,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 			$excludes = '.wp-dark-mode-ignore *';
 
 			wp_localize_script( 'wp-dark-mode-frontend', 'wpDarkModeFrontend', [
-				'excludes'            => apply_filters('wp_dark_mode/excludes', trim( $excludes, ',' )),
+				'excludes'            => apply_filters( 'wp_dark_mode/excludes', trim( $excludes, ',' ) ),
 				'is_excluded'         => $is_excluded,
 				'enable_frontend'     => wp_dark_mode_enabled(),
 				'enable_os_mode'      => 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_os_mode', 'on' ),
@@ -80,8 +80,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 				'enable_backend'      => 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_backend', 'off' ),
 				'is_block_editor'     => method_exists( $current_screen, 'is_block_editor' ) && $current_screen->is_block_editor(),
 
-				'pro_version' => defined( 'WP_DARK_MODE_ULTIMATE_VERSION' ) ? WP_DARK_MODE_ULTIMATE_VERSION
-					: defined( 'WP_DARK_MODE_PRO_VERSION' ) ? WP_DARK_MODE_PRO_VERSION : 0,
+				'pro_version' => ( defined( 'WP_DARK_MODE_ULTIMATE_VERSION' ) ? WP_DARK_MODE_ULTIMATE_VERSION : defined( 'WP_DARK_MODE_PRO_VERSION' ) ) ? WP_DARK_MODE_PRO_VERSION : 0,
 			] );
 		}
 

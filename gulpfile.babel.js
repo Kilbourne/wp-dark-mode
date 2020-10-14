@@ -47,6 +47,8 @@ const paths = {
         src: [
             '**/*',
             '!node_modules/**',
+            '!assets/js/admin.js',
+            '!assets/js/frontend.js',
             '!block/node_modules/**',
             '!block/node_modules',
             '!build/**',
