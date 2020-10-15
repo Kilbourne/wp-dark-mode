@@ -1,10 +1,8 @@
-1.2.0
--------
-* Fix scss class exists error
-* Add buddypress supports
-* Fix custom css error for invalid css  (scss preprocessor)
-* Add option switch button text change (PRO)
-* Fix OS aware mode delay 
+1.2.2
+------
+* Exclude assets/scss folder
+* Added: Option added to display the dark mode switch in the menu 
 
-* ignore list (.video-js, .select2)
-.slide_out_area_close (salient)
+PRO
+--------
+* Replace image settings jquery scripts

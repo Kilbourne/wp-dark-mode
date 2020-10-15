@@ -49,6 +49,7 @@ const paths = {
             '!node_modules/**',
             '!assets/js/admin.js',
             '!assets/js/frontend.js',
+            '!assets/scss/**',
             '!block/node_modules/**',
             '!block/node_modules',
             '!build/**',

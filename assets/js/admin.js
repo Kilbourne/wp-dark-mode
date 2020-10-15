@@ -10,6 +10,8 @@
             app.checkSwitchdDeps();
             app.checkCustomize();
 
+            app.checkSwitchMenu();
+
             const enable_darkmode_checkbox = document.querySelector('.enable_os_mode input[type=checkbox]');
             if (enable_darkmode_checkbox) {
                 enable_darkmode_checkbox.addEventListener('change', app.checkDesc);
@@ -23,6 +25,11 @@
             const customize_colors_checkbox = document.querySelector('.customize_colors input[type=checkbox]');
             if (customize_colors_checkbox) {
                 customize_colors_checkbox.addEventListener('change', app.checkCustomize);
+            }
+
+            const switch_menu_checkbox = document.querySelector('.enable_menu_switch input[type=checkbox]');
+            if (switch_menu_checkbox) {
+                switch_menu_checkbox.addEventListener('change', app.checkSwitchMenu);
             }
 
         },
@@ -49,12 +56,12 @@
                 }
                 image_opt.classList.add('disabled');
                 const div = document.createElement('DIV');
-                div.classList.add('disabled-text','wp-dark-mode-ignore');
+                div.classList.add('disabled-text', 'wp-dark-mode-ignore');
 
                 image_opt.appendChild(div);
             });
 
-            document.querySelectorAll('.switch_text_light,.switch_text_dark,.show_above_post, .show_above_page, .excludes, .exclude_pages').forEach((element) => {
+            document.querySelectorAll(`.switch_text_light, .switch_text_dark, .show_above_post, .show_above_page, .excludes, .exclude_pages, .exclude_pages, .enable_menu_switch, .switch_menus`).forEach((element) => {
                 element.classList.add('disabled');
             });
         },
@@ -78,7 +85,7 @@
             });
 
             const customize_colors_checkbox = document.querySelector('.customize_colors');
-            if(customize_colors_checkbox){
+            if (customize_colors_checkbox) {
                 customize_colors_checkbox.classList.add('disabled');
             }
         },
@@ -126,6 +133,20 @@
                 document.querySelectorAll('.darkmode_bg_color, .darkmode_text_color, .darkmode_link_color').forEach((element) => {
                     element.style.display = 'none';
                 });
+            }
+        },
+
+        checkSwitchMenu: function () {
+            const checkBox = document.querySelector('.enable_menu_switch input[type=checkbox]');
+            if (!checkBox) {
+                return;
+            }
+            const is_on = checkBox.checked;
+
+            if (is_on) {
+                document.querySelector('.switch_menus').style.display = 'table-row';
+            } else {
+                document.querySelector('.switch_menus').style.display = 'none';
             }
         },
 

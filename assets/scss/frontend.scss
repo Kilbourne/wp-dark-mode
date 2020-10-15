@@ -406,3 +406,12 @@
 .wp-dark-mode-active .wp-dark-mode-light-image {
   display: none !important;
 }
+
+/*--- Menu Switch Style ---*/
+.wp-dark-mode-menu-item {
+  .toggle {
+    height: 100% !important;
+    width: 50% !important;
+    padding: 0 !important;
+  }
+}

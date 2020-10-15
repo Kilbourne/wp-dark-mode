@@ -155,7 +155,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 				) ),
 
 				'wp_dark_mode_advanced' => apply_filters( 'wp_dark_mode/advanced_settings', array(
-				        
+
 					'time_based_mode'   => array(
 						'name'    => 'time_based_mode',
 						'default' => 'off',
@@ -213,6 +213,22 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 							'left_bottom'  => __( 'Left Bottom', 'wp-dark-mode' ),
 							'right_bottom' => __( 'Right Bottom', 'wp-dark-mode' ),
 						],
+					),
+
+					'enable_menu_switch'   => array(
+						'name'    => 'enable_menu_switch',
+						'default' => 'off',
+						'label'   => __( 'Display Switch in Menu', 'wp-dark-mode' ),
+						'desc'    => __( 'Display the darkmode switch in the menu.', 'wp-dark-mode' ),
+						'type'    => 'switcher',
+					),
+
+					'switch_menus'   => array(
+						'name'    => 'switch_menus',
+						'default' => [$this, 'switch_menus'],
+						'label'   => __( 'Select Menu(s)', 'wp-dark-mode' ),
+						'desc'    => __( 'Select the menu(s) in which you want to display the darkmode switch.', 'wp-dark-mode' ),
+						'type'    => 'cb_function',
 					),
 
 					'switch_text_light'   => array(
@@ -403,6 +419,28 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 			self::$settings_api->admin_init();
 		}
 
+		public function switch_menus() {
+
+			$switch_menus = wp_dark_mode_get_settings('wp_dark_mode_display', 'switch_menus', []);
+
+			?>
+            <select name="wp_dark_mode_display[switch_menus][]" multiple id="wp_dark_mode_display[switch_menus]">
+				<?php
+
+				$menus = get_terms( 'nav_menu', array( 'hide_empty' => false ) );
+
+				if ( ! empty( $menus ) && !is_wp_error($menus) ) {
+					foreach ( $menus as $menu ) {
+						printf( '<option value="%1$s" %2$s>%3$s</option>', $menu->slug, in_array( $menu->slug, $switch_menus ) ? 'selected' : '', $menu->name );
+					}
+				}
+
+				?>
+            </select>
+            <p class="description">Select the menu(s) in which you want to display the darkmode switch.</p>
+			<?php
+		}
+
 		public function exclude_pages() {
 
 			$exclude_pages = wp_dark_mode_exclude_pages();
@@ -576,7 +614,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
                         <img src="<?php echo wp_dark_mode()->plugin_url( 'assets/images/elementor/step-2.png' ) ?>" alt="step-2">
                     </li>
                 </ul>
-
 
             </div>
 		<?php }
