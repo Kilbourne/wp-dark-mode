@@ -409,6 +409,10 @@
 
 /*--- Menu Switch Style ---*/
 .wp-dark-mode-menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
   .toggle {
     height: 100% !important;
     width: 50% !important;

@@ -299,8 +299,10 @@ tr.gutenberg_doc, tr.elementor_doc, tr.image_settings, tr.shortcodes_doc, tr.wid
 }
 
 /** exclude pages */
-.exclude_pages .select2-container {
-  width: 350px !important;
+.exclude_pages, .switch_menus {
+  .select2-container {
+    width: 350px !important;
+  }
 }
 
 .wppool-settings {
