@@ -11,6 +11,8 @@
             app.checkCustomize();
 
             app.checkSwitchMenu();
+            app.checkSwitchText();
+            app.checkSwitchIcon();
 
             const enable_darkmode_checkbox = document.querySelector('.enable_os_mode input[type=checkbox]');
             if (enable_darkmode_checkbox) {
@@ -30,6 +32,16 @@
             const switch_menu_checkbox = document.querySelector('.enable_menu_switch input[type=checkbox]');
             if (switch_menu_checkbox) {
                 switch_menu_checkbox.addEventListener('change', app.checkSwitchMenu);
+            }
+
+            const switch_text_checkbox = document.querySelector('.custom_switch_text input[type=checkbox]');
+            if (switch_text_checkbox) {
+                switch_text_checkbox.addEventListener('change', app.checkSwitchText);
+            }
+
+            const switch_icon_checkbox = document.querySelector('.custom_switch_icon input[type=checkbox]');
+            if (switch_icon_checkbox) {
+                switch_icon_checkbox.addEventListener('change', app.checkSwitchIcon);
             }
 
         },
@@ -61,7 +73,7 @@
                 image_opt.appendChild(div);
             });
 
-            document.querySelectorAll(`.switch_text_light, .switch_text_dark, .show_above_post, .show_above_page, .excludes, .exclude_pages, .exclude_pages, .enable_menu_switch, .switch_menus`).forEach((element) => {
+            document.querySelectorAll(`.custom_switch_text,.switch_text_light, .switch_text_dark, .show_above_post, .show_above_page, .excludes, .exclude_pages, .exclude_pages, .enable_menu_switch, .switch_menus`).forEach((element) => {
                 element.classList.add('disabled');
             });
         },
@@ -147,6 +159,38 @@
                 document.querySelector('.switch_menus').style.display = 'table-row';
             } else {
                 document.querySelector('.switch_menus').style.display = 'none';
+            }
+        },
+
+        checkSwitchText: function () {
+            const checkBox = document.querySelector('.custom_switch_text input[type=checkbox]');
+            if (!checkBox) {
+                return;
+            }
+            const is_on = checkBox.checked;
+
+            if (is_on) {
+                document.querySelector('.switch_text_light').style.display = 'table-row';
+                document.querySelector('.switch_text_dark').style.display = 'table-row';
+            } else {
+                document.querySelector('.switch_text_light').style.display = 'none';
+                document.querySelector('.switch_text_dark').style.display = 'none';
+            }
+        },
+
+        checkSwitchIcon: function () {
+            const checkBox = document.querySelector('.custom_switch_icon input[type=checkbox]');
+            if (!checkBox) {
+                return;
+            }
+            const is_on = checkBox.checked;
+
+            if (is_on) {
+                document.querySelector('.switch_icon_light').style.display = 'table-row';
+                document.querySelector('.switch_icon_dark').style.display = 'table-row';
+            } else {
+                document.querySelector('.switch_icon_light').style.display = 'none';
+                document.querySelector('.switch_icon_dark').style.display = 'none';
             }
         },
 

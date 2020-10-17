@@ -231,6 +231,14 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'type'    => 'cb_function',
 					),
 
+					'custom_switch_text'   => array(
+						'name'    => 'custom_switch_text',
+						'default' => 'off',
+						'label'   => __( 'Custom Switch Text', 'wp-dark-mode' ),
+						'desc'    => __( 'Customize the darkmode switch text.', 'wp-dark-mode' ),
+						'type'    => 'switcher',
+					),
+
 					'switch_text_light'   => array(
 						'name'    => 'switch_text_light',
 						'default' => 'Light',
@@ -246,6 +254,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'desc'    => __( 'Floating switch dark text.', 'wp-dark-mode' ),
 						'type'    => 'text',
 					),
+
 
 					'show_above_post'   => array(
 						'name'    => 'show_above_post',

@@ -7,11 +7,11 @@
                 return;
             }
 
+            app.sessionTransfer();
+
             if (typeof elementor === 'undefined') {
                 app.initDarkmode();
             }
-
-            //app.sessionTransfer();
 
             if (typeof wpDarkModeAdmin === 'undefined') {
 
