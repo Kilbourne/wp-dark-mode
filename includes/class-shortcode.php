@@ -29,11 +29,18 @@ if ( ! class_exists( 'WP_Dark_Mode_Shortcode' ) ) {
 				'style'    => 1,
 			], $atts );
 
+			$custom_icon = 'on' == wp_dark_mode_get_settings('wp_dark_mode_display', 'custom_switch_icon', 'off');
+
 			ob_start();
-			if ( file_exists( wp_dark_mode()->plugin_path( "templates/btn-{$atts['style']}.php" ) ) ) {
-				wp_dark_mode()->get_template( "btn-{$atts['style']}", $atts );
+
+			if ( $custom_icon ) {
+				wp_dark_mode()->get_template( "btn-custom", $atts );
 			} else {
-				wp_dark_mode()->get_template( "btn-1", $atts );
+				if ( file_exists( wp_dark_mode()->plugin_path( "templates/btn-{$atts['style']}.php" ) ) ) {
+					wp_dark_mode()->get_template( "btn-{$atts['style']}", $atts );
+				} else {
+					wp_dark_mode()->get_template( "btn-1", $atts );
+				}
 			}
 
 			return ob_get_clean();

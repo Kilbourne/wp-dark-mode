@@ -1,5 +1,6 @@
 {
   "exclude": [
+    "appsero.json",
     "note.md",
     ".babelrc",
     ".gitignore",
