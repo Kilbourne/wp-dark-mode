@@ -32,6 +32,10 @@ class WP_Dark_Mode_Theme_Supports {
 			$excludes .= ", .search-toggle, .woocommerce-product-gallery__trigger .emoji";
 		}
 
+		if ( $this->is_theme( 'Flatsome' ) ) {
+			$excludes .= ", .section-title b, .box, .is-divider, .blog-share, .slider-wrapper";
+		}
+
 		return $excludes;
 	}
 
@@ -163,6 +167,10 @@ class WP_Dark_Mode_Theme_Supports {
 
 	    if ($this->is_theme('Salient')) {
 	        wp_enqueue_style('wp-dark-mode-salient', wp_dark_mode()->plugin_url('assets/css/themes/salient.css'));
+        }
+
+	    if ($this->is_theme('Flatsome')) {
+	        wp_enqueue_style('wp-dark-mode-flatsome', wp_dark_mode()->plugin_url('assets/css/themes/flatsome.css'));
         }
 
     }

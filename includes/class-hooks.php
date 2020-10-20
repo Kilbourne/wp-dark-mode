@@ -56,10 +56,13 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 		 * @return string
 		 */
 		public function excludes( $excludes ) {
-			$selectors = wp_dark_mode_get_settings( 'wp_dark_mode_display', 'excludes', '' );
 
-			if ( ! empty( $selectors ) ) {
-				$excludes .= ", $selectors";
+			if ( wp_dark_mode()->is_pro_active() ) {
+				$selectors = wp_dark_mode_get_settings( 'wp_dark_mode_display', 'excludes', '' );
+
+				if ( ! empty( $selectors ) ) {
+					$excludes .= ", $selectors";
+				}
 			}
 
 			return $excludes;
