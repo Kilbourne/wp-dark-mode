@@ -1,0 +1,11 @@
+html.wp-dark-mode-active {
+  .testimonial-item, .team-container, .dt_portfolio {
+    border: 1px solid;
+  }
+
+  .cart_list{
+    a{
+      color: var(--wp-dark-mode-text) !important;
+    }
+  }
+}

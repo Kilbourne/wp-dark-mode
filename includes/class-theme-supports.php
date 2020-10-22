@@ -40,6 +40,10 @@ class WP_Dark_Mode_Theme_Supports {
 			$excludes .= ", .fusion-column-inner-bg-wrapper, .fusion-progressbar, .fusion-sliding-bar-wrapper, .fusion-button";
 		}
 
+		if($this->is_theme('The7')){
+		    $excludes .= ', .dt-btn, .soc-ico, .author-avatar, .post-thumbnail, .icon-inner';
+        }
+
 		return $excludes;
 	}
 
@@ -179,6 +183,10 @@ class WP_Dark_Mode_Theme_Supports {
 
 	    if ($this->is_theme('Avada')) {
 	        wp_enqueue_style('wp-dark-mode-avada', wp_dark_mode()->plugin_url('assets/css/themes/avada.css'));
+        }
+
+	    if ($this->is_theme('The7')) {
+	        wp_enqueue_style('wp-dark-mode-the7', wp_dark_mode()->plugin_url('assets/css/themes/the7.css'));
         }
 
     }
