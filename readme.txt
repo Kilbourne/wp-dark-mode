@@ -4,7 +4,7 @@ Tags: dark, dark mode, night mode, gutenberg blocks, dark theme
 Requires at least: 5.0
 Tested up to: 5.5
 Requires PHP: 5.6
-Stable tag: 1.2.2
+Stable tag: 1.2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -128,6 +128,13 @@ No. WP Dark Mode is a very user-friendly and simple plugin. Just download and us
 10. Dark mode switch elementor widget
 
 == Changelog ==
+
+= 1.2.3 =
+* Added: Flatsome theme supports added
+* Added: Avada theme supports added
+* Added: The7 theme supports added
+* Added: Betheme theme supports added
+* Added: Newspaper theme supports added
 
 = 1.2.2 =
 * Fixed: Dark mode saving between tab switching

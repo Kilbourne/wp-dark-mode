@@ -1,10 +1,1 @@
-.buddypress article .wp-dark-mode-switcher {
-  display: flex;
-  justify-content: center;
-  margin-top: 25px; }
-
-html.wp-dark-mode-active .activity-avatar {
-  position: relative;
-  z-index: 9; }
-
-/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImJ1ZGR5cHJlc3Muc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUdNLGFBQWE7RUFDYix1QkFBdUI7RUFDdkIsZ0JBQWdCLEVBQUE7O0FBS3RCO0VBRUksa0JBQWtCO0VBQ2xCLFVBQVUsRUFBQSIsImZpbGUiOiJidWRkeXByZXNzLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5idWRkeXByZXNzIHtcclxuICBhcnRpY2xlIHtcclxuICAgIC53cC1kYXJrLW1vZGUtc3dpdGNoZXIge1xyXG4gICAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICAgICAgbWFyZ2luLXRvcDogMjVweDtcclxuICAgIH1cclxuICB9XHJcbn1cclxuXHJcbmh0bWwud3AtZGFyay1tb2RlLWFjdGl2ZSB7XHJcbiAgLmFjdGl2aXR5LWF2YXRhciB7XHJcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICB6LWluZGV4OiA5O1xyXG4gIH1cclxufSJdfQ== */
+.buddypress article .wp-dark-mode-switcher{display:flex;justify-content:center;margin-top:25px}html.wp-dark-mode-active .activity-avatar{position:relative;z-index:9}
