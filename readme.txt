@@ -35,7 +35,7 @@ WP Dark Mode supports all major operating systems including iOS, Android, macOS 
 1. **Presets Color Schema** - 2 exclusive presets color schema available to quickly change the dark mode color from the predefined presets.
 1. **Dark Mode Switch** - Dark mode switch button to toggle the darkmode.
 1. **Remember Dark Mode** - The dark mode remains saved once you activated the dark mode.
-1. **Theme Compatible** - The plugin is compatible with most of the themes without any issues.
+1. **Themes Compatible** - The plugin is compatible with most of the themes without any issues.
 
 
 === 💰 WP Dark Mode Pro Features ===
