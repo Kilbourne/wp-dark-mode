@@ -48,6 +48,10 @@ class WP_Dark_Mode_Theme_Supports {
 		    $excludes .= ', .mfn-rev-slider, .image_frame';
         }
 
+		if($this->is_theme('Newspaper')){
+		    $excludes .= ', .td-module-meta-info';
+        }
+
 		return $excludes;
 	}
 
@@ -196,6 +200,10 @@ class WP_Dark_Mode_Theme_Supports {
 
 	    if ($this->is_theme('Betheme')) {
 	        wp_enqueue_style('wp-dark-mode-betheme', wp_dark_mode()->plugin_url('assets/css/themes/betheme.css'));
+        }
+
+	    if ($this->is_theme('Newspaper')) {
+	        wp_enqueue_style('wp-dark-mode-newspaper', wp_dark_mode()->plugin_url('assets/css/themes/newspaper.css'));
         }
 
     }
