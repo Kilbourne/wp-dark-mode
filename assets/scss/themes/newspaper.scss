@@ -1,0 +1,19 @@
+.wp-dark-mode-switcher{
+  z-index: 9999;
+}
+
+html.wp-dark-mode-active {
+  .td-module-meta-info{
+    background-color: transparent;
+
+    .td-module-title, .td-post-author-name{
+      a {
+        color: var(--wp-dark-mode-link);
+      }
+    }
+  }
+
+  .td-social-sharing-button{
+    border: 1px solid;
+  }
+}

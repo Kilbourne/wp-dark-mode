@@ -1,0 +1,22 @@
+html.wp-dark-mode-active {
+  .section-title b{
+    background: var(--wp-dark-mode-text) !important;
+  }
+
+  .banner-inner, .lightbox-content, .payment-icon{
+    border: 1px solid;
+  }
+
+  .is-divider{
+    background: var(--wp-dark-mode-text) !important;
+  }
+
+  .price .amount{
+    color: var(--wp-dark-mode-text) !important;
+  }
+
+  .bg.bg-loaded{
+    background: var(--wp-dark-mode-bg) !important;
+  }
+
+}

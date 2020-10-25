@@ -73,7 +73,7 @@
                 image_opt.appendChild(div);
             });
 
-            document.querySelectorAll(`.custom_switch_text,.switch_text_light, .switch_text_dark, .show_above_post, .show_above_page, .excludes, .exclude_pages, .exclude_pages, .enable_menu_switch, .switch_menus`).forEach((element) => {
+            document.querySelectorAll(`.custom_switch_icon, .switch_icon_light, .switch_icon_dark,.custom_switch_text, .switch_text_light, .switch_text_dark, .show_above_post, .show_above_page, .excludes, .exclude_pages, .exclude_pages, .enable_menu_switch, .switch_menus`).forEach((element) => {
                 element.classList.add('disabled');
             });
         },
@@ -200,7 +200,7 @@
 
 })();
 
-
+/**---- remove these pro scripts in the future version ------**/
 if (wpDarkModeAdmin.is_pro_active) {
 
     if (String(wpDarkModeAdmin.pro_version) < '1.0.3') {

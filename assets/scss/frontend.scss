@@ -412,10 +412,69 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
   .toggle {
     height: 100% !important;
     width: 50% !important;
     padding: 0 !important;
+  }
+}
+
+
+/**--- Custom Menu Switch Icon ---**/
+.wp-dark-mode-switcher.custom-switch {
+  label {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border-radius: 15px;
+  }
+
+  .modes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  img {
+    width: 24px;
+
+    &.dark {
+      display: none;
+    }
+  }
+}
+
+.wp-dark-mode-switcher.active.custom-switch {
+  label {
+  }
+
+  img {
+    &.light {
+      display: none;
+    }
+
+    &.dark {
+      display: block;
+    }
+  }
+
+}
+
+/**-- Elements Supports --**/
+.wp-dark-mode-active {
+  .owl-dot {
+    span {
+      box-shadow: inset 0 0 0 2px white !important;
+    }
+  }
+
+  .owl-nav{
+    i{
+      color: white !important;
+    }
   }
 }

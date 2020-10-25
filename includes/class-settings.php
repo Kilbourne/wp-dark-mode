@@ -231,6 +231,31 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'type'    => 'cb_function',
 					),
 
+
+					'custom_switch_icon'   => array(
+						'name'    => 'custom_switch_icon',
+						'default' => 'off',
+						'label'   => __( 'Custom Switch Icon', 'wp-dark-mode' ),
+						'desc'    => __( 'Customize the darkmode switch icon in the dark & light mode.', 'wp-dark-mode' ),
+						'type'    => 'switcher',
+					),
+
+					'switch_icon_light'   => array(
+						'name'    => 'switch_icon_light',
+						'label'   => __( 'Switch Icon (Light)', 'wp-dark-mode' ),
+						'desc'    => __( 'Switch Icon in the light mode.', 'wp-dark-mode' ),
+						'type'    => 'file',
+					),
+
+					'switch_icon_dark'   => array(
+						'name'    => 'switch_icon_dark',
+						'label'   => __( 'Switch Icon (Dark)', 'wp-dark-mode' ),
+						'desc'    => __( 'Switch Icon in the dark mode.', 'wp-dark-mode' ),
+						'type'    => 'file',
+					),
+
+
+
 					'custom_switch_text'   => array(
 						'name'    => 'custom_switch_text',
 						'default' => 'off',

@@ -23,8 +23,8 @@ function wp_dark_mode_register_block() {
 		filemtime( plugin_dir_path( __FILE__ ) . 'build/editor.css' ) );
 
 	// Register the front-end styles
-	wp_register_style( 'wp-dark-mode-frontend-styles', plugins_url( 'build/style.css', __FILE__ ), [],
-		filemtime( plugin_dir_path( __FILE__ ) . 'build/style.css' ) );
+	wp_register_style( 'wp-dark-mode-frontend-styles', wp_dark_mode()->plugin_url( 'assets/css/frontend.css', __FILE__ ), [],
+		filemtime( wp_dark_mode()->plugin_path( 'assets/css/frontend.css' ) ));
 
 
 	register_block_type( 'wp-dark-mode/switcher', [
