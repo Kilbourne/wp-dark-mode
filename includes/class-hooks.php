@@ -57,7 +57,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 		 */
 		public function excludes( $excludes ) {
 
-			if ( wp_dark_mode()->is_pro_active() ) {
+			if ( wp_dark_mode()->is_pro_active() || wp_dark_mode()->is_ultimate_active() ) {
 				$selectors = wp_dark_mode_get_settings( 'wp_dark_mode_display', 'excludes', '' );
 
 				if ( ! empty( $selectors ) ) {
