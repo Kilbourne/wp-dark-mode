@@ -11,7 +11,7 @@ class WP_Dark_Mode_Theme_Supports {
 		add_filter('wp_dark_mode/not', [$this, 'not_selectors']);
 
 		add_action('wp_enqueue_scripts', [$this, 'enqueue_scripts']);
-		add_filter( 'wp_dark_mode/excludes', [ $this, 'excludes' ] );
+		add_filter( 'wp_dark_mode/excludes', [ $this, 'excludes' ], 99 );
 	}
 
 	public function excludes( $excludes ) {
@@ -55,29 +55,17 @@ class WP_Dark_Mode_Theme_Supports {
 		return $excludes;
 	}
 
-	public function is_theme($theme){
+	public function is_theme($check_theme){
 		$theme = wp_get_theme();
 
 		$theme_name        = $theme->name;
 		$theme_parent_name = !empty($theme->parent()->name) ? $theme->parent()->name : '';
 
-		return in_array( $theme, [ $theme_name, $theme_parent_name ] ) ;
+		return in_array( $check_theme, [ $theme_name, $theme_parent_name ] ) ;
 
 	}
 
 	public function theme_header() {
-
-		if ( $this->is_theme('Astra')) {
-			$this->astra_css();
-		}
-
-		if ($this->is_theme('Jannah')) {
-
-		}
-
-		if($this->is_theme('Twenty Twenty')){
-
-        }
 
 		if ( $this->is_theme( 'Salient' ) ) {
 			?>
@@ -165,6 +153,10 @@ class WP_Dark_Mode_Theme_Supports {
     }
 
     public function enqueue_scripts(){
+	    if ($this->is_theme('Astra')) {
+	        wp_enqueue_style('wp-dark-mode-atra', wp_dark_mode()->plugin_url('assets/css/themes/astra.css'));
+        }
+
 	    if ($this->is_theme('Jannah')) {
 	        wp_enqueue_style('wp-dark-mode-jannah', wp_dark_mode()->plugin_url('assets/css/themes/jannah.css'));
         }
@@ -208,13 +200,6 @@ class WP_Dark_Mode_Theme_Supports {
 
     }
 
-	public function astra_css() { ?>
-        <style>
-           .wp-dark-mode-active .widget.widget_search .search-submit {
-                opacity: 0;
-            }
-        </style>
-	<?php }
 
 	public static function instance() {
 		if ( is_null( self::$instance ) ) {
