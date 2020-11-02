@@ -1,9 +1,4 @@
-1.2.2
+1.2.5
 ------
-* Exclude assets/scss folder
-* Added: Option added to display the dark mode switch in the menu 
-* Fix: 
-
-PRO
---------
-* Replace image settings jquery scripts
+* Fix: Excludes Settings
+* Fix: Fixed the color palettes icons color

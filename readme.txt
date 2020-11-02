@@ -4,7 +4,7 @@ Tags: dark, dark mode, night mode, gutenberg blocks, dark theme
 Requires at least: 5.0
 Tested up to: 5.5
 Requires PHP: 5.6
-Stable tag: 1.2.4
+Stable tag: 1.2.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ WP Dark Mode automatically enables a stunning dark mode of your website based on
 
 == Description ==
 
-Use WP Dark Mode to enable a stunning dark mode theme for your WordPress website. WP Dark Mode works automatically without going into any complicated settings.
+Use WP Dark Mode plugin to create a stunning dark version for your WordPress website. WP Dark Mode works automatically without going into any complicated settings.
 
 Just activate the plugin and your users will experience a dark mode version of your website as per their preferred operating system preference.
 
@@ -20,47 +20,47 @@ Just activate the plugin and your users will experience a dark mode version of y
 
 > 👁️ [View Demo](https://wpdark.wppool.dev/) | 🚀  [Get The PRO Version](https://wppool.dev/wp-dark-mode/) | 👩🏼‍💻 [Get Support](https://wppool.dev/wp-dark-mode/)
 
-Works across all operating systems including Android, iOS, macOS. No settings needed. The plugin intelligently detects device preferenc and dynamically delivers a hand crafted, expert designed dark mode experience for your readers.
+Works across all operating systems including Android, iOS, macOS. No settings are needed. The plugin intelligently detects device preferences and dynamically delivers a handcrafted, expert-designed dark mode experience for your readers.
 
 Just activate dark mode on your device, and browse the website to experience a magically transformed dark mode of your website.
-WP Dark Mode supports all major operating systems including iOS, Android, macOS or Windows 10.
+WP Dark Mode supports all major operating systems including iOS, Android, macOS, or Windows 10.
 
 === WP Dark Mode Features ===
 
-1. **Floating Switch Button** - You can display a darkmode floating switch button in the footer of the website.
-1. **Darkmode Elementor Widget** - You can place the Dark Mode switch button into any page/post by using the (Dark Mode Switch) elementor widget.
-1. **Darkmode Gutenberg Widget** - You can place the switch button into any page/post by using the (Dark Mode Switch) gutenberg block.
-1. **Auto Match OS Theme** - Automatically shows Darkmode if the OS prefered theme is dark
-4. **Available in Backend** - You can enable the dark mode in the back end admin page.
-1. **Presets Color Schema** - 2 exclusive presets color schema available to quickly change the dark mode color from the predefined presets.
-1. **Dark Mode Switch** - Dark mode switch button to toggle the darkmode.
-1. **Remember Dark Mode** - The dark mode remains saved once you activated the dark mode.
-1. **Themes Compatible** - The plugin is compatible with most of the themes without any issues.
+1. **Floating Switch Button** – You can display a dark mode floating switch button in the footer of the website.
+1. **Dark mode Elementor Widget** – You can place the Dark Mode switch button into any page/post by using the (Dark Mode Switch) Elementor widget.
+1. **Dark mode Gutenberg Widget** – You can place the switch button into any page/post by using the (Dark Mode Switch) Gutenberg block.
+1. **Auto Match OS Theme** – Automatically shows Darkmode if the OS preferred theme is dark
+1. **Available in Backend** – You can enable the dark mode in the back end admin page.
+1. **Presets Color Schema** – 2 exclusive presets color schema available to quickly change the dark mode color from the predefined presets.
+1. **Dark Mode Switch** – Dark mode switch button to toggle the dark mode.
+1. **Remember Dark Mode** – The dark mode remains saved once you activated the dark mode.
+1. **Themes Compatible** – The plugin is compatible with most of the themes without any issues.
 
 
 === 💰 WP Dark Mode Pro Features ===
 1. **All Free Features**
-1. **Time Based Dark Mode** - Your website will turn into dark mode based on the local time of the user
-2. **Multiple Dark Mode Switch Style** - You can display multiple dark mode switch button style for the users to turn on-off the dark mode.
-5. **Shortcode Supported** - You can use `[wp_dark_mode_switch]` shortcode to display the dark mode switch button in any page/post
-6. **Above Post/Page Content** - You can display the dark mode switch button before any page/post.
-6. **Darkmode Switch Widget** - You can place the darkmode switch button using the WP Dark Mode Widget.
-1. **Presets Color Schema** - 5 exclusive presets color schema available to quickly change the dark mode color from the predefined presets.
-6. **Excludes Elements** - You can excludes specific elements being affected by the darkmode by using the CSS selectors.
-1. **Excluded Pages** - You can excludes specific pages from darkmode.
-1. **Custom Switch Text** - You can change the light/dark text of the switch.
+1. **Time-Based Dark Mode** – Your website will turn into dark mode based on the local time of the user
+1. **Multiple Dark Mode Switch Style** – You can display multiple dark mode switch button styles for the users to turn on-off the dark mode.
+1. **Shortcode Supported** – You can use [wp_dark_mode_switch]shortcode to display the dark mode switch button on any page/post
+1. **Above Post/Page Content** – You can display the dark mode switch button before any page/post.
+1. **Dark mode Switch Widget** – You can place the dark mode switch button using the WP Dark Mode Widget.
+1. **Presets Color Schema** – 5 exclusive presets color schema available to quickly change the dark mode color from the predefined presets.
+1. **Excludes Elements** – You can exclude specific elements being affected by the dark mode by using the CSS selectors.
+1. **Excluded Pages** – You can exclude specific pages from dark mode.
+1. **Custom Switch Text** – You can change the light/dark text of the switch.
 
 
 > 🚀  [Get The PRO Version](https://wppool.dev/wp-dark-mode/) | 👩🏼‍💻 [Get Support](https://wppool.dev/wp-dark-mode/)
 
 === 💰 WP Dark Mode Ultimate Features ===
 1. **All Pro Features**
-1. **Custom Colors** - You can customized the darkmode background. text and links color as you want/
-1. **Presets Color Schema** - 11 exclusive presets color schema available to quickly change the dark mode color from the predefined presets.
-4. **Dark Mode Based Image Supports** - You can replace light mode images with different image you want in the dark mode.
-1. **Custom CSS** - You can use custom CSS only for darkmode.
-1. **Custom Switch Icon** - You can customize the dark mode switch icon in the light/ dark mode.
-1. **Darkmode Switch in Menu** - You can display the dark mode switch as a menu item in any menu in your website.
+1. Custom Colors** – You can customize the dark mode background. text and links color as you want/
+1. Presets Color Schema** – 11 exclusive presets color schema available to quickly change the dark mode color from the predefined presets.
+1. Dark Mode Based Image Supports** – You can replace light mode images with the different images you want in the dark mode.
+1. Custom CSS** – You can use custom CSS only for dark mode.
+1. Custom Switch Icon** – You can customize the dark mode switch icon in the light/ dark mode.
+1. Dark mode Switch in Menu** – You can display the dark mode switch as a menu item in any menu on your website.
 
 > 🚀  [Get The Ultimate Version](https://wppool.dev/wp-dark-mode/) | 👩🏼‍💻 [Get Support](https://wppool.dev/wp-dark-mode/)
 
@@ -72,24 +72,22 @@ WP Dark Mode supports all major operating systems including iOS, Android, macOS 
 * [Dark mode | Night Mode WordPress Plugin](https://youtu.be/Pmso8MJRpBM)
 
 === How to Use ===
-After activating the plugin by default your website will turn into darkmode for your users if the Operating System of the users sets into dark theme.
-
-You can use show/hide dark mode switch in many different ways like Gutenberg block, Elementor widget or Shortcode. Please refer to the FAQ section to learn more how to use.
-
-If you want to disable the OS aware darkmode functionality, Then navigate to your `Admin Dashboard > Settings > WP Dark Mode` turn off the "Enable OS aware Dark Mode" switch button.
+After activating the plugin by default your website will turn into the dark mode for your users if the Operating System of the users sets into a dark theme.
+You can use the show/hide dark mode switch in many different ways like Gutenberg block, Elementor widget, or Shortcode. Please refer to the FAQ section to learn more about how to use it.
+If you want to disable the OS aware dark mode functionality, Then navigate to your `Admin Dashboard > Settings > WP Dark Mode` turns off the “Enable OS aware Dark Mode” switch button.
 
 == Frequently Asked Questions ==
 
-= How can I show dark mode switch? = 
-You can display a darkmode floating switch button in the footer all over the website by turning on the "Show Floating Switch" settings from the WP Dark Mode general settings.
-And in the PRO version you can also display the switch button on the top of every post/ page. You can choose style of the switch button from different switch styles.
+= How can I show the dark mode switch? =
+You can display a dark mode floating switch button in the footer all over the website by turning on the “Show Floating Switch” settings from the WP Dark Mode general settings.
 
-= How can I show the Dark Mode ON/ OFF control switch button using shortcode? =
-This plugin provide  `[wp_dark_mode_switch]` shortcode to display the dark mode switch . Using the `[wp_dark_mode_switch]` shortcode, you can place the dark mode switch button anywhere in your website. This shortcode supports an optional **style** attribute for the switch style.
+And in the PRO version, you can also display the switch button on the top of every post/ page. You can choose the style of the switch button from different switch styles.
 
-**Example** - `[wp_dark_mode_switch style="3"]`
+= How can I show the Dark Mode ON/ OFF control switch button using a shortcode? =
+This plugin provides `[wp_dark_mode_switch]` shortcode to display the dark mode switch. Using the `[wp_dark_mode_switch]` shortcode, you can place the dark mode switch button anywhere on your website. This shortcode supports an optional style attribute for the switch style.
+**Example** – `[wp_dark_mode_switch style="3"]`
 
-= Does this plugin support dark mode image? =
+= Does this plugin support any dark mode image? =
 Yes ,it supports the dark mode images.
 
 = Can we use it with Gutenberg? =
@@ -108,7 +106,7 @@ Yes, using the ready-made color schema you can quickly change the dark mode colo
 Yes, you can enable dark mode in the back end of the admin page.
 
 = Where will the dark mode switch button be visible in any page or post? =
-You can use [wp_dark_mode] shortcode to display the dark mode switch button in any page/post.
+You can use `[wp_dark_mode_switch]` shortcode to display the dark mode switch button in any page/post.
 
 = Is this plugin compatible with all modern browsers? =
 Yes, We have tested this plugin in all modern browsers (Safari, Chrome, Firefox, Edge etc) works without any issue.
@@ -129,6 +127,10 @@ No. WP Dark Mode is a very user-friendly and simple plugin. Just download and us
 10. Dark mode switch elementor widget
 
 == Changelog ==
+
+= 1.2.5 =
+* Fix: Excludes Settings
+* Fix: Fixed the color palettes icons color
 
 = 1.2.4 =
 * Fix: Fixed the excludes elements settings

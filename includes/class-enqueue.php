@@ -42,10 +42,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 				[ 'jquery', 'wp-util' ],
 				wp_dark_mode()->version, true );
 
-			wp_localize_script( 'wp-dark-mode-frontend', 'wpDarkModeFrontend', [
-				'is_elementor_editor' => class_exists( '\Elementor\Plugin' ) && Elementor\Plugin::$instance->editor->is_edit_mode(),
-			] );
-
 			/** woocommerce style*/
 			if ( class_exists( 'WooCommerce' ) ) {
 				//if ( wp_dark_mode()->is_pro_active() || wp_dark_mode()->is_ultimate_active() ) {

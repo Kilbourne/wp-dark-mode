@@ -156,6 +156,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 
 			if ( ! empty( $section ) && in_array( $section['id'], [ 'wp_dark_mode_display', 'wp_dark_mode_style' ] ) ) {
 				$args['is_hidden'] = true;
+				$args['is_pro_promo'] = true;
 			}
 
 			wp_dark_mode()->get_template( 'admin/promo', $args );
@@ -178,7 +179,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 				$args['is_hidden'] = true;
 			}
 
-			wp_dark_mode()->get_template( 'admin/promo-ultimate', $args );
+			wp_dark_mode()->get_template( 'admin/promo', $args );
 		}
 
 		/**
