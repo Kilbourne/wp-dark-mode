@@ -1,6 +1,5 @@
 *.log
 node_modules
-/vendor
 /build
 composer.lock
 package-lock.json

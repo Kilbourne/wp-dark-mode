@@ -1,6 +1,8 @@
 <?php
 
-defined( 'ABSPATH' ) || exit();
+namespace WPDM\includes;
+
+defined('ABSPATH') || exit();
 
 class WP_Dark_Mode_Update {
 
@@ -16,7 +18,7 @@ class WP_Dark_Mode_Update {
 
 	public function installed_version() {
 
-		return get_option( 'wp_dark_mode_version' );
+		return get_option('wp_dark_mode_version');
 	}
 
 	/**
@@ -27,12 +29,12 @@ class WP_Dark_Mode_Update {
 	public function needs_update() {
 
 		// may be it's the first install
-		if (! $this->installed_version() ) {
+		if (!$this->installed_version()) {
 			return false;
 		}
 
 		//if previous version is lower
-		if ( version_compare( $this->installed_version(), wp_dark_mode()->version, '<' ) ) {
+		if (version_compare($this->installed_version(), wp_dark_mode()->version, '<')) {
 			return true;
 		}
 
@@ -46,17 +48,15 @@ class WP_Dark_Mode_Update {
 	 * @return void
 	 */
 	function perform_updates() {
-		foreach ( self::$upgrades as $version => $file ) {
-			if ( version_compare( ! $this->installed_version(), $version, '<' ) ) {
-				include wp_dark_mode()->plugin_path($file);
-				update_option( 'wp_dark_mode_version', $version );
+		foreach (self::$upgrades as $version => $file) {
+			if (version_compare(!$this->installed_version(), $version, '<')) {
+				require_once WPDM_BASE_PATH . $file;
+
+				update_option('wp_dark_mode_version', $version);
 			}
 		}
 
-		delete_option( 'wp_dark_mode_version' );
-		update_option( 'wp_dark_mode_version', wp_dark_mode()->version );
+		delete_option('wp_dark_mode_version');
+		update_option('wp_dark_mode_version', wp_dark_mode()->version);
 	}
-
-
-
 }

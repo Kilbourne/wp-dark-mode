@@ -1,6 +1,6 @@
 <?php
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
 class WP_Dark_Mode_Control_Image_Choose extends \Elementor\Base_Data_Control {
 
@@ -26,16 +26,22 @@ class WP_Dark_Mode_Control_Image_Choose extends \Elementor\Base_Data_Control {
 	 */
 	public function enqueue() {
 		// styles
-		wp_register_style( 'wp-dark-mode-css-image-choose-control',
-			wp_dark_mode()->plugin_url( 'elementor/modules/controls/assets/css/image-choose.css' ), [], '1.0.0' );
+		wp_register_style(
+			'wp-dark-mode-css-image-choose-control',
+			WPDM_BASE_URL . 'elementor/modules/controls/assets/css/image-choose.css',
+			[],
+			'1.0.0'
+		);
 
-		wp_enqueue_style( 'wp-dark-mode-css-image-choose-control' );
+		wp_enqueue_style('wp-dark-mode-css-image-choose-control');
 
 		// script
-		wp_register_script( 'wp-dark-mode-js-image-choose-control',
-			wp_dark_mode()->plugin_url( 'elementor/modules/controls/assets/js/image-choose.js' ) );
+		wp_register_script(
+			'wp-dark-mode-js-image-choose-control',
+			WPDM_BASE_URL . 'elementor/modules/controls/assets/js/image-choose.js'
+		);
 
-		wp_enqueue_script( 'wp-dark-mode-js-image-choose-control' );
+		wp_enqueue_script('wp-dark-mode-js-image-choose-control');
 	}
 
 	/**
@@ -49,31 +55,31 @@ class WP_Dark_Mode_Control_Image_Choose extends \Elementor\Base_Data_Control {
 	 * @access public
 	 */
 	public function content_template() {
-		$control_uid = $this->get_control_uid( '{{value}}' );
-		?>
-        <div class="elementor-control-field">
-            <label class="elementor-control-title">{{{ data.label }}}</label>
-            <div class="elementor-control-input-wrapper">
-                <div class="elementor-image-choices">
-                    <# _.each( data.options, function( options, value ) { #>
-                    <div class="image-choose-label-block">
-                        <input id="<?php echo esc_attr( $control_uid ); ?>" type="radio" name="elementor-choose-{{ data.name }}-{{ data._cid }}" value="{{ value }}">
-                        <label class="elementor-image-choices-label" for="<?php echo esc_attr( $control_uid ); ?>" title="{{ options.title }}">
-                            <img class="image_small" src="{{ options.image_small }}" alt="{{ options.title }}"/>
-<!--                            <span class="image_large">-->
-<!--								<img src="{{ options.image_large }}" alt="{{ options.title }}"/>-->
-<!--							</span>-->
-                            <span class="elementor-screen-only">{{{ options.title }}}</span>
-                        </label>
-                    </div>
-                    <# } ); #>
-                </div>
-            </div>
-        </div>
+		$control_uid = $this->get_control_uid('{{value}}');
+?>
+		<div class="elementor-control-field">
+			<label class="elementor-control-title">{{{ data.label }}}</label>
+			<div class="elementor-control-input-wrapper">
+				<div class="elementor-image-choices">
+					<# _.each( data.options, function( options, value ) { #>
+						<div class="image-choose-label-block">
+							<input id="<?php echo esc_attr($control_uid); ?>" type="radio" name="elementor-choose-{{ data.name }}-{{ data._cid }}" value="{{ value }}">
+							<label class="elementor-image-choices-label" for="<?php echo esc_attr($control_uid); ?>" title="{{ options.title }}">
+								<img class="image_small" src="{{ options.image_small }}" alt="{{ options.title }}" />
+								<!--                            <span class="image_large">-->
+								<!--								<img src="{{ options.image_large }}" alt="{{ options.title }}"/>-->
+								<!--							</span>-->
+								<span class="elementor-screen-only">{{{ options.title }}}</span>
+							</label>
+						</div>
+						<# } ); #>
+				</div>
+			</div>
+		</div>
 
-        <# if ( data.description ) { #>
-        <div class="elementor-control-field-description">{{{ data.description }}}</div>
-        <# } #>
+		<# if ( data.description ) { #>
+			<div class="elementor-control-field-description">{{{ data.description }}}</div>
+			<# } #>
 		<?php
 	}
 

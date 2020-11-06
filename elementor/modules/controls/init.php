@@ -1,13 +1,13 @@
 <?php
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
 class WP_Dark_Mode_Controls_Init {
 
 	private static $instance = null;
 
 	public static function instance() {
-		if ( is_null( self::$instance ) ) {
+		if (is_null(self::$instance)) {
 			self::$instance = new self();
 		}
 
@@ -22,22 +22,21 @@ class WP_Dark_Mode_Controls_Init {
 
 
 		// Initilizating control hooks
-		add_action( 'elementor/controls/controls_registered', array( $this, 'image_choose' ), 11 );
+		add_action('elementor/controls/controls_registered', array($this, 'image_choose'), 11);
 	}
 
 	private function include_files() {
 		// Controls_Manager
-		include wp_dark_mode()->plugin_path( 'elementor/modules/controls/control-manager.php' );
+		require_once WPDM_BASE_PATH . 'elementor/modules/controls/control-manager.php';
 
 		// image choose
-		include wp_dark_mode()->plugin_path( 'elementor/modules/controls/image-choose.php' );
+		require_once WPDM_BASE_PATH . 'elementor/modules/controls/image-choose.php';
 	}
 
 
-	public function image_choose( $controls_manager ) {
-		$controls_manager->register_control( 'image_choose', new WP_Dark_Mode_Control_Image_Choose() );
+	public function image_choose($controls_manager) {
+		$controls_manager->register_control('image_choose', new WP_Dark_Mode_Control_Image_Choose());
 	}
-
 }
 
 WP_Dark_Mode_Controls_Init::instance();

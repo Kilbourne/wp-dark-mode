@@ -1,5 +1,5 @@
 === WP Dark Mode ===
-Contributors: wppool, azizultex, princeahmed
+Contributors: wppool, azizultex, princeahmed, Arif32-dev
 Tags: dark, dark mode, night mode, gutenberg blocks, dark theme
 Requires at least: 5.0
 Tested up to: 5.5
