@@ -433,9 +433,7 @@ if (!class_exists('WPPOOL_Settings_API')) {
 		}
 
 		function callback_cb_function($args) {
-			// call_user_func($args['std']);
 			call_user_func(array(__NAMESPACE__ . '\WP_Dark_Mode_Settings', $args['std'][1]));
-			print_r($args['std']);
 		}
 
 		/**
