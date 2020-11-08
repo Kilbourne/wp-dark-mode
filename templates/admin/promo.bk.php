@@ -3,65 +3,49 @@
 $is_hidden = isset( $is_hidden ) && $is_hidden;
 $is_pro    = isset( $is_pro_promo ) && $is_pro_promo;
 
-$data_transient_key = 'wp_dark_mode_promo_data';
-
 $data = [
-	'pro_title'       => 'Upgrade to PRO to access the PRO features',
-	'ultimate_title'  => 'Upgrade to ULTIMATE to access the ULTIMATE features',
-	'discount_text'   => '50% OFF',
-	'pro_text'        => 'GET PRO',
-	'ultimate_text'   => 'GET ULTIMATE',
-	'countdown_time'  => '2020-11-12',
-	'is_black_friday' => 'no',
+	'pro_title'      => 'Upgrade to PRO to access the PRO features',
+	'ultimate_title' => 'Upgrade to ULTIMATE to access the ULTIMATE features',
+	'discount_text'  => 'GET <span class="percentage">50%</span> OFF',
+	'limited_text'   => 'LIMITED TIME ONLY',
+	'pro_text'       => 'GET PRO',
+	'ultimate_text'  => 'GET ULTIMATE',
+	'countdown_time' => '',
 ];
 
-if ( get_transient( $data_transient_key ) ) {
-	$data = get_transient( $data_transient_key );
-} else {
-	$url = 'https://wppool.dev/wp-dark-mode-promo-black-friday.json';
-	if ( $json = file_get_contents( $url ) ) {
-		$data = (array) json_decode( $json );
+$url = 'https://wppool.dev/wp-dark-mode-promo-data.json';
 
-		set_transient( $data_transient_key, $data, DAY_IN_SECONDS );
-	}
+if ( $json = file_get_contents( $url ) ) {
+	$data = (array) json_decode( $json );
 }
 
 $title = $is_pro ? $data['pro_title'] : $data['ultimate_title'];
 
 ?>
 
-<div class="wp-dark-mode-promo <?php echo $is_hidden ? 'hidden' : ''; ?>">
-    <div class="wp-dark-mode-promo-inner <?php echo $data['is_black_friday'] == 'yes' ? 'black-friday' : ''; ?>">
+<div class="promo <?php echo $is_hidden ? 'hidden' : ''; ?>">
+    <div class="promo-inner">
 
 		<?php if ( $is_hidden ) { ?>
             <span class="close-promo">&times;</span>
 		<?php } ?>
 
-        <img src="<?php echo wp_dark_mode()->plugin_url( 'assets/images/gift-box.svg' ) ?>" class="promo-img">
-
-		<?php if ( $data['is_black_friday'] == 'yes' ) { ?>
-            <div class="black-friday-wrap">
-                <h3>Biggest sale of the year.</h3>
-
-                <div class="ribbon">
-                    <div class="ribbon-stitches-top"></div>
-                    <strong class="ribbon-content"><h1>BLACK FRIDAY</h1></strong>
-                    <div class="ribbon-stitches-bottom"></div>
-                </div>
-
-            </div>
-		<?php } ?>
+        <img src="<?php echo wp_dark_mode()->plugin_url( 'assets/images/crown.svg' ) ?>" class="promo-img">
 
 		<?php
 
 		if ( ! empty( $title ) ) {
-			printf( '<h3 class="promo-title">%s</h3>', $title );
+			printf( '<h3>%s</h3>', $title );
 		}
 
 		if ( ! empty( $data['discount_text'] ) ) {
-			printf( '<div class="discount"> <span class="discount-special">SPECIAL</span> <span class="discount-text">%s</span></div>', $data['discount_text'] );
+			printf( '<h3 class="discount">%s</h3>', $data['discount_text'] );
 		}
 
+
+		if ( ! empty( $data['limited_text'] ) ) {
+			printf( '<h3 class="limited-title">%s</h3>', $data['limited_text'] );
+		}
 
 		if ( ! empty( $data['countdown_time'] ) ) {
 			if ( $data['countdown_time'] > date( 'Y-m-d-H-i' ) ) {
@@ -86,19 +70,18 @@ $title = $is_pro ? $data['pro_title'] : $data['ultimate_title'];
 
         .syotimer-cell {
             display: inline-block;
-            margin: 0 14px;
+            margin: 0 5px;
 
-            width: 50px;
-            background: url(<?php echo wp_dark_mode()->plugin_url('assets/images/timer.svg'); ?>) no-repeat 0 0;
-            background-size: contain;
+            width: 79px;
+            background: url(<?php echo wp_dark_mode()->plugin_url('assets/images/timer.png'); ?>) no-repeat 0 0;
         }
 
         .syotimer-cell__value {
-            font-size: 28px;
-            color: #fff;
+            font-size: 35px;
+            color: #80a3ca;
 
-            height: 54px;
-            line-height: 54px;
+            height: 81px;
+            line-height: 81px;
 
             margin: 0 0 5px;
         }
@@ -120,12 +103,12 @@ $title = $is_pro ? $data['pro_title'] : $data['ultimate_title'];
                 $(document).on('click', '.image-choose-opt.disabled, .form-table tr.disabled', function (e) {
                     e.preventDefault();
 
-                    $(this).closest('table').next('.wp-dark-mode-promo.hidden').removeClass('hidden');
+                    $(this).closest('table').next('.promo.hidden').removeClass('hidden');
                 });
 
                 //close promo
                 $(document).on('click', '.close-promo', function () {
-                    $(this).closest('.wp-dark-mode-promo').addClass('hidden');
+                    $(this).closest('.promo').addClass('hidden');
                 });
 
 				<?php

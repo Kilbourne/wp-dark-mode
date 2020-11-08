@@ -1,4 +1,3 @@
-1.2.5
+1.2.6
 ------
-* Fix: Excludes Settings
-* Fix: Fixed the color palettes icons color
+* Fix: Elementor Dark Mode Switch Fix

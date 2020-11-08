@@ -1,0 +1,205 @@
+tr.gutenberg_doc, tr.elementor_doc, tr.image_settings, tr.shortcodes_doc, tr.widget_doc {
+  h2 {
+    font-weight: bold;
+  }
+
+  th {
+    display: none;
+  }
+
+}
+
+#wp_dark_mode_shortcodes {
+  .submit {
+    display: none;
+  }
+}
+
+.doc-section {
+  list-style: disc;
+
+  img {
+    max-width: 100%;
+    border: 1px solid #ddd;
+  }
+
+  h3 {
+    font-weight: 300;
+  }
+
+}
+
+#wp_dark_mode_start-tab {
+  background: yellowgreen;
+  color: #fff;
+
+  i {
+    color: #fff;
+  }
+}
+
+#wp_dark_mode_start {
+  .submit {
+    display: none;
+  }
+
+  .form-table {
+    td {
+      padding: 0;
+    }
+  }
+}
+
+.wppool-settings tr.getting_started {
+  th {
+    display: none;
+  }
+
+  .getting-started-section {
+    margin-bottom: 50px;
+    padding: 10px;
+
+    h2 {
+      font-weight: bold;
+    }
+
+    .wp-video, iframe {
+      max-width: 640px !important;
+      max-height: 360px !important;
+      overflow: hidden;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+  }
+
+}
+
+#wp_dark_mode_license {
+  .form-table {
+    margin-top: -30px;
+
+    td {
+      padding: 0;
+    }
+  }
+}
+
+.wppool-settings tr.license {
+  p {
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    display: none;
+  }
+
+  th {
+    display: none;
+  }
+
+  .appsero-license-settings {
+    border: 1px solid #ddd;
+  }
+}
+
+.license-activation-notice {
+  display: flex;
+  align-items: center;
+
+  .wp-dark-mode-notice-icon {
+    margin-right: 10px;
+
+    img {
+      max-width: 45px;
+    }
+  }
+
+  .wp-dark-mode-notice-actions {
+    justify-self: flex-end;
+    margin-left: auto;
+  }
+
+}
+
+.exclude_pages, .switch_menus {
+  .select2-container {
+    width: 350px !important;
+  }
+}
+
+.wppool-settings {
+  .CodeMirror-sizer {
+    margin-left: 22px !important;
+  }
+
+  .CodeMirror-linenumbers {
+    width: 21px !important;
+  }
+}
+
+.wppool-settings {
+  .image-choose-opt {
+    position: relative;
+
+    &.disabled {
+      .disabled-text {
+        position: absolute;
+        width: 90px;
+        height: 90px;
+        left: 5px;
+        top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(#555, .7);
+        color: #fff;
+      }
+    }
+  }
+
+  .form-table tr.disabled {
+    opacity: .6;
+
+    input, select, textarea {
+      pointer-events: none;
+    }
+  }
+
+  .switch_style {
+    .image-choose-opt {
+      .disabled-text {
+        width: 90%;
+        height: 95%;
+        left: 5px;
+        border-radius: 10px;
+      }
+    }
+  }
+
+  .color_preset {
+    .image-choose-opt {
+      img {
+        border-radius: 100px;
+      }
+
+      .disabled-text {
+        border-radius: 100px;
+      }
+    }
+  }
+
+}
+
+.widget {
+  .switch-style-choose-group {
+    border-radius: 5px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

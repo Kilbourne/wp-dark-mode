@@ -96,6 +96,11 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 		 * display dark mode switcher button on the admin bar menu
 		 */
 		public function render_admin_switcher_menu() {
+
+		    if(class_exists('Dark_mode')){
+		        return;
+            }
+
 			$light_text = wp_dark_mode_get_settings( 'wp_dark_mode_display', 'switch_text_light', 'Light' );
 			$dark_text  = wp_dark_mode_get_settings( 'wp_dark_mode_display', 'switch_text_dark', 'Dark' );
 
@@ -379,7 +384,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 				}
 				?>
             </style>
-
 
 			<?php
 		}

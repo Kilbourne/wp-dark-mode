@@ -258,7 +258,8 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 		public function plugin_action_links( $links ) {
 			$links[] = sprintf( '<a href="%1$s">%2$s</a>', admin_url( 'options-general.php?page=wp-dark-mode-settings' ),
 				__( 'Settings', 'wp-dark-mode' ) );
-			if ( ! is_plugin_active( 'wp-dark-mode-pro/plugin.php' ) && ! is_plugin_active( 'wp-dark-mode-ultimate/plugin.php' ) ) {
+
+			if ( !$this->is_pro_active() && !$this->is_ultimate_active() ) {
 				$links[] = sprintf( '<a href="%1$s" target="_blank" style="color: orangered;font-weight: bold;">%2$s</a>',
 					'https://wppool.dev/wp-dark-mode-pricing', __( 'GET PRO', 'wp-dark-mode' ) );
 			}

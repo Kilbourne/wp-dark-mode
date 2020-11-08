@@ -55,12 +55,12 @@ WP Dark Mode supports all major operating systems including iOS, Android, macOS,
 
 === 💰 WP Dark Mode Ultimate Features ===
 1. **All Pro Features**
-1. Custom Colors** – You can customize the dark mode background. text and links color as you want/
-1. Presets Color Schema** – 11 exclusive presets color schema available to quickly change the dark mode color from the predefined presets.
-1. Dark Mode Based Image Supports** – You can replace light mode images with the different images you want in the dark mode.
-1. Custom CSS** – You can use custom CSS only for dark mode.
-1. Custom Switch Icon** – You can customize the dark mode switch icon in the light/ dark mode.
-1. Dark mode Switch in Menu** – You can display the dark mode switch as a menu item in any menu on your website.
+1. **Custom Colors** – You can customize the dark mode background. text and links color as you want/
+1. **Presets Color Schema** – 11 exclusive presets color schema available to quickly change the dark mode color from the predefined presets.
+1. **Dark Mode Based Image Supports** – You can replace light mode images with the different images you want in the dark mode.
+1. **Custom CSS** – You can use custom CSS only for dark mode.
+1. **Custom Switch Icon** – You can customize the dark mode switch icon in the light/ dark mode.
+1. **Dark mode Switch in Menu** – You can display the dark mode switch as a menu item in any menu on your website.
 
 > 🚀  [Get The Ultimate Version](https://wppool.dev/wp-dark-mode/) | 👩🏼‍💻 [Get Support](https://wppool.dev/wp-dark-mode/)
 

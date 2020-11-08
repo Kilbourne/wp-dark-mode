@@ -9,6 +9,11 @@ defined( 'ABSPATH' ) || exit;
  */
 add_action( 'init', 'wp_dark_mode_register_block' );
 function wp_dark_mode_register_block() {
+
+	if(class_exists('Dark_Mode')){
+		return;
+	}
+
 	// If block editor is not active, bail.
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
