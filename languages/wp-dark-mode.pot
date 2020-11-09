@@ -329,8 +329,12 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: plugin.php:263
+#: plugin.php:264
 msgid "GET PRO"
+msgstr ""
+
+#: templates/admin/black-friday-notice.php:11
+msgid "GRAB THE DEAL"
 msgstr ""
 
 #: templates/admin/license-notice.php:7, templates/admin/license-notice.php:14
