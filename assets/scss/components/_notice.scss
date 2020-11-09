@@ -1,0 +1,31 @@
+.black-friday-notice {
+  border-left-color: #ff0000;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  .wp-dark-mode-notice-text {
+    p {
+      font-size: 18px;
+      margin-left: 10px;
+    }
+  }
+
+  .wp-dark-mode-notice-icon {
+    width: 80px;
+  }
+
+  .wp-dark-mode-notice-actions {
+    margin-left: auto;
+
+    a {
+      background: #ff0000;
+      color: #fff;
+      border: none;
+      font-size: 16px;
+      padding: 5px 20px;
+      font-weight: bold;
+    }
+  }
+}

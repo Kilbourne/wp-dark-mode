@@ -391,7 +391,7 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 
 				?>
                 <div class="notice notice-<?php echo $notice['class']; ?>">
-                    <p><?php echo $notice['message']; ?></p>
+                    <?php echo $notice['message']; ?>
                 </div>
 				<?php
 				update_option( sanitize_key( 'wp_dark_mode_notices' ), [] );

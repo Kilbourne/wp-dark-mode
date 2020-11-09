@@ -46,6 +46,37 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 
 			add_filter( 'wp_dark_mode/excludes', [ $this, 'excludes' ] );
 
+			add_action( 'admin_init', [ $this, 'display_notice' ] );
+
+		}
+
+		public function display_notice() {
+
+			$data_transient_key = 'wp_dark_mode_promo_data';
+
+			$data = [ 'is_black_friday' => 'no', ];
+
+			if ( get_transient( $data_transient_key ) ) {
+				$data = get_transient( $data_transient_key );
+			} else {
+				$url = 'https://wppool.dev/wp-dark-mode-promo-black-friday.json';
+				if ( $json = file_get_contents( $url ) ) {
+					$data = (array) json_decode( $json );
+
+					set_transient( $data_transient_key, $data, DAY_IN_SECONDS );
+				}
+			}
+
+			if ( $data['is_black_friday'] != 'yes' ) {
+				return;
+			}
+
+
+			ob_start();
+			wp_dark_mode()->get_template( 'admin/black-friday-notice' );
+			$message = ob_get_clean();
+
+			wp_dark_mode()->add_notice( 'info is-dismissible black-friday-notice', $message );
 		}
 
 		/**
@@ -97,9 +128,9 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 		 */
 		public function render_admin_switcher_menu() {
 
-		    if(class_exists('Dark_mode')){
-		        return;
-            }
+			if ( class_exists( 'Dark_mode' ) ) {
+				return;
+			}
 
 			$light_text = wp_dark_mode_get_settings( 'wp_dark_mode_display', 'switch_text_light', 'Light' );
 			$dark_text  = wp_dark_mode_get_settings( 'wp_dark_mode_display', 'switch_text_dark', 'Dark' );
@@ -160,7 +191,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 			$args = [];
 
 			if ( ! empty( $section ) && in_array( $section['id'], [ 'wp_dark_mode_display', 'wp_dark_mode_style' ] ) ) {
-				$args['is_hidden'] = true;
+				$args['is_hidden']    = true;
 				$args['is_pro_promo'] = true;
 			}
 
