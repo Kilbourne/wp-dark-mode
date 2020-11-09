@@ -50,8 +50,14 @@ const paths = {
             '!assets/js/admin.js',
             '!assets/js/frontend.js',
             '!assets/scss/**',
+
             '!block/node_modules/**',
             '!block/node_modules',
+            '!block/src/**',
+            '!block/package.json',
+            '!block/package-lock.json',
+            '!block/webpack.config.js',
+
             '!build/**',
             '!src/**',
             '!**/*.md',

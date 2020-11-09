@@ -1,0 +1,31 @@
+/* Image Settings Table */
+.image-settings-table {
+  width: 100%;
+
+  tr {
+    &:first-child {
+      td {
+        padding: 0 10px;
+        font-weight: bold;
+
+        &:last-child {
+          width: 140px;
+        }
+      }
+    }
+
+    &:nth-child(2) {
+      .remove_row {
+        display: none;
+      }
+    }
+
+  }
+
+  td {
+    input {
+      width: 100%;
+    }
+
+  }
+}

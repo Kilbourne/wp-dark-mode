@@ -52,6 +52,12 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 
 		public function display_notice() {
 
+
+			/** display the black-friday notice if the pro version is not activated */
+			if ( wp_dark_mode()->is_pro_active() || wp_dark_mode()->is_ultimate_active() ) {
+				return;
+			}
+
 			$data_transient_key = 'wp_dark_mode_promo_data';
 
 			$data = [ 'is_black_friday' => 'no', ];
@@ -77,6 +83,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 			$message = ob_get_clean();
 
 			wp_dark_mode()->add_notice( 'info is-dismissible black-friday-notice', $message );
+
 		}
 
 		/**

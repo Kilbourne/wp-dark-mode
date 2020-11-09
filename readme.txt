@@ -132,7 +132,6 @@ No. WP Dark Mode is a very user-friendly and simple plugin. Just download and us
 * Fix: Remove Get PRO button from plugin action links if ultimate version is activated
 * Fix: Hide elementor dark mode switch if dark mode is disabled.
 * New: Added new admin notice banner for black friday offer.
-* New: Added WP Markdown Editor (Formerly Dark Mode) plugin compatibility.
 * Updated: Improved Existing Admin Backend Promo Popup.
 
 = 1.2.5 =

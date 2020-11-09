@@ -3,6 +3,7 @@ const {registerBlockType} = wp.blocks;
 
 import Edit from "./Edit";
 import {ReactComponent as Logo} from "./logo.svg";
+
 /**---- Editor Theme Switch ----*/
 import './theme-switch';
 
