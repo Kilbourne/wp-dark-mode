@@ -113,6 +113,11 @@ if ( ! class_exists( 'WP_Dark_Mode_Elementor_Widget' ) ) {
 		}
 
 		public function render() {
+
+			if ( ! wp_dark_mode_enabled() ) {
+				return;
+			}
+
 			$settings = $this->get_settings_for_display();
 			extract( $settings );
 

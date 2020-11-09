@@ -22,9 +22,11 @@
 
             app.excludeBGELements();
 
-            document.querySelector('.wp-dark-mode-switch').addEventListener('click', app.handleToggle);
-
-            document.querySelector('.wp-dark-mode-switch').addEventListener('change', app.handleExcludes);
+            const darkmodeSwitch = document.querySelector('.wp-dark-mode-switch');
+            if (darkmodeSwitch) {
+                darkmodeSwitch.addEventListener('click', app.handleToggle);
+                darkmodeSwitch.addEventListener('change', app.handleExcludes);
+            }
 
             app.checkDarkMode();
             app.handleExcludes();

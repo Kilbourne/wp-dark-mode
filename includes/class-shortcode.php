@@ -24,12 +24,16 @@ if ( ! class_exists( 'WP_Dark_Mode_Shortcode' ) ) {
 		 */
 		public function render_dark_mode_btn( $atts ) {
 
+			if ( ! wp_dark_mode_enabled() ) {
+				return;
+			}
+
 			$atts = shortcode_atts( [
 				'floating' => 'no',
 				'style'    => 1,
 			], $atts );
 
-			$custom_icon = 'on' == wp_dark_mode_get_settings('wp_dark_mode_display', 'custom_switch_icon', 'off');
+			$custom_icon = 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_display', 'custom_switch_icon', 'off' );
 
 			ob_start();
 
