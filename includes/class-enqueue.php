@@ -101,7 +101,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 
 
 			/** wp-dark-mode admin js */
-			wp_enqueue_script( 'wp-dark-mode-admin', wp_dark_mode()->plugin_url( 'assets/js/admin.min.js' ), false, wp_dark_mode()->version, true );
+			wp_enqueue_script( 'wp-dark-mode-admin', wp_dark_mode()->plugin_url( 'assets/js/admin.min.js' ), ['wp-util'], wp_dark_mode()->version, true );
 
 
 			/** frontend scripts for gutenberg */

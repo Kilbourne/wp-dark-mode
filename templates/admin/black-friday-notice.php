@@ -8,6 +8,25 @@
 </div>
 
 <div class="wp-dark-mode-notice-actions">
-    <a href="https://wppool.dev/wp-dark-mode" target="_blank" class="button"><?php _e( 'GRAB THE DEAL', 'wp-dark-mode' ); ?></a>
+    <a href="https://wppool.dev/wp-dark-mode" target="_blank"
+       class="button"><?php _e( 'GRAB THE DEAL', 'wp-dark-mode' ); ?></a>
     <button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button>
 </div>
+
+<script>
+    (function ($) {
+        $(document).on('click', '.black-friday-notice .notice-dismiss', function () {
+
+
+            wp.ajax.send('hide_black_friday_notice', {
+               success: function (res){
+                   console.log(res);
+               },
+
+                error: function (error){
+                   console.log(error);
+                },
+            });
+        })
+    })(jQuery)
+</script>

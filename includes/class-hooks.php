@@ -48,10 +48,22 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 
 			add_action( 'admin_init', [ $this, 'display_notice' ] );
 
+			/** hide black friday notice */
+			add_action( 'wp_ajax_hide_black_friday_notice', [ $this, 'hide_black_friday_notice' ] );
+
+		}
+
+		public function hide_black_friday_notice() {
+			update_option( 'wp_dark_mode_hide_black_friday_notice', true );
+			update_option( sanitize_key( 'wp_dark_mode_notices' ), [] );
+			die();
 		}
 
 		public function display_notice() {
 
+			if ( get_option( 'wp_dark_mode_hide_black_friday_notice' ) ) {
+				return;
+			}
 
 			/** display the black-friday notice if the pro version is not activated */
 			if ( wp_dark_mode()->is_pro_active() || wp_dark_mode()->is_ultimate_active() ) {
@@ -66,6 +78,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 				$data = get_transient( $data_transient_key );
 			} else {
 				$url = 'https://wppool.dev/wp-dark-mode-promo-black-friday.json';
+
 				if ( $json = file_get_contents( $url ) ) {
 					$data = (array) json_decode( $json );
 
