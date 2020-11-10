@@ -19,7 +19,11 @@ if ( get_transient( $data_transient_key ) ) {
 	$data = get_transient( $data_transient_key );
 } else {
 	$url = 'https://wppool.dev/wp-dark-mode-promo-black-friday.json';
-	if ( $json = file_get_contents( $url ) ) {
+
+	$res = wp_remote_get($url);
+
+	if(!is_wp_error($res)){
+		$json = wp_remote_retrieve_body($res);
 		$data = (array) json_decode( $json );
 
 		set_transient( $data_transient_key, $data, DAY_IN_SECONDS );
