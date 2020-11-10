@@ -76,6 +76,15 @@ After activating the plugin by default your website will turn into the dark mode
 You can use the show/hide dark mode switch in many different ways like Gutenberg block, Elementor widget, or Shortcode. Please refer to the FAQ section to learn more about how to use it.
 If you want to disable the OS aware dark mode functionality, Then navigate to your `Admin Dashboard > Settings > WP Dark Mode` turns off the “Enable OS aware Dark Mode” switch button.
 
+## Privacy Policy
+WP Dark Mode uses [Appsero](https://appsero.com) SDK to collect some telemetry data upon user's confirmation. This helps us to troubleshoot problems faster & make product improvements.
+
+Appsero SDK **does not gather any data by default.** The SDK only starts gathering basic telemetry data **when a user allows it via the admin notice**. We collect the data to ensure a great user experience for all our users.
+
+Integrating Appsero SDK **DOES NOT IMMEDIATELY** start gathering data, **without confirmation from users in any case.**
+
+Learn more about how [Appsero collects and uses this data](https://appsero.com/privacy-policy/).
+
 == Frequently Asked Questions ==
 
 = How can I show the dark mode switch? =

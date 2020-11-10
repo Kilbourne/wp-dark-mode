@@ -82,12 +82,12 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 				),
 				array(
 					'id'    => 'wp_dark_mode_elementor',
-					'title' => sprintf( __( '%s <span>Elementor Widget</span>', 'wp-dark-mode' ),
+					'title' => sprintf( __( '%s <span>Elementor Widget</span> <a href="https://wppool.dev/wp-dark-mode" target="_blank" class="get_pro_btn">GET PRO</a>', 'wp-dark-mode' ),
 						'<i class="dashicons dashicons-align-none" ></i>' ),
 				),
 				array(
 					'id'    => 'wp_dark_mode_shortcodes',
-					'title' => sprintf( __( '%s <span>Shortcodes</span>', 'wp-dark-mode' ),
+					'title' => sprintf( __( '%s <span>Shortcodes</span> <a href="https://wppool.dev/wp-dark-mode" target="_blank" class="get_pro_btn">GET PRO</a>', 'wp-dark-mode' ),
 						'<i class="dashicons dashicons-shortcode" ></i>' ),
 				),
 				array(

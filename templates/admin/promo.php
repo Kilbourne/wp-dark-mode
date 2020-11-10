@@ -83,8 +83,6 @@ $title = $is_pro ? $data['pro_title'] : $data['ultimate_title'];
     <style>
         .syotimer {
             text-align: center;
-
-            margin: 30px auto 0;
             padding: 0 0 10px;
         }
 

@@ -135,9 +135,13 @@
             if (!checkBox) {
                 return;
             }
+
+
             const is_customized = checkBox.checked;
 
-            if (is_customized) {
+            const isPro = wpDarkModeAdmin.is_pro_active || wpDarkModeAdmin.is_ultimate_active;
+
+            if (isPro && is_customized) {
                 document.querySelectorAll('.darkmode_bg_color, .darkmode_text_color, .darkmode_link_color').forEach((element) => {
                     element.style.display = 'table-row';
                 });

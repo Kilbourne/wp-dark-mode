@@ -58,7 +58,7 @@
 
     .discount {
       position: relative;
-      margin: 35px 0 20px;
+      margin: 35px 0 10px;
 
       .discount-special {
         color: #FF631A;
@@ -75,9 +75,10 @@
       .discount-text {
         border: 2px solid #FF631A;
         display: inline-block;
-        font-size: 60px;
+        font-size: 48px;
         padding: 20px 20px 28px;
         border-radius: 5px;
+        font-weight: bold;
         color: #fff;
       }
     }
@@ -101,7 +102,7 @@
       h3 {
         color: #FF631A;
         font-size: 25px;
-        margin: 60px 0 30px;
+        margin: 30px;
       }
     }
 
@@ -111,7 +112,7 @@
 
     &.black-friday{
       .promo-title {
-        margin-top: 135px;
+        margin-top: 120px;
       }
     }
 
@@ -129,7 +130,7 @@
   }
 
   .ribbon h1 {
-    font-size: 48px !important;
+    font-size: 38px !important;
     font-weight: bold;
     color: #000;
     text-shadow: #240c0c 0 1px 0;
