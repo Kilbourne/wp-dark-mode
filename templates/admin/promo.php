@@ -11,7 +11,7 @@ $data = [
 	'discount_text'   => '50% OFF',
 	'pro_text'        => 'GET PRO',
 	'ultimate_text'   => 'GET ULTIMATE',
-	'countdown_time'  => '2020-11-12',
+	'countdown_time'  => '2020-11-27-20-00-00',
 	'is_black_friday' => 'no',
 ];
 
@@ -20,10 +20,10 @@ if ( get_transient( $data_transient_key ) ) {
 } else {
 	$url = 'https://wppool.dev/wp-dark-mode-promo-black-friday.json';
 
-	$res = wp_remote_get($url);
+	$res = wp_remote_get( $url );
 
-	if(!is_wp_error($res)){
-		$json = wp_remote_retrieve_body($res);
+	if ( ! is_wp_error( $res ) ) {
+		$json = wp_remote_retrieve_body( $res );
 		$data = (array) json_decode( $json );
 
 		set_transient( $data_transient_key, $data, DAY_IN_SECONDS );
@@ -136,9 +136,12 @@ $title = $is_pro ? $data['pro_title'] : $data['ultimate_title'];
 				$date_parts = explode( '-', $date );
 
 				$countdown_time = [
-					'year'  => $date_parts[0],
-					'month' => $date_parts[1],
-					'day'   => $date_parts[2],
+					'year'   => $date_parts[0],
+					'month'  => $date_parts[1],
+					'day'    => $date_parts[2],
+					'hour'   => $date_parts[3],
+					'minute' => $date_parts[4],
+					'second' => $date_parts[5],
 				];
 
 				?>
@@ -148,6 +151,9 @@ $title = $is_pro ? $data['pro_title'] : $data['ultimate_title'];
                         year: <?php echo $countdown_time['year']; ?>,
                         month: <?php echo $countdown_time['month']; ?>,
                         day: <?php echo $countdown_time['day']; ?>,
+                        hour: <?php echo $countdown_time['hour']; ?>,
+                        minute: <?php echo $countdown_time['minute']; ?>,
+                        second: <?php echo $countdown_time['second']; ?>,
                     });
                 }
 				<?php } ?>

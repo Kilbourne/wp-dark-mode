@@ -77,7 +77,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 				),
 				array(
 					'id'    => 'wp_dark_mode_gutenberg',
-					'title' => sprintf( __( '%s <span>Gutenberg Block</span>', 'wp-dark-mode' ),
+					'title' => sprintf( __( '%s <span>Gutenberg Block</span> <a href="https://wppool.dev/wp-dark-mode" target="_blank" class="get_pro_btn">GET PRO</a>', 'wp-dark-mode' ),
 						'<i class="dashicons dashicons-screenoptions" ></i>' ),
 				),
 				array(
@@ -92,7 +92,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 				),
 				array(
 					'id'    => 'wp_dark_mode_widget_doc',
-					'title' => sprintf( __( '%s <span>Switch Widget</span>', 'wp-dark-mode' ),
+					'title' => sprintf( __( '%s <span>Switch Widget</span> <a href="https://wppool.dev/wp-dark-mode" target="_blank" class="get_pro_btn">GET PRO</a>', 'wp-dark-mode' ),
 						'<i class="dashicons dashicons-align-full-width" ></i>' ),
 				),
 				array(

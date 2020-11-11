@@ -70,19 +70,19 @@ msgid "%s <span>Custom CSS</span>"
 msgstr ""
 
 #: includes/class-settings.php:80
-msgid "%s <span>Gutenberg Block</span>"
+msgid "%s <span>Gutenberg Block</span> <a href=\"https://wppool.dev/wp-dark-mode\" target=\"_blank\" class=\"get_pro_btn\">GET PRO</a>"
 msgstr ""
 
 #: includes/class-settings.php:85
-msgid "%s <span>Elementor Widget</span>"
+msgid "%s <span>Elementor Widget</span> <a href=\"https://wppool.dev/wp-dark-mode\" target=\"_blank\" class=\"get_pro_btn\">GET PRO</a>"
 msgstr ""
 
 #: includes/class-settings.php:90
-msgid "%s <span>Shortcodes</span>"
+msgid "%s <span>Shortcodes</span> <a href=\"https://wppool.dev/wp-dark-mode\" target=\"_blank\" class=\"get_pro_btn\">GET PRO</a>"
 msgstr ""
 
 #: includes/class-settings.php:95
-msgid "%s <span>Switch Widget</span>"
+msgid "%s <span>Switch Widget</span> <a href=\"https://wppool.dev/wp-dark-mode\" target=\"_blank\" class=\"get_pro_btn\">GET PRO</a>"
 msgstr ""
 
 #: includes/class-settings.php:100
@@ -333,7 +333,7 @@ msgstr ""
 msgid "GET PRO"
 msgstr ""
 
-#: templates/admin/black-friday-notice.php:11
+#: templates/admin/black-friday-notice.php:21
 msgid "GRAB THE DEAL"
 msgstr ""
 
