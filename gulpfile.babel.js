@@ -47,6 +47,7 @@ const paths = {
         src: [
             '**/*',
             '!node_modules/**',
+            '!wp-dark-mode-promo-data.php',
             '!assets/js/admin.js',
             '!assets/js/frontend.js',
             '!assets/scss/**',

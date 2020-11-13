@@ -70,31 +70,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 				return;
 			}
 
-			$data_transient_key = 'wp_dark_mode_promo_data';
-
-			$data = [ 'is_black_friday' => 'no', ];
-
-			if ( get_transient( $data_transient_key ) ) {
-				$data = get_transient( $data_transient_key );
-			} else {
-
-				$url = 'https://wppool.dev/wp-dark-mode-promo-black-friday.json';
-
-				$res = wp_remote_get($url);
-
-				if(!is_wp_error($res)){
-					$json = wp_remote_retrieve_body($res);
-					$data = (array) json_decode( $json );
-
-					set_transient( $data_transient_key, $data, DAY_IN_SECONDS );
-				}
-			}
-
-			if ( $data['is_black_friday'] != 'yes' ) {
-				return;
-			}
-
-
 			ob_start();
 			wp_dark_mode()->get_template( 'admin/black-friday-notice' );
 			$message = ob_get_clean();
@@ -374,6 +349,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 				<?php }
 
 				?>
+
                 if (is_saved && is_saved != 0) {
                     document.querySelector('html').classList.add('wp-dark-mode-active');
                 }

@@ -185,7 +185,7 @@
                 return;
             }
 
-            const elements = document.querySelectorAll('.SELECTORS__GOES_HERE');
+            const elements = document.querySelectorAll(wpDarkModeFrontend.excludes);
 
             elements.forEach((element) => {
                 element.classList.add('wp-dark-mode-ignore');

@@ -15,19 +15,19 @@ $data = [
 	'is_black_friday' => 'no',
 ];
 
-if ( get_transient( $data_transient_key ) ) {
-	$data = get_transient( $data_transient_key );
-} else {
-	$url = 'https://wppool.dev/wp-dark-mode-promo-black-friday.json';
 
-	$res = wp_remote_get( $url );
+$url = 'https://wppool.dev/wp-dark-mode-promo-data.php';
 
-	if ( ! is_wp_error( $res ) ) {
-		$json = wp_remote_retrieve_body( $res );
-		$data = (array) json_decode( $json );
+$url = add_query_arg( [
+	'version' => wp_dark_mode()->version,
+	'date'    => date('Y-m-d-H-i-s'),
+], $url );
 
-		set_transient( $data_transient_key, $data, DAY_IN_SECONDS );
-	}
+$res = wp_remote_get( $url );
+
+if ( ! is_wp_error( $res ) ) {
+	$json = wp_remote_retrieve_body( $res );
+	$data = (array) json_decode( $json );
 }
 
 $title = $is_pro ? $data['pro_title'] : $data['ultimate_title'];
