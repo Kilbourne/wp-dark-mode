@@ -1,6 +1,5 @@
-1.2.6
-------
-* Fix: Elementor Dark Mode Switch Fix
+* Category archive based dark mode
+* add note to image settings that it won't work for background images
 
 
 

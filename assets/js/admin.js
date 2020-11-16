@@ -44,6 +44,23 @@
                 switch_icon_checkbox.addEventListener('change', app.checkSwitchIcon);
             }
 
+            const tab_links = document.querySelectorAll('.tab-links .tab-link');
+            tab_links.forEach((tab_link) => {
+                tab_link.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    document.querySelectorAll('.tab-links .tab-link, .tab-content').forEach(active => {
+                        active.classList.remove('active');
+                    });
+
+                    tab_link.classList.add('active');
+
+                    const target = tab_link.getAttribute('href');
+                    document.querySelector(`#${target}`).classList.add('active');
+
+                });
+            });
+
         },
 
         initDarkmode: function () {

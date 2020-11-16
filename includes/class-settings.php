@@ -76,26 +76,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'<i class="dashicons dashicons-editor-code" ></i>' ),
 				),
 				array(
-					'id'    => 'wp_dark_mode_gutenberg',
-					'title' => sprintf( __( '%s <span>Gutenberg Block</span> <a href="https://wppool.dev/wp-dark-mode" target="_blank" class="get_pro_btn">GET PRO</a>', 'wp-dark-mode' ),
-						'<i class="dashicons dashicons-screenoptions" ></i>' ),
-				),
-				array(
-					'id'    => 'wp_dark_mode_elementor',
-					'title' => sprintf( __( '%s <span>Elementor Widget</span> <a href="https://wppool.dev/wp-dark-mode" target="_blank" class="get_pro_btn">GET PRO</a>', 'wp-dark-mode' ),
-						'<i class="dashicons dashicons-align-none" ></i>' ),
-				),
-				array(
-					'id'    => 'wp_dark_mode_shortcodes',
-					'title' => sprintf( __( '%s <span>Shortcodes</span> <a href="https://wppool.dev/wp-dark-mode" target="_blank" class="get_pro_btn">GET PRO</a>', 'wp-dark-mode' ),
-						'<i class="dashicons dashicons-shortcode" ></i>' ),
-				),
-				array(
-					'id'    => 'wp_dark_mode_widget_doc',
-					'title' => sprintf( __( '%s <span>Switch Widget</span> <a href="https://wppool.dev/wp-dark-mode" target="_blank" class="get_pro_btn">GET PRO</a>', 'wp-dark-mode' ),
-						'<i class="dashicons dashicons-align-full-width" ></i>' ),
-				),
-				array(
 					'id'    => 'wp_dark_mode_license',
 					'title' => sprintf( __( '%s <span>Activate License</span>', 'wp-dark-mode' ),
 						'<i class="dashicons dashicons-admin-network" ></i>' ),
@@ -501,51 +481,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 			<?php
 		}
 
-		public static function widget_doc(){ ?>
-		    <div class="getting-started-wrap">
-                <div class="getting-started-section">
-                    <h2>Display Switch Button Using The WP Dark Mode widget.</h2>
-                    <p>You can display the switch button by using the (WP Dark Mode ) wordpress widget, for your users to switch between the dark and normal mode.
-                        <br>
-                        <br>
-                        Dark Mode Switch Widget is available in the PRO version.
-                        <br>
-                        <br> For displaying the Darkmode Switch button using the WP Dark Mode widget follow the below steps:</p>
-					<p>
-                        <br>
-                        ➡️ Add the WP Dark Mode Widget to a sidebar where you want to display the switch button. <br>
-                        ➡️ Enter the widget title, if you want to display the widget title <br>
-                        ➡️ Select The Switch Style <br>
-                        ➡️ Select the position alignment <br>
-                        ➡️ Save & you are done. <br>
-                        <br>
-                    </p>
-
-                    <p><img src="<?php echo wp_dark_mode()->plugin_url('assets/images/switch-widget.png') ?>" alt=""></p>
-
-                </div>
-            </div>
-        <?php }
-
-		public static function shortcodes_doc() { ?>
-            <div class="shortcode">
-                <p><b>✅</b>
-                    <b><code>[wp_dark_mode_switch]</code></b> - Using the
-                    <b>[wp_dark_mode_switch]</b> shortcode, you can place the dark mode switch button anywhere in your website.
-                    This shortcode supports an optional <code>style</code> attribute for the switch style from the 7 switch style.
-                    <br>This shortcode is available in the PRO version.
-                </p>
-
-                <p><b>Examples:</b></p>
-
-                <p style="margin: 10px 0 0 40px"> → <code>[wp_dark_mode_switch]</code> - Display the default dark mode switch.</p>
-                <p style="margin: 10px 0 0 40px"> →
-                    <code>[wp_dark_mode_switch style="3"]</code> - Display specific switch style from 7 switch styles.
-                </p>
-            </div>
-
-		<?php }
-
 		public static function image_settings() {
 
 			$light_images = [];
@@ -607,70 +542,9 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 			$wp_dark_mode_license->menu_output();
 		}
 
-		public static function gutenberg_doc() { ?>
-            <div class="wp-dark-mode-gutenberg-doc">
-                <h2>How to display Dark Mode Switch Button using Gutenberg block</h2>
-
-                <ul class="doc-section">
-                    <li>
-                        <h3>While you are on the post/page edit screen click on gutenberg plus icon to add a new gutenberg block</h3>
-                        <img src="<?php echo wp_dark_mode()->plugin_url( 'assets/images/gutenberg/step-1.png' ) ?>" alt="step-1">
-                    </li>
-
-                    <li>
-                        <h3>Add "Dark Mode Switch" from "Text" category</h3>
-                        <img src="<?php echo wp_dark_mode()->plugin_url( 'assets/images/gutenberg/step-2.png' ) ?>" alt="step-2">
-                    </li>
-
-                    <li>
-                        <h3>Choose button style from block settings and you are done</h3>
-                        <img src="<?php echo wp_dark_mode()->plugin_url( 'assets/images/gutenberg/step-3.png' ) ?>" alt="step-2">
-                    </li>
-                </ul>
-
-
-            </div>
-		<?php }
-
-		public static function elementor_doc() { ?>
-            <div class="wp-dark-mode-elementor-doc">
-                <h2>How to display Dark Mode Switch Button using Elementor Widget</h2>
-
-                <ul class="doc-section">
-
-                    <li>
-                        <h3>Add "Dark Mode Switch" widget from "Basic" category</h3>
-                        <img src="<?php echo wp_dark_mode()->plugin_url( 'assets/images/elementor/step-1.png' ) ?>" alt="step-2">
-                    </li>
-
-                    <li>
-                        <h3>Choose button style from widget settings and you are done</h3>
-                        <img src="<?php echo wp_dark_mode()->plugin_url( 'assets/images/elementor/step-2.png' ) ?>" alt="step-2">
-                    </li>
-                </ul>
-
-            </div>
-		<?php }
-
-		public static function getting_started() { ?>
-            <div class="getting-started-wrap">
-                <div class="getting-started-section">
-                    <h2>How to display Dark Mode Switch Button using Gutenberg block</h2>
-                    <p>You can place the switch button into any page/post by using the (Dark Mode Switch) gutenberg block , for your users to switch between the dark and normal mode.
-                        <br> For displaying the Darkmode Switch button in Gutenberg use the (Dark Mode Switch) Block.</p>
-					<?php echo do_shortcode( '[video width="640" src="https://www.youtube.com/watch?v=TPKa-Xg9w5c"]' ); ?>
-                </div>
-
-                <div class="getting-started-section">
-                    <h2>How to display Dark Mode Switch Button using Elementor Widget</h2>
-                    <p>Also, You can place the Dark Mode switch button into any page/post by using the (Dark Mode Switch) elementor widget.
-                        <br> For displaying the Darkmode Switch button in Elementor use the (Dark Mode Switch) Widget.
-                    </p>
-					<?php echo do_shortcode( '[video src="https://www.youtube.com/watch?v=5Y8XawJg4pw"]' ); ?>
-                </div>
-
-            </div>
-		<?php }
+		public static function getting_started() {
+		    wp_dark_mode()->get_template('admin/get-started/index');
+        }
 
 		/**
 		 * Register the plugin page

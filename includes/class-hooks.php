@@ -25,15 +25,14 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 				add_action( 'wp_footer', [ $this, 'display_widget' ] );
 			}
 
-			add_action( 'wsa_form_bottom_wp_dark_mode_advanced', [ $this, 'pro_promo' ] );
-			add_action( 'wsa_form_bottom_wp_dark_mode_display', [ $this, 'pro_promo' ] );
-			add_action( 'wsa_form_bottom_wp_dark_mode_display', [ $this, 'ultimate_promo' ] );
-
-			add_action( 'wsa_form_bottom_wp_dark_mode_style', [ $this, 'ultimate_promo' ] );
-			add_action( 'wsa_form_bottom_wp_dark_mode_style', [ $this, 'pro_promo' ] );
-
-			add_action( 'wsa_form_bottom_wp_dark_mode_image_settings', [ $this, 'ultimate_promo' ] );
-			add_action( 'wsa_form_bottom_wp_dark_mode_custom_css', [ $this, 'ultimate_promo' ] );
+			//todo
+			//add_action( 'wsa_form_bottom_wp_dark_mode_advanced', [ $this, 'pro_promo' ] );
+			//add_action( 'wsa_form_bottom_wp_dark_mode_display', [ $this, 'pro_promo' ] );
+			//add_action( 'wsa_form_bottom_wp_dark_mode_display', [ $this, 'ultimate_promo' ] );
+			//add_action( 'wsa_form_bottom_wp_dark_mode_style', [ $this, 'ultimate_promo' ] );
+			//add_action( 'wsa_form_bottom_wp_dark_mode_style', [ $this, 'pro_promo' ] );
+			//add_action( 'wsa_form_bottom_wp_dark_mode_image_settings', [ $this, 'ultimate_promo' ] );
+			//add_action( 'wsa_form_bottom_wp_dark_mode_custom_css', [ $this, 'ultimate_promo' ] );
 
 			if ( is_admin() && 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_backend', 'off' ) ) {
 				add_action( 'admin_bar_menu', [ $this, 'render_admin_switcher_menu' ], 2000 );
