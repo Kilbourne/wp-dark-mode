@@ -343,13 +343,17 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 
 				if(is_admin()){ ?>
                 var is_saved = sessionStorage.getItem('wp_dark_mode_admin');
+                var default_mode = false;
+
 				<?php }else{ ?>
                 var is_saved = sessionStorage.getItem('wp_dark_mode_frontend');
+
+                var default_mode = <?php echo 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_advanced', 'default_mode', 'off' ) ?>;
 				<?php }
 
 				?>
 
-                if (is_saved && is_saved != 0) {
+                if ((is_saved && is_saved != 0) || ((wpDarkModeFrontend.is_pro_active || wpDarkModeFrontend.is_ultimate_active) &&  default_mode) ) {
                     document.querySelector('html').classList.add('wp-dark-mode-active');
                 }
 

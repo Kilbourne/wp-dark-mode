@@ -5,22 +5,22 @@
 
 		<a href="gutenberg-block" class="tab-link active">
 			<i class="dashicons dashicons-screenoptions" ></i>
-			<?php _e( 'Gutenberg Block', 'wp-radio' ); ?>
+			<?php _e( 'Gutenberg Block', 'wp-dark-mode' ); ?>
 		</a>
 
 		<a href="elementor-widget" class="tab-link">
 			<i class="dashicons dashicons-align-none" ></i>
-			<?php _e( 'Elementor Widget', 'wp-radio' ); ?>
+			<?php _e( 'Elementor Widget', 'wp-dark-mode' ); ?>
 		</a>
 
 		<a href="switch-widget" class="tab-link">
 			<i class="dashicons dashicons-align-full-width" ></i>
-			<?php _e( 'Switch Widget', 'wp-radio' ); ?>
+			<?php _e( 'Switch Widget', 'wp-dark-mode' ); ?>
 		</a>
 
 		<a href="shortcodes" class="tab-link">
 			<i class="dashicons dashicons-shortcode" ></i>
-			<?php _e( 'Shortcodes', 'wp-radio' ); ?>
+			<?php _e( 'Shortcodes', 'wp-dark-mode' ); ?>
 		</a>
 
 	</div>

@@ -1,5 +1,5 @@
 <h3 class="tab-content-title">
-    <?php _e( 'Shortcodes', 'wp-radio' ) ?>
+    <?php _e( 'Shortcodes', 'wp-dark-mode' ) ?>
     <a href="https://wppool.dev/wp-dark-mode" target="_blank" class="get_pro_btn">GET PRO</a>
 </h3>
 

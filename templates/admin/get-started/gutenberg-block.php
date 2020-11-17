@@ -1,4 +1,4 @@
-<h3 class="tab-content-title"><?php _e( 'Gutenberg Block', 'wp-radio' ) ?></h3>
+<h3 class="tab-content-title"><?php _e( 'Gutenberg Block', 'wp-dark-mode' ) ?></h3>
 
 <div class="wp-dark-mode-gutenberg-doc">
 	<h2>How to display Dark Mode Switch Button using Gutenberg block</h2>

@@ -136,6 +136,14 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 
 				'wp_dark_mode_advanced' => apply_filters( 'wp_dark_mode/advanced_settings', array(
 
+					'default_mode'   => array(
+						'name'    => 'default_mode',
+						'default' => 'off',
+						'label'   => __( 'Default Mode', 'wp-dark-mode' ),
+						'desc'    => __( 'Make the dark mode as the default mode. Visitors will see the dark mode first.', 'wp-dark-mode' ),
+						'type'    => 'switcher',
+					),
+
 					'time_based_mode'   => array(
 						'name'    => 'time_based_mode',
 						'default' => 'off',
