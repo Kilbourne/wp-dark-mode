@@ -105,20 +105,28 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'type'    => 'switcher',
 					),
 
+					'show_switcher' => array(
+						'name'    => 'show_switcher',
+						'default' => 'on',
+						'label'   => __( 'Show Floating Switch', 'wp-dark-mode' ),
+						'desc'    => __( 'Show the floating dark mode switcher button on the frontend for the users.', 'wp-dark-mode' ),
+						'type'    => 'switcher',
+					),
+
+					'default_mode'   => array(
+						'name'    => 'default_mode',
+						'default' => 'off',
+						'label'   => __( 'Default Mode', 'wp-dark-mode' ),
+						'desc'    => __( 'Make the dark mode as the default mode. Visitors will see the dark mode first.', 'wp-dark-mode' ),
+						'type'    => 'switcher',
+					),
+
                     'enable_backend' => array(
 						'name'    => 'enable_backend',
 						'default' => 'off',
 						'label'   => __( 'Enable Backend Darkmode', 'wp-dark-mode' ),
 						'desc'    => __( 'Enable the backend darkmode to display a darkmode switch button in the admin bar for the admins on the backend.',
 							'wp-dark-mode' ),
-						'type'    => 'switcher',
-					),
-
-					'show_switcher' => array(
-						'name'    => 'show_switcher',
-						'default' => 'on',
-						'label'   => __( 'Show Floating Switch', 'wp-dark-mode' ),
-						'desc'    => __( 'Show the floating dark mode switcher button on the frontend for the users.', 'wp-dark-mode' ),
 						'type'    => 'switcher',
 					),
 
@@ -136,13 +144,23 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 
 				'wp_dark_mode_advanced' => apply_filters( 'wp_dark_mode/advanced_settings', array(
 
-					'default_mode'   => array(
-						'name'    => 'default_mode',
-						'default' => 'off',
-						'label'   => __( 'Default Mode', 'wp-dark-mode' ),
-						'desc'    => __( 'Make the dark mode as the default mode. Visitors will see the dark mode first.', 'wp-dark-mode' ),
-						'type'    => 'switcher',
-					),
+//todo work on when release pro
+
+//					'specific_category' => array(
+//						'name'    => 'specific_category',
+//						'default' => 'off',
+//						'label'   => __( 'Specific Category', 'wp-dark-mode' ),
+//						'desc'    => __( 'Apply dark mode only on specific category post. Anything else won', 'wp-dark-mode' ),
+//						'type'    => 'switcher',
+//					),
+//
+//					'categories'   => array(
+//						'name'    => 'categories',
+//						'default' => [$this, 'categories'],
+//						'label'   => __( 'Select Category(s)', 'wp-dark-mode' ),
+//						'desc'    => __( 'Select the category(s) in which you want to apply the darkmode. Outside of the category the dark mode won\'t be applied.', 'wp-dark-mode' ),
+//						'type'    => 'cb_function',
+//					),
 
 					'time_based_mode'   => array(
 						'name'    => 'time_based_mode',
@@ -380,39 +398,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'name'  => 'custom_css',
 						'label' => 'Dark Mode Custom CSS',
 						'type'  => 'textarea',
-						'desc'  => 'Add custom css for dark mode only.',
-					),
-				) ),
-
-				'wp_dark_mode_gutenberg' => apply_filters( 'wp_dark_mode/settings_gutenberg', array(
-					array(
-						'name'    => 'gutenberg_doc',
-						'default' => [ $this, 'gutenberg_doc' ],
-						'type'    => 'cb_function',
-					),
-				) ),
-
-				'wp_dark_mode_elementor' => apply_filters( 'wp_dark_mode/settings_elementor', array(
-					array(
-						'name'    => 'elementor_doc',
-						'default' => [ $this, 'elementor_doc' ],
-						'type'    => 'cb_function',
-					),
-				) ),
-
-				'wp_dark_mode_shortcodes' => apply_filters( 'wp_dark_mode/settings_elementor', array(
-					array(
-						'name'    => 'shortcodes_doc',
-						'default' => [ $this, 'shortcodes_doc' ],
-						'type'    => 'cb_function',
-					),
-				) ),
-
-				'wp_dark_mode_widget_doc' => apply_filters( 'wp_dark_mode/widget_doc', array(
-					array(
-						'name'    => 'widget_doc',
-						'default' => [ $this, 'widget_doc' ],
-						'type'    => 'cb_function',
+						'desc'  => 'Add custom css for dark mode only. This CSS will only apply when the dark mode is on. use <b>!important</b> flag on each property.',
 					),
 				) ),
 
@@ -439,6 +425,28 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 
 			//initialize them
 			self::$settings_api->admin_init();
+		}
+
+		public function categories() {
+
+			$categories = wp_dark_mode_get_settings('wp_dark_mode_advanced', 'categories', []);
+
+			?>
+            <select name="wp_dark_mode_advanced[categories][]" multiple id="wp_dark_mode_advanced[categories]">
+				<?php
+
+				$cats = get_terms( 'category', array( 'hide_empty' => false ) );
+
+				if ( ! empty( $cats ) && !is_wp_error($cats) ) {
+					foreach ( $cats as $cat ) {
+						printf( '<option value="%1$s" %2$s>%3$s</option>', $cat->slug, in_array( $cat->slug, $categories ) ? 'selected' : '', $cat->name );
+					}
+				}
+
+				?>
+            </select>
+            <p class="description">Select the menu(s) in which you want to display the darkmode switch.</p>
+			<?php
 		}
 
 		public function switch_menus() {
@@ -504,7 +512,8 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 			?>
 
             <p>🔹️ <strong>Light Mode Image: </strong> The image link shown in the light mode.</p>
-            <p style="margin-bottom: 20px">🔹️ <strong>Dark Mode Image: </strong> The image link that will replace the light mode image while in dark mode.</p>
+            <p>🔹️ <strong>Dark Mode Image: </strong> The image link that will replace the light mode image while in dark mode.</p>
+            <p style="margin: 10px 10px 20px;"><b>NB:</b> - Image settings not works on element background images.</p>
 
             <table class="image-settings-table">
                 <tbody>

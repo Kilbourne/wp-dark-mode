@@ -1,4 +1,5 @@
 * Category archive based dark mode
+* Check inclusion
 * add note to image settings that it won't work for background images
 
 

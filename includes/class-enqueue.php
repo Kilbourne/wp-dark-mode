@@ -63,6 +63,14 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 
 			$excludes = '.wp-dark-mode-ignore, .wp-dark-mode-ignore *, .video-js, .select2, .owl-nav, .owl-dots, .google-map';
 
+			$pro_version = 0;
+
+			if ( defined( 'WP_DARK_MODE_ULTIMATE_VERSION' ) ) {
+				$pro_version = WP_DARK_MODE_ULTIMATE_VERSION;
+			} elseif ( defined( 'WP_DARK_MODE_PRO_VERSION' ) ) {
+				$pro_version = WP_DARK_MODE_PRO_VERSION;
+			}
+
 			wp_localize_script( 'wp-dark-mode-frontend', 'wpDarkModeFrontend', [
 				'excludes'            => apply_filters( 'wp_dark_mode/excludes', trim( $excludes, ',' ) ),
 				'is_excluded'         => $is_excluded,
@@ -74,8 +82,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 				'enable_backend'      => 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_backend', 'off' ),
 				'default_mode'        => 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_advanced', 'default_mode', 'off' ),
 				'is_block_editor'     => method_exists( $current_screen, 'is_block_editor' ) && $current_screen->is_block_editor(),
-
-				'pro_version' => ( defined( 'WP_DARK_MODE_ULTIMATE_VERSION' ) ? WP_DARK_MODE_ULTIMATE_VERSION : defined( 'WP_DARK_MODE_PRO_VERSION' ) ) ? WP_DARK_MODE_PRO_VERSION : 0,
+				'pro_version'         => $pro_version,
 			] );
 		}
 

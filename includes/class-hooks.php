@@ -25,14 +25,13 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 				add_action( 'wp_footer', [ $this, 'display_widget' ] );
 			}
 
-			//todo
-			//add_action( 'wsa_form_bottom_wp_dark_mode_advanced', [ $this, 'pro_promo' ] );
-			//add_action( 'wsa_form_bottom_wp_dark_mode_display', [ $this, 'pro_promo' ] );
-			//add_action( 'wsa_form_bottom_wp_dark_mode_display', [ $this, 'ultimate_promo' ] );
-			//add_action( 'wsa_form_bottom_wp_dark_mode_style', [ $this, 'ultimate_promo' ] );
-			//add_action( 'wsa_form_bottom_wp_dark_mode_style', [ $this, 'pro_promo' ] );
-			//add_action( 'wsa_form_bottom_wp_dark_mode_image_settings', [ $this, 'ultimate_promo' ] );
-			//add_action( 'wsa_form_bottom_wp_dark_mode_custom_css', [ $this, 'ultimate_promo' ] );
+			add_action( 'wsa_form_bottom_wp_dark_mode_advanced', [ $this, 'pro_promo' ] );
+			add_action( 'wsa_form_bottom_wp_dark_mode_display', [ $this, 'pro_promo' ] );
+			add_action( 'wsa_form_bottom_wp_dark_mode_display', [ $this, 'ultimate_promo' ] );
+			add_action( 'wsa_form_bottom_wp_dark_mode_style', [ $this, 'ultimate_promo' ] );
+			add_action( 'wsa_form_bottom_wp_dark_mode_style', [ $this, 'pro_promo' ] );
+			add_action( 'wsa_form_bottom_wp_dark_mode_image_settings', [ $this, 'ultimate_promo' ] );
+			add_action( 'wsa_form_bottom_wp_dark_mode_custom_css', [ $this, 'ultimate_promo' ] );
 
 			if ( is_admin() && 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_backend', 'off' ) ) {
 				add_action( 'admin_bar_menu', [ $this, 'render_admin_switcher_menu' ], 2000 );
@@ -108,9 +107,22 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 		}
 
 		public function not_selectors( $selectors ) {
+
+			$excludes = wp_dark_mode_get_settings( 'wp_dark_mode_display', 'excludes', '' );
+
+			$excludes = trim( $excludes, ',' );
+			$excludes = explode( ',', $excludes );
+
+			if ( ! empty( $excludes ) ) {
+				foreach ( $excludes as $exclude ) {
+				    $exclude = trim($exclude);
+					$selectors .= ":not($exclude)";
+				}
+			}
+
 			//elementor
 			if ( defined( 'ELEMENTOR_VERSION' ) ) {
-				$selectors = ':not(.elementor-element-overlay):not(.elementor-background-overlay)';
+				$selectors .= ':not(.elementor-element-overlay):not(.elementor-background-overlay)';
 			}
 
 			//buddypress
@@ -348,12 +360,12 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 				<?php }else{ ?>
                 var is_saved = sessionStorage.getItem('wp_dark_mode_frontend');
 
-                var default_mode = <?php echo 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_advanced', 'default_mode', 'off' ) ?>;
+                var default_mode = <?php echo  'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'default_mode', 'off' ); ?>;
 				<?php }
 
 				?>
 
-                if ((is_saved && is_saved != 0) || ((wpDarkModeFrontend.is_pro_active || wpDarkModeFrontend.is_ultimate_active) &&  default_mode) ) {
+                if ((is_saved && is_saved != 0) || default_mode) {
                     document.querySelector('html').classList.add('wp-dark-mode-active');
                 }
 
