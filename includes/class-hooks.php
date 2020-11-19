@@ -194,6 +194,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 		 * @param $section - setting section
 		 */
 		public function pro_promo( $section ) {
+
 			if ( wp_dark_mode()->is_pro_active() || wp_dark_mode()->is_ultimate_active() ) {
 				return;
 			}
@@ -351,6 +352,40 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 
             <script>
 
+                // transfers sessionStorage from one tab to another
+                var sessionStorage_transfer = function(event) {
+                    if(!event) { event = window.event; } // ie suq
+                    if(!event.newValue) return;          // do nothing if no value to work with
+                    if (event.key == 'getSessionStorage') {
+                        // another tab asked for the sessionStorage -> send it
+                        localStorage.setItem('sessionStorage', JSON.stringify(sessionStorage));
+                        // the other tab should now have it, so we're done with it.
+                        localStorage.removeItem('sessionStorage'); // <- could do short timeout as well.
+                    } else if (event.key == 'sessionStorage' && !sessionStorage.length) {
+                        // another tab sent data <- get it
+                        var data = JSON.parse(event.newValue);
+                        for (var key in data) {
+                            sessionStorage.setItem(key, data[key]);
+                        }
+                    }
+                };
+
+                // listen for changes to localStorage
+                if(window.addEventListener) {
+                    window.addEventListener("storage", sessionStorage_transfer, false);
+                } else {
+                    window.attachEvent("onstorage", sessionStorage_transfer);
+                };
+
+
+                // Ask other tabs for session storage (this is ONLY to trigger event)
+                if (!sessionStorage.length) {
+                    localStorage.setItem('getSessionStorage', 'foobar');
+                    localStorage.removeItem('getSessionStorage', 'foobar');
+                };
+
+                
+
 				<?php
 
 				if(is_admin()){ ?>
@@ -360,12 +395,13 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 				<?php }else{ ?>
                 var is_saved = sessionStorage.getItem('wp_dark_mode_frontend');
 
-                var default_mode = <?php echo  'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'default_mode', 'off' ); ?>;
+                var default_mode = <?php echo 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'default_mode', 'off' ) ? 1
+					: 0; ?>;
 				<?php }
 
 				?>
 
-                if ((is_saved && is_saved != 0) || default_mode) {
+                if ( (is_saved && is_saved != 0) || (!is_saved && default_mode) ) {
                     document.querySelector('html').classList.add('wp-dark-mode-active');
                 }
 
