@@ -28,6 +28,7 @@ WP Dark Mode supports all major operating systems including iOS, Android, macOS,
 === WP Dark Mode Features ===
 
 1. **Floating Switch Button** – You can display a dark mode floating switch button in the footer of the website.
+1. **Default Mode** - Make dark mode as the default mode of the website. Users will see the dark mode first.
 1. **Dark mode Elementor Widget** – You can place the Dark Mode switch button into any page/post by using the (Dark Mode Switch) Elementor widget.
 1. **Dark mode Gutenberg Widget** – You can place the switch button into any page/post by using the (Dark Mode Switch) Gutenberg block.
 1. **Auto Match OS Theme** – Automatically shows Darkmode if the OS preferred theme is dark
@@ -41,6 +42,7 @@ WP Dark Mode supports all major operating systems including iOS, Android, macOS,
 === 💰 WP Dark Mode Pro Features ===
 1. **All Free Features**
 1. **Time-Based Dark Mode** – Your website will turn into dark mode based on the local time of the user
+1. **Specific Category** - Apply dark mode only for specific category posts.
 1. **Multiple Dark Mode Switch Style** – You can display multiple dark mode switch button styles for the users to turn on-off the dark mode.
 1. **Shortcode Supported** – You can use [wp_dark_mode_switch]shortcode to display the dark mode switch button on any page/post
 1. **Above Post/Page Content** – You can display the dark mode switch button before any page/post.
@@ -139,6 +141,8 @@ No. WP Dark Mode is a very user-friendly and simple plugin. Just download and us
 
 = 1.2.9 =
 * New: Add option to make dark mode as default mode
+* Fix: OS aware mode flashing issue
+* Fix: New tab dark mode issue fixed.
 * Improvement: Settings page refactored. Gutenberg Block, Elementor Widget, Switch Widget & Shortcodes tab move to get started tab.
 
 = 1.2.8 =

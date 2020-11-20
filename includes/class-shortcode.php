@@ -25,7 +25,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Shortcode' ) ) {
 		public function render_dark_mode_btn( $atts ) {
 
 			if ( ! wp_dark_mode_enabled() ) {
-				return;
+				return false;
 			}
 
 			$atts = shortcode_atts( [

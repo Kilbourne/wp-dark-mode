@@ -9,6 +9,7 @@
   align-items: flex-start;
   left: 0;
   backdrop-filter: blur(1px);
+  z-index: 9;
 
   &.hidden {
     display: none;

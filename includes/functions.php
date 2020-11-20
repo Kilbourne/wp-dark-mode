@@ -80,6 +80,32 @@ if ( ! function_exists( 'wp_dark_mode_lighten' ) ) {
 
 if ( ! function_exists( 'wp_dark_mode_enabled' ) ) {
 	function wp_dark_mode_enabled() {
-		return 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_frontend', 'on' );
+		$frontend_enable = 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_frontend', 'on' );
+
+
+		if ( ! $frontend_enable ) {
+			return false;
+		}
+
+		if ( wp_dark_mode()->is_pro_active() || wp_dark_mode()->is_ultimate_active() ) {
+			$specific_category = 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_advanced', 'specific_category', 'off' );
+
+			if ( $specific_category ) {
+
+				$categories = wp_dark_mode_get_settings( 'wp_dark_mode_advanced', 'specific_categories', [] );
+
+				if(!is_single()){
+					return false;
+				}
+
+				global $post_id;
+				if ( ! in_category( $categories, $post_id ) ) {
+					return false;
+				}
+			}
+		}
+
+		return true;
+
 	}
 }

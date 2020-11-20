@@ -11,7 +11,7 @@
     </div>
 
     <div class="wp-dark-mode-notice-actions">
-        <a href="<?php echo admin_url( 'options-general.php?page=wp-dark-mode-settings#wp_dark_mode_license' ); ?>" class="button button-primary"><?php _e( 'Activate License',
+        <a href="<?php echo admin_url( 'options-general.php?page=wp-dark-mode-settings#wp_dark_mode_license' ); ?>" class="button button-primary activate-license"><?php _e( 'Activate License',
 				'wp-dark-mode' ); ?></a>
         <button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button>
     </div>

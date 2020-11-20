@@ -5,6 +5,7 @@
             app.initDarkmode();
             app.blockSwitches();
             app.blockPresets();
+            app.checkCategories();
 
             app.checkDesc();
             app.checkSwitchDeps();
@@ -46,6 +47,12 @@
                 switch_icon_checkbox.addEventListener('change', app.checkSwitchIcon);
             }
 
+
+            const specific_cat = document.querySelector('.specific_category input[type=checkbox]');
+            if (specific_cat) {
+                specific_cat.addEventListener('change', app.checkCategories);
+            }
+
             const tab_links = document.querySelectorAll('.tab-links .tab-link');
             tab_links.forEach((tab_link) => {
                 tab_link.addEventListener('click', function (e) {
@@ -62,6 +69,21 @@
 
                 });
             });
+
+            document.querySelectorAll(`.color-palette td`).forEach((element) => {
+                element.classList.add('wp-dark-mode-ignore');
+            });
+
+            /**--- license activate button --**/
+            const activate_license = document.querySelector('.activate-license');
+            if (activate_license) {
+                activate_license.addEventListener('click', function () {
+                    const link = document.getElementById('wp_dark_mode_license-tab');
+                    if (link) {
+                        link.click();
+                    }
+                });
+            }
 
 
         },
@@ -183,6 +205,21 @@
                 document.querySelector('.switch_menus').style.display = 'table-row';
             } else {
                 document.querySelector('.switch_menus').style.display = 'none';
+            }
+        },
+
+        checkCategories: function () {
+            const checkBox = document.querySelector('.specific_category input[type=checkbox]');
+            if (!checkBox) {
+                return;
+            }
+
+            const is_on = checkBox.checked;
+
+            if (is_on) {
+                document.querySelector('.specific_categories').style.display = 'table-row';
+            } else {
+                document.querySelector('.specific_categories').style.display = 'none';
             }
         },
 

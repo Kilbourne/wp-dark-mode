@@ -171,7 +171,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 			global $post;
 
 			if ( ! wp_dark_mode_enabled() ) {
-				return;
+				return false;
 			}
 
 			if ( isset( $post->ID ) && in_array( $post->ID, wp_dark_mode_exclude_pages() ) ) {
@@ -235,12 +235,12 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 		public function dark_styles() {
 
 			if ( ! is_admin() && ! wp_dark_mode_enabled() ) {
-				return;
+				return false;
 			}
 
 			global $post;
 			if ( isset( $post->ID ) && in_array( $post->ID, wp_dark_mode_exclude_pages() ) ) {
-				return;
+				return false;
 			}
 
 			$preset = wp_dark_mode_get_settings( 'wp_dark_mode_style', 'color_preset', '0' );
@@ -269,7 +269,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 				$bg_color      = '#10161E';
 				$border_color  = '#555';
 			} else {
-				$base_selector = 'html.wp-dark-mode-active';
+				$base_selector = apply_filters('wp_dark_mode/base_selectors', 'html.wp-dark-mode-active');
 			}
 
 			ob_start();
@@ -285,11 +285,11 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 			    }
 			', $bg_color, $text_color, $link_color, $btn_bg_color, $border_color );
 
-			printf( '%1$s :not(.wp-dark-mode-ignore):not(mark):not(code):not(pre):not(ins):not(option):not(input):not(select):not(textarea):not(button):not(a):not(video):not(canvas):not(progress):not(iframe):not(svg):not(path):not(.mejs-iframe-overlay)%2$s{
+			printf( '%1$s{:not(.wp-dark-mode-ignore):not(mark):not(code):not(pre):not(ins):not(option):not(input):not(select):not(textarea):not(button):not(a):not(video):not(canvas):not(progress):not(iframe):not(svg):not(path):not(.mejs-iframe-overlay)%2$s{
 			     background-color: var(--wp-dark-mode-bg) !important;
 			     color: var(--wp-dark-mode-text) !important;
                  border-color: var(--wp-dark-mode-border) !important;
-			}', $base_selector, apply_filters( 'wp_dark_mode/not', '' ) );
+			}}', $base_selector, apply_filters( 'wp_dark_mode/not', '' ) );
 
 			printf( '%1$s {
                 a,
@@ -307,7 +307,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 			}', $base_selector );
 
 			if ( ! is_admin() ) {
-				printf( 'html.wp-dark-mode-active{
+				printf( '%1$s {
 				    button,
                     iframe,
                     iframe *,
@@ -343,7 +343,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
                         }
                         
                     }
-				}' );
+				}', $base_selector );
 			}
 
 			$scss = ob_get_clean();
@@ -384,7 +384,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
                     localStorage.removeItem('getSessionStorage', 'foobar');
                 };
 
-                
+
 
 				<?php
 

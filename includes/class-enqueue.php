@@ -24,11 +24,13 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 		 * Frontend Scripts
 		 *
 		 * @param $hook
+		 *
+		 * @return boolean|void
 		 */
 		public function frontend_scripts( $hook ) {
 
 			if ( ! wp_dark_mode_enabled() ) {
-				return;
+				return false;
 			}
 
 			/** wp-dark-mode frontend css */
