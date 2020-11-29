@@ -60,7 +60,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 		public function display_notice() {
 
 			if ( get_option( 'wp_dark_mode_hide_black_friday_notice' ) ) {
-				return;
+				//return;
 			}
 
 			/** display the black-friday notice if the pro version is not activated */
@@ -68,11 +68,9 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 				return;
 			}
 
-			ob_start();
-			wp_dark_mode()->get_template( 'admin/black-friday-notice' );
-			$message = ob_get_clean();
+			$message = '<h4>Enjoy upto 75% OFF on WP Dark Mode. Get Your Black Friday <a href="https://wppool.dev/wp-dark-mode" target="_blank">Deals Now</a></h4>';
 
-			wp_dark_mode()->add_notice( 'info is-dismissible black-friday-notice', $message );
+			wp_dark_mode()->add_notice( 'info is-dismissible', $message );
 
 		}
 
@@ -84,6 +82,11 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 		 * @return string
 		 */
 		public function excludes( $excludes ) {
+
+		    /** exclude rev slider */
+		    if(class_exists('RevSliderFront')){
+		        $excludes .= ', rs-fullwidth-wrap';
+            }
 
 			if ( wp_dark_mode()->is_pro_active() || wp_dark_mode()->is_ultimate_active() ) {
 				$selectors = wp_dark_mode_get_settings( 'wp_dark_mode_display', 'excludes', '' );
@@ -338,7 +341,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
                             border-color: var(--wp-dark-mode-border) !important;
                         }
                         
-                       * {
+                       *:not(.wp-dark-mode-ignore) {
                           background: transparent !important;
                         }
                         

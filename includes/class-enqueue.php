@@ -85,6 +85,8 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 				'default_mode'        => 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_advanced', 'default_mode', 'off' ),
 				'is_block_editor'     => method_exists( $current_screen, 'is_block_editor' ) && $current_screen->is_block_editor(),
 				'pro_version'         => $pro_version,
+
+				'images' => get_option( 'wp_dark_mode_image_settings' ),
 			] );
 		}
 

@@ -95,7 +95,7 @@ const paths = {
 };
 
 //clean before run any task
-export const clean = () => del(['build', '../wp-dark-mode-pro/wp-dark-mode'], {force: true});
+export const clean = () => del(['build'], {force: true});
 
 //css stuff
 export const css = () => {

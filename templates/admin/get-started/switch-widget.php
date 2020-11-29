@@ -1,7 +1,10 @@
 <h3 class="tab-content-title">
     <?php _e( 'Switch Widget', 'wp-dark-mode' ) ?>
 
+    <?php if(!wp_dark_mode()->is_pro_active() && !wp_dark_mode()->is_ultimate_active()){ ?>
     <a href="https://wppool.dev/wp-dark-mode" target="_blank" class="get_pro_btn">GET PRO</a>
+    <?php } ?>
+
 </h3>
 
 <div class="wp-dark-mode-switch-widget-doc">

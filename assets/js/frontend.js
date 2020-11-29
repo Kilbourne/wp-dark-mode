@@ -31,6 +31,14 @@
 
             window.addEventListener('darkmodeInit', app.checkDarkMode);
             window.addEventListener('darkmodeInit', app.handleExcludes);
+            window.addEventListener('darkmodeInit', app.excludeBGELements);
+
+
+            setTimeout(app.handleExcludes, 1000);
+            setTimeout(app.handleExcludes, 2000);
+            setTimeout(app.handleExcludes, 3000);
+
+
         },
 
         initDarkmode: function () {
@@ -50,13 +58,35 @@
         },
 
         excludeBGELements: function () {
-            const elements = document.querySelectorAll('div, section');
+            const elements = document.querySelectorAll('header, footer, div, section');
 
             elements.forEach((element) => {
                 const bi = window.getComputedStyle(element, false).backgroundImage;
+
                 if (bi !== 'none') {
                     element.classList.add('wp-dark-mode-ignore');
                     element.querySelectorAll('*').forEach((child) => child.classList.add('wp-dark-mode-ignore'));
+
+                    if (!wpDarkModeFrontend.is_ultimate_active) {
+                        return;
+                    }
+
+                    const url = bi.slice(4, -1).replace(/"/g, "");
+                    const images = wpDarkModeFrontend.images;
+
+                    if (document.querySelector('html').classList.contains('wp-dark-mode-active')) {
+                        if (images.light_images.includes(url)) {
+
+                            const index = images.light_images.indexOf(url);
+                            element.style.backgroundImage = `url('${images.dark_images[index]}')`;
+                        }
+                    } else {
+                        if (images.dark_images.includes(url)) {
+                            const index = images.dark_images.indexOf(url);
+                            element.style.backgroundImage = `url('${images.light_images[index]}')`;
+                        }
+                    }
+
                 }
             });
 

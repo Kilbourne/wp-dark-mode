@@ -236,7 +236,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'type'    => 'cb_function',
 					),
 
-
 					'custom_switch_icon'   => array(
 						'name'    => 'custom_switch_icon',
 						'default' => 'off',
@@ -258,8 +257,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'desc'    => __( 'Switch Icon in the dark mode.', 'wp-dark-mode' ),
 						'type'    => 'file',
 					),
-
-
 
 					'custom_switch_text'   => array(
 						'name'    => 'custom_switch_text',
@@ -285,7 +282,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'type'    => 'text',
 					),
 
-
 					'show_above_post'   => array(
 						'name'    => 'show_above_post',
 						'default' => 'off',
@@ -300,14 +296,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'label'   => __( 'Show Above Pages', 'wp-dark-mode' ),
 						'desc'    => __( 'Show the dark mode switcher button above of all the pages.', 'wp-dark-mode' ),
 						'type'    => 'switcher',
-					),
-
-					'includes'   => array(
-						'name'    => 'includes',
-						'default' => '',
-						'label'   => __( 'includes Elements', 'wp-dark-mode' ),
-						'desc'    => __( 'Add comma separated CSS selectors (classes, ids) to to apply dark mode. Only the elements within the selectors applied by dark mode.', 'wp-dark-mode' ),
-						'type'    => 'textarea',
 					),
 
 					'excludes'   => array(
@@ -520,8 +508,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 
             <p>🔹️ <strong>Light Mode Image: </strong> The image link shown in the light mode.</p>
             <p>🔹️ <strong>Dark Mode Image: </strong> The image link that will replace the light mode image while in dark mode.</p>
-            <p style="margin: 10px 10px 20px;"><b>NB:</b> - Image settings not works on element background images.</p>
-
+            <br>
             <table class="image-settings-table">
                 <tbody>
                 <tr>
