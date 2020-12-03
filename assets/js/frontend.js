@@ -58,6 +58,10 @@
         },
 
         excludeBGELements: function () {
+            if(typeof wpDarkModeFrontend === 'undefined'){
+                return;
+            }
+
             const elements = document.querySelectorAll('header, footer, div, section');
 
             elements.forEach((element) => {

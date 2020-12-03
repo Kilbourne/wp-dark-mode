@@ -44,10 +44,10 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 
 			add_filter( 'wp_dark_mode/excludes', [ $this, 'excludes' ] );
 
-			add_action( 'admin_init', [ $this, 'display_notice' ] );
+			//add_action( 'admin_init', [ $this, 'display_notice' ] );
 
 			/** hide black friday notice */
-			add_action( 'wp_ajax_hide_black_friday_notice', [ $this, 'hide_black_friday_notice' ] );
+			//add_action( 'wp_ajax_hide_black_friday_notice', [ $this, 'hide_black_friday_notice' ] );
 
 		}
 
@@ -60,7 +60,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 		public function display_notice() {
 
 			if ( get_option( 'wp_dark_mode_hide_black_friday_notice' ) ) {
-				//return;
+				return;
 			}
 
 			/** display the black-friday notice if the pro version is not activated */

@@ -30,7 +30,7 @@ if ( ! $data = get_transient( $data_transient_key ) ) {
 		$json = wp_remote_retrieve_body( $res );
 		$data = (array) json_decode( $json );
 
-		set_transient( $data_transient_key, $data, 5 * MINUTE_IN_SECONDS );
+		set_transient( $data_transient_key, $data, DAY_IN_SECONDS );
 	}
 }
 
@@ -42,26 +42,13 @@ $title = $is_pro ? $data['pro_title'] : $data['ultimate_title'];
 ?>
 
 <div class="wp-dark-mode-promo <?php echo $is_hidden ? 'hidden' : ''; ?>">
-    <div class="wp-dark-mode-promo-inner <?php echo $data['is_black_friday'] == 'yes' ? 'black-friday' : ''; ?>">
+    <div class="wp-dark-mode-promo-inner">
 
 		<?php if ( $is_hidden ) { ?>
             <span class="close-promo">&times;</span>
 		<?php } ?>
 
         <img src="<?php echo wp_dark_mode()->plugin_url( 'assets/images/gift-box.svg' ) ?>" class="promo-img">
-
-		<?php if ( $data['is_black_friday'] == 'yes' ) { ?>
-            <div class="black-friday-wrap">
-                <h3>Biggest sale of the year.</h3>
-
-                <div class="ribbon">
-                    <div class="ribbon-stitches-top"></div>
-                    <strong class="ribbon-content"><h1>BLACK FRIDAY</h1></strong>
-                    <div class="ribbon-stitches-bottom"></div>
-                </div>
-
-            </div>
-		<?php } ?>
 
 		<?php
 

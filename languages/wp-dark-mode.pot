@@ -261,67 +261,67 @@ msgstr ""
 msgid "Show the dark mode switcher button above of all the pages."
 msgstr ""
 
-#: includes/class-settings.php:312
+#: includes/class-settings.php:304
 msgid "Excludes Elements"
 msgstr ""
 
-#: includes/class-settings.php:313
+#: includes/class-settings.php:305
 msgid "Add comma separated CSS selectors (classes, ids) to ignore the darkmode. ex: .class1, #hero-area"
 msgstr ""
 
-#: includes/class-settings.php:320
+#: includes/class-settings.php:312
 msgid "Exclude Pages"
 msgstr ""
 
-#: includes/class-settings.php:321
+#: includes/class-settings.php:313
 msgid "Select the pages to disable darkmode on the selected pages."
 msgstr ""
 
-#: includes/class-settings.php:332
+#: includes/class-settings.php:324
 msgid "Darkmode Color Preset:"
 msgstr ""
 
-#: includes/class-settings.php:333
+#: includes/class-settings.php:325
 msgid "Select the predefined darkmode background, text and link preset color."
 msgstr ""
 
-#: includes/class-settings.php:353
+#: includes/class-settings.php:345
 msgid "Want to customize colors?"
 msgstr ""
 
-#: includes/class-settings.php:354
+#: includes/class-settings.php:346
 msgid "Customize the darkmode background, text and link colors."
 msgstr ""
 
-#: includes/class-settings.php:361
+#: includes/class-settings.php:353
 msgid "Darkmode Background Color"
 msgstr ""
 
-#: includes/class-settings.php:362
+#: includes/class-settings.php:354
 msgid "Select the background color when the dark mode is on."
 msgstr ""
 
-#: includes/class-settings.php:369
+#: includes/class-settings.php:361
 msgid "Darkmode Text Color"
 msgstr ""
 
-#: includes/class-settings.php:370
+#: includes/class-settings.php:362
 msgid "Select the text color when the dark mode is on."
 msgstr ""
 
-#: includes/class-settings.php:377
+#: includes/class-settings.php:369
 msgid "Darkmode Links Color"
 msgstr ""
 
-#: includes/class-settings.php:378
+#: includes/class-settings.php:370
 msgid "Select the links color when the dark mode is on."
 msgstr ""
 
-#: includes/class-settings.php:573, includes/class-settings.php:585
+#: includes/class-settings.php:564, includes/class-settings.php:576
 msgid "WP Dark Mode Settings"
 msgstr ""
 
-#: includes/class-settings.php:573
+#: includes/class-settings.php:564
 msgid "WP Dark Mode"
 msgstr ""
 

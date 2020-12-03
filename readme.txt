@@ -25,6 +25,10 @@ Works across all operating systems including Android, iOS, macOS. No settings ar
 Just activate dark mode on your device, and browse the website to experience a magically transformed dark mode of your website.
 WP Dark Mode supports all major operating systems including iOS, Android, macOS, or Windows 10.
 
+=== Honest Review of WP Dark Mode - You're missing out ===
+
+[youtube https://youtu.be/Z2miWQCHGr4]
+
 === WP Dark Mode Features ===
 
 1. **Floating Switch Button** – You can display a dark mode floating switch button in the footer of the website.
