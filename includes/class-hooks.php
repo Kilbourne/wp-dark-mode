@@ -378,16 +378,13 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
                     window.addEventListener("storage", sessionStorage_transfer, false);
                 } else {
                     window.attachEvent("onstorage", sessionStorage_transfer);
-                };
-
+                }
 
                 // Ask other tabs for session storage (this is ONLY to trigger event)
                 if (!sessionStorage.length) {
                     localStorage.setItem('getSessionStorage', 'foobar');
                     localStorage.removeItem('getSessionStorage', 'foobar');
-                };
-
-
+                }
 
 				<?php
 
@@ -398,8 +395,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 				<?php }else{ ?>
                 var is_saved = sessionStorage.getItem('wp_dark_mode_frontend');
 
-                var default_mode = <?php echo 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'default_mode', 'off' ) ? 1
-					: 0; ?>;
+                var default_mode = <?php echo 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'default_mode', 'off' ) ? 1 : 0; ?>;
 				<?php }
 
 				?>
@@ -410,10 +406,10 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 
 				<?php
 
-				//check os aware mode
+				/**-- check os aware mode --**/
 				if ( 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_os_mode', 'on' ) ) { ?>
 
-                /** check OS aware mode if dark not mode changed by the switch **/
+                /**-- check OS aware mode if dark mode not changed by the switch --**/
                 if (!is_saved || (is_saved && is_saved != 0)) {
                     var darkMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 

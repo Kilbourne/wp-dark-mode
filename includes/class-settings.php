@@ -116,7 +116,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 					'default_mode'   => array(
 						'name'    => 'default_mode',
 						'default' => 'off',
-						'label'   => __( 'Default Mode', 'wp-dark-mode' ),
+						'label'   => __( 'Make Dark Mode Default', 'wp-dark-mode' ),
 						'desc'    => __( 'Make the dark mode as the default mode. Visitors will see the dark mode first.', 'wp-dark-mode' ),
 						'type'    => 'switcher',
 					),

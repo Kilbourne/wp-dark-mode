@@ -1,4 +1,9 @@
-;(function () {
+import {createHooks} from '@wordpress/hooks';
+
+window.wpDarkModeHooks = createHooks();
+
+(function () {
+
     const app = {
 
         init: () => {
@@ -58,6 +63,7 @@
         },
 
         excludeBGELements: function () {
+
             if(typeof wpDarkModeFrontend === 'undefined'){
                 return;
             }
@@ -66,37 +72,18 @@
 
             elements.forEach((element) => {
                 const bi = window.getComputedStyle(element, false).backgroundImage;
+                const parallax = element.getAttribute('data-jarallax-original-styles');
 
-                if (bi !== 'none') {
+                if (bi !== 'none' || parallax) {
                     element.classList.add('wp-dark-mode-ignore');
                     element.querySelectorAll('*').forEach((child) => child.classList.add('wp-dark-mode-ignore'));
-
-                    if (!wpDarkModeFrontend.is_ultimate_active) {
-                        return;
-                    }
-
-                    const url = bi.slice(4, -1).replace(/"/g, "");
-                    const images = wpDarkModeFrontend.images;
-
-                    if (document.querySelector('html').classList.contains('wp-dark-mode-active')) {
-                        if (images.light_images.includes(url)) {
-
-                            const index = images.light_images.indexOf(url);
-                            element.style.backgroundImage = `url('${images.dark_images[index]}')`;
-                        }
-                    } else {
-                        if (images.dark_images.includes(url)) {
-                            const index = images.dark_images.indexOf(url);
-                            element.style.backgroundImage = `url('${images.light_images[index]}')`;
-                        }
-                    }
-
                 }
             });
 
         },
 
         handleToggle: function () {
+
             const html = document.querySelector('html');
             html.classList.toggle('wp-dark-mode-active');
 
