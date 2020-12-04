@@ -1,6 +1,7 @@
 ##1.3.4 
 * Add inclusion settings - PRO
 * Add Background Image Replacement - Ultimate
+* Added User Preferred Remember Dark Mode - Ultimate
 * Remove Black friday offer banner - Free
 
 

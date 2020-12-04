@@ -476,3 +476,14 @@
     }
   }
 }
+
+/**-- Nextgen Gallery --**/
+html.wp-dark-mode-active {
+  .galleria-image-protection {
+    display: none !important;
+  }
+
+  .galleria-image-nav {
+    background: transparent !important;
+  }
+}
