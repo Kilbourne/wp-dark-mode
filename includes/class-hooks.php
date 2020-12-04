@@ -26,6 +26,8 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 			}
 
 			add_action( 'wsa_form_bottom_wp_dark_mode_advanced', [ $this, 'pro_promo' ] );
+			add_action( 'wsa_form_bottom_wp_dark_mode_advanced', [ $this, 'ultimate_promo' ] );
+
 			add_action( 'wsa_form_bottom_wp_dark_mode_display', [ $this, 'pro_promo' ] );
 			add_action( 'wsa_form_bottom_wp_dark_mode_display', [ $this, 'ultimate_promo' ] );
 			add_action( 'wsa_form_bottom_wp_dark_mode_style', [ $this, 'ultimate_promo' ] );
@@ -225,7 +227,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 
 			$args = [];
 
-			if ( ! empty( $section ) && in_array( $section['id'], [ 'wp_dark_mode_display', 'wp_dark_mode_style' ] ) ) {
+			if ( ! empty( $section ) && in_array( $section['id'], [ 'wp_dark_mode_advanced', 'wp_dark_mode_display', 'wp_dark_mode_style' ] ) ) {
 				$args['is_hidden'] = true;
 			}
 
@@ -388,15 +390,24 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 
 				<?php
 
-				if(is_admin()){ ?>
-                var is_saved = sessionStorage.getItem('wp_dark_mode_admin');
-                var default_mode = false;
+				$js = '';
+				$default_mode ='on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'default_mode', 'off' ) ? 1 : 0;
 
-				<?php }else{ ?>
-                var is_saved = sessionStorage.getItem('wp_dark_mode_frontend');
+				if ( is_admin() ) {
+					$js .= "var is_saved = sessionStorage.getItem('wp_dark_mode_admin'); var default_mode = false;";
+				} else {
+					$js .= "var is_saved = sessionStorage.getItem('wp_dark_mode_frontend'); var default_mode = $default_mode;";
 
-                var default_mode = <?php echo 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'default_mode', 'off' ) ? 1 : 0; ?>;
-				<?php }
+					if(wp_dark_mode()->is_ultimate_active()){
+					    $remember_darkmode = 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_advanced', 'remember_darkmode', 'off' ) ? true : false;
+					    if($remember_darkmode){
+					        $js .= "is_saved = localStorage.getItem('wp_dark_mode_active');console.log(is_saved);";
+                        }
+                    }
+
+				}
+
+				echo $js;
 
 				?>
 

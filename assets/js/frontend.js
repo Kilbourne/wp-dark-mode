@@ -95,6 +95,7 @@ window.wpDarkModeHooks = createHooks();
 
             if (typeof wpDarkModeAdmin === 'undefined') {
                 sessionStorage.setItem('wp_dark_mode_frontend', is_saved);
+                localStorage.setItem('wp_dark_mode_active', is_saved);
             } else {
                 sessionStorage.setItem('wp_dark_mode_admin', is_saved);
             }

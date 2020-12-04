@@ -144,6 +144,15 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 
 				'wp_dark_mode_advanced' => apply_filters( 'wp_dark_mode/advanced_settings', array(
 
+					'remember_darkmode' => array(
+						'name'    => 'remember_darkmode',
+						'default' => 'off',
+						'label'   => __( 'Remember Dark Mode', 'wp-dark-mode' ),
+						'desc'    => __( 'If remember dark mode is on,  browser remembers the user\'s selected mode and shows it to them when they re-open the browser',
+							'wp-dark-mode' ),
+						'type'    => 'switcher',
+					),
+
 					'specific_category' => array(
 						'name'    => 'specific_category',
 						'default' => 'off',
