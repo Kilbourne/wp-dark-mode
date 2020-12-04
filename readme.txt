@@ -69,6 +69,7 @@ WP Dark Mode supports all major operating systems including iOS, Android, macOS,
 1. **Custom CSS** – You can use custom CSS only for dark mode.
 1. **Custom Switch Icon** – You can customize the dark mode switch icon in the light/ dark mode.
 1. **Dark mode Switch in Menu** – You can display the dark mode switch as a menu item in any menu on your website.
+1. **Remember Darkmode** -  If remember dark mode is on,  browser remembers the user's selected mode and shows it to them when they re-open the browser
 
 > 🚀  [Get The Ultimate Version](https://wppool.dev/wp-dark-mode/) | 👩🏼‍💻 [Get Support](https://wppool.dev/wp-dark-mode/)
 

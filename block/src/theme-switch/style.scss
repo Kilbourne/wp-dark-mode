@@ -1,7 +1,21 @@
-@import "./css/darkmode";
-@import "./css/chathams";
-@import "./css/pumpkin";
-@import "./css/mustard";
-@import "./css/concord";
+html.wp-dark-mode-theme-darkmode {
+  @import "./css/darkmode";
+}
+
+html.wp-dark-mode-theme-chathams {
+  @import "./css/chathams";
+}
+
+html.wp-dark-mode-theme-pumpkin {
+  @import "./css/pumpkin";
+}
+
+html.wp-dark-mode-theme-mustard {
+  @import "./css/mustard";
+}
+
+html.wp-dark-mode-theme-concord {
+  @import "./css/concord";
+}
 
 @import "./css/common";
