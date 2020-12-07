@@ -1,13 +1,14 @@
 ##1.3.4 
-FREE
+FREE - v1.3.1
 ____
 * Update: Remove Black friday offer banner 
 * Update: Add Nextgen plugin compatibility 
-PRO
+
+PRO - v1.1.2
 ____
 * New: Add inclusion settings
 
-Ultimate
+Ultimate - v1.1.2
 _______
 * New: Add Background Image Replacement
 * New: Added User Preferred Remember Dark Mode

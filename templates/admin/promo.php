@@ -6,8 +6,8 @@ $is_pro    = isset( $is_pro_promo ) && $is_pro_promo;
 $data_transient_key = 'wp_dark_mode_promo_data';
 
 $data = [
-	'pro_title'       => 'Upgrade to PRO to access the PRO features',
-	'ultimate_title'  => 'Upgrade to ULTIMATE to access the ULTIMATE features',
+	'pro_title'       => 'Unlock the PRO features',
+	'ultimate_title'  => 'Unlock all the features',
 	'discount_text'   => '50% OFF',
 	'pro_text'        => 'GET PRO',
 	'ultimate_text'   => 'GET ULTIMATE',
@@ -19,7 +19,7 @@ $countdown_time = get_transient( 'wp_darkmode_promo_time' );
 
 if ( !$countdown_time ) {
 
-	$date = date( 'Y-m-d-H-i', strtotime( '+ 8 hours' ) );
+	$date = date( 'Y-m-d-H-i', strtotime( '+ 14 hours' ) );
 
 	$date_parts = explode( '-', $date );
 
@@ -31,7 +31,7 @@ if ( !$countdown_time ) {
 		'minute' => $date_parts[4],
 	];
 
-	set_transient( 'wp_darkmode_promo_time',$countdown_time, 8 * HOUR_IN_SECONDS );
+	set_transient( 'wp_darkmode_promo_time',$countdown_time, 14 * HOUR_IN_SECONDS );
 
 }
 

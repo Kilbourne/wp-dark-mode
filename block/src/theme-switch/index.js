@@ -11,6 +11,13 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function appendThemeSwitch() {
+
+    const is_saved = sessionStorage.getItem('wp_dark_mode_admin)');
+
+    if (is_saved && is_saved != 0) {
+        document.querySelector('html').classList.add(`wp-dark-mode-theme-darkmode`);
+    }
+
     let node = document.querySelector('.edit-post-header__toolbar');
 
     let newElem = document.createElement('div');

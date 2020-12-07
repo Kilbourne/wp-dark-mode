@@ -8,6 +8,7 @@
             app.checkCategories();
 
             app.checkDesc();
+            app.checkFloating();
             app.checkSwitchDeps();
             app.checkCustomize();
             app.checkTimeBasedDeps();
@@ -16,6 +17,11 @@
             app.checkSwitchMenu();
             app.checkSwitchText();
             app.checkSwitchIcon();
+
+            const enable_frontend = document.querySelector('.enable_frontend input[type=checkbox]');
+            if (enable_frontend) {
+                enable_frontend.addEventListener('change', app.checkFloating);
+            }
 
             const enable_darkmode_checkbox = document.querySelector('.enable_os_mode input[type=checkbox]');
             if (enable_darkmode_checkbox) {
@@ -141,6 +147,20 @@
             const customize_colors_checkbox = document.querySelector('.customize_colors');
             if (customize_colors_checkbox) {
                 customize_colors_checkbox.classList.add('disabled');
+            }
+        },
+
+        checkFloating: function () {
+            const checkBox = document.querySelector('.enable_frontend input[type=checkbox]');
+            if (!checkBox) {
+                return;
+            }
+            const is_darkmode_enabled = checkBox.checked;
+
+            if (is_darkmode_enabled) {
+                document.querySelector('.show_switcher').style.display = 'contents';
+            } else {
+                document.querySelector('.show_switcher').style.display = 'none';
             }
         },
 
