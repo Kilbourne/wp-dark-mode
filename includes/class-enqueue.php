@@ -98,12 +98,12 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 		 */
 		public function admin_scripts( $hook ) {
 
+			wp_enqueue_script( 'jquery.syotimer', wp_dark_mode()->plugin_url( 'assets/vendor/jquery.syotimer.min.js' ), [ 'jquery' ],
+				'2.1.2', true );
+
 			if ( 'settings_page_wp-dark-mode-settings' == $hook ) {
 
 				wp_enqueue_style( 'select2', wp_dark_mode()->plugin_url( 'assets/vendor/select2.css' ) );
-
-				wp_enqueue_script( 'jquery.syotimer', wp_dark_mode()->plugin_url( 'assets/vendor/jquery.syotimer.min.js' ), [ 'jquery' ],
-					'2.1.2', true );
 
 				wp_enqueue_script( 'select2', wp_dark_mode()->plugin_url( 'assets/vendor/select2.min.js' ), [ 'jquery' ], false, true );
 			}

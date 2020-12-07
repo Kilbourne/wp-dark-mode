@@ -1,8 +1,17 @@
 ##1.3.4 
-* Add inclusion settings - PRO
-* Add Background Image Replacement - Ultimate
-* Added User Preferred Remember Dark Mode - Ultimate
-* Remove Black friday offer banner - Free
+FREE
+____
+* Update: Remove Black friday offer banner 
+* Update: Add Nextgen plugin compatibility 
+PRO
+____
+* New: Add inclusion settings
+
+Ultimate
+_______
+* New: Add Background Image Replacement
+* New: Added User Preferred Remember Dark Mode
+
 
 
 TODO - BEFORE RELEASE

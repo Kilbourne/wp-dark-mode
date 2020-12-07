@@ -3,8 +3,10 @@ const {Component, Fragment} = wp.element;
 
 class Palette extends Component {
 
+    is_saved = localStorage.getItem('wp_dark_mode_admin');
+
     state = {
-        type: 'default'
+        type: (this.is_saved && this.is_saved != 0) ? 'darkmode' : 'default',
     };
 
     handleColorPalegtte(type) {
@@ -31,11 +33,31 @@ class Palette extends Component {
             concord: 'Concord Jam',
         };
 
+        const is_pro = wpDarkModeAdmin.is_pro_active || wpDarkModeAdmin.is_ultimate_active;
+
         return (
             <div>
                 {Object.entries(labels).map(([key, label], i) =>
-                    <a href="#" className={type == key ? 'active' : ''} onClick={() => this.handleColorPalegtte(key)}>
-                        <img src={`${wpDarkModeAdmin.pluginUrl}/block/build/images/${key}.png`} alt={label} /> {label} {type == key ? <span className='tick'>✓</span> : ''}
+                    <a
+                        href="javascript:;"
+                        className={`${type == key ? 'active' : ''} ${!is_pro && key !== 'default' && key !== 'darkmode' && 'disabled'}`}
+                        onClick={() => {
+
+                            if (!is_pro && key !== 'default' && key !== 'darkmode') {
+                                document.querySelector('.wp-dark-mode-promo').classList.remove('hidden');
+                                return;
+                            }
+
+                            this.handleColorPalegtte(key)
+                        }}>
+
+                        <img src={`${wpDarkModeAdmin.pluginUrl}/block/build/images/${key}.png`} alt={label}/>
+                        <span>{label}</span>
+                        {type == key ? <span className='tick'>✓</span> : ''}
+
+                        {!is_pro && key !== 'default' && key !== 'darkmode' &&
+                        <span className="wp-darkmode-pro-badge">PRO</span>}
+
                     </a>)}
             </div>
         )
