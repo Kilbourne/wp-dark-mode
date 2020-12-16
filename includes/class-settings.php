@@ -144,12 +144,19 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 
 				'wp_dark_mode_advanced' => apply_filters( 'wp_dark_mode/advanced_settings', array(
 
+					'low_image' => array(
+						'name'    => 'low_image',
+						'default' => 'on',
+						'label'   => __( 'Low Image Brightness', 'wp-dark-mode' ),
+						'desc'    => __( 'Decrease the brightness and contrast of images in the dark mode.', 'wp-dark-mode' ),
+						'type'    => 'switcher',
+					),
+
 					'remember_darkmode' => array(
 						'name'    => 'remember_darkmode',
 						'default' => 'off',
 						'label'   => __( 'Remember Dark Mode', 'wp-dark-mode' ),
-						'desc'    => __( 'If remember dark mode is on,  browser remembers the user\'s selected mode and shows it to them when they re-open the browser',
-							'wp-dark-mode' ),
+						'desc'    => __( 'If remember dark mode is on,  browser remembers the user\'s selected mode and shows it to them when they re-open the browser', 'wp-dark-mode' ),
 						'type'    => 'switcher',
 					),
 

@@ -3,7 +3,7 @@
  * Plugin Name: WP Dark Mode
  * Plugin URI:  https://wppool.dev/wp-dark-mode
  * Description: WP Dark Mode automatically enables a stunning dark mode of your website based on user's operating system. Supports macOS, Windows, Android & iOS.
- * Version:     1.3.1
+ * Version:     1.3.2
  * Author:      WPPOOL
  * Author URI:  http://wppool.dev
  * Text Domain: wp-dark-mode
@@ -44,7 +44,7 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 		 * @access private
 		 * @var string
 		 */
-		public $version = '1.3.1';
+		public $version = '1.3.2';
 
 		/**
 		 * Holder for base plugin URL
@@ -203,7 +203,28 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 		 * @return bool
 		 */
 		public function is_ultimate_active() {
-		   return apply_filters('wp_dark_mode_ultimate_active', false);
+
+			global $wp_dark_mode_license;
+
+			if(!$wp_dark_mode_license){
+			    return false;
+            }
+
+			$is_ultimate_plan = $wp_dark_mode_license->is_valid_by( 'title', 'WP Dark Mode Ultimate Lifetime' )
+			                    || $wp_dark_mode_license->is_valid_by( 'title', 'WP Dark Mode Ultimate Yearly' )
+			                    || $wp_dark_mode_license->is_valid_by( 'title', 'Lifetime Ultimate 1 Site' )
+			                    || $wp_dark_mode_license->is_valid_by( 'title', 'Lifetime Ultimate 50 Sites' );
+
+			$is_valid = $wp_dark_mode_license->is_valid() && $is_ultimate_plan;
+
+			if ( $is_valid ) {
+
+				return true;
+			}
+
+			return false;
+
+		   //return apply_filters('wp_dark_mode_ultimate_active', false);
 		}
 
 		/**

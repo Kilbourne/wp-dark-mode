@@ -2,9 +2,9 @@
 Contributors: wppool, azizultex, princeahmed
 Tags: dark, dark mode, night mode, gutenberg blocks, dark theme
 Requires at least: 5.0
-Tested up to: 5.5
+Tested up to: 5.6
 Requires PHP: 5.6
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,6 +42,7 @@ WP Dark Mode supports all major operating systems including iOS, Android, macOS,
 1. **Remember Dark Mode** – The dark mode remains saved once you activated the dark mode.
 1. **Themes Compatible** – The plugin is compatible with most of the themes without any issues.
 1. **Revolution Slider Compatible** - This plugin compatible with revolution slider.
+1. **Low Image Brightness** - Decrease the brightness and contrast of images in the dark mode.
 
 
 === 💰 WP Dark Mode Pro Features ===
@@ -145,6 +146,9 @@ No. WP Dark Mode is a very user-friendly and simple plugin. Just download and us
 10. Dark mode switch elementor widget
 
 == Changelog ==
+
+= 1.3.2 =
+* New: Add Low Image Brightness Settings
 
 = 1.3.1 =
 * New: Added NextGen Gallery Plugin Compatibility

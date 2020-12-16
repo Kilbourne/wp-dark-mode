@@ -55,9 +55,10 @@ if ( !$countdown_time ) {
 
 $title = $is_pro ? $data['pro_title'] : $data['ultimate_title'];
 
+
 ?>
 
-<div class="wp-dark-mode-promo <?php echo $is_hidden ? 'hidden' : ''; ?>">
+<div class="wp-dark-mode-promo <?php echo $class ?? ''; ?> <?php echo $is_hidden ? 'hidden' : ''; ?>">
     <div class="wp-dark-mode-promo-inner">
 
 		<?php if ( $is_hidden ) { ?>
@@ -132,7 +133,12 @@ $title = $is_pro ? $data['pro_title'] : $data['ultimate_title'];
                 $(document).on('click', '.image-choose-opt.disabled, .form-table tr.disabled', function (e) {
                     e.preventDefault();
 
-                    $(this).closest('table').next('.wp-dark-mode-promo.hidden').removeClass('hidden');
+                    if($(this).closest('tr').hasClass('specific_category')){
+                        $(this).closest('form').find('.wp-dark-mode-promo.ultimate_promo').removeClass('hidden');
+                    }else{
+                        $(this).closest('table').next('.wp-dark-mode-promo').removeClass('hidden');
+                    }
+
                 });
 
                 //close promo

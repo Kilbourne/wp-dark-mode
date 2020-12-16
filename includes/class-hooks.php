@@ -30,6 +30,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 
 			add_action( 'wsa_form_bottom_wp_dark_mode_display', [ $this, 'pro_promo' ] );
 			add_action( 'wsa_form_bottom_wp_dark_mode_display', [ $this, 'ultimate_promo' ] );
+
 			add_action( 'wsa_form_bottom_wp_dark_mode_style', [ $this, 'ultimate_promo' ] );
 			add_action( 'wsa_form_bottom_wp_dark_mode_style', [ $this, 'pro_promo' ] );
 			add_action( 'wsa_form_bottom_wp_dark_mode_image_settings', [ $this, 'ultimate_promo' ] );
@@ -219,7 +220,8 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 
 			$args = [];
 
-			if ( ! empty( $section ) && in_array( $section['id'], [ 'wp_dark_mode_display', 'wp_dark_mode_style' ] ) ) {
+			if ( ! empty( $section )
+			     && in_array( $section['id'], [ 'wp_dark_mode_advanced', 'wp_dark_mode_display', 'wp_dark_mode_style' ] ) ) {
 				$args['is_hidden']    = true;
 				$args['is_pro_promo'] = true;
 			}
@@ -238,7 +240,9 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 				return;
 			}
 
-			$args = [];
+			$args = [
+				'class' => 'ultimate_promo',
+			];
 
 			if ( ! empty( $section ) && in_array( $section['id'], [ 'wp_dark_mode_advanced', 'wp_dark_mode_display', 'wp_dark_mode_style' ] ) ) {
 				$args['is_hidden'] = true;
@@ -323,6 +327,13 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
                     }
                 }
 			}', $base_selector );
+
+			/** Image Opacity */
+			if ( 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_advanced', 'low_image', 'on' ) ) {
+				printf( 'html.wp-dark-mode-active img {
+                  filter: brightness(.7) contrast(1.3);
+			}' );
+			}
 
 			if ( ! is_admin() ) {
 				printf( '%1$s {
