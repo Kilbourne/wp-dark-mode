@@ -124,3 +124,22 @@ function wp_dark_mode_is_gutenberg_page(){
 
 	return false;
 }
+
+function wp_dark_mode_is_elementor_editor() {
+	global $post;
+
+	if ( ! isset( $post->ID ) ) {
+		return false;
+	}
+
+	if ( ! class_exists( '\Elementor\Plugin' ) ) {
+		return false;
+	}
+
+	if ( strpos($_SERVER['REQUEST_URI'], 'elementor') !== false ) {
+		return true;
+	}
+
+	return false;
+
+}

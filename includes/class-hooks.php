@@ -256,6 +256,10 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 		 */
 		public function dark_styles() {
 
+			if ( wp_dark_mode_is_elementor_editor() ) {
+				return false;
+			}
+
 			if ( ! is_admin() && ! wp_dark_mode_enabled() ) {
 				return false;
 			}

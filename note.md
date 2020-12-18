@@ -1,4 +1,4 @@
-
+* Remove Darkmode from elementor editor
 
 
 TODO - BEFORE RELEASE
