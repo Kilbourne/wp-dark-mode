@@ -63,7 +63,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 
 			$is_excluded = isset( $post->ID ) && in_array( $post->ID, wp_dark_mode_exclude_pages() );
 
-			$excludes = '.wp-dark-mode-ignore, .wp-dark-mode-ignore *, .video-js, .select2, .owl-nav, .owl-dots, .google-map';
+			$excludes = '.wp-dark-mode-ignore, .wp-dark-mode-ignore *, .video-js, .select2, .owl-nav, .owl-dots, .google-map, img';
 
 			$pro_version = 0;
 
@@ -84,7 +84,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 				'is_ultimate_active'  => wp_dark_mode()->is_ultimate_active(),
 				'enable_backend'      => 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_backend', 'off' ),
 				'default_mode'        => 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_advanced', 'default_mode', 'off' ),
-				'is_block_editor'     => method_exists( $current_screen, 'is_block_editor' ) && $current_screen->is_block_editor(),
+				'is_block_editor'     => $current_screen && method_exists( $current_screen, 'is_block_editor' ) && $current_screen->is_block_editor(),
 				'pro_version'         => $pro_version,
 
 				'images' => get_option( 'wp_dark_mode_image_settings' ),

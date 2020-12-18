@@ -41,6 +41,10 @@
 
 /**--- dark mode ---*/
 
+html.wp-dark-mode-active body {
+  background: #10161E !important;
+}
+
 html.wp-dark-mode-active #wpcontent {
   background: #10161E !important;
 }

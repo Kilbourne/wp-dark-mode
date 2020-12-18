@@ -1,13 +1,13 @@
-const {__} = wp.i18n;
-const {registerBlockType} = wp.blocks;
-
+import Button from "./Button";
 import Edit from "./Edit";
 import {ReactComponent as Logo} from "./logo.svg";
 
-/**---- Editor Theme Switch ----*/
 import './theme-switch';
 
-registerBlockType('wp-dark-mode/switcher', {
+const {__} = wp.i18n;
+const {registerBlockType} = wp.blocks;
+
+registerBlockType('wp-dark-mode-block/dark-mode-switch', {
     title: __('Dark Mode Switch', 'wp-dark-mode'),
     icon: {src: Logo},
     category: 'common',
@@ -31,8 +31,11 @@ registerBlockType('wp-dark-mode/switcher', {
         const {alignment, style} = attributes;
 
         return (
-            <div style={{textAlign: alignment}}>{`[wp_dark_mode style=${style}]`}</div>
+            <div style={{textAlign: alignment}}>
+                <Button
+                    style={attributes.style}
+                />
+            </div>
         )
     }
 });
-

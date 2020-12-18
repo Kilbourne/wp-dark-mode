@@ -1,4 +1,7 @@
-* Remove Darkmode from elementor editor
+* Fix: Exclude Darkmode from elementor editor
+* Fix: Fixed Backend Dark Mode Color
+* Fix: Fixed PHP8 Compatibility Issue
+* Fix: Fixed Excludes Images From Dark Mode
 
 
 TODO - BEFORE RELEASE

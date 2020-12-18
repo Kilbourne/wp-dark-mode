@@ -11,6 +11,13 @@ module.exports = {
         use: ["@svgr/webpack", "url-loader"]
       },
       {
+        test: /\.(jpe?g|png|gif)$/,
+        loader: 'url-loader',
+        options: {
+          name: 'images/[name].[ext]'
+        }
+      },
+      {
         test: /\.s[ac]ss$/i,
         use: [
           // Creates `style` nodes from JS strings
