@@ -335,9 +335,9 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 			}', $base_selector );
 
 			/** Image Opacity */
-			if ( 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_advanced', 'low_image', 'on' ) ) {
+			if ( 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_advanced', 'low_image', 'off' ) ) {
 				printf( 'html.wp-dark-mode-active img {
-                  filter: brightness(.7) contrast(1.3);
+                  filter: brightness(.8) contrast(2);
 			}' );
 			}
 

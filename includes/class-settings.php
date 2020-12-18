@@ -146,7 +146,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 
 					'low_image' => array(
 						'name'    => 'low_image',
-						'default' => 'on',
+						'default' => 'off',
 						'label'   => __( 'Low Image Brightness', 'wp-dark-mode' ),
 						'desc'    => __( 'Decrease the brightness and contrast of images in the dark mode.', 'wp-dark-mode' ),
 						'type'    => 'switcher',
