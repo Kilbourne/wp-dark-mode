@@ -4,7 +4,7 @@ Tags: dark, dark mode, night mode, gutenberg blocks, dark theme
 Requires at least: 5.0
 Tested up to: 5.6
 Requires PHP: 5.6
-Stable tag: 1.3.2
+Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -146,6 +146,14 @@ No. WP Dark Mode is a very user-friendly and simple plugin. Just download and us
 10. Dark mode switch elementor widget
 
 == Changelog ==
+
+= 1.3.3 =
+* Update: Change Low Image Brightness to OFF By default
+* Fix: Fixed PHP8 Compatibility Issue
+* Fix: WP Darkmode Switch Widget Style Choose
+* Fix: Fixed Admin Dashboard Dark Mode Color
+* Fix: Exclude Darkmode from elementor editor
+* Fix: Fixed Excludes Images From Dark Mode
 
 = 1.3.2 =
 * New: Add Low Image Brightness Settings
