@@ -47,10 +47,10 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 
 			add_filter( 'wp_dark_mode/excludes', [ $this, 'excludes' ] );
 
-			//add_action( 'admin_init', [ $this, 'display_notice' ] );
+			add_action( 'admin_init', [ $this, 'display_notice' ] );
 
 			/** hide black friday notice */
-			//add_action( 'wp_ajax_hide_black_friday_notice', [ $this, 'hide_black_friday_notice' ] );
+			add_action( 'wp_ajax_hide_christmas_notice', [ $this, 'hide_christmas_notice' ] );
 
             add_action('admin_footer', [$this, 'display_promo']);
 
@@ -67,28 +67,30 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 		    }
         }
 
-//		public function hide_black_friday_notice() {
-//			update_option( 'wp_dark_mode_hide_black_friday_notice', true );
-//			update_option( sanitize_key( 'wp_dark_mode_notices' ), [] );
-//			die();
-//		}
+		public function hide_christmas_notice() {
+			update_option( 'wp_dark_mode_hide_christmas_notice', true );
+			update_option( sanitize_key( 'wp_dark_mode_notices' ), [] );
+			die();
+		}
 
-//		public function display_notice() {
-//
-//			if ( get_option( 'wp_dark_mode_hide_black_friday_notice' ) ) {
-//				return;
-//			}
-//
-//			/** display the black-friday notice if the pro version is not activated */
-//			if ( wp_dark_mode()->is_pro_active() || wp_dark_mode()->is_ultimate_active() ) {
-//				return;
-//			}
-//
-//			$message = '<h4>Enjoy upto 75% OFF on WP Dark Mode. Get Your Black Friday <a href="https://wppool.dev/wp-dark-mode" target="_blank">Deals Now</a></h4>';
-//
-//			wp_dark_mode()->add_notice( 'info is-dismissible', $message );
-//
-//		}
+		public function display_notice() {
+
+			if ( get_option( 'wp_dark_mode_hide_christmas_notice' ) ) {
+				return;
+			}
+
+			/** display the black-friday notice if the pro version is not activated */
+			if ( wp_dark_mode()->is_pro_active() || wp_dark_mode()->is_ultimate_active() ) {
+				return;
+			}
+
+			ob_start();
+			wp_dark_mode()->get_template( 'admin/christmas-notice' );
+			$message = ob_get_clean();
+
+			wp_dark_mode()->add_notice( 'info is-dismissible christmas_notice', $message );
+
+		}
 
 		/**
 		 * Exclude elements

@@ -6,13 +6,8 @@ $is_pro    = isset( $is_pro_promo ) && $is_pro_promo;
 $data_transient_key = 'wp_dark_mode_promo_data';
 
 $data = [
-	'pro_title'       => 'Unlock the PRO features',
-	'ultimate_title'  => 'Unlock all the features',
-	'discount_text'   => '50% OFF',
-	'pro_text'        => 'GET PRO',
-	'ultimate_text'   => 'GET ULTIMATE',
-	'countdown_time'  => '2020-11-27-20-00-00',
-	'is_black_friday' => 'no',
+	'discount_text' => '50% OFF',
+	'is_christmas'  => 'no',
 ];
 
 $countdown_time = get_transient( 'wp_darkmode_promo_time' );
@@ -35,37 +30,48 @@ if ( !$countdown_time ) {
 
 }
 
-//if ( ! $data = get_transient( $data_transient_key ) ) {
-//	$url = 'https://wppool.dev/wp-dark-mode-promo-data.php';
-//
-//	$url = add_query_arg( [
-//		'version' => wp_dark_mode()->version,
-//		'date'    => date( 'Y-m-d-H-i-s' ),
-//	], $url );
-//
-//	$res = wp_remote_get( $url );
-//
-//	if ( ! is_wp_error( $res ) ) {
-//		$json = wp_remote_retrieve_body( $res );
-//		$data = (array) json_decode( $json );
-//
-//		set_transient( $data_transient_key, $data, DAY_IN_SECONDS );
-//	}
-//}
+if ( ! $data = get_transient( $data_transient_key ) ) {
+	$url = 'https://wppool.dev/wp-dark-mode-promo-data.json';
 
-$title = $is_pro ? $data['pro_title'] : $data['ultimate_title'];
+	$res = wp_remote_get( $url );
 
+	if ( ! is_wp_error( $res ) ) {
+		$json = wp_remote_retrieve_body( $res );
+		$data = (array) json_decode( $json );
+
+		set_transient( $data_transient_key, $data, DAY_IN_SECONDS );
+	}
+}
+
+$pro_title      = 'Unlock the PRO features';
+$ultimate_title = 'Unlock all the features';
+$title          = $is_pro ? $pro_title : $ultimate_title;
 
 ?>
 
 <div class="wp-dark-mode-promo <?php echo $class ?? ''; ?> <?php echo $is_hidden ? 'hidden' : ''; ?>">
-    <div class="wp-dark-mode-promo-inner">
+    <div class="wp-dark-mode-promo-inner <?php echo $data['is_christmas'] == 'yes' ? 'black-friday' : ''; ?>">
 
 		<?php if ( $is_hidden ) { ?>
             <span class="close-promo">&times;</span>
 		<?php } ?>
 
         <img src="<?php echo wp_dark_mode()->plugin_url( 'assets/images/gift-box.svg' ) ?>" class="promo-img">
+
+		<?php if ( $data['is_christmas'] == 'yes' ) { ?>
+            <div class="black-friday-wrap">
+                <h3><img src="<?php echo wp_dark_mode()->plugin_url( 'assets/images/holiday-gifts.svg' ) ?>" alt=""></h3>
+
+                <div class="ribbon">
+                    <div class="ribbon-content">
+                        <div class="ribbon-stitches-top"></div>
+                        <img src="<?php echo wp_dark_mode()->plugin_url( 'assets/images/merry-christmas.svg' ) ?>" alt="">
+                        <div class="ribbon-stitches-bottom"></div>
+                    </div>
+                </div>
+
+            </div>
+		<?php } ?>
 
 		<?php
 
@@ -87,7 +93,7 @@ $title = $is_pro ? $data['pro_title'] : $data['ultimate_title'];
 		?>
 
         <a href="https://wppool.dev/wp-dark-mode"
-           target="_blank"><?php echo $is_pro ? $data['pro_text'] : $data['ultimate_text']; ?></a>
+                target="_blank"><?php echo $is_pro ? 'GET PRO' : 'GET ULTIMATE'; ?></a>
 
     </div>
 

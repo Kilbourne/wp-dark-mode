@@ -27,7 +27,7 @@ WP Dark Mode supports all major operating systems including iOS, Android, macOS,
 
 === Honest Review of WP Dark Mode - You're missing out ===
 
-[youtube https://youtu.be/Z2miWQCHGr4]
+[youtube https://www.youtube.com/watch?v=6OB34ikfhh8]
 
 === WP Dark Mode Features ===
 
