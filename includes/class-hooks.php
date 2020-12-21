@@ -21,7 +21,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 			add_action( 'wp_head', [ $this, 'dark_styles' ] );
 
 			/** display the dark mode switcher if the dark mode enabled on frontend */
-			if ( 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_display', 'show_switcher', 'on' ) ) {
+			if ( 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'show_switcher', 'on' ) ) {
 				add_action( 'wp_footer', [ $this, 'display_widget' ] );
 			}
 

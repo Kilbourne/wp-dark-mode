@@ -147,6 +147,10 @@ No. WP Dark Mode is a very user-friendly and simple plugin. Just download and us
 
 == Changelog ==
 
+= 1.3.4 =
+* Fix: Fixed Show/ Hide Floating Switch
+* Update: Add minimal christmas offer banner
+
 = 1.3.3 =
 * Update: Change Low Image Brightness to OFF By default
 * Fix: Fixed PHP8 Compatibility Issue

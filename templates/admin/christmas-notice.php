@@ -1,4 +1,5 @@
-<a href="https://wppool.dev/wp-dark-mode" target="_blank"></a>
+<h4>Enjoy upto 75% OFF on WP Dark Mode. Get Your Merry Christmas <a href="https://wppool.dev/wp-dark-mode" target="_blank">Deals Now</a>
+</h4>
 
 <script>
     (function ($) {

@@ -357,10 +357,6 @@ msgstr ""
 msgid "GET PRO"
 msgstr ""
 
-#: templates/admin/black-friday-notice.php:21
-msgid "GRAB THE DEAL"
-msgstr ""
-
 #: templates/admin/get-started/elementor-widget.php:1, templates/admin/get-started/index.php:13
 msgid "Elementor Widget"
 msgstr ""
