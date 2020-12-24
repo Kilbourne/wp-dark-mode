@@ -16,7 +16,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 		 * WP_Dark_Mode_Hooks constructor.
 		 */
 		public function __construct() {
-			add_action( 'rest_api_init', array( $this, 'rest_api' ) );
 
 			add_action( 'wp_head', [ $this, 'dark_styles' ] );
 
@@ -504,36 +503,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
             </style>
 
 			<?php
-		}
-
-		/**
-		 * register rest api route for gutenberg editor switch style choose
-		 */
-		public function rest_api() {
-			$namespace = 'wp-dark-mode/v1';
-
-			register_rest_route( $namespace, '/switch/(?P<switch>\d+)', array(
-				array(
-					'methods'             => 'GET',
-					'callback'            => array( $this, 'rest_api_get_switch_preview' ),
-					'permission_callback' => '__return_true',
-				),
-			) );
-		}
-
-		/**
-		 * Get the rest api switch preview
-		 *
-		 * @param $data
-		 */
-		public function rest_api_get_switch_preview( $data ) {
-			$style = isset( $data['switch'] ) ? $data['switch'] : false;
-
-			if ( $style === false ) {
-				$style = 1;
-			}
-
-			wp_send_json_success( do_shortcode( '[wp_dark_mode style="' . $style . '"]' ) );
 		}
 
 		/**

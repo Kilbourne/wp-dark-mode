@@ -140,7 +140,7 @@ export const js = () => {
 //live server
 export const serve = done => {
     server.init({
-        proxy: `localhost/test`
+        proxy: `localhost/wp-dark-mode`
     });
 
     done();
@@ -155,7 +155,7 @@ export const reload = done => {
 //watch changes
 export const watch = () => {
     gulp.watch('assets/scss/**/*.scss', css);
-    gulp.watch('assets/js/**/*.js', js);
+    gulp.watch(paths.js.src, gulp.series(js, reload));
     gulp.watch('**/*.php', reload);
 };
 

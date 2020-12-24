@@ -75,16 +75,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 					'title' => sprintf( __( '%s <span>Custom CSS</span>', 'wp-dark-mode' ),
 						'<i class="dashicons dashicons-editor-code" ></i>' ),
 				),
-				array(
-					'id'    => 'wp_dark_mode_license',
-					'title' => sprintf( __( '%s <span>Activate License</span>', 'wp-dark-mode' ),
-						'<i class="dashicons dashicons-admin-network" ></i>' ),
-				),
-				array(
-					'id'    => 'wp_dark_mode_start',
-					'title' => sprintf( __( '%s <span>Get Started</span>', 'wp-dark-mode' ),
-						'<i class="dashicons dashicons-location" ></i>' ),
-				),
 			);
 
 			if ( ! class_exists('WP_Dark_Mode_Ultimate') && ! class_exists('WP_Dark_Mode_Pro') ) {
@@ -388,22 +378,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 					),
 				) ),
 
-				'wp_dark_mode_license' => apply_filters( 'wp_dark_mode/license_settings', array(
-					'license_settings' => array(
-						'name'    => 'license',
-						'default' => [ 'WP_Dark_Mode_Settings', 'license_output' ],
-						'type'    => 'cb_function',
-					),
-				) ),
-
-				'wp_dark_mode_start' => apply_filters( 'wp_dark_mode/getting_start', array(
-					'getting_started' => array(
-						'name'    => 'getting_started',
-						'default' => [ 'WP_Dark_Mode_Settings', 'getting_started' ],
-						'type'    => 'cb_function',
-					),
-				) ),
-
 				'wp_dark_mode_custom_css' => apply_filters( 'wp_dark_mode/custom_css', array(
 					array(
 						'name'  => 'custom_css',
@@ -569,23 +543,21 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 			$wp_dark_mode_license->menu_output();
 		}
 
-		public static function getting_started() {
-		    wp_dark_mode()->get_template('admin/get-started/index');
-        }
-
 		/**
 		 * Register the plugin page
 		 */
 		public function settings_menu() {
-			add_options_page( __( 'WP Dark Mode Settings', 'wp-dark-mode' ), __( 'WP Dark Mode', 'wp-dark-mode' ), 'manage_options',
-				'wp-dark-mode-settings', array( $this, 'settings_page' ) );
+			add_submenu_page('wp-dark-mode', 'WP Dark Mode Settings', 'Settings', 'manage_options', 'wp-dark-mode-settings', [$this, 'settings_page'], 1);
+		}
+
+		public static function getting_started() {
+			wp_dark_mode()->get_template('admin/get-started/index');
 		}
 
 		/**
 		 * Display the plugin settings options page
 		 */
 		public function settings_page() { ?>
-
             <div class="wrap">
 
                 <div class="wrap">
