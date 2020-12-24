@@ -318,7 +318,10 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 			     background-color: var(--wp-dark-mode-bg) !important;
 			     color: var(--wp-dark-mode-text) !important;
                  border-color: var(--wp-dark-mode-border) !important;
-			}}', $base_selector, apply_filters( 'wp_dark_mode/not', '' ) );
+                 
+                 %3$s
+                 
+			}}', $base_selector, apply_filters( 'wp_dark_mode/not', '' ), apply_filters( 'wp_dark_mode/custom_css', '' ) );
 
 			printf( '%1$s {
                 a,
@@ -334,6 +337,8 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
                     }
                 }
 			}', $base_selector );
+
+
 
 			/** Image Opacity */
 			if ( 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_advanced', 'low_image', 'off' ) ) {

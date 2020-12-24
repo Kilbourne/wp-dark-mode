@@ -1,0 +1,11 @@
+html.wp-dark-mode-active .ab-sub-wrapper {
+  border: 1px solid;
+  overflow: hidden; }
+
+html.wp-dark-mode-active .button {
+  background: var(--wp-dark-mode-btn) !important; }
+
+html.wp-dark-mode-active i[class*='bb-icon'] {
+  background: transparent !important; }
+
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRoZW1lcy9idWRkeWJvc3Muc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUVJLGlCQUFpQjtFQUNqQixnQkFBZ0IsRUFBQTs7QUFIcEI7RUFPSSw4Q0FBOEMsRUFBQTs7QUFQbEQ7RUFXSSxrQ0FBa0MsRUFBQSIsImZpbGUiOiJ0aGVtZXMvYnVkZHlib3NzLmNzcyIsInNvdXJjZXNDb250ZW50IjpbImh0bWwud3AtZGFyay1tb2RlLWFjdGl2ZSB7XHJcbiAgLmFiLXN1Yi13cmFwcGVyIHtcclxuICAgIGJvcmRlcjogMXB4IHNvbGlkO1xyXG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcclxuICB9XHJcblxyXG4gIC5idXR0b24ge1xyXG4gICAgYmFja2dyb3VuZDogdmFyKC0td3AtZGFyay1tb2RlLWJ0bikgIWltcG9ydGFudDtcclxuICB9XHJcblxyXG4gIGlbY2xhc3MqPSdiYi1pY29uJ10ge1xyXG4gICAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQgIWltcG9ydGFudDtcclxuICB9XHJcbn0iXX0= */

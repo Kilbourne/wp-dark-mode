@@ -1,0 +1,14 @@
+html.wp-dark-mode-active {
+  .ab-sub-wrapper {
+    border: 1px solid;
+    overflow: hidden;
+  }
+
+  .button {
+    background: var(--wp-dark-mode-btn) !important;
+  }
+
+  i[class*='bb-icon'] {
+    background: transparent !important;
+  }
+}

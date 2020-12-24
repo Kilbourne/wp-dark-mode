@@ -12,6 +12,24 @@ class WP_Dark_Mode_Theme_Supports {
 
 		add_action('wp_enqueue_scripts', [$this, 'enqueue_scripts']);
 		add_filter( 'wp_dark_mode/excludes', [ $this, 'excludes' ], 99 );
+		add_filter( 'wp_dark_mode/custom_css', [ $this, 'custom_css' ] );
+	}
+
+	public function custom_css( $custom_css ) {
+
+		if ( $this->is_theme( 'BuddyBoss Theme' ) ) {
+			$custom_css .= sprintf( '
+                    .button, .medium-editor-toolbar{
+                        background: var(--wp-dark-mode-btn) !important;
+                     }
+                     
+                     i[class*="bb-icon"] {
+                        background: transparent !important;
+                      }
+		    ' );
+		}
+
+		return $custom_css;
 	}
 
 	public function excludes( $excludes ) {
@@ -51,6 +69,10 @@ class WP_Dark_Mode_Theme_Supports {
 		if($this->is_theme('Newspaper')){
 		    $excludes .= ', .td-module-meta-info';
         }
+
+		if ( $this->is_theme( 'BuddyBoss Theme' ) ) {
+			$excludes .= ', #pass-strength-result';
+		}
 
 		return $excludes;
 	}
@@ -198,8 +220,11 @@ class WP_Dark_Mode_Theme_Supports {
 	        wp_enqueue_style('wp-dark-mode-newspaper', wp_dark_mode()->plugin_url('assets/css/themes/newspaper.css'));
         }
 
-    }
+	    if ( $this->is_theme( 'BuddyBoss Theme' ) ) {
+		    wp_enqueue_style( 'wp-dark-mode-buddyboss', wp_dark_mode()->plugin_url( 'assets/css/themes/buddyboss.css' ) );
+	    }
 
+    }
 
 	public static function instance() {
 		if ( is_null( self::$instance ) ) {
