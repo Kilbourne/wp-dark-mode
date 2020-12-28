@@ -32,7 +32,7 @@ class WP_Dark_Mode_Update {
 		}
 
 		//if previous version is lower
-		if ( version_compare( $this->installed_version(), wp_dark_mode()->version, '<' ) ) {
+		if ( version_compare( $this->installed_version(), WP_DARK_MODE_VERSION, '<' ) ) {
 			return true;
 		}
 
@@ -48,7 +48,7 @@ class WP_Dark_Mode_Update {
 	function perform_updates() {
 		foreach ( self::$upgrades as $version => $file ) {
 			if ( version_compare( $this->installed_version(), $version, '<' ) ) {
-				include wp_dark_mode()->plugin_path($file);
+				include WP_DARK_MODE_INCLUDES.'/updates/'.$file;
 				update_option( 'wp_dark_mode_version', $version );
 			}
 		}

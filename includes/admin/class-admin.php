@@ -19,6 +19,10 @@ if(!class_exists('WP_Dark_Mode_Admin')){
 
 		}
 
+		public static function getting_started() {
+			wp_dark_mode()->get_template('admin/get-started/index');
+		}
+
 		/**
 		 * @return WP_Dark_Mode_Admin|null
 		 */

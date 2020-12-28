@@ -24,16 +24,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 				add_action( 'wp_footer', [ $this, 'display_widget' ] );
 			}
 
-			add_action( 'wsa_form_bottom_wp_dark_mode_advanced', [ $this, 'pro_promo' ] );
-			add_action( 'wsa_form_bottom_wp_dark_mode_advanced', [ $this, 'ultimate_promo' ] );
-
-			add_action( 'wsa_form_bottom_wp_dark_mode_display', [ $this, 'pro_promo' ] );
-			add_action( 'wsa_form_bottom_wp_dark_mode_display', [ $this, 'ultimate_promo' ] );
-
-			add_action( 'wsa_form_bottom_wp_dark_mode_style', [ $this, 'ultimate_promo' ] );
-			add_action( 'wsa_form_bottom_wp_dark_mode_style', [ $this, 'pro_promo' ] );
-			add_action( 'wsa_form_bottom_wp_dark_mode_image_settings', [ $this, 'ultimate_promo' ] );
-			add_action( 'wsa_form_bottom_wp_dark_mode_custom_css', [ $this, 'ultimate_promo' ] );
+			add_action( 'wppool_after_settings', [ $this, 'pro_promo' ] );
 
 			if ( is_admin() && 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_backend', 'off' ) ) {
 				add_action( 'admin_bar_menu', [ $this, 'render_admin_switcher_menu' ], 2000 );
@@ -211,43 +202,13 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 		 *
 		 * @param $section - setting section
 		 */
-		public function pro_promo( $section ) {
+		public function pro_promo(  ) {
 
 			if ( wp_dark_mode()->is_pro_active() || wp_dark_mode()->is_ultimate_active() ) {
 				return;
 			}
 
-			$args = [];
-
-			if ( ! empty( $section )
-			     && in_array( $section['id'], [ 'wp_dark_mode_advanced', 'wp_dark_mode_display', 'wp_dark_mode_style' ] ) ) {
-				$args['is_hidden']    = true;
-				$args['is_pro_promo'] = true;
-			}
-
-			wp_dark_mode()->get_template( 'admin/promo', $args );
-		}
-
-		/**
-		 * Display promo popup to upgrade to Ultimate
-		 *
-		 * @param $section - setting section
-		 */
-		public function ultimate_promo( $section ) {
-
-			if ( wp_dark_mode()->is_ultimate_active() ) {
-				return;
-			}
-
-			$args = [
-				'class' => 'ultimate_promo',
-			];
-
-			if ( ! empty( $section ) && in_array( $section['id'], [ 'wp_dark_mode_advanced', 'wp_dark_mode_display', 'wp_dark_mode_style' ] ) ) {
-				$args['is_hidden'] = true;
-			}
-
-			wp_dark_mode()->get_template( 'admin/promo', $args );
+			wp_dark_mode()->get_template( 'admin/promo' );
 		}
 
 		/**

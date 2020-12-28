@@ -77,11 +77,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 				),
 			);
 
-			if ( ! class_exists('WP_Dark_Mode_Ultimate') && ! class_exists('WP_Dark_Mode_Pro') ) {
-				$key = array_search( 'wp_dark_mode_license', array_column( $sections, 'id' ) );
-
-				unset( $sections[ $key ] );
-			}
 
 			$fields = array(
 
@@ -125,7 +120,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'default' => 'on',
 						'label'   => __( 'Enable OS aware Dark Mode', 'wp-dark-mode' ),
 						'desc'    => __( 'Dark Mode has been activated in the frontend. Now, your users will be served a dark mode of your website when their device preference is set to Dark Mode or by switching the darkmode switch button.',
-								'wp-dark-mode' ) . '<br><br><br> <img src="' . wp_dark_mode()->plugin_url( 'assets/images/os-theme.gif' )
+								'wp-dark-mode' ) . '<br><br><br> <img src="' . WP_DARK_MODE_ASSETS.'/images/os-theme.gif'
 						             . '" alt="">',
 						'type'    => 'switcher',
 					),
@@ -203,13 +198,13 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'desc'    => __( 'Select the switcher button style for the frontend.', 'wp-dark-mode' ),
 						'type'    => 'image_choose',
 						'options' => [
-							'1' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/1.svg' ),
-							'2' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/2.svg' ),
-							'3' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/3.svg' ),
-							'4' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/4.svg' ),
-							'5' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/5.svg' ),
-							'6' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/6.svg' ),
-							'7' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/7.svg' ),
+							'1' => WP_DARK_MODE_ASSETS.'/images/button-presets/1.svg',
+							'2' => WP_DARK_MODE_ASSETS.'/images/button-presets/2.svg',
+							'3' => WP_DARK_MODE_ASSETS.'/images/button-presets/3.svg',
+							'4' => WP_DARK_MODE_ASSETS.'/images/button-presets/4.svg',
+							'5' => WP_DARK_MODE_ASSETS.'/images/button-presets/5.svg',
+							'6' => WP_DARK_MODE_ASSETS.'/images/button-presets/6.svg',
+							'7' => WP_DARK_MODE_ASSETS.'/images/button-presets/7.svg',
 						],
 					),
 
@@ -331,17 +326,17 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'desc'    => __( 'Select the predefined darkmode background, text and link preset color.', 'wp-dark-mode' ),
 						'type'    => 'image_choose',
 						'options' => [
-							'0' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/1.svg' ),
-							'1' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/2.svg' ),
-							'2' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/3.svg' ),
-							'3' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/4.svg' ),
-							'4' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/5.svg' ),
-							'5' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/6.svg' ),
-							'6' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/7.svg' ),
-							'7' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/8.svg' ),
-							'8' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/9.svg' ),
-							'9' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/10.svg' ),
-							'10' => wp_dark_mode()->plugin_url( 'assets/images/color-presets/11.svg' ),
+							'0' => WP_DARK_MODE_ASSETS.'/images/color-presets/1.svg',
+							'1' => WP_DARK_MODE_ASSETS.'/images/color-presets/2.svg',
+							'2' => WP_DARK_MODE_ASSETS.'/images/color-presets/3.svg',
+							'3' => WP_DARK_MODE_ASSETS.'/images/color-presets/4.svg',
+							'4' => WP_DARK_MODE_ASSETS.'/images/color-presets/5.svg',
+							'5' => WP_DARK_MODE_ASSETS.'/images/color-presets/6.svg',
+							'6' => WP_DARK_MODE_ASSETS.'/images/color-presets/7.svg',
+							'7' => WP_DARK_MODE_ASSETS.'/images/color-presets/8.svg',
+							'8' => WP_DARK_MODE_ASSETS.'/images/color-presets/9.svg',
+							'9' => WP_DARK_MODE_ASSETS.'/images/color-presets/10.svg' ,
+							'10' => WP_DARK_MODE_ASSETS.'/images/color-presets/11.svg' ,
 						],
 					),
 
@@ -396,11 +391,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 				) ),
 			);
 
-			if ( ! wp_dark_mode()->is_pro_active() && !wp_dark_mode()->is_ultimate_active() ) {
-				$key = array_search( 'wp_dark_mode_license', array_column( $fields, 'id' ) );
-
-				unset( $fields[ $key ] );
-			}
 
 			self::$settings_api = new WPPOOL_Settings_API();
 
@@ -538,20 +528,11 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
             </table>
 		<?php }
 
-		public static function license_output() {
-			global $wp_dark_mode_license;
-			$wp_dark_mode_license->menu_output();
-		}
-
 		/**
 		 * Register the plugin page
 		 */
 		public function settings_menu() {
 			add_submenu_page('wp-dark-mode', 'WP Dark Mode Settings', 'Settings', 'manage_options', 'wp-dark-mode-settings', [$this, 'settings_page'], 1);
-		}
-
-		public static function getting_started() {
-			wp_dark_mode()->get_template('admin/get-started/index');
 		}
 
 		/**

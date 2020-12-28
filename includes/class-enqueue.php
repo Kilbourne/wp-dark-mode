@@ -80,7 +80,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 				'is_ultimate_active'  => wp_dark_mode()->is_ultimate_active(),
 				'enable_backend'      => 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_backend', 'off' ),
 				'default_mode'        => 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_advanced', 'default_mode', 'off' ),
-				'is_block_editor'     => method_exists( $current_screen, 'is_block_editor' ) && $current_screen->is_block_editor(),
+				'is_block_editor'     => is_object($current_screen) && method_exists( $current_screen, 'is_block_editor' ) && $current_screen->is_block_editor(),
 				'pro_version'         => $pro_version,
 
 				'images' => get_option( 'wp_dark_mode_image_settings' ),
@@ -94,16 +94,11 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 		 */
 		public function admin_scripts( $hook ) {
 
-			wp_enqueue_script( 'jquery.syotimer', WP_DARK_MODE_ASSETS . '/vendor/jquery.syotimer.min.js', [ 'jquery' ],
-				'2.1.2', true );
+			wp_enqueue_script( 'jquery.syotimer', WP_DARK_MODE_ASSETS . '/vendor/jquery.syotimer.min.js', [ 'jquery' ], '2.1.2', true );
 
-			if ( 'settings_page_wp-dark-mode-settings' == $hook ) {
+			wp_enqueue_style( 'select2', WP_DARK_MODE_ASSETS . '/vendor/select2.css' );
 
-				wp_enqueue_style( 'select2', WP_DARK_MODE_ASSETS . '/vendor/select2.css' );
-
-				wp_enqueue_script( 'select2', WP_DARK_MODE_ASSETS . '/vendor/select2.min.js', [ 'jquery' ], false, true );
-			}
-
+			wp_enqueue_script( 'select2', WP_DARK_MODE_ASSETS . '/vendor/select2.min.js', [ 'jquery' ], false, true );
 			wp_enqueue_style( 'wp-dark-mode-admin', WP_DARK_MODE_ASSETS . '/css/admin.css', false, WP_DARK_MODE_VERSION );
 
 
@@ -124,12 +119,11 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 			}
 
 			$cm_settings = [];
-			if ( 'settings_page_wp-dark-mode-settings' == $hook ) {
-				$cm_settings['codeEditor'] = wp_enqueue_code_editor( array( 'type' => 'text/css' ) );
 
-				wp_enqueue_script( 'wp-theme-plugin-editor' );
-				wp_enqueue_style( 'wp-codemirror' );
-			}
+			$cm_settings['codeEditor'] = wp_enqueue_code_editor( array( 'type' => 'text/css' ) );
+
+			wp_enqueue_script( 'wp-theme-plugin-editor' );
+			wp_enqueue_style( 'wp-codemirror' );
 
 			wp_localize_script( 'wp-dark-mode-admin', 'wpDarkModeAdmin', [
 				'pluginUrl'          => WP_DARK_MODE_URL,

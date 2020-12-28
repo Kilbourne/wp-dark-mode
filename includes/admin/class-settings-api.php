@@ -574,8 +574,6 @@ if ( ! class_exists( 'WPPOOL_Settings_API' ) ) {
 			?>
             <div class="wppool-settings-content">
 	            <?php
-
-
 	            foreach ( $this->settings_sections as $form ) { ?>
                     <div id="<?php echo $form['id']; ?>" class="group" style="display: none;">
 
@@ -612,7 +610,11 @@ if ( ! class_exists( 'WPPOOL_Settings_API' ) ) {
 
 		            <?php } ?>
                     </div>
-	            <?php } ?>
+	            <?php }
+
+	            do_action( 'wppool_after_settings' );
+
+	            ?>
             </div>
 			<?php
 			$this->script();

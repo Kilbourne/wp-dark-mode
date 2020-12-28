@@ -58,14 +58,12 @@ $title = $is_pro ? $data['pro_title'] : $data['ultimate_title'];
 
 ?>
 
-<div class="wp-dark-mode-promo <?php echo $class ?? ''; ?> <?php echo $is_hidden ? 'hidden' : ''; ?>">
+<div class="wp-dark-mode-promo hidden">
     <div class="wp-dark-mode-promo-inner">
 
-		<?php if ( $is_hidden ) { ?>
-            <span class="close-promo">&times;</span>
-		<?php } ?>
+        <span class="close-promo">&times;</span>
 
-        <img src="<?php echo wp_dark_mode()->plugin_url( 'assets/images/gift-box.svg' ) ?>" class="promo-img">
+        <img src="<?php echo WP_DARK_MODE_ASSETS . '/images/gift-box.svg'; ?>" class="promo-img">
 
 		<?php
 
@@ -102,7 +100,7 @@ $title = $is_pro ? $data['pro_title'] : $data['ultimate_title'];
             margin: 0 14px;
 
             width: 50px;
-            background: url(<?php echo wp_dark_mode()->plugin_url('assets/images/timer.svg'); ?>) no-repeat 0 0;
+            background: url(<?php echo WP_DARK_MODE_ASSETS.'/images/timer.svg'; ?>) no-repeat 0 0;
             background-size: contain;
         }
 
@@ -127,24 +125,20 @@ $title = $is_pro ? $data['pro_title'] : $data['ultimate_title'];
 
     <script>
         (function ($) {
+
+            /**--- hide promo popup ---**/
+            document.querySelector('.close-promo').addEventListener('click', () => {
+                document.querySelector('.wp-dark-mode-promo').classList.add('hidden');
+            });
+
+            document.querySelector('.wp-dark-mode-promo').addEventListener('click', function (e) {
+                if (e.target !== this) {
+                    return;
+                }
+                this.classList.add('hidden');
+            });
+
             $(document).ready(function () {
-
-                //show popup
-                $(document).on('click', '.image-choose-opt.disabled, .form-table tr.disabled', function (e) {
-                    e.preventDefault();
-
-                    if($(this).closest('tr').hasClass('specific_category')){
-                        $(this).closest('form').find('.wp-dark-mode-promo.ultimate_promo').removeClass('hidden');
-                    }else{
-                        $(this).closest('table').next('.wp-dark-mode-promo').removeClass('hidden');
-                    }
-
-                });
-
-                //close promo
-                $(document).on('click', '.close-promo', function () {
-                    $(this).closest('.wp-dark-mode-promo').addClass('hidden');
-                });
 
 				<?php
 				if ( ! empty( $countdown_time ) ) {

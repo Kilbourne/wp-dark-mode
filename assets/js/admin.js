@@ -2,6 +2,7 @@
 
     const app = {
         init: () => {
+
             app.initDarkmode();
             app.blockSwitches();
             app.blockPresets();
@@ -12,7 +13,6 @@
             app.checkSwitchDeps();
             app.checkCustomize();
             app.checkTimeBasedDeps();
-
 
             app.checkSwitchMenu();
             app.checkSwitchText();
@@ -91,7 +91,18 @@
                 });
             }
 
+            /**--- handle promo popups ---**/
+            document.querySelectorAll('.image-choose-opt.disabled, .form-table tr.disabled').forEach((element) => {
+                element.addEventListener('click', app.showPopup);
+            });
 
+
+        },
+
+        showPopup: (e) => {
+            e.preventDefault();
+
+            document.querySelector('.wp-dark-mode-promo').classList.remove('hidden');
         },
 
         initDarkmode: function () {
@@ -104,8 +115,8 @@
         },
 
         blockSwitches: function () {
-
             if (wpDarkModeAdmin.is_pro_active || wpDarkModeAdmin.is_ultimate_active) {
+
                 return;
             }
 
@@ -121,7 +132,28 @@
                 image_opt.appendChild(div);
             });
 
-            document.querySelectorAll(`.remember_darkmode, .start_at, .end_at, .specific_category, .time_based_mode, .custom_switch_icon, .switch_icon_light, .switch_icon_dark,.custom_switch_text, .switch_text_light, .switch_text_dark, .show_above_post, .show_above_page, .excludes, .exclude_pages, .exclude_pages, .enable_menu_switch, .switch_menus`).forEach((element) => {
+            document.querySelectorAll(`
+                    .remember_darkmode,
+                    .start_at,
+                    .end_at,
+                    .specific_category,
+                    .time_based_mode,
+                    .custom_switch_icon,
+                    .switch_icon_light, 
+                    .switch_icon_dark,
+                    .custom_switch_text,
+                   .switch_text_light, 
+                   .switch_text_dark, 
+                   .show_above_post, 
+                   .show_above_page, 
+                   .excludes, 
+                   .exclude_pages, 
+                   .exclude_pages, 
+                   .enable_menu_switch, 
+                   .switch_menus,
+                   .image_settings,
+                   .custom_css
+                   `).forEach((element) => {
                 element.classList.add('disabled');
             });
         },

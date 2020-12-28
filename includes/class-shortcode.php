@@ -44,7 +44,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Shortcode' ) ) {
 			if ( $custom_icon ) {
 				wp_dark_mode()->get_template( "btn-custom", $atts );
 			} else {
-				if ( file_exists( wp_dark_mode()->plugin_path( "templates/btn-{$atts['style']}.php" ) ) ) {
+				if ( file_exists( WP_DARK_MODE_TEMPLATES."/btn-{$atts['style']}.php" ) ) {
 					wp_dark_mode()->get_template( "btn-{$atts['style']}", $atts );
 				} else {
 					wp_dark_mode()->get_template( "btn-1", $atts );

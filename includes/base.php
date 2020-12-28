@@ -102,7 +102,7 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 		 * do the activation stuffs
 		 */
 		public function activation() {
-			require $this->plugin_path( 'includes/class-install.php' );
+			require WP_DARK_MODE_INCLUDES. '/class-install.php' ;
 
 			add_option( 'wp_dark_mode_do_activation_redirect', true );
 
@@ -176,7 +176,7 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 			include_once WP_DARK_MODE_INCLUDES . '/scss.inc.php';
 
 			/** load gutenberg block */
-			include_once WP_DARK_MODE_PATH . 'block/plugin.php';
+			include_once WP_DARK_MODE_PATH . '/block/plugin.php';
 
 			if ( ! is_admin() ) {
 				include_once WP_DARK_MODE_INCLUDES . '/class-theme-supports.php';
@@ -258,8 +258,7 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 		 */
 		public function register_widget() {
 
-			require $this->plugin_path( 'elementor/class-elementor-widget.php' );
-
+			require WP_DARK_MODE_PATH. 'elementor/class-elementor-widget.php' ;
 			\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new WP_Dark_Mode_Elementor_Widget() );
 		}
 
@@ -314,7 +313,7 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 		public function appsero_init_tracker_wp_dark_mode() {
 
 			if ( ! class_exists( 'Appsero\Client' ) ) {
-				require_once __DIR__ . '/appsero/src/Client.php';
+				require_once WP_DARK_MODE_PATH . '/appsero/src/Client.php';
 			}
 
 			$client = new Appsero\Client( '10d1a5ba-96f5-48e1-bc0e-38d39b9a2f85', 'WP Dark Mode', __FILE__ );
