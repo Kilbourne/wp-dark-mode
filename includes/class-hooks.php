@@ -17,32 +17,21 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 		 */
 		public function __construct() {
 
-			add_action( 'wp_head', [ $this, 'dark_styles' ] );
+			add_filter( 'wp_dark_mode/not', [ $this, 'not_selectors' ] );
+			add_filter( 'wp_dark_mode/excludes', [ $this, 'excludes' ] );
+
+			add_action( 'admin_init', [ $this, 'init_update' ] );
+			add_action( 'admin_footer', [$this, 'display_promo']);
+			add_action( 'wppool_after_settings', [ $this, 'pro_promo' ] );
 
 			/** display the dark mode switcher if the dark mode enabled on frontend */
 			if ( 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'show_switcher', 'on' ) ) {
 				add_action( 'wp_footer', [ $this, 'display_widget' ] );
 			}
 
-			add_action( 'wppool_after_settings', [ $this, 'pro_promo' ] );
-
 			if ( is_admin() && 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_backend', 'off' ) ) {
 				add_action( 'admin_bar_menu', [ $this, 'render_admin_switcher_menu' ], 2000 );
-				add_action( 'admin_head', [ $this, 'dark_styles' ] );
 			}
-
-			add_filter( 'wp_dark_mode/not', [ $this, 'not_selectors' ] );
-
-			add_action( 'admin_init', [ $this, 'init_update' ] );
-
-			add_filter( 'wp_dark_mode/excludes', [ $this, 'excludes' ] );
-
-			//add_action( 'admin_init', [ $this, 'display_notice' ] );
-
-			/** hide black friday notice */
-			//add_action( 'wp_ajax_hide_black_friday_notice', [ $this, 'hide_black_friday_notice' ] );
-
-            add_action('admin_footer', [$this, 'display_promo']);
 
 		}
 
@@ -53,32 +42,9 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 			}
 
 		    if(wp_dark_mode_is_gutenberg_page()){
-			    wp_dark_mode()->get_template( 'admin/promo', ['is_hidden' => true] );
+			    wp_dark_mode()->get_template( 'admin/promo' );
 		    }
         }
-
-//		public function hide_black_friday_notice() {
-//			update_option( 'wp_dark_mode_hide_black_friday_notice', true );
-//			update_option( sanitize_key( 'wp_dark_mode_notices' ), [] );
-//			die();
-//		}
-
-//		public function display_notice() {
-//
-//			if ( get_option( 'wp_dark_mode_hide_black_friday_notice' ) ) {
-//				return;
-//			}
-//
-//			/** display the black-friday notice if the pro version is not activated */
-//			if ( wp_dark_mode()->is_pro_active() || wp_dark_mode()->is_ultimate_active() ) {
-//				return;
-//			}
-//
-//			$message = '<h4>Enjoy upto 75% OFF on WP Dark Mode. Get Your Black Friday <a href="https://wppool.dev/wp-dark-mode" target="_blank">Deals Now</a></h4>';
-//
-//			wp_dark_mode()->add_notice( 'info is-dismissible', $message );
-//
-//		}
 
 		/**
 		 * Exclude elements
@@ -184,7 +150,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 			}
 
 			if ( isset( $post->ID ) && in_array( $post->ID, wp_dark_mode_exclude_pages() ) ) {
-				return;
+				return false;
 			}
 
 			$style = wp_dark_mode_get_settings( 'wp_dark_mode_display', 'switch_style', 1 );
@@ -209,261 +175,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 			}
 
 			wp_dark_mode()->get_template( 'admin/promo' );
-		}
-
-		/**
-		 * Dark style scripts
-		 */
-		public function dark_styles() {
-
-			if ( ! is_admin() && ! wp_dark_mode_enabled() ) {
-				return false;
-			}
-
-			global $post;
-			if ( isset( $post->ID ) && in_array( $post->ID, wp_dark_mode_exclude_pages() ) ) {
-				return false;
-			}
-
-			$preset = wp_dark_mode_get_settings( 'wp_dark_mode_style', 'color_preset', '0' );
-
-			if ( is_admin() ) {
-				$preset = 0;
-			}
-
-			$colors = wp_dark_mode_color_presets( $preset );
-
-			$bg_color     = $colors['bg'];
-			$text_color   = $colors['text'];
-			$link_color   = $colors['link'];
-			$border_color = wp_dark_mode_lighten( $bg_color, 30 );
-			$btn_bg_color = wp_dark_mode_lighten( $bg_color, 20 );
-
-			if ( ! is_admin() ) {
-				$bg_color     = apply_filters( 'wp_dark_mode/bg_color', $bg_color );
-				$text_color   = apply_filters( 'wp_dark_mode/text_color', $text_color );
-				$link_color   = apply_filters( 'wp_dark_mode/link_color', $link_color );
-				$border_color = apply_filters( 'wp_dark_mode/border_color', $border_color );
-			}
-
-			if ( is_admin() ) {
-				$base_selector = 'html.wp-dark-mode-active #wpbody';
-				$bg_color      = '#10161E';
-				$border_color  = '#555';
-			} else {
-				$base_selector = apply_filters('wp_dark_mode/base_selectors', 'html.wp-dark-mode-active');
-			}
-
-			ob_start();
-
-			/** declare css variables */
-			printf( '
-			    :root{
-			        --wp-dark-mode-bg: %1$s;
-			        --wp-dark-mode-text: %2$s;
-			        --wp-dark-mode-link: %3$s;
-			        --wp-dark-mode-btn: %4$s;
-			        --wp-dark-mode-border: %5$s;
-			    }
-			', $bg_color, $text_color, $link_color, $btn_bg_color, $border_color );
-
-			printf( '%1$s{:not(.wp-dark-mode-ignore):not(mark):not(code):not(pre):not(ins):not(option):not(input):not(select):not(textarea):not(button):not(a):not(video):not(canvas):not(progress):not(iframe):not(svg):not(path):not(.mejs-iframe-overlay)%2$s{
-			     background-color: var(--wp-dark-mode-bg) !important;
-			     color: var(--wp-dark-mode-text) !important;
-                 border-color: var(--wp-dark-mode-border) !important;
-			}}', $base_selector, apply_filters( 'wp_dark_mode/not', '' ) );
-
-			printf( '%1$s {
-                a,
-                a *,
-                a:active,
-                a:active *,
-                a:visited,
-                a:visited * {
-                    &:not(.wp-dark-mode-ignore){
-                        background-color: transparent !important;
-                        color: var(--wp-dark-mode-link) !important;
-                        border-color: var(--wp-dark-mode-border) !important;
-                    }
-                }
-			}', $base_selector );
-
-			/** Image Opacity */
-			if ( 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_advanced', 'low_image', 'on' ) ) {
-				printf( 'html.wp-dark-mode-active img {
-                  filter: brightness(.7) contrast(1.3);
-			}' );
-			}
-
-			if ( ! is_admin() ) {
-				printf( '%1$s {
-				    button,
-                    iframe,
-                    iframe *,
-                    input,
-                    input[type="button"],
-                    input[type="checkebox"],
-                    input[type="date"],
-                    input[type="datetime-local"],
-                    input[type="email"],
-                    input[type="image"],
-                    input[type="month"],
-                    input[type="number"],
-                    input[type="range"],
-                    input[type="reset"],
-                    input[type="search"],
-                    input[type="submit"],
-                    input[type="tel"],
-                    input[type="text"],
-                    input[type="time"],
-                    input[type="url"],
-                    input[type="week"],
-                    select,
-                    textarea,
-                    i {
-                        &:not(.wp-dark-mode-ignore){
-                            background-color: var(--wp-dark-mode-btn) !important;
-                            color: var(--wp-dark-mode-text) !important;
-                            border-color: var(--wp-dark-mode-border) !important;
-                        }
-                        
-                       *:not(.wp-dark-mode-ignore) {
-                          background: transparent !important;
-                        }
-                        
-                    }
-				}', $base_selector );
-			}
-
-			$scss = ob_get_clean();
-
-			?>
-
-            <script>
-
-                // transfers sessionStorage from one tab to another
-                var sessionStorage_transfer = function(event) {
-                    if(!event) { event = window.event; } // ie suq
-                    if(!event.newValue) return;          // do nothing if no value to work with
-                    if (event.key == 'getSessionStorage') {
-                        // another tab asked for the sessionStorage -> send it
-                        localStorage.setItem('sessionStorage', JSON.stringify(sessionStorage));
-                        // the other tab should now have it, so we're done with it.
-                        localStorage.removeItem('sessionStorage'); // <- could do short timeout as well.
-                    } else if (event.key == 'sessionStorage' && !sessionStorage.length) {
-                        // another tab sent data <- get it
-                        var data = JSON.parse(event.newValue);
-                        for (var key in data) {
-                            sessionStorage.setItem(key, data[key]);
-                        }
-                    }
-                };
-
-                // listen for changes to localStorage
-                if(window.addEventListener) {
-                    window.addEventListener("storage", sessionStorage_transfer, false);
-                } else {
-                    window.attachEvent("onstorage", sessionStorage_transfer);
-                }
-
-                // Ask other tabs for session storage (this is ONLY to trigger event)
-                if (!sessionStorage.length) {
-                    localStorage.setItem('getSessionStorage', 'foobar');
-                    localStorage.removeItem('getSessionStorage', 'foobar');
-                }
-
-				<?php
-
-				$js = '';
-				$default_mode ='on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'default_mode', 'off' ) ? 1 : 0;
-
-				if ( is_admin() ) {
-					$js .= "var is_saved = sessionStorage.getItem('wp_dark_mode_admin'); var default_mode = false;";
-				} else {
-					$js .= "var is_saved = sessionStorage.getItem('wp_dark_mode_frontend'); var default_mode = $default_mode;";
-
-					if(wp_dark_mode()->is_ultimate_active()){
-					    $remember_darkmode = 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_advanced', 'remember_darkmode', 'off' ) ? true : false;
-					    if($remember_darkmode){
-					        $js .= "is_saved = localStorage.getItem('wp_dark_mode_active');console.log(is_saved);";
-                        }
-                    }
-
-				}
-
-				echo $js;
-
-				?>
-
-                if ( (is_saved && is_saved != 0) || (!is_saved && default_mode) ) {
-                    document.querySelector('html').classList.add('wp-dark-mode-active');
-                }
-
-				<?php
-
-				/**-- check os aware mode --**/
-				if ( 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_os_mode', 'on' ) ) { ?>
-
-                /**-- check OS aware mode if dark mode not changed by the switch --**/
-                if (!is_saved || (is_saved && is_saved != 0)) {
-                    var darkMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-
-                    try {
-                        // Chrome & Firefox
-                        darkMediaQuery.addEventListener('change', function (e) {
-                            var newColorScheme = e.matches ? 'dark' : 'light';
-
-                            if ('dark' === newColorScheme) {
-                                document.querySelector('html').classList.add('wp-dark-mode-active');
-                            } else {
-                                document.querySelector('html').classList.remove('wp-dark-mode-active');
-                            }
-
-                            window.dispatchEvent(new Event('darkmodeInit'));
-
-                        });
-                    } catch (e1) {
-                        try {
-                            // Safari
-                            darkMediaQuery.addListener(function (e) {
-                                var newColorScheme = e.matches ? 'dark' : 'light';
-
-                                if ('dark' === newColorScheme) {
-                                    document.querySelector('html').classList.add('wp-dark-mode-active');
-                                } else {
-                                    document.querySelector('html').classList.remove('wp-dark-mode-active');
-                                }
-
-                                window.dispatchEvent(new Event('darkmodeInit'));
-
-                            });
-                        } catch (e2) {
-                            console.error(e2);
-                        }
-                    }
-
-                    /** check init dark theme */
-                    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                        document.querySelector('html').classList.add('wp-dark-mode-active');
-                        window.dispatchEvent(new Event('darkmodeInit'));
-                    }
-                }
-
-				<?php } ?>
-
-            </script>
-
-            <style>
-                <?php
-				if ( ! empty( $scss ) ) {
-				    $scss_compiler = new scssc();
-
-					echo $scss_compiler->compile( $scss );
-				}
-				?>
-            </style>
-
-			<?php
 		}
 
 		/**

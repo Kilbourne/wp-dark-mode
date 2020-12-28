@@ -86,9 +86,6 @@ window.wpDarkModeHooks = createHooks();
 
             const html = document.querySelector('html');
             html.classList.toggle('wp-dark-mode-active');
-
-            document.querySelectorAll('.wp-dark-mode-switcher').forEach((switcher) => switcher.classList.toggle('active'));
-
             app.checkDarkMode();
 
             const is_saved = html.classList.contains('wp-dark-mode-active') ? 1 : 0;
@@ -106,59 +103,19 @@ window.wpDarkModeHooks = createHooks();
         /** check if the darkmode is active or not on initialize */
         checkDarkMode: () => {
             if (document.querySelector('html').classList.contains('wp-dark-mode-active')) {
+                DarkReader.enable({
+                    brightness: 100,
+                    contrast: 90,
+                    sepia: 10
+                });
                 document.querySelectorAll('.wp-dark-mode-switcher').forEach((switcher) => switcher.classList.add('active'));
             } else {
+                DarkReader.disable();
                 document.querySelectorAll('.wp-dark-mode-switcher').forEach((switcher) => switcher.classList.remove('active'));
             }
         },
 
         checkOsMode: function () {
-
-            if (!wpDarkModeFrontend.enable_os_mode) {
-                return;
-            }
-
-            var darkMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-
-            try {
-                // Chrome & Firefox
-                darkMediaQuery.addEventListener('change', function (e) {
-                    var newColorScheme = e.matches ? 'dark' : 'light';
-
-                    if ('dark' === newColorScheme) {
-                        document.querySelector('html').classList.add('wp-dark-mode-active');
-                    } else {
-                        document.querySelector('html').classList.remove('wp-dark-mode-active');
-                    }
-
-                    window.dispatchEvent(new Event('darkmodeInit'));
-
-                });
-            } catch (e1) {
-                try {
-                    // Safari
-                    darkMediaQuery.addListener(function (e) {
-                        var newColorScheme = e.matches ? 'dark' : 'light';
-
-                        if ('dark' === newColorScheme) {
-                            document.querySelector('html').classList.add('wp-dark-mode-active');
-                        } else {
-                            document.querySelector('html').classList.remove('wp-dark-mode-active');
-                        }
-
-                        window.dispatchEvent(new Event('darkmodeInit'));
-
-                    });
-                } catch (e2) {
-                    console.error(e2);
-                }
-            }
-
-            /** check init dark theme */
-            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                document.querySelector('html').classList.add('wp-dark-mode-active');
-                window.dispatchEvent(new Event('darkmodeInit'));
-            }
 
         },
 

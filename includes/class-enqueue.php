@@ -40,6 +40,9 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 			wp_enqueue_script( 'wp-dark-mode-frontend', WP_DARK_MODE_ASSETS . '/js/frontend.min.js', [ 'jquery', 'wp-util' ],
 				WP_DARK_MODE_VERSION, true );
 
+			/** dark-reader js */
+			wp_enqueue_script( 'wp-dark-mode-dark-reader', WP_DARK_MODE_ASSETS . '/vendor/dark-reader.js', [ 'jquery', 'wp-util' ], WP_DARK_MODE_VERSION, true );
+
 			/** woocommerce style*/
 			if ( class_exists( 'WooCommerce' ) ) {
 				wp_enqueue_style( 'wp-dark-mode-woocommerce', WP_DARK_MODE_ASSETS . '/css/woocommerce.css' );
