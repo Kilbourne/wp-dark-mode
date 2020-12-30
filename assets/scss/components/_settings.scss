@@ -15,20 +15,6 @@ tr.gutenberg_doc, tr.elementor_doc, tr.image_settings, tr.shortcodes_doc, tr.wid
   }
 }
 
-.doc-section {
-  list-style: disc;
-
-  img {
-    max-width: 100%;
-    border: 1px solid #ddd;
-  }
-
-  h3 {
-    font-weight: 300;
-  }
-
-}
-
 #wp_dark_mode_start-tab {
   background: yellowgreen;
   color: #fff;
@@ -36,45 +22,6 @@ tr.gutenberg_doc, tr.elementor_doc, tr.image_settings, tr.shortcodes_doc, tr.wid
   i {
     color: #fff;
   }
-}
-
-#wp_dark_mode_start {
-  .submit {
-    display: none;
-  }
-
-  .form-table {
-    td {
-      padding: 0;
-    }
-  }
-}
-
-.wppool-settings tr.getting_started {
-  th {
-    display: none;
-  }
-
-  .getting-started-section {
-    margin-bottom: 50px;
-    padding: 10px;
-
-    h2 {
-      font-weight: bold;
-    }
-
-    .wp-video, iframe {
-      max-width: 640px !important;
-      max-height: 360px !important;
-      overflow: hidden;
-    }
-
-    p {
-      margin-bottom: 15px;
-    }
-
-  }
-
 }
 
 #wp_dark_mode_license {
@@ -230,23 +177,40 @@ tr.gutenberg_doc, tr.elementor_doc, tr.image_settings, tr.shortcodes_doc, tr.wid
 
 
 /** -- Get Started Section -- **/
+.getting-started-wrap {
+  margin-top: 30px;
+
+  h2 {
+    font-weight: bold;
+  }
+
+  .wp-video, iframe {
+    max-width: 640px !important;
+    max-height: 360px !important;
+    overflow: hidden;
+  }
+
+  p {
+    margin-bottom: 15px;
+  }
+
+}
 .tab-wrap {
   display: flex;
+  flex-flow: column;
   border: 1px solid #ddd;
 
   .tab-links {
-    width: 20%;
     display: flex;
-    flex-flow: column;
 
     .tab-link {
-      padding: 15px 5px 15px;
+      padding: 15px 30px;
       background: #333;
       color: #fff;
       display: flex;
       align-items: center;
       text-decoration: none;
-      border-bottom: 1px solid #fff;
+      border-left: 1px solid #fff;
       font-size: 16px;
 
       i{
@@ -262,11 +226,12 @@ tr.gutenberg_doc, tr.elementor_doc, tr.image_settings, tr.shortcodes_doc, tr.wid
 
   .tab-content {
     flex: 1;
-    padding: 0 15px;
     background: #fff;
     display: none;
     font-size: 15px;
     border: 1px solid #ddd;
+    padding: 30px;
+
 
     video, img, iframe{
       max-width: 100%;
@@ -339,6 +304,21 @@ tr.gutenberg_doc, tr.elementor_doc, tr.image_settings, tr.shortcodes_doc, tr.wid
         font-weight: bold;
         border-radius: 5px;
       }
+  }
+
+  .doc-section {
+    list-style: disc;
+
+    img {
+      width: 100%;
+      max-width: 630px;
+      border: 1px solid #ddd;
+    }
+
+    h3 {
+      font-weight: 300;
+    }
+
   }
 
 }

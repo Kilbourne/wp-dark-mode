@@ -191,6 +191,36 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 
 				'wp_dark_mode_display'  => apply_filters( 'wp_dark_mode/display_settings', array(
 
+					'brightness' => [
+						'name'    => 'brightness',
+						'label'   => __( 'Brightness :', 'wp-dark-mode' ),
+						'desc'    => __( 'Set the brightness of the dark mode.', 'wp-dark-mode' ),
+						'type'    => 'slider',
+						'default' => 100,
+						'min'     => 0,
+						'max'     => 100,
+					],
+
+					'contrast' => [
+						'name'    => 'contrast',
+						'label'   => __( 'Brightness :', 'wp-dark-mode' ),
+						'desc'    => __( 'Set the contrast of the dark mode.', 'wp-dark-mode' ),
+						'type'    => 'slider',
+						'default' => 90,
+						'min'     => 0,
+						'max'     => 100,
+					],
+
+					'sepia' => [
+						'name'    => 'sepia',
+						'label'   => __( 'Sepia :', 'wp-dark-mode' ),
+						'desc'    => __( 'Set the sepia of the dark mode.', 'wp-dark-mode' ),
+						'type'    => 'slider',
+						'default' => 10,
+						'min'     => 0,
+						'max'     => 100,
+					],
+
 					'switch_style'      => array(
 						'name'    => 'switch_style',
 						'default' => '1',

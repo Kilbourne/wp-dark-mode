@@ -25,6 +25,6 @@
         <br>
     </p>
 
-    <p><img src="<?php echo wp_dark_mode()->plugin_url( 'assets/images/switch-widget.png' ) ?>" alt=""></p>
+    <p><img src="<?php echo WP_DARK_MODE_ASSETS . '/images/switch-widget.png'; ?>" alt=""></p>
 
 </div>

@@ -9,12 +9,12 @@
 
         <li>
             <h3>Add "Dark Mode Switch" widget from "Basic" category</h3>
-            <img src="<?php echo wp_dark_mode()->plugin_url( 'assets/images/elementor/step-1.png' ) ?>" alt="step-2">
+            <img src="<?php echo WP_DARK_MODE_ASSETS.'/images/elementor/step-1.png'; ?>" alt="step-2">
         </li>
 
         <li>
             <h3>Choose button style from widget settings and you are done</h3>
-            <img src="<?php echo wp_dark_mode()->plugin_url( 'assets/images/elementor/step-2.png' ) ?>" alt="step-2">
+            <img src="<?php echo WP_DARK_MODE_ASSETS.'/images/elementor/step-2.png'; ?>" alt="step-2">
         </li>
     </ul>
 

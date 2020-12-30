@@ -9,17 +9,17 @@
 	<ul class="doc-section">
 		<li>
 			<h3>While you are on the post/page edit screen click on gutenberg plus icon to add a new gutenberg block</h3>
-			<img src="<?php echo wp_dark_mode()->plugin_url( 'assets/images/gutenberg/step-1.png' ) ?>" alt="step-1">
+			<img src="<?php echo WP_DARK_MODE_ASSETS.'/images/gutenberg/step-1.png'; ?>" alt="step-1">
 		</li>
 
 		<li>
 			<h3>Add "Dark Mode Switch" from "Text" category</h3>
-			<img src="<?php echo wp_dark_mode()->plugin_url( 'assets/images/gutenberg/step-2.png' ) ?>" alt="step-2">
+			<img src="<?php echo WP_DARK_MODE_ASSETS.'/images/gutenberg/step-2.png'; ?>" alt="step-2">
 		</li>
 
 		<li>
 			<h3>Choose button style from block settings and you are done</h3>
-			<img src="<?php echo wp_dark_mode()->plugin_url( 'assets/images/gutenberg/step-3.png' ) ?>" alt="step-2">
+			<img src="<?php echo WP_DARK_MODE_ASSETS.'/images/gutenberg/step-3.png'; ?>" alt="step-2">
 		</li>
 	</ul>
 

@@ -32,6 +32,12 @@ if ( ! class_exists( 'WPPOOL_Settings_API' ) ) {
 			wp_enqueue_media();
 			wp_enqueue_script( 'wp-color-picker' );
 			wp_enqueue_script( 'jquery' );
+
+			wp_enqueue_script( 'jquery-ui-slider' );
+			$wp_scripts = wp_scripts();
+			wp_enqueue_style( 'wp-radio-jquery-ui-css',
+				'http://ajax.googleapis.com/ajax/libs/jqueryui/' . $wp_scripts->registered['jquery-ui-core']->ver
+				. '/themes/smoothness/jquery-ui.css' );
 		}
 
 		/**
@@ -500,6 +506,23 @@ if ( ! class_exists( 'WPPOOL_Settings_API' ) ) {
 			return $options;
 		}
 
+		function callback_slider( $args ) {
+			$min   = ! empty( $args['min'] ) ? $args['min'] : 0;
+			$max   = ! empty( $args['max'] ) ? $args['max'] : 100;
+			$value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
+
+
+			$html = sprintf( '
+            <div class="wppool-slider" data-min="%4$s" data-max="%5$s" data-value="%6$s">
+            <input type="hidden" id="%1$s[%2$s]" name="%1$s[%2$s]" value="%3$s" />
+            <div class="wppool-slider-handle ui-slider-handle"></div>
+            </div>
+            ', $args['section'], $args['id'], $args['std'], $min, $max, $value );
+
+			$html .= $this->get_field_description( $args );
+			echo $html;
+		}
+
 		/**
 		 * Get sanitization callback for given option slug
 		 *
@@ -636,6 +659,31 @@ if ( ! class_exists( 'WPPOOL_Settings_API' ) ) {
 			?>
             <script>
                 jQuery(document).ready(function ($) {
+                    $(".wppool-slider").each(function () {
+                        const $slider = $(this);
+                        const min = $slider.data('min');
+                        const max = $slider.data('max');
+                        const value = $slider.data('value');
+
+
+                        $slider.slider({
+                            range: 'min',
+                            min,
+                            max,
+                            value,
+                            create: function () {
+                                const handle = $(".wppool-slider-handle", $slider);
+                                handle.text($(this).slider("value"));
+                            },
+
+                            slide: function (event, ui) {
+                                const handle = $(".wppool-slider-handle", $slider);
+                                $("input", $(this)).val(ui.value);
+                                handle.text(ui.value);
+                            }
+                        });
+                    });
+
                     //Initiate Color Picker
                     $('.wp-color-picker-field').wpColorPicker();
 
@@ -950,6 +998,29 @@ if ( ! class_exists( 'WPPOOL_Settings_API' ) ) {
                 .wppool-settings .image-choose-opt.active img {
                     border: 2px solid blueviolet;
 
+                }
+
+                /**-- slider --**/
+                .wppool-slider {
+                    max-width: 350px;
+                }
+
+                .wppool-slider input {
+                    display: none;
+                }
+
+                .wppool-slider-handle {
+                    width: 3em !important;
+                    height: 1.6em !important;
+                    margin-top: -3px;
+                    text-align: center;
+                    line-height: 1.6em;
+                    background: deeppink !important;
+                    color: #fff !important;
+                }
+
+                .wppool-slider .ui-slider-range {
+                    background: deeppink !important;
                 }
 
             </style>
