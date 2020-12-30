@@ -30,7 +30,7 @@ class WP_Dark_Mode_Controls_Init {
 		include WP_DARK_MODE_PATH . '/elementor/modules/controls/control-manager.php';
 
 		// image choose
-		include WP_DARK_MODE_PATH . 'elementor/modules/controls/image-choose.php';
+		include WP_DARK_MODE_PATH . '/elementor/modules/controls/image-choose.php';
 	}
 
 

@@ -73,6 +73,10 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 			}
 
 			wp_localize_script( 'wp-dark-mode-frontend', 'wpDarkModeFrontend', [
+				'brightness' => wp_dark_mode_get_settings( 'wp_dark_mode_display', 'brightness', 100 ),
+				'contrast'   => wp_dark_mode_get_settings( 'wp_dark_mode_display', 'contrast', 90 ),
+				'sepia'      => wp_dark_mode_get_settings( 'wp_dark_mode_display', 'sepia', 10 ),
+
 				'excludes'            => apply_filters( 'wp_dark_mode/excludes', trim( $excludes, ',' ) ),
 				'is_excluded'         => $is_excluded,
 				'enable_frontend'     => wp_dark_mode_enabled(),

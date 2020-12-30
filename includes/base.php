@@ -48,7 +48,7 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 
 				add_action( 'elementor/widgets/widgets_registered', [ $this, 'register_widget' ] );
 				if ( did_action( 'elementor/loaded' ) ) {
-					include_once WP_DARK_MODE_PATH . 'elementor/modules/controls/init.php';
+					include_once WP_DARK_MODE_PATH . '/elementor/modules/controls/init.php';
 				}
 
 				do_action( 'wp_dark_mode/loaded' );
@@ -258,7 +258,7 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 		 */
 		public function register_widget() {
 
-			require WP_DARK_MODE_PATH. 'elementor/class-elementor-widget.php' ;
+			require WP_DARK_MODE_PATH. '/elementor/class-elementor-widget.php' ;
 			\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new WP_Dark_Mode_Elementor_Widget() );
 		}
 

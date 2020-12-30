@@ -2641,14 +2641,38 @@
         var rulesModCache = new Map();
         var prevFilterKey = null;
         function modifySheet(options) {
-            var rules = options.sourceCSSRules;
+            var newRules = options.sourceCSSRules;
+
+            //let newRules = [];
+            // let i = 0;
+            // forEach(rules, (rule) => {
+            //     if (typeof rule.selectorText !== 'undefined') {
+            //
+            //         if (rule.selectorText.includes('wp-dark-mode-ignore')) {
+            //             return;
+            //         }
+            //
+            //         const element = document.querySelector(rule.selectorText);
+            //         if (element && element.classList.contains('wp-dark-mode-ignore')) {
+            //             return;
+            //         }
+            //     }
+            //
+            //     newRules.push( rule);
+            //
+            //     i++;
+            // });
+
+
+
+
             var theme = options.theme, variables = options.variables, ignoreImageAnalysis = options.ignoreImageAnalysis, force = options.force, prepareSheet = options.prepareSheet, isAsyncCancelled = options.isAsyncCancelled;
             var rulesChanged = (rulesModCache.size === 0);
             var notFoundCacheKeys = new Set(rulesModCache.keys());
             var themeKey = getThemeKey(theme);
             var themeChanged = (themeKey !== prevFilterKey);
             var modRules = [];
-            iterateCSSRules(rules, function (rule) {
+            iterateCSSRules(newRules, function (rule) {
                 var cssText = rule.cssText;
                 var textDiffersFromPrev = false;
                 notFoundCacheKeys.delete(cssText);
@@ -2702,7 +2726,30 @@
             }
             renderId++;
             function setRule(target, index, rule) {
+
+                    // if (typeof rule.selector !== 'undefined') {
+                    //
+                    //     if (rule.selector.includes('wp-dark-mode-ignore')) {
+                    //         return;
+                    //     }
+                    //
+                    //     const element = document.querySelector(rule.selector);
+                    //     if (element && element.classList.contains('wp-dark-mode-ignore')) {
+                    //         return;
+                    //     }
+                    // }
+
                 var selector = rule.selector, declarations = rule.declarations;
+
+                if (selector.includes('wp-dark-mode')) {
+                    return;
+                }
+
+                const element = document.querySelector(selector);
+                if (element && element.classList.contains('wp-dark-mode-ignore')) {
+                    return;
+                }
+
                 target.insertRule(selector + " {}", index);
                 var style = target.cssRules[index].style;
                 declarations.forEach(function (_a) {
@@ -2715,6 +2762,7 @@
             var rootReadyGroup = { rule: null, rules: [], isGroup: true };
             var groupRefs = new WeakMap();
             function getGroup(rule) {
+
                 if (rule == null) {
                     return rootReadyGroup;
                 }
@@ -2769,6 +2817,7 @@
             function buildStyleSheet() {
                 function createTarget(group, parent) {
                     var rule = group.rule;
+
                     if (rule instanceof CSSMediaRule) {
                         var media = rule.media;
                         var index = parent.cssRules.length;

@@ -27,13 +27,13 @@ class WP_Dark_Mode_Control_Image_Choose extends \Elementor\Base_Data_Control {
 	public function enqueue() {
 		// styles
 		wp_register_style( 'wp-dark-mode-css-image-choose-control',
-			wp_dark_mode()->plugin_url( 'elementor/modules/controls/assets/css/image-choose.css' ), [], '1.0.0' );
+			WP_DARK_MODE_URL . 'elementor/modules/controls/assets/css/image-choose.css', [], '1.0.0' );
 
 		wp_enqueue_style( 'wp-dark-mode-css-image-choose-control' );
 
 		// script
 		wp_register_script( 'wp-dark-mode-js-image-choose-control',
-			wp_dark_mode()->plugin_url( 'elementor/modules/controls/assets/js/image-choose.js' ) );
+			WP_DARK_MODE_URL . 'elementor/modules/controls/assets/js/image-choose.js' );
 
 		wp_enqueue_script( 'wp-dark-mode-js-image-choose-control' );
 	}

@@ -61,6 +61,11 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'<i class="dashicons dashicons-welcome-view-site" ></i>' ),
 				),
 				array(
+					'id'    => 'wp_dark_mode_switch',
+					'title' => sprintf( __( '%s <span>Switch Settings</span>', 'wp-dark-mode' ),
+						'<i class="dashicons dashicons-slides" ></i>' ),
+				),
+				array(
 					'id'    => 'wp_dark_mode_style',
 					'title' => sprintf( __( '%s <span>Style Settings</span>', 'wp-dark-mode' ),
 						'<i class="dashicons dashicons-admin-customizer" ></i>' ),
@@ -87,14 +92,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'default' => 'on',
 						'label'   => __( 'Enable Frontend Darkmode', 'wp-dark-mode' ),
 						'desc'    => __( 'Turn ON to enable the darkmode in the frontend.', 'wp-dark-mode' ),
-						'type'    => 'switcher',
-					),
-
-					'show_switcher' => array(
-						'name'    => 'show_switcher',
-						'default' => 'on',
-						'label'   => __( 'Show Floating Switch', 'wp-dark-mode' ),
-						'desc'    => __( 'Show the floating dark mode switcher button on the frontend for the users.', 'wp-dark-mode' ),
 						'type'    => 'switcher',
 					),
 
@@ -221,114 +218,6 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'max'     => 100,
 					],
 
-					'switch_style'      => array(
-						'name'    => 'switch_style',
-						'default' => '1',
-						'label'   => __( 'Floating Switch Style', 'wp-dark-mode' ),
-						'desc'    => __( 'Select the switcher button style for the frontend.', 'wp-dark-mode' ),
-						'type'    => 'image_choose',
-						'options' => [
-							'1' => WP_DARK_MODE_ASSETS.'/images/button-presets/1.svg',
-							'2' => WP_DARK_MODE_ASSETS.'/images/button-presets/2.svg',
-							'3' => WP_DARK_MODE_ASSETS.'/images/button-presets/3.svg',
-							'4' => WP_DARK_MODE_ASSETS.'/images/button-presets/4.svg',
-							'5' => WP_DARK_MODE_ASSETS.'/images/button-presets/5.svg',
-							'6' => WP_DARK_MODE_ASSETS.'/images/button-presets/6.svg',
-							'7' => WP_DARK_MODE_ASSETS.'/images/button-presets/7.svg',
-						],
-					),
-
-					'switcher_position' => array(
-						'name'    => 'switcher_position',
-						'default' => 'right_bottom',
-						'label'   => __( 'Floating Switch Position', 'wp-dark-mode' ),
-						'desc'    => __( 'Select the position of the floating dark mode switcher button on the frontend.',
-							'wp-dark-mode' ),
-						'type'    => 'select',
-						'options' => [
-							'left_bottom'  => __( 'Left Bottom', 'wp-dark-mode' ),
-							'right_bottom' => __( 'Right Bottom', 'wp-dark-mode' ),
-						],
-					),
-
-					'enable_menu_switch'   => array(
-						'name'    => 'enable_menu_switch',
-						'default' => 'off',
-						'label'   => __( 'Display Switch in Menu', 'wp-dark-mode' ),
-						'desc'    => __( 'Display the darkmode switch in the menu.', 'wp-dark-mode' ),
-						'type'    => 'switcher',
-					),
-
-					'switch_menus'   => array(
-						'name'    => 'switch_menus',
-						'default' => [$this, 'switch_menus'],
-						'label'   => __( 'Select Menu(s)', 'wp-dark-mode' ),
-						'desc'    => __( 'Select the menu(s) in which you want to display the darkmode switch.', 'wp-dark-mode' ),
-						'type'    => 'cb_function',
-					),
-
-					'custom_switch_icon'   => array(
-						'name'    => 'custom_switch_icon',
-						'default' => 'off',
-						'label'   => __( 'Custom Switch Icon', 'wp-dark-mode' ),
-						'desc'    => __( 'Customize the darkmode switch icon in the dark & light mode.', 'wp-dark-mode' ),
-						'type'    => 'switcher',
-					),
-
-					'switch_icon_light'   => array(
-						'name'    => 'switch_icon_light',
-						'label'   => __( 'Switch Icon (Light)', 'wp-dark-mode' ),
-						'desc'    => __( 'Switch Icon in the light mode.', 'wp-dark-mode' ),
-						'type'    => 'file',
-					),
-
-					'switch_icon_dark'   => array(
-						'name'    => 'switch_icon_dark',
-						'label'   => __( 'Switch Icon (Dark)', 'wp-dark-mode' ),
-						'desc'    => __( 'Switch Icon in the dark mode.', 'wp-dark-mode' ),
-						'type'    => 'file',
-					),
-
-					'custom_switch_text'   => array(
-						'name'    => 'custom_switch_text',
-						'default' => 'off',
-						'label'   => __( 'Custom Switch Text', 'wp-dark-mode' ),
-						'desc'    => __( 'Customize the darkmode switch text.', 'wp-dark-mode' ),
-						'type'    => 'switcher',
-					),
-
-					'switch_text_light'   => array(
-						'name'    => 'switch_text_light',
-						'default' => 'Light',
-						'label'   => __( 'Switch Text (Light)', 'wp-dark-mode' ),
-						'desc'    => __( 'Floating switch light text.', 'wp-dark-mode' ),
-						'type'    => 'text',
-					),
-
-					'switch_text_dark'   => array(
-						'name'    => 'switch_text_dark',
-						'default' => 'Dark',
-						'label'   => __( 'Switch Text (Dark)', 'wp-dark-mode' ),
-						'desc'    => __( 'Floating switch dark text.', 'wp-dark-mode' ),
-						'type'    => 'text',
-					),
-
-					'show_above_post'   => array(
-						'name'    => 'show_above_post',
-						'default' => 'off',
-						'label'   => __( 'Show Above Posts', 'wp-dark-mode' ),
-						'desc'    => __( 'Show the dark mode switcher button above of all the post.', 'wp-dark-mode' ),
-						'type'    => 'switcher',
-					),
-
-					'show_above_page'   => array(
-						'name'    => 'show_above_page',
-						'default' => 'off',
-						'label'   => __( 'Show Above Pages', 'wp-dark-mode' ),
-						'desc'    => __( 'Show the dark mode switcher button above of all the pages.', 'wp-dark-mode' ),
-						'type'    => 'switcher',
-					),
-
 					'excludes'   => array(
 						'name'    => 'excludes',
 						'default' => '',
@@ -348,25 +237,142 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 
 				) ),
 
-				'wp_dark_mode_style'    => apply_filters( 'wp_dark_mode/style_settings', array(
-					'color_preset'         => array(
+				'wp_dark_mode_switch' => apply_filters( 'wp_dark_mode/switch_settings', array(
+					'show_switcher' => array(
+						'name'    => 'show_switcher',
+						'default' => 'on',
+						'label'   => __( 'Show Floating Switch', 'wp-dark-mode' ),
+						'desc'    => __( 'Show the floating dark mode switcher button on the frontend for the users.', 'wp-dark-mode' ),
+						'type'    => 'switcher',
+					),
+
+					'switch_style' => array(
+						'name'    => 'switch_style',
+						'default' => '1',
+						'label'   => __( 'Floating Switch Style', 'wp-dark-mode' ),
+						'desc'    => __( 'Select the switcher button style for the frontend.', 'wp-dark-mode' ),
+						'type'    => 'image_choose',
+						'options' => [
+							'1' => WP_DARK_MODE_ASSETS . '/images/button-presets/1.svg',
+							'2' => WP_DARK_MODE_ASSETS . '/images/button-presets/2.svg',
+							'3' => WP_DARK_MODE_ASSETS . '/images/button-presets/3.svg',
+							'4' => WP_DARK_MODE_ASSETS . '/images/button-presets/4.svg',
+							'5' => WP_DARK_MODE_ASSETS . '/images/button-presets/5.svg',
+							'6' => WP_DARK_MODE_ASSETS . '/images/button-presets/6.svg',
+							'7' => WP_DARK_MODE_ASSETS . '/images/button-presets/7.svg',
+						],
+					),
+
+					'switcher_position' => array(
+						'name'    => 'switcher_position',
+						'default' => 'right_bottom',
+						'label'   => __( 'Floating Switch Position', 'wp-dark-mode' ),
+						'desc'    => __( 'Select the position of the floating dark mode switcher button on the frontend.', 'wp-dark-mode' ),
+						'type'    => 'select',
+						'options' => [
+							'left_bottom'  => __( 'Left Bottom', 'wp-dark-mode' ),
+							'right_bottom' => __( 'Right Bottom', 'wp-dark-mode' ),
+						],
+					),
+
+					'enable_menu_switch' => array(
+						'name'    => 'enable_menu_switch',
+						'default' => 'off',
+						'label'   => __( 'Display Switch in Menu', 'wp-dark-mode' ),
+						'desc'    => __( 'Display the darkmode switch in the menu.', 'wp-dark-mode' ),
+						'type'    => 'switcher',
+					),
+
+					'switch_menus' => array(
+						'name'    => 'switch_menus',
+						'default' => [ $this, 'switch_menus' ],
+						'label'   => __( 'Select Menu(s)', 'wp-dark-mode' ),
+						'desc'    => __( 'Select the menu(s) in which you want to display the darkmode switch.', 'wp-dark-mode' ),
+						'type'    => 'cb_function',
+					),
+
+					'custom_switch_icon' => array(
+						'name'    => 'custom_switch_icon',
+						'default' => 'off',
+						'label'   => __( 'Custom Switch Icon', 'wp-dark-mode' ),
+						'desc'    => __( 'Customize the darkmode switch icon in the dark & light mode.', 'wp-dark-mode' ),
+						'type'    => 'switcher',
+					),
+
+					'switch_icon_light' => array(
+						'name'  => 'switch_icon_light',
+						'label' => __( 'Switch Icon (Light)', 'wp-dark-mode' ),
+						'desc'  => __( 'Switch Icon in the light mode.', 'wp-dark-mode' ),
+						'type'  => 'file',
+					),
+
+					'switch_icon_dark' => array(
+						'name'  => 'switch_icon_dark',
+						'label' => __( 'Switch Icon (Dark)', 'wp-dark-mode' ),
+						'desc'  => __( 'Switch Icon in the dark mode.', 'wp-dark-mode' ),
+						'type'  => 'file',
+					),
+
+					'custom_switch_text' => array(
+						'name'    => 'custom_switch_text',
+						'default' => 'off',
+						'label'   => __( 'Custom Switch Text', 'wp-dark-mode' ),
+						'desc'    => __( 'Customize the darkmode switch text.', 'wp-dark-mode' ),
+						'type'    => 'switcher',
+					),
+
+					'switch_text_light' => array(
+						'name'    => 'switch_text_light',
+						'default' => 'Light',
+						'label'   => __( 'Switch Text (Light)', 'wp-dark-mode' ),
+						'desc'    => __( 'Floating switch light text.', 'wp-dark-mode' ),
+						'type'    => 'text',
+					),
+
+					'switch_text_dark' => array(
+						'name'    => 'switch_text_dark',
+						'default' => 'Dark',
+						'label'   => __( 'Switch Text (Dark)', 'wp-dark-mode' ),
+						'desc'    => __( 'Floating switch dark text.', 'wp-dark-mode' ),
+						'type'    => 'text',
+					),
+
+					'show_above_post' => array(
+						'name'    => 'show_above_post',
+						'default' => 'off',
+						'label'   => __( 'Show Above Posts', 'wp-dark-mode' ),
+						'desc'    => __( 'Show the dark mode switcher button above of all the post.', 'wp-dark-mode' ),
+						'type'    => 'switcher',
+					),
+
+					'show_above_page' => array(
+						'name'    => 'show_above_page',
+						'default' => 'off',
+						'label'   => __( 'Show Above Pages', 'wp-dark-mode' ),
+						'desc'    => __( 'Show the dark mode switcher button above of all the pages.', 'wp-dark-mode' ),
+						'type'    => 'switcher',
+					),
+				) ),
+
+				'wp_dark_mode_style' => apply_filters( 'wp_dark_mode/style_settings', array(
+					'color_preset' => array(
 						'name'    => 'color_preset',
 						'default' => '0',
 						'label'   => __( 'Darkmode Color Preset:', 'wp-dark-mode' ),
 						'desc'    => __( 'Select the predefined darkmode background, text and link preset color.', 'wp-dark-mode' ),
 						'type'    => 'image_choose',
 						'options' => [
-							'0' => WP_DARK_MODE_ASSETS.'/images/color-presets/1.svg',
-							'1' => WP_DARK_MODE_ASSETS.'/images/color-presets/2.svg',
-							'2' => WP_DARK_MODE_ASSETS.'/images/color-presets/3.svg',
-							'3' => WP_DARK_MODE_ASSETS.'/images/color-presets/4.svg',
-							'4' => WP_DARK_MODE_ASSETS.'/images/color-presets/5.svg',
-							'5' => WP_DARK_MODE_ASSETS.'/images/color-presets/6.svg',
-							'6' => WP_DARK_MODE_ASSETS.'/images/color-presets/7.svg',
-							'7' => WP_DARK_MODE_ASSETS.'/images/color-presets/8.svg',
-							'8' => WP_DARK_MODE_ASSETS.'/images/color-presets/9.svg',
-							'9' => WP_DARK_MODE_ASSETS.'/images/color-presets/10.svg' ,
-							'10' => WP_DARK_MODE_ASSETS.'/images/color-presets/11.svg' ,
+							'0'  => WP_DARK_MODE_ASSETS . '/images/color-presets/1.svg',
+							'1'  => WP_DARK_MODE_ASSETS . '/images/color-presets/2.svg',
+							'2'  => WP_DARK_MODE_ASSETS . '/images/color-presets/3.svg',
+							'3'  => WP_DARK_MODE_ASSETS . '/images/color-presets/4.svg',
+							'4'  => WP_DARK_MODE_ASSETS . '/images/color-presets/5.svg',
+							'5'  => WP_DARK_MODE_ASSETS . '/images/color-presets/6.svg',
+							'6'  => WP_DARK_MODE_ASSETS . '/images/color-presets/7.svg',
+							'7'  => WP_DARK_MODE_ASSETS . '/images/color-presets/8.svg',
+							'8'  => WP_DARK_MODE_ASSETS . '/images/color-presets/9.svg',
+							'9'  => WP_DARK_MODE_ASSETS . '/images/color-presets/10.svg',
+							'10' => WP_DARK_MODE_ASSETS . '/images/color-presets/11.svg',
 						],
 					),
 
@@ -378,7 +384,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'type'    => 'switcher',
 					),
 
-					'darkmode_bg_color'    => array(
+					'darkmode_bg_color' => array(
 						'name'    => 'darkmode_bg_color',
 						'default' => '',
 						'label'   => __( 'Darkmode Background Color', 'wp-dark-mode' ),
@@ -386,7 +392,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'type'    => 'color',
 					),
 
-					'darkmode_text_color'  => array(
+					'darkmode_text_color' => array(
 						'name'    => 'darkmode_text_color',
 						'default' => '',
 						'label'   => __( 'Darkmode Text Color', 'wp-dark-mode' ),

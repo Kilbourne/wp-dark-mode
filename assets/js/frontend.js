@@ -31,10 +31,12 @@ window.wpDarkModeHooks = createHooks();
                 darkmodeSwitch.addEventListener('change', app.handleExcludes);
             }
 
-            app.checkDarkMode();
+            //app.checkDarkMode();
+            setTimeout(app.checkDarkMode, 100);
+
             app.handleExcludes();
 
-            window.addEventListener('darkmodeInit', app.checkDarkMode);
+            //window.addEventListener('darkmodeInit', app.checkDarkMode);
             window.addEventListener('darkmodeInit', app.handleExcludes);
             window.addEventListener('darkmodeInit', app.excludeBGELements);
 
@@ -56,7 +58,7 @@ window.wpDarkModeHooks = createHooks();
 
             if (1 == is_saved) {
                 document.querySelector('html').classList.add('wp-dark-mode-active');
-                app.checkDarkMode();
+                //app.checkDarkMode();
             }
 
             window.dispatchEvent(new Event('darkmodeInit'));
@@ -103,11 +105,14 @@ window.wpDarkModeHooks = createHooks();
         /** check if the darkmode is active or not on initialize */
         checkDarkMode: () => {
             if (document.querySelector('html').classList.contains('wp-dark-mode-active')) {
+                const {brightness, contrast, sepia} = wpDarkModeFrontend;
+
                 DarkReader.enable({
-                    brightness: 100,
-                    contrast: 90,
-                    sepia: 10
+                    brightness,
+                    contrast,
+                    sepia
                 });
+
                 document.querySelectorAll('.wp-dark-mode-switcher').forEach((switcher) => switcher.classList.add('active'));
             } else {
                 DarkReader.disable();

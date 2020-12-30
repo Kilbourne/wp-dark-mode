@@ -190,7 +190,7 @@
             const is_darkmode_enabled = checkBox.checked;
 
             if (is_darkmode_enabled) {
-                document.querySelector('.show_switcher').style.display = 'contents';
+                document.querySelector('.show_switcher').style.display = 'revert';
             } else {
                 document.querySelector('.show_switcher').style.display = 'none';
             }

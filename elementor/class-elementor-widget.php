@@ -48,37 +48,37 @@ if ( ! class_exists( 'WP_Dark_Mode_Elementor_Widget' ) ) {
 				'options'     => [
 					'1' => [
 						'title'       => 'Style 1',
-						'image_small' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/1.svg' ),
+						'image_small' => WP_DARK_MODE_ASSETS.'/images/button-presets/1.svg',
 						'image_large' => '',
 					],
 					'2' => [
 						'title'       => 'Style 2',
-						'image_small' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/2.svg' ),
+						'image_small' => WP_DARK_MODE_ASSETS.'/images/button-presets/2.svg',
 						'image_large' => '',
 					],
 					'3' => [
 						'title'       => 'Style 3',
-						'image_small' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/3.svg' ),
+						'image_small' => WP_DARK_MODE_ASSETS.'/images/button-presets/3.svg',
 						'image_large' => '',
 					],
 					'4' => [
 						'title'       => 'Style 4',
-						'image_small' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/4.svg' ),
+						'image_small' => WP_DARK_MODE_ASSETS.'/images/button-presets/4.svg',
 						'image_large' => '',
 					],
 					'5' => [
 						'title'       => 'Style 5',
-						'image_small' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/5.svg' ),
+						'image_small' => WP_DARK_MODE_ASSETS.'/images/button-presets/5.svg',
 						'image_large' => '',
 					],
 					'6' => [
 						'title'       => 'Style 6',
-						'image_small' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/6.svg' ),
+						'image_small' => WP_DARK_MODE_ASSETS.'/images/button-presets/6.svg',
 						'image_large' => '',
 					],
 					'7' => [
 						'title'       => 'Style 7',
-						'image_small' => wp_dark_mode()->plugin_url( 'assets/images/button-presets/7.svg' ),
+						'image_small' => WP_DARK_MODE_ASSETS.'/images/button-presets/7.svg',
 						'image_large' => '',
 					],
 				],
