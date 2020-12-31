@@ -63,6 +63,8 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 			$is_excluded = isset( $post->ID ) && in_array( $post->ID, wp_dark_mode_exclude_pages() );
 
 			$excludes = '.wp-dark-mode-ignore, .wp-dark-mode-ignore *, .video-js, .select2, .owl-nav, .owl-dots, .google-map';
+			$includes = wp_dark_mode_get_settings( 'wp_dark_mode_includes_excludes', 'includes' );
+
 
 			$pro_version = 0;
 
@@ -77,8 +79,11 @@ if ( ! class_exists( 'WP_Dark_Mode_Enqueue' ) ) {
 				'contrast'   => wp_dark_mode_get_settings( 'wp_dark_mode_display', 'contrast', 90 ),
 				'sepia'      => wp_dark_mode_get_settings( 'wp_dark_mode_display', 'sepia', 10 ),
 
-				'excludes'            => apply_filters( 'wp_dark_mode/excludes', trim( $excludes, ',' ) ),
+				'excludes' => apply_filters( 'wp_dark_mode/excludes', trim( $excludes, ',' ) ),
+				'includes' => apply_filters( 'wp_dark_mode/includes', trim( $includes, ',' ) ),
+
 				'is_excluded'         => $is_excluded,
+
 				'enable_frontend'     => wp_dark_mode_enabled(),
 				'enable_os_mode'      => 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_general', 'enable_os_mode', 'on' ),
 				'remember_darkmode'   => 'on' == wp_dark_mode_get_settings( 'wp_dark_mode_advanced', 'remember_darkmode', 'off' ),

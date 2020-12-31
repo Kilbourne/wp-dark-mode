@@ -1,7 +1,3 @@
-import {createHooks} from '@wordpress/hooks';
-
-window.wpDarkModeHooks = createHooks();
-
 (function () {
 
     const app = {
@@ -13,17 +9,26 @@ window.wpDarkModeHooks = createHooks();
             }
 
             if (typeof elementor === 'undefined') {
+                if ('' !== wpDarkModeFrontend.includes) {
+                    app.handleIncludes();
+                }
+
+                app.handleExcludes();
+                app.checkDarkMode();
+
                 app.initDarkmode();
             }
 
             if (typeof wpDarkModeAdmin === 'undefined') {
 
-                if (sessionStorage.getItem('wp_dark_mode_frontend') != 0) { //block from admin side
+                if (sessionStorage.getItem('wp_dark_mode_frontend') != 0) {
                     app.checkOsMode();
                 }
             }
 
-            app.excludeBGELements();
+
+            //app.excludeBGELements();
+
 
             const darkmodeSwitch = document.querySelector('.wp-dark-mode-switch');
             if (darkmodeSwitch) {
@@ -31,20 +36,10 @@ window.wpDarkModeHooks = createHooks();
                 darkmodeSwitch.addEventListener('change', app.handleExcludes);
             }
 
-            //app.checkDarkMode();
-            setTimeout(app.checkDarkMode, 100);
-
-            app.handleExcludes();
 
             //window.addEventListener('darkmodeInit', app.checkDarkMode);
-            window.addEventListener('darkmodeInit', app.handleExcludes);
-            window.addEventListener('darkmodeInit', app.excludeBGELements);
-
-
-            setTimeout(app.handleExcludes, 1000);
-            setTimeout(app.handleExcludes, 2000);
-            setTimeout(app.handleExcludes, 3000);
-
+            //window.addEventListener('darkmodeInit', app.handleExcludes);
+            //window.addEventListener('darkmodeInit', app.excludeBGELements);
 
         },
 
@@ -138,6 +133,24 @@ window.wpDarkModeHooks = createHooks();
 
                 children.forEach((child) => {
                     child.classList.add('wp-dark-mode-ignore');
+                })
+            });
+        },
+
+        handleIncludes: function () {
+
+            if (typeof wpDarkModeFrontend === 'undefined') {
+                return;
+            }
+
+            const elements = document.querySelectorAll(wpDarkModeFrontend.includes);
+
+            elements.forEach((element) => {
+                element.classList.add('wp-dark-mode-include');
+                const children = element.querySelectorAll('*');
+
+                children.forEach((child) => {
+                    child.classList.add('wp-dark-mode-include');
                 })
             });
         },

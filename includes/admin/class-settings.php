@@ -56,15 +56,21 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'<i class="dashicons dashicons-admin-generic" ></i>' ),
 				),
 				array(
+					'id'    => 'wp_dark_mode_switch',
+					'title' => sprintf( __( '%s <span>Switch Settings</span>', 'wp-dark-mode' ),
+						'<i class="dashicons dashicons-slides" ></i>' ),
+				),
+				array(
 					'id'    => 'wp_dark_mode_display',
 					'title' => sprintf( __( '%s <span>Display Settings</span>', 'wp-dark-mode' ),
 						'<i class="dashicons dashicons-welcome-view-site" ></i>' ),
 				),
 				array(
-					'id'    => 'wp_dark_mode_switch',
-					'title' => sprintf( __( '%s <span>Switch Settings</span>', 'wp-dark-mode' ),
-						'<i class="dashicons dashicons-slides" ></i>' ),
+					'id'    => 'wp_dark_mode_includes_excludes',
+					'title' => sprintf( __( '%s <span>Includes/ Excludes</span>', 'wp-dark-mode' ),
+						'<i class="dashicons dashicons-layout" ></i>' ),
 				),
+
 				array(
 					'id'    => 'wp_dark_mode_style',
 					'title' => sprintf( __( '%s <span>Style Settings</span>', 'wp-dark-mode' ),
@@ -218,11 +224,24 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'max'     => 100,
 					],
 
-					'excludes'   => array(
+				) ),
+
+				'wp_dark_mode_includes_excludes' => [
+					'includes' => array(
+						'name'    => 'includes',
+						'default' => '',
+						'label'   => __( 'Includes Elements', 'wp-dark-mode-pro' ),
+						'desc'    => __( 'Add comma separated CSS selectors (classes, ids) to to apply dark mode. Only the elements within the selectors applied by dark mode.',
+							'wp-dark-mode-pro' ),
+						'type'    => 'textarea',
+					),
+
+					'excludes' => array(
 						'name'    => 'excludes',
 						'default' => '',
 						'label'   => __( 'Excludes Elements', 'wp-dark-mode' ),
-						'desc'    => __( 'Add comma separated CSS selectors (classes, ids) to ignore the darkmode. ex: .class1, #hero-area', 'wp-dark-mode' ),
+						'desc'    => __( 'Add comma separated CSS selectors (classes, ids) to ignore the darkmode. ex: .class1, #hero-area',
+							'wp-dark-mode' ),
 						'type'    => 'textarea',
 					),
 
@@ -233,9 +252,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Settings' ) ) {
 						'desc'    => __( 'Select the pages to disable darkmode on the selected pages.', 'wp-dark-mode' ),
 						'type'    => 'cb_function',
 					),
-
-
-				) ),
+				],
 
 				'wp_dark_mode_switch' => apply_filters( 'wp_dark_mode/switch_settings', array(
 					'show_switcher' => array(

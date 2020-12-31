@@ -1015,12 +1015,12 @@ if ( ! class_exists( 'WPPOOL_Settings_API' ) ) {
                     margin-top: -3px;
                     text-align: center;
                     line-height: 1.6em;
-                    background: deeppink !important;
+                    background: #555 !important;
                     color: #fff !important;
                 }
 
                 .wppool-slider .ui-slider-range {
-                    background: deeppink !important;
+                    background: #555 !important;
                 }
 
             </style>

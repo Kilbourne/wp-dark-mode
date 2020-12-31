@@ -2727,21 +2727,17 @@
             renderId++;
             function setRule(target, index, rule) {
 
-                    // if (typeof rule.selector !== 'undefined') {
-                    //
-                    //     if (rule.selector.includes('wp-dark-mode-ignore')) {
-                    //         return;
-                    //     }
-                    //
-                    //     const element = document.querySelector(rule.selector);
-                    //     if (element && element.classList.contains('wp-dark-mode-ignore')) {
-                    //         return;
-                    //     }
-                    // }
-
                 var selector = rule.selector, declarations = rule.declarations;
 
-                if (selector.includes('wp-dark-mode')) {
+                if ('' !== wpDarkModeFrontend.includes) {
+                    const element = document.querySelector(selector);
+                    if (element && !element.classList.contains('wp-dark-mode-include')) {
+                        return;
+                    }
+
+                }
+
+                if (selector.includes('wp-dark-mode-ignore')) {
                     return;
                 }
 
