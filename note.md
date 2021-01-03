@@ -1,8 +1,5 @@
-* Update: Change Low Image Brightness to OFF By default 
-* Fix: Fixed PHP8 Compatibility Issue
-* Fix: Fixed Admin Dashboard Dark Mode Color
-* Fix: Exclude Darkmode from elementor editor
-* Fix: Fixed Excludes Images From Dark Mode
+* Add buddyboss supports
+* Add Facebook & Twitter color palettes
 
 
 TODO - BEFORE RELEASE

@@ -487,3 +487,9 @@ html.wp-dark-mode-active {
     background: transparent !important;
   }
 }
+
+@media print {
+  .wp-dark-mode-switcher {
+    display: none !important;
+  }
+}
