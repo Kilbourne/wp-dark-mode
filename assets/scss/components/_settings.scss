@@ -182,11 +182,20 @@ tr.gutenberg_doc, tr.elementor_doc, tr.image_settings, tr.shortcodes_doc, tr.wid
   .color_preset {
     .image-choose-opt {
       img {
-        border-radius: 100px;
+        border-radius: 5px;
+        width: 155px;
+        max-width: 155px;
+      }
+
+      &.active img{
+        border: 5px solid yellow;
       }
 
       .disabled-text {
-        border-radius: 100px;
+        width: calc(100% - 10px);
+        height: calc(100% - 5px);
+        left: 5px;
+        border-radius: 5px;
       }
     }
   }

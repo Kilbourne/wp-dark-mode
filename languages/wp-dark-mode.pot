@@ -1,4 +1,4 @@
-# Copyright (C) 2020 wp-dark-mode
+# Copyright (C) 2021 wp-dark-mode
 # This file is distributed under the same license as the wp-dark-mode package.
 msgid ""
 msgstr ""
@@ -301,43 +301,43 @@ msgstr ""
 msgid "Select the predefined darkmode background, text and link preset color."
 msgstr ""
 
-#: includes/class-settings.php:361
+#: includes/class-settings.php:363
 msgid "Want to customize colors?"
 msgstr ""
 
-#: includes/class-settings.php:362
+#: includes/class-settings.php:364
 msgid "Customize the darkmode background, text and link colors."
 msgstr ""
 
-#: includes/class-settings.php:369
+#: includes/class-settings.php:371
 msgid "Darkmode Background Color"
 msgstr ""
 
-#: includes/class-settings.php:370
+#: includes/class-settings.php:372
 msgid "Select the background color when the dark mode is on."
 msgstr ""
 
-#: includes/class-settings.php:377
+#: includes/class-settings.php:379
 msgid "Darkmode Text Color"
 msgstr ""
 
-#: includes/class-settings.php:378
+#: includes/class-settings.php:380
 msgid "Select the text color when the dark mode is on."
 msgstr ""
 
-#: includes/class-settings.php:385
+#: includes/class-settings.php:387
 msgid "Darkmode Links Color"
 msgstr ""
 
-#: includes/class-settings.php:386
+#: includes/class-settings.php:388
 msgid "Select the links color when the dark mode is on."
 msgstr ""
 
-#: includes/class-settings.php:580, includes/class-settings.php:592
+#: includes/class-settings.php:582, includes/class-settings.php:594
 msgid "WP Dark Mode Settings"
 msgstr ""
 
-#: includes/class-settings.php:580
+#: includes/class-settings.php:582
 msgid "WP Dark Mode"
 msgstr ""
 

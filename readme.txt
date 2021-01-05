@@ -65,7 +65,7 @@ WP Dark Mode supports all major operating systems including iOS, Android, macOS,
 === 💰 WP Dark Mode Ultimate Features ===
 1. **All Pro Features**
 1. **Custom Colors** – You can customize the dark mode background. text and links color as you want/
-1. **Presets Color Schema** – 11 exclusive presets color schema available to quickly change the dark mode color from the predefined presets.
+1. **Presets Color Schema** – 13 exclusive presets color schema available to quickly change the dark mode color from the predefined presets.
 1. **Dark Mode Based Image Supports** – You can replace light mode images with the different images you want in the dark mode.
 1. **Custom CSS** – You can use custom CSS only for dark mode.
 1. **Custom Switch Icon** – You can customize the dark mode switch icon in the light/ dark mode.
@@ -146,6 +146,10 @@ No. WP Dark Mode is a very user-friendly and simple plugin. Just download and us
 10. Dark mode switch elementor widget
 
 == Changelog ==
+
+= 1.3.5 =
+* New: Added Facebook & Twitter color scheme
+* Fix: Hide Darkmode Switch in Printing
 
 = 1.3.4 =
 * Fix: Fixed Show/ Hide Floating Switch

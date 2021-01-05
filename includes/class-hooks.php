@@ -46,10 +46,10 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 
 			add_filter( 'wp_dark_mode/excludes', [ $this, 'excludes' ] );
 
-			add_action( 'admin_init', [ $this, 'display_notice' ] );
+			//add_action( 'admin_init', [ $this, 'display_notice' ] );
 
 			/** hide black friday notice */
-			add_action( 'wp_ajax_hide_christmas_notice', [ $this, 'hide_christmas_notice' ] );
+			//add_action( 'wp_ajax_hide_christmas_notice', [ $this, 'hide_christmas_notice' ] );
 
             add_action('admin_footer', [$this, 'display_promo']);
 
