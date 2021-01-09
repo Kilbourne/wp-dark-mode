@@ -259,16 +259,21 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 		 */
 		public function dark_styles() {
 
-			if ( wp_dark_mode_is_elementor_editor() ) {
-				return false;
-			}
-
-			if ( ! is_admin() && ! wp_dark_mode_enabled() ) {
-				return false;
-			}
-
 			global $post;
-			if ( isset( $post->ID ) && in_array( $post->ID, wp_dark_mode_exclude_pages() ) ) {
+
+			if ( wp_dark_mode_is_elementor_editor() ) {
+				$is_disabled = true;
+			}else if ( ! is_admin() && ! wp_dark_mode_enabled() ) {
+				$is_disabled = true;
+			}elseif ( isset( $post->ID ) && in_array( $post->ID, wp_dark_mode_exclude_pages() ) ) {
+				$is_disabled = true;
+			}else{
+				$is_disabled = false;
+			}
+			
+			$is_disabled = apply_filters( 'wp_dark_mode/should_run', $is_disabled );
+
+			if( $is_disabled ){
 				return false;
 			}
 
