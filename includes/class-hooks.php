@@ -192,12 +192,18 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 
 
 			if ( ! wp_dark_mode_enabled() ) {
-				return false;
+				$is_disabled = true;
 			}
 
 
 			if ( isset( $post->ID ) && in_array( $post->ID, wp_dark_mode_exclude_pages() ) ) {
-				return;
+				$is_disabled = true;
+			}
+
+			$is_disabled = apply_filters( 'wp_dark_mode/should_run', $is_disabled );
+
+			if( $is_disabled ){
+				return false;
 			}
 
 			$style = wp_dark_mode_get_settings( 'wp_dark_mode_display', 'switch_style', 1 );
@@ -256,16 +262,23 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 		 */
 		public function dark_styles() {
 
-			if ( wp_dark_mode_is_elementor_editor() ) {
-				return false;
-			}
-
-			if ( ! is_admin() && ! wp_dark_mode_enabled() ) {
-				return false;
-			}
-
 			global $post;
+
+			if ( wp_dark_mode_is_elementor_editor() ) {
+				$is_disabled = true;
+			}else if ( ! is_admin() && ! wp_dark_mode_enabled() ) {
+				$is_disabled = true;
+			}else{
+				$is_disabled = false;
+			}
+
 			if ( isset( $post->ID ) && in_array( $post->ID, wp_dark_mode_exclude_pages() ) ) {
+				$is_disabled = true;
+			}
+
+			$is_disabled = apply_filters( 'wp_dark_mode/should_run', $is_disabled );
+
+			if( $is_disabled ){
 				return false;
 			}
 
