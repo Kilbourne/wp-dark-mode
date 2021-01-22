@@ -311,7 +311,10 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 				$base_selector = apply_filters('wp_dark_mode/base_selectors', 'html.wp-dark-mode-active');
 			}
 
-			ob_start();
+			$css = apply_filters('wp_dark_mode/css', '' );
+
+			if(!$css){
+				ob_start();
 
 			/** declare css variables */
 			printf( '
@@ -397,7 +400,14 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 				}', $base_selector );
 			}
 
-			$scss = ob_get_clean();
+				$scss = ob_get_clean();
+				if ( ! empty( $scss ) ) {
+				    $scss_compiler = new scssc();
+
+					$css = $scss_compiler->compile( $scss );
+					$css = apply_filters('wp_dark_mode/after_css_compile', $css );
+				}
+			}
 
 			?>
 
@@ -517,10 +527,8 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 
             <style>
                 <?php
-				if ( ! empty( $scss ) ) {
-				    $scss_compiler = new scssc();
-
-					echo $scss_compiler->compile( $scss );
+				if ( ! empty( $css ) ) {
+					echo $css;
 				}
 				?>
             </style>
