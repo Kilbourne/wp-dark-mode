@@ -343,13 +343,13 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
                 a:active *,
                 a:visited,
                 a:visited * {
-                    &:not(.wp-dark-mode-ignore){
+                    &:not(.wp-dark-mode-ignore)%2$s{
                         background-color: transparent !important;
                         color: var(--wp-dark-mode-link) !important;
                         border-color: var(--wp-dark-mode-border) !important;
                     }
                 }
-			}', $base_selector );
+			}', $base_selector, apply_filters( 'wp_dark_mode/not', '' ) );
 
 
 
