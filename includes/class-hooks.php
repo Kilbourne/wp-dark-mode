@@ -343,7 +343,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
                 a:active *,
                 a:visited,
                 a:visited * {
-                    &:not(.wp-dark-mode-ignore)%2$s{
+                    &:not(.wp-dark-mode-ignore):not(.wp-dark-mode-ignore):not(.mejs-iframe-overlay)%2$s{
                         background-color: transparent !important;
                         color: var(--wp-dark-mode-link) !important;
                         border-color: var(--wp-dark-mode-border) !important;
