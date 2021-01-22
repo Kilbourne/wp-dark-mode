@@ -203,28 +203,8 @@ if ( ! class_exists( 'WP_Dark_Mode' ) ) {
 		 * @return bool
 		 */
 		public function is_ultimate_active() {
-
-			global $wp_dark_mode_license;
-
-			if(!$wp_dark_mode_license){
-			    return false;
-            }
-
-			$is_ultimate_plan = $wp_dark_mode_license->is_valid_by( 'title', 'WP Dark Mode Ultimate Lifetime' )
-			                    || $wp_dark_mode_license->is_valid_by( 'title', 'WP Dark Mode Ultimate Yearly' )
-			                    || $wp_dark_mode_license->is_valid_by( 'title', 'Lifetime Ultimate 1 Site' )
-			                    || $wp_dark_mode_license->is_valid_by( 'title', 'Lifetime Ultimate 50 Sites' );
-
-			$is_valid = $wp_dark_mode_license->is_valid() && $is_ultimate_plan;
-
-			if ( $is_valid ) {
-
-				return true;
-			}
-
-			return false;
-
-		   //return apply_filters('wp_dark_mode_ultimate_active', false);
+			
+			return apply_filters('wp_dark_mode_ultimate_active', false);
 		}
 
 		/**

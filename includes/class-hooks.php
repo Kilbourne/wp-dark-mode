@@ -202,10 +202,7 @@ if ( ! class_exists( 'WP_Dark_Mode_Hooks' ) ) {
 
 			$style = wp_dark_mode_get_settings( 'wp_dark_mode_display', 'switch_style', 1 );
 
-			global $wp_dark_mode_license;
-			if ( ! $wp_dark_mode_license || ! $wp_dark_mode_license->is_valid() ) {
 				$style = $style > 2 ? 1 : $style;
-			}
 
 			echo do_shortcode( '[wp_dark_mode floating="yes" style="' . $style . '"]' );
 		}
